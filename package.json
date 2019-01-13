@@ -4,7 +4,8 @@
   "description": "Twitch bot that tells about the Hades video game",
   "main": "bot.js",
   "scripts": {
-    "start": "LOG_LEVEL=error node src/bot.js",
+    "start": "node src/bot.js",
+    "dev": "nodemon src/bot.js",
     "test": "LOG_LEVEL=error cucumber-js",
     "test:debug": "cucumber-js"
   },
@@ -24,6 +25,7 @@
     "chai": "^4.1.2",
     "chai-as-promised": "^7.1.1",
     "cucumber": "^5.1.0",
-    "sinon": "^6.0.0"
+    "sinon": "^6.0.0",
+    "nodemon": "^1.18.9"
   }
 }
