@@ -23,7 +23,7 @@ const bot = new tmi.client({
 const onConnectedHandler = event => {
   logger.info("Connected");
   logger.info("Logged in as");
-  logger.info(`${bot.username} - (${bot.id})`);
+  logger.info(`${bot.username}`);
 };
 
 const onMessageHandler = (channelId, context, originalMessage, self) => {
