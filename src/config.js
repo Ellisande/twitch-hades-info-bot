@@ -1,4 +1,4 @@
-const { username, token } = require("auth.json");
+const { username, token } = require("../auth.json");
 
 const actualUsername = process.env.BOT_USERNAME || username;
 const actualPassword = process.env.BOT_OAUTH_TOKEN || token;
