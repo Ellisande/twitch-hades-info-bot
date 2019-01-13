@@ -1,10 +1,10 @@
 {
-  "name": "play-bot",
+  "name": "hades-info-bot",
   "version": "0.1.0",
-  "description": "Find out who plays the game you are excited about!",
+  "description": "Twitch bot that tells about the Hades video game",
   "main": "bot.js",
   "scripts": {
-    "start": "node src/bot.js",
+    "start": "LOG_LEVEL=error node src/bot.js",
     "test": "LOG_LEVEL=error cucumber-js",
     "test:debug": "cucumber-js"
   },
