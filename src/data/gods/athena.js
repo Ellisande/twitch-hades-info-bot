@@ -246,6 +246,7 @@ const abilities = {
   dash,
   revenge,
   cast,
+  wrath: grayEyedVigiliance,
   "sure footing": sureFooting,
   "bronze skin": bronzeSkin,
   "brilliant ripsote": brilliantRiposte,
@@ -253,7 +254,6 @@ const abilities = {
   "last stand": lastStand,
   "blinding flash": blindingFlash,
   "proud bearing": proudBearing,
-  "gray eyed viigiliance": grayEyedVigiliance,
   "divine protection": divineProtection,
   "merciful end": mercifulEnd,
   "deadyly reversal": deadyReversal
