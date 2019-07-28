@@ -254,9 +254,9 @@ const base = {
 
 const formattedAbilities = mapValues(abilities, abilityFormatter);
 
-const Dionysus = {
+const dionysus = {
   ...base,
   ...formattedAbilities
 };
 
-module.exports = { Dionysus };
+module.exports = { dionysus };

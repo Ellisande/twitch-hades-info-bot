@@ -189,9 +189,9 @@ const base = {
 
 const formattedAbilities = mapValues(abilities, abilityFormatter);
 
-const Hermes = {
+const hermes = {
   ...base,
   ...formattedAbilities
 };
 
-module.exports = { Hermes };
+module.exports = { hermes };
