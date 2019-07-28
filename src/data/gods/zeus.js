@@ -8,7 +8,7 @@ const {
   REVENGE,
   OTHER
 } = require("./abilityTypes");
-const { mapValues, omit } = require("lodash");
+const { mapValues, toArray } = require("lodash");
 
 const info =
   "Zeus, God of Thunder. His powers create bouncing lightning projectiles.";
@@ -252,7 +252,7 @@ const abilities = {
 const base = {
   name: "Zeus",
   info,
-  other: _.toArray(abilities).filter(ability => ability.type === OTHER)
+  other: toArray(abilities).filter(ability => ability.type === OTHER)
 };
 
 const formattedAbilities = mapValues(abilities, abilityFormatter);
