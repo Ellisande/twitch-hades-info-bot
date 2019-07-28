@@ -232,12 +232,6 @@ const freakAccident = {
   }
 };
 
-const base = {
-  name: "Zeus",
-  info,
-  other: [stormLightning, splittingBolt]
-};
-
 const abilities = {
   attack,
   special,
@@ -253,6 +247,12 @@ const abilities = {
   "sea storm": seaStorm,
   "scintillating feast": scintillatingFeast,
   "freak accident": freakAccident
+};
+
+const base = {
+  name: "Zeus",
+  info,
+  other: _.toArray(abilities).filter(ability => ability.type === OTHER)
 };
 
 const formattedAbilities = mapValues(abilities, abilityFormatter);
