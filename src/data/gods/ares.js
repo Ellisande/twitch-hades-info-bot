@@ -23,7 +23,7 @@ const attack = {
     [COMMON]: {
       1: 50
     },
-    [RAREE]: {
+    [RARE]: {
       1: `${50 * 1.3}-${50 * 1.5}`
     },
     [EPIC]: {
