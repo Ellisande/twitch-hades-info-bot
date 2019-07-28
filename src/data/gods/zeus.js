@@ -6,7 +6,8 @@ const {
   CAST,
   DASH,
   REVENGE,
-  OTHER
+  OTHER,
+  WRATH
 } = require("./abilityTypes");
 const { mapValues, toArray } = require("lodash");
 
@@ -181,7 +182,7 @@ const cloudedJudgement = {
 
 const thunderGodsFury = {
   name: "Thunder God's Fury",
-  type: OTHER,
+  type: WRATH,
   info: value =>
     `Your Wrath makes lightning strike nearby foes repeatedly for ${value} over 5 seconds`,
   values: {
@@ -238,12 +239,12 @@ const abilities = {
   dash,
   revenge,
   cast,
+  wrath: thunderGodsFury,
   "storm lightning": stormLightning,
   "high voltage": highVoltage,
   "double strike": doubleStrike,
   "static discharge": staticDischarge,
   "clouded judgement": cloudedJudgement,
-  "thunder gods fury": thunderGodsFury,
   "sea storm": seaStorm,
   "scintillating feast": scintillatingFeast,
   "freak accident": freakAccident
