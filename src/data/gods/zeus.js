@@ -1,4 +1,4 @@
-const { COMMON, RARE, EPIC, LEGENDARY } = require("./rarities");
+const { COMMON, RARE, EPIC, LEGENDARY, HEROIC, DUO } = require("./rarities");
 const { abilityFormatter } = require("./formatters");
 const {
   ATTACK,
