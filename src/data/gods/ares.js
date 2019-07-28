@@ -30,7 +30,7 @@ const attack = {
       1: `${50 * 1.8}-${50 * 2}`
     },
     [HEROIC]: {
-      1: `${50 * 2.3}-${50 * 2.5}`
+      1: `115-${50 * 2.5}`
     }
   }
 };
@@ -131,7 +131,7 @@ const engulfingVortex = {
     `Your Blade Rift effects lasts ${value} seconds longer and pulls foes in`,
   values: {
     [COMMON]: { 1: "0.2" },
-    [RARE]: { 1: `${0.2 * 1.3}-${0.2 * 1.5}` },
+    [RARE]: { 1: `${0.2 * 1.3}-0.3` },
     [EPIC]: { 1: `${0.2 * 2}-${0.2 * 2.5}` }
   }
 };
