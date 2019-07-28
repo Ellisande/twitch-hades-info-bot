@@ -218,7 +218,7 @@ const abilities = {
 const base = {
   name: "Aphrodite",
   info,
-  other: toArray(abilities).filter(ability => ability.type === ability.OTHER)
+  other: toArray(abilities).filter(ability => ability.type === OTHER)
 };
 
 const formattedAbilities = mapValues(abilities, abilityFormatter);
