@@ -18,7 +18,7 @@
     "axios": "^0.18.0",
     "express": "^4.16.3",
     "lodash": "^4.17.10",
-    "tmi.js": "^1.2.1",
+    "tmi.js": "^1.4.5",
     "winston": "^3.0.0"
   },
   "devDependencies": {
