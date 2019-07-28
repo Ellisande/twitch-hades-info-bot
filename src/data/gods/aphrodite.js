@@ -19,7 +19,7 @@ const attack = {
   type: ATTACK,
   info: value => `Your Attack deals ${value} for damage and inflicts weak`,
   values: {
-    [COMON]: {
+    [COMMON]: {
       1: "45%"
     },
     [RARE]: {
