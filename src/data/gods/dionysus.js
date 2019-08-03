@@ -20,7 +20,10 @@ const attack = {
   info: value => `Your Attack inflicts Poison dealing ${value} damage per tick`,
   values: {
     [COMMON]: {
-      1: 4
+      1: 4,
+      2: 6,
+      3: 7,
+      4: 8
     },
     [RARE]: {
       1: 5
