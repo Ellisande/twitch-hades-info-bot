@@ -225,7 +225,7 @@ const barbsOfTheMasterHuntress = {
   info: value =>
     `Your Wrath fires 10 seeking shots that deal ${value} up to 2000% damage more from afar and pierce shields`,
   values: {
-    [COMMON]: { 1: 10 },
+    [COMMON]: { 1: 10, 2: 14, 3: 17 },
     [RARE]: { 1: 13 },
     [EPIC]: { 1: 16 },
     [HEROIC]: { 1: 19 }
