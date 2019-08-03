@@ -39,7 +39,11 @@ const special = {
   info: value => `Your Special deals ${value} more damage and knocks foes away`,
   values: {
     [COMMON]: {
-      1: "100%"
+      1: "100%",
+      2: "148%",
+      3: "168%",
+      4: "188%",
+      5: "202%"
     },
     [RARE]: {
       1: "130-150%"
