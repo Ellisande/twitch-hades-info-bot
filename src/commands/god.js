@@ -1,7 +1,5 @@
 const { Command } = require("./command");
 const gods = require("../data/gods/all.js");
-const { abilityFormatter } = require("../data/gods/formatters");
-const { omit } = require("lodash");
 
 const allGodNames = gods.map(god => god.name).join("|");
 
