@@ -9,69 +9,40 @@ const {
   OTHER,
   WRATH
 } = require("./abilityTypes");
+const {
+  calculatePercentage,
+  calculateRange
+} = require("../../utils/calculateUtils");
 const { mapValues, toArray } = require("lodash");
 
 const info =
   "Aphrodite, Goddess of Love. Her powers weaken enemies causing them to do less damage";
 
+const attackBase = "50";
 const attack = {
   name: "Heartbreak Strike",
   type: ATTACK,
   info: value => `Your Attack deals ${value} for damage and inflicts weak`,
-  values: {
-    [COMMON]: {
-      1: "45%"
-    },
-    [RARE]: {
-      1: "58.5-67.5%"
-    },
-    [EPIC]: {
-      1: "81-90%"
-    },
-    [HEROIC]: { 1: "103.5-112.5%" }
-  }
+  values: calculatePercentage(attackBase)
 };
 
+const specialBase = 80;
 const special = {
   name: "Heartbreak Flourish",
   type: SPECIAL,
   info: value =>
     `Your Special deals more ${value} more damage and inflicts weak`,
-  values: {
-    [COMMON]: {
-      1: "80%"
-    },
-    [RARE]: {
-      1: `${80 * 1.3}-${80 * 1.5}%`
-    },
-    [EPIC]: {
-      1: `${80 * 1.8}-${80 * 2.0}%`
-    },
-    [HEROIC]: {
-      1: `${80 * 2.3}-${80 * 2.5}%`
-    }
-  }
+  values: calculatePercentage(specialBase)
 };
 
+const dashMin = 17;
+const dashMax = 19;
 const dash = {
   name: "Passion Dash",
   type: DASH,
   info: value =>
     `Your Dash deals ${value} damage at the start and end, and inflicts Weak`,
-  values: {
-    [COMMON]: {
-      1: "17-19"
-    },
-    [RARE]: {
-      1: `${17 * 1.3}-${19 * 1.5}`
-    },
-    [EPIC]: {
-      1: `${17 * 1.8}-${19 * 2.0}`
-    },
-    [HEROIC]: {
-      1: `39}-${19 * 2.5}`
-    }
-  }
+  values: calculateRange(dashMin, dashMax)
 };
 
 const cast = {
@@ -95,6 +66,8 @@ const cast = {
   }
 };
 
+const revengeMin = 20;
+const revengeMax = 25;
 const revenge = {
   name: "Wave of Despair",
   type: REVENGE,
@@ -102,22 +75,24 @@ const revenge = {
     `After you take damage, damage nearby fores for ${value} and turn them Weak`,
   values: {
     [COMMON]: {
-      1: "20-25"
+      1: `${revengeMin}-${revengeMax}`
     },
-    [RARE]: { 1: `${20 * 1.3}-${25 * 1.5}` },
-    [EPIC]: { 1: `${20 * 2}-${20 * 2.2}` }
+    [RARE]: { 1: `${revengeMin * 1.3}-${revengeMax * 1.5}` },
+    [EPIC]: { 1: `${revengeMin * 2}-${revengeMax * 2.2}` }
   }
 };
 
+const lamentMin = 25;
+const lamentMax = 30;
 const dyingLament = {
   name: "Dying Lament",
   type: OTHER,
   info: value =>
     `When slain, foes damage other nearby foes for ${value} damage and inflict Weak`,
   values: {
-    [COMMON]: { 1: "25-30" },
-    [RARE]: { 1: `${25 * 1.3}-${30 * 1.5}` },
-    [EPIC]: { 1: `${25 * 2}-${30 * 2.2}` }
+    [COMMON]: { 1: `${lamentMin}-${lamentMax}` },
+    [RARE]: { 1: `${lamentMin * 1.3}-${lamentMax * 1.5}` },
+    [EPIC]: { 1: `${lamentMin * 1.8}-${lamentMax * 2}` }
   }
 };
 
@@ -144,28 +119,30 @@ const differentLeague = {
   }
 };
 
+const surrdenderBase = 10;
 const sweetSurrender = {
   name: "Sweet Surrender",
   type: OTHER,
   info: value =>
     `Your Weak effects also make foes ${value} more susceptible to damage`,
   values: {
-    [COMMON]: { 1: "10%" },
-    [RARE]: { 1: "13-15%" },
-    [EPIC]: { 1: "20-25%" }
+    [COMMON]: { 1: `${surrdenderBase}%` },
+    [RARE]: { 1: `${surrdenderBase * 1.3}%-${surrdenderBase * 1.5}` },
+    [EPIC]: { 1: `${surrenderBase * 2}%-${surrenderbase * 2.5}` }
   }
 };
 
-const charmOfTheLovelyGoddess = {
-  name: "Charm of the Lovely Goddess",
-  type: WRATH,
+const aidBase = 2500;
+const aphroditesAid = {
+  name: "Aphrodite's Aid",
+  type: AID,
   info: value =>
-    `Your Wrath fires a seeking projectile that leaves foes Charmed for ${value} seconds`,
+    `Your Call fires a seeking project that inflicts Charm. Max gauge projectile does ${value} damage.`,
   values: {
-    [COMMON]: { 1: 10 },
-    [RARE]: { 1: 11 },
-    [EPIC]: { 1: 12 },
-    [HEROIC]: { 1: 13 }
+    [COMMON]: { 1: aidBase },
+    [RARE]: { 1: "??" },
+    [EPIC]: { 1: "??" },
+    [HEROIC]: { 1: "??" }
   }
 };
 
@@ -173,7 +150,7 @@ const unhealthyFixation = {
   name: "Unhealthy Fixation",
   type: OTHER,
   info: value =>
-    `Your Weak effects also have a ${value} chance to make foes Charmed for 7 seconds`,
+    `Your Weak effects also have a ${value} chance to make foes Charmed for 4 seconds`,
   values: {
     [LEGENDARY]: { 1: "15%" }
   }
@@ -199,20 +176,51 @@ const lowTolerance = {
   }
 };
 
+const heartRend = {
+  name: "Heart Rend",
+  type: OTHER,
+  info: value => `Your Critical effects deal ${value} more damage to Weak foes`,
+  values: {
+    [DUO]: { 1: "35%" }
+  }
+};
+
+const spentSpirit = {
+  name: "Spent Spirit",
+  type: OTHER,
+  info: value => `Your foes' ranged-attack projectiles are ${value} slower`,
+  values: {
+    [DUO]: "40%"
+  }
+};
+
+const sweetNectar = {
+  name: "Sweet Nectar",
+  type: OTHER,
+  info: value =>
+    `Any Poms of Power you find are now ${value} level more effective`,
+  values: {
+    [DUO]: 1
+  }
+};
+
 const abilities = {
   attack,
   special,
   dash,
   revenge,
   cast,
-  wrath: charmOfTheLovelyGoddess,
+  aid: aphroditesAid,
   "dying lament": dyingLament,
   "empty inside": emptyInside,
   "different league": differentLeague,
   "sweet surrender": sweetSurrender,
   "unhealthy fixation": unhealthyFixation,
   "curse of longing": curseOfLonging,
-  "low tolerance": lowTolerance
+  "low tolerance": lowTolerance,
+  "heart rend": heartRend,
+  "spent spirit": spentSpirit,
+  "sweet nectar": sweetNectar
 };
 
 const base = {
