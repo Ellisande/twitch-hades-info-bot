@@ -7,8 +7,13 @@ const {
   DASH,
   REVENGE,
   OTHER,
-  WRATH
+  AID
 } = require("./abilityTypes");
+const {
+  calculatePercentage,
+  calculateRange,
+  calculateFlat
+} = require("../../utils/calculateUtils");
 const { mapValues, toArray } = require("lodash");
 
 const info =
@@ -56,26 +61,6 @@ const special = {
   }
 };
 
-const dash = {
-  name: "Hunter Dash",
-  type: DASH,
-  info: value => `Your Dash Attack deals ${value} more damage`,
-  values: {
-    [COMMON]: {
-      1: "50%"
-    },
-    [RARE]: {
-      1: "75%"
-    },
-    [EPIC]: {
-      1: "100%"
-    },
-    [HEROIC]: {
-      1: "150%"
-    }
-  }
-};
-
 const cast = {
   name: "True Shot",
   type: CAST,
@@ -97,6 +82,26 @@ const cast = {
   }
 };
 
+const dash = {
+  name: "Hunter Dash",
+  type: DASH,
+  info: value => `Your Dash Attack deals ${value} more damage`,
+  values: {
+    [COMMON]: {
+      1: "50%"
+    },
+    [RARE]: {
+      1: "75%"
+    },
+    [EPIC]: {
+      1: "100%"
+    },
+    [HEROIC]: {
+      1: "150%"
+    }
+  }
+};
+
 const revenge = {
   name: "None",
   type: REVENGE,
@@ -104,38 +109,21 @@ const revenge = {
   values: {}
 };
 
-const pressurePoints = {
-  name: "Pressure Points",
+const cleanKill = {
+  name: "Clean Kill",
   type: OTHER,
-  info: value => `Any Damage you deal has a ${value} chance to be Critical`,
+  info: value => `Your Critical effects deal ${value} more damage`,
   values: {
-    [COMMON]: { 1: "3%" },
-    [RARE]: { 1: "4%" },
-    [EPIC]: { 1: "5%" }
-  }
-};
-
-const quickReload = {
-  name: "Quick Reload",
-  type: OTHER,
-  info: value => `Foes does casts stuck in after ${value} seconds`,
-  values: {
-    [COMMON]: {
-      1: 8
-    },
-    [RARE]: {
-      1: 6.9
-    },
-    [EPIC]: {
-      1: 6.1
-    }
+    [COMMON]: { 1: "15%" },
+    [RARE]: { 1: "22%" },
+    [EPIC]: { 1: "30%" }
   }
 };
 
 const fullyLoaded = {
   name: "Fully Loaded",
   type: OTHER,
-  info: value => `Gain extra charges for your Cast`,
+  info: value => `Gain ${value} extra charges for your Cast`,
   values: {
     [COMMON]: {
       1: "1"
@@ -149,25 +137,20 @@ const fullyLoaded = {
   }
 };
 
-const hideBreaker = {
-  name: "Hide Breaker",
+const quickReload = {
+  name: "Quick Reload",
   type: OTHER,
-  info: value => `Your Critical effects deal ${value} more damage to Armor`,
+  info: value => `Foes drop casts stuck in after ${value} seconds`,
   values: {
-    [COMMON]: { 1: "200%" },
-    [RARE]: { 1: `${200 * 1.3}-${200 * 1.5}%` },
-    [EPIC]: { 1: "400-500%" }
-  }
-};
-
-const cleanKill = {
-  name: "Clean Kill",
-  type: OTHER,
-  info: value => `Your Critical effects deal ${value} more damage`,
-  values: {
-    [COMMON]: { 1: "25%" },
-    [RARE]: { 1: "37%" },
-    [EPIC]: { 1: "50%" }
+    [COMMON]: {
+      1: 8
+    },
+    [RARE]: {
+      1: 6.9
+    },
+    [EPIC]: {
+      1: 6.1
+    }
   }
 };
 
@@ -183,6 +166,17 @@ const exitWounds = {
   }
 };
 
+const pressurePoints = {
+  name: "Pressure Points",
+  type: OTHER,
+  info: value => `Any Damage you deal has a ${value} chance to be Critical`,
+  values: {
+    [COMMON]: { 1: "3%" },
+    [RARE]: { 1: "4%" },
+    [EPIC]: { 1: "5%" }
+  }
+};
+
 const burstShot = {
   name: "Burst Shot",
   type: OTHER,
@@ -192,6 +186,17 @@ const burstShot = {
     [COMMON]: { 1: "25%" },
     [RARE]: { 1: "35%" },
     [EPIC]: { 1: "45%" }
+  }
+};
+
+const hideBreaker = {
+  name: "Hide Breaker",
+  type: OTHER,
+  info: value => `Your Critical effects deal ${value} more damage to Armor`,
+  values: {
+    [COMMON]: { 1: "200%" },
+    [RARE]: { 1: `${200 * 1.3}-${200 * 1.5}%` },
+    [EPIC]: { 1: "400-500%" }
   }
 };
 
@@ -207,28 +212,30 @@ const hunterInstinct = {
   }
 };
 
+const baseChance = 30;
 const huntersMark = {
   name: "Hunter's Mark",
   type: OTHER,
   info: value =>
     `Your Critical effects also make foes Marked for 2.5 seconds increasing chance to be crit by ${value}`,
   values: {
-    [COMMON]: { 1: "15%" },
-    [RARE]: { 1: `${15 * 1.3}-${15 * 1.5}%` },
-    [EPIC]: { 1: `${15 * 1.8}-${15 * 2}%` }
+    [COMMON]: { 1: `${baseChance}%` },
+    [RARE]: { 1: `${baseChance * 1.3}-${baseChance * 1.5}%` },
+    [EPIC]: { 1: `${baseChance * 1.8}-${baseChance * 2}%` }
   }
 };
 
-const barbsOfTheMasterHuntress = {
-  name: "Barbs of the Master Huntress",
-  type: WRATH,
+const artemisAid = {
+  name: "Artemis' Aid",
+  type: AID,
   info: value =>
-    `Your Wrath fires 10 seeking shots that deal ${value} up to 2000% damage more from afar and pierce shields`,
+    `Your Call fies a seeking arrow towards the nearest foe dealing ${value} damage. Max guage: 12 arrows fired for ${value *
+      12} damage.`,
   values: {
-    [COMMON]: { 1: 10, 2: 14, 3: 17 },
-    [RARE]: { 1: 13 },
-    [EPIC]: { 1: 16 },
-    [HEROIC]: { 1: 19 }
+    [COMMON]: { 1: 130 },
+    [RARE]: { 1: 156 },
+    [EPIC]: { 1: 182 },
+    [HEROIC]: { 1: 208 }
   }
 };
 
@@ -252,13 +259,22 @@ const huntingBlades = {
   }
 };
 
-const freakAccident = {
-  name: "Freak Accident",
+const lightningRod = {
+  name: "Lightning Rod",
   type: OTHER,
   info: value =>
-    `Your Critical effects also cause fores to be struck by a lightning bolt for ${value}`,
+    `Your collectible casts strike nearby foes with lightning for ${value} damage every 1.5 seconds`,
   values: {
-    [DUO]: { 1: 20 }
+    [DUO]: { 1: 100 }
+  }
+};
+
+const spentSpirit = {
+  name: "Spent Spirit",
+  type: OTHER,
+  info: value => `Your foes' ranged-attack projectiles are ${value} slower`,
+  values: {
+    [DUO]: { 1: "40%" }
   }
 };
 
@@ -290,7 +306,8 @@ const abilities = {
   "barbs of the master huntress": barbsOfTheMasterHuntress,
   "deadly reversal": deadlyReversal,
   "hunting blades": huntingBlades,
-  "freak accident": freakAccident,
+  "lightning rod": lightningRod,
+  "spent spirit": spentSpirit,
   "support fire": supportFire
 };
 

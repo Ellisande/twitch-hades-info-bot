@@ -7,67 +7,43 @@ const {
   DASH,
   REVENGE,
   OTHER,
-  WRATH
+  AID
 } = require("./abilityTypes");
+const {
+  calculatePercentage,
+  calculateRange,
+  calculateFlat
+} = require("../../utils/calculateUtils");
 const { mapValues, toArray } = require("lodash");
 
 const info =
   "Ares, God of War. His powers cause spinning clouds of blades or damaging curses.";
 
+const attackBase = 50;
 const attack = {
   name: "Curse of Agony",
   type: ATTACK,
   info: value =>
     `Your Attack inflicts Doom dealing ${value} damage after 1.1 seconds`,
-  values: {
-    [COMMON]: {
-      1: 50
-    },
-    [RARE]: {
-      1: `${50 * 1.3}-${50 * 1.5}`
-    },
-    [EPIC]: {
-      1: `${50 * 1.8}-${50 * 2}`
-    },
-    [HEROIC]: {
-      1: `115-${50 * 2.5}`
-    }
-  }
+  values: calculateFlat(attackBase, true)
 };
 
+const specialBase = 70;
 const special = {
   name: "Curse of Pain",
   type: SPECIAL,
   info: value =>
     `Your Special inflicts Doom dealing ${value} damage after 1.2 seconds`,
-  values: {
-    [COMMON]: {
-      1: 70
-    },
-    [RARE]: {
-      1: `${70 * 1.3}-${70 * 1.5}`,
-      2: 70 * 1.75
-    },
-    [EPIC]: {
-      1: `${70 * 1.8}-${70 * 2}`
-    },
-    [HEROIC]: {
-      1: `${70 * 2.3}-${70 * 2.5}`
-    }
-  }
+  values: calculateFlat(specialBase, true)
 };
 
+const dashBase = 5;
 const dash = {
   name: "Blade Dash",
   type: DASH,
   info: value =>
     `Your Dash creates a Blade Rift where you started dealing ${value} damage per 0.1 seconds for 0.7 seconds`,
-  values: {
-    [COMMON]: { 1: 5 },
-    [RARE]: { 1: `${5 * 1.3}-${5 * 1.5}` },
-    [EPIC]: { 1: `${5 * 1.8}-${5 * 2}` },
-    [HEROIC]: { 1: `${5 * 2.3}-${5 * 2.5}` }
-  }
+  values: calculateFlat(dashBase, true)
 };
 
 const cast = {
@@ -106,7 +82,7 @@ const revenge = {
 const urgeToKill = {
   name: "Urge to Kill",
   type: OTHER,
-  info: value => `Your Attack and Cast deal ${value} more damage`,
+  info: value => `Your Attack, Special, and Cast deal ${value} more damage`,
   values: {
     [COMMON]: { 1: "8%" },
     [RARE]: { 1: "10%" },
@@ -161,26 +137,28 @@ const battleRage = {
   }
 };
 
-const warGodsThirst = {
-  name: "War Gods Thirst",
-  type: WRATH,
+const impendingDoom = {
+  name: "Impending Doom",
+  type: OTHER,
   info: value =>
-    `Your Wrath turns you into an Invulnerable Blade Rift for 5 seconds dealing ${value} damage per hit`,
+    `Your DOom effects deal ${value} more damage after 0.5 seconds`,
+  values: {
+    [COMMON]: { 1: "60%" },
+    [RARE]: { 1: "76%" },
+    [EPIC]: { 1: "92%" }
+  }
+};
+
+const aresAid = {
+  name: "Ares' Aid",
+  type: AID,
+  info: value =>
+    `Your Call turns you into an Invulnerable Blade Rift for 5 seconds dealing ${value} damage per hit`,
   values: {
     [COMMON]: { 1: 15 },
     [RARE]: { 1: 18 },
     [EPIC]: { 1: 21 },
     [HEROIC]: { 1: 24 }
-  }
-};
-
-const viciousCycle = {
-  name: "Vicious Cycle",
-  type: OTHER,
-  info: value =>
-    `Your Blade Rift effects deal more ${value} damage for each consecutive hit`,
-  values: {
-    [LEGENDARY]: { 1: 2 }
   }
 };
 
@@ -200,7 +178,7 @@ const huntingBlades = {
   info: value =>
     `Your Cast creates a faster Blade Rift that seeks the nearest foe for ${value} seconds`,
   values: {
-    [DUO]: { 1: "??" }
+    [DUO]: { 1: "2.2" }
   }
 };
 
@@ -210,7 +188,27 @@ const mericfulEnd = {
   info: value =>
     `Your attacks that Deflect immediately active Doom effects for ${value} damage`,
   values: {
-    [DUO]: { 1: 120 }
+    [DUO]: { 1: 90 }
+  }
+};
+
+const vengefulMood = {
+  name: "Vengeful Mood",
+  type: OTHER,
+  info: value =>
+    `All of your Revenge attacks occur without taking damage every ${value} seconds`,
+  values: {
+    [DUO]: `3.5`
+  }
+};
+
+const viciousCycle = {
+  name: "Vicious Cycle",
+  type: OTHER,
+  info: value =>
+    `Your Blade Rift effects deal more ${value} damage for each consecutive hit`,
+  values: {
+    [LEGENDARY]: { 1: 2 }
   }
 };
 
@@ -220,16 +218,18 @@ const abilities = {
   dash,
   revenge,
   cast,
-  wrath: warGodsThirst,
+  aid: aresAid,
   "urge to kill": urgeToKill,
   "black metal": blackMetal,
   "engulfing vortex": engulfingVortex,
   "dire mistfortune": direMisfortune,
   "battle rage": battleRage,
-  "vicious cycle": viciousCycle,
+  "impending doom": impendingDoom,
   "curse of longing": curseOfLonging,
   "hunting blades": huntingBlades,
-  "mericful end": mericfulEnd
+  "mericful end": mericfulEnd,
+  "vengeful mood": vengefulMood,
+  "vicious cycle": viciousCycle
 };
 
 const base = {

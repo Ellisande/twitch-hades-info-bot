@@ -132,6 +132,17 @@ const sweetSurrender = {
   }
 };
 
+const lifeAffirmation = {
+  name: "Life Affirmation",
+  type: OTHER,
+  info: value => `Your max health chamber rewards are worth ${value} more`,
+  values: {
+    [COMMON]: { 1: `50%` },
+    [RARE]: { 1: `65%` },
+    [EPIC]: { 1: `96%` }
+  }
+};
+
 const aidBase = 2500;
 const aphroditesAid = {
   name: "Aphrodite's Aid",
@@ -215,6 +226,7 @@ const abilities = {
   "empty inside": emptyInside,
   "different league": differentLeague,
   "sweet surrender": sweetSurrender,
+  "life affirmation": lifeAffirmation,
   "unhealthy fixation": unhealthyFixation,
   "curse of longing": curseOfLonging,
   "low tolerance": lowTolerance,
