@@ -11,7 +11,7 @@ const godOptions = [
   "cast",
   "dash",
   "revenge",
-  "wrath",
+  "aid",
   "other"
 ]
   .map(opt => `[${opt}]`)
