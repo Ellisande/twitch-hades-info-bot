@@ -23,7 +23,7 @@ const attack = {
   name: "Heartbreak Strike",
   type: ATTACK,
   info: value => `Your Attack deals ${value} for damage and inflicts weak`,
-  values: calculatePercentage(attackBase)
+  values: calculatePercentage(attackBase, true)
 };
 
 const specialBase = 80;
@@ -32,7 +32,7 @@ const special = {
   type: SPECIAL,
   info: value =>
     `Your Special deals more ${value} more damage and inflicts weak`,
-  values: calculatePercentage(specialBase)
+  values: calculatePercentage(specialBase, true)
 };
 
 const dashMin = 17;
@@ -42,7 +42,7 @@ const dash = {
   type: DASH,
   info: value =>
     `Your Dash deals ${value} damage at the start and end, and inflicts Weak`,
-  values: calculateRange(dashMin, dashMax)
+  values: calculateRange(dashMin, dashMax, true)
 };
 
 const cast = {
