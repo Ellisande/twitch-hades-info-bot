@@ -1,4 +1,4 @@
-const { COMMON, RARE, EPIC, HEROIC } = require("./rarities");
+const { COMMON, RARE, EPIC, HEROIC } = require("../data/gods/rarities");
 
 const calculatePercentage = (base, hasHeroic) => ({
   [COMMON]: {
