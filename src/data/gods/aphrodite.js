@@ -78,7 +78,7 @@ const revenge = {
       1: `${revengeMin}-${revengeMax}`
     },
     [RARE]: { 1: `${revengeMin * 1.3}-${revengeMax * 1.5}` },
-    [EPIC]: { 1: `${revengeMin * 2}-${revengeMax * 2.2}` }
+    [EPIC]: { 1: `${revengeMin * 2}-${(revengeMax * 2.2).toFixed(0)}` }
   }
 };
 
@@ -190,7 +190,7 @@ const spentSpirit = {
   type: OTHER,
   info: value => `Your foes' ranged-attack projectiles are ${value} slower`,
   values: {
-    [DUO]: "40%"
+    [DUO]: { 1: "40%" }
   }
 };
 
@@ -200,7 +200,7 @@ const sweetNectar = {
   info: value =>
     `Any Poms of Power you find are now ${value} level more effective`,
   values: {
-    [DUO]: 1
+    [DUO]: { 1: 1 }
   }
 };
 

@@ -13,7 +13,10 @@ const calculatePercentage = (base, hasHeroic) => {
     }
   };
   return hasHeroic
-    ? { ...standardValues, [HEROIC]: { 1: `${base * 2.3}%-${base * 2.5}` } }
+    ? {
+        ...standardValues,
+        [HEROIC]: { 1: `${(base * 2.3).toFixed(0)}%-${base * 2.5}%` }
+      }
     : standardValues;
 };
 
@@ -26,7 +29,7 @@ const calculateRange = (min, max, hasHeroic) => {
       1: `${min * 1.3}-${max * 1.5}`
     },
     [EPIC]: {
-      1: `${min * 1.8}-${max * 2.0}`
+      1: `${min * 1.8}-${(max * 2.0).toFixed(0)}`
     }
   };
   return hasHeroic
