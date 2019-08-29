@@ -7,7 +7,7 @@ const {
   DASH,
   REVENGE,
   OTHER,
-  WRATH
+  AID
 } = require("./abilityTypes");
 const {
   calculatePercentage,
@@ -128,7 +128,7 @@ const sweetSurrender = {
   values: {
     [COMMON]: { 1: `${surrdenderBase}%` },
     [RARE]: { 1: `${surrdenderBase * 1.3}%-${surrdenderBase * 1.5}` },
-    [EPIC]: { 1: `${surrenderBase * 2}%-${surrenderbase * 2.5}` }
+    [EPIC]: { 1: `${surrdenderBase * 2}%-${surrdenderBase * 2.5}` }
   }
 };
 
