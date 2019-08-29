@@ -5,5 +5,6 @@ const DASH = "Dash";
 const REVENGE = "Revenge";
 const OTHER = "Other";
 const WRATH = "Wrath";
+const AID = "Aid";
 
-module.exports = { ATTACK, SPECIAL, CAST, DASH, REVENGE, OTHER, WRATH };
+module.exports = { ATTACK, SPECIAL, CAST, DASH, REVENGE, OTHER, WRATH, AID };
