@@ -194,7 +194,7 @@ const premiumVintage = {
 
 const dionysussAid = {
   name: "Dionysus's Aid",
-  type: AOD,
+  type: AID,
   info: value =>
     `Your Call inflicts Poison dealing ${value} damage to foes all around you for 1.5 Sec. Full gauge: 12 second duration.`,
   values: {
@@ -250,7 +250,7 @@ const abilities = {
   dash,
   revenge,
   cast,
-  wrath: wineGodsStupor,
+  aid: dionysussAid,
   "numbing sensation": numbingSensation,
   "peer pressure": peerPressure,
   "high tolerance": highTolerance,
