@@ -242,7 +242,7 @@ const vengefulMood = {
   info: value =>
     `All of your Revenge attacks occur without taking damage every ${value} seconds`,
   values: {
-    [DUO]: `3.5`
+    [DUO]: { 1: `3.5` }
   }
 };
 
