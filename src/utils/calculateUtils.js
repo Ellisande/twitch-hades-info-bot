@@ -26,7 +26,7 @@ const calculateFlat = (base, hasHeroic) => {
       1: `${base}`
     },
     [RARE]: {
-      1: `${base * 1.3}-${base * 1.5}`
+      1: `${(base * 1.3).toFixed(0)}-${base * 1.5}`
     },
     [EPIC]: {
       1: `${base * 1.8}-${base * 2.0}`
