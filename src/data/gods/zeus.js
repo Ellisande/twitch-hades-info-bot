@@ -7,8 +7,12 @@ const {
   DASH,
   REVENGE,
   OTHER,
-  WRATH
+  AID
 } = require("./abilityTypes");
+const {
+  calculatePercentage,
+  calculateFlat
+} = require("../../utils/calculateUtils");
 const { mapValues, toArray } = require("lodash");
 
 const info =
@@ -56,27 +60,6 @@ const special = {
   }
 };
 
-const dash = {
-  name: "Thunder Dash",
-  type: DASH,
-  info: value =>
-    `Your Dash causes a lightning bolt to strike nearby foes for ${value} damage`,
-  values: {
-    [COMMON]: {
-      1: "15-20"
-    },
-    [RARE]: {
-      1: "19.5-30"
-    },
-    [EPIC]: {
-      1: "27-40"
-    },
-    [HEROIC]: {
-      1: "34.5-50"
-    }
-  }
-};
-
 const cast = {
   name: "Electric Shot",
   type: CAST,
@@ -96,6 +79,15 @@ const cast = {
       1: 105
     }
   }
+};
+
+dashBase = 18;
+const dash = {
+  name: "Thunder Dash",
+  type: DASH,
+  info: value =>
+    `Your Dash causes a lightning bolt to strike nearby foes for ${value} damage`,
+  values: calculateFlat(dashBase, true)
 };
 
 const revenge = {
@@ -180,11 +172,22 @@ const cloudedJudgement = {
   }
 };
 
-const thunderGodsFury = {
-  name: "Thunder God's Fury",
-  type: WRATH,
+const billowingStrength = {
+  name: "Billowing Strength",
+  type: OTHER,
+  info: value => `After using Call, you deal ${value} more damage for 5 Sec.`,
+  values: {
+    [COMMON]: { 1: "30%" },
+    [RARE]: { 1: "37%" },
+    [EPIC]: { 1: "45%" }
+  }
+};
+
+const zeusAid = {
+  name: "Zeus's aid",
+  type: AID,
   info: value =>
-    `Your Wrath makes lightning strike nearby foes repeatedly for ${value} over 5 seconds`,
+    `Your Call makes lightning strike nearby foes for ${value} damage repeatedly for 1.5 Sec. Max gauge: 15 second duration.`,
   values: {
     [COMMON]: { 1: 80 },
     [RARE]: { 1: 100 },
@@ -193,21 +196,11 @@ const thunderGodsFury = {
   }
 };
 
-const splittingBolt = {
-  name: "Splitting Bolt",
-  type: OTHER,
-  info: value =>
-    `All your lightning effects create an additional burst for ${value} damage`,
-  values: {
-    [LEGENDARY]: { 1: 40 }
-  }
-};
-
 const seaStorm = {
   name: "Sea Storm",
   type: OTHER,
   info: value =>
-    `Your knock-away effects also cause foes to be struck by lightning for ${value} damage `,
+    `Your knock-away effects also cause foes to be stuck by lightning for ${value} damage`,
   values: {
     [DUO]: { 1: 40 }
   }
@@ -223,13 +216,43 @@ const scintillatingFeast = {
   }
 };
 
-const freakAccident = {
-  name: "Freak Accidnet",
+const lightningRod = {
+  name: "Lightning Rod",
   type: OTHER,
   info: value =>
-    `Your Critical effects also cause foes to be struck by a lightning bolt for ${value} damage`,
+    `Your collectible casts strike nearby foes with lightning for ${value} damage every 1.5 seconds`,
   values: {
-    [DUO]: { 1: 20 }
+    [DUO]: { 1: 100 }
+  }
+};
+
+const lightningPhalanx = {
+  name: "Lightning Phalanx",
+  type: OTHER,
+  info: value =>
+    `Your phalanx shot casts bounce between nearby foes ${value} times`,
+  values: {
+    [DUO]: { 1: 5 }
+  }
+};
+
+const vengefulMood = {
+  name: "Vengeful Mood",
+  type: OTHER,
+  info: value =>
+    `All of your Revenge attacks occur without taking damage every ${value} seconds`,
+  values: {
+    [DUO]: `3.5`
+  }
+};
+
+const splittingBolt = {
+  name: "Splitting Bolt",
+  type: OTHER,
+  info: value =>
+    `All your lightning effects create an additional burst for ${value} damage`,
+  values: {
+    [LEGENDARY]: { 1: 40 }
   }
 };
 
@@ -239,15 +262,19 @@ const abilities = {
   dash,
   revenge,
   cast,
-  wrath: thunderGodsFury,
+  aid: zeusAid,
   "storm lightning": stormLightning,
   "high voltage": highVoltage,
   "double strike": doubleStrike,
   "static discharge": staticDischarge,
   "clouded judgement": cloudedJudgement,
+  "billowing strength": billowingStrength,
   "sea storm": seaStorm,
   "scintillating feast": scintillatingFeast,
-  "freak accident": freakAccident
+  "lightning rod": lightningRod,
+  "lightning phalanx": lightningPhalanx,
+  "vengeful mood": vengefulMood,
+  "splitting bolt": splittingBolt
 };
 
 const base = {
