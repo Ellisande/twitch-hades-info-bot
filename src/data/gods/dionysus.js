@@ -7,8 +7,13 @@ const {
   DASH,
   REVENGE,
   OTHER,
-  WRATH
+  AID
 } = require("./abilityTypes");
+const {
+  calculatePercentage,
+  calculateRange,
+  calculateFlat
+} = require("../../utils/calculateUtils");
 const { mapValues, toArray } = require("lodash");
 
 const info =
@@ -113,8 +118,8 @@ const numbingSensation = {
   info: value => `Your Poison effects also make foes move ${value} slower`,
   values: {
     [COMMON]: { 1: "10-15%" },
-    [RARE]: { 1: `${10 * 1.3}-${15 * 1.5}` },
-    [EPIC]: { 1: `${10 * 2}-${15 * 2.5}` }
+    [RARE]: { 1: `${10 * 1.3}%-${15 * 1.5}%` },
+    [EPIC]: { 1: `${10 * 2}%-${15 * 2.5}%` }
   }
 };
 
@@ -187,16 +192,16 @@ const premiumVintage = {
   }
 };
 
-const wineGodsStupor = {
-  name: "Wine God's Stupor",
-  type: WRATH,
+const dionysussAid = {
+  name: "Dionysus's Aid",
+  type: AOD,
   info: value =>
-    `Your Wrath inflicts Poison to foes all around you for 10 seconds dealing ${value} damage per tick`,
+    `Your Call inflicts Poison dealing ${value} damage to foes all around you for 1.5 Sec. Full gauge: 12 second duration.`,
   values: {
     [COMMON]: { 1: 10 },
-    [RARE]: { 1: 13 },
-    [EPIC]: { 1: 15 },
-    [HEROIC]: { 1: 18 }
+    [RARE]: { 1: 12 },
+    [EPIC]: { 1: 14 },
+    [HEROIC]: { 1: 16 }
   }
 };
 
@@ -217,6 +222,15 @@ const lowTolerance = {
     `Your Blight Wine effects stack ${value} more times against Weak foes`,
   values: {
     [DUO]: { 1: 3 }
+  }
+};
+
+const exclusiveAccess = {
+  name: "Exclusive Access",
+  type: OTHER,
+  info: value => `Any boons you find have ${value} rarity effects`,
+  values: {
+    [DUO]: { 1: "epic" }
   }
 };
 
@@ -244,8 +258,9 @@ const abilities = {
   "positive outlook": positiveOutlook,
   "bad influence": badInfluence,
   "premium vintage": premiumVintage,
-  "scintillanting feast": scintillatingFeast,
+  "scintillating feast": scintillatingFeast,
   "low tolerance": lowTolerance,
+  "exclusive access": exclusiveAccess,
   "black out": blackOut
 };
 
