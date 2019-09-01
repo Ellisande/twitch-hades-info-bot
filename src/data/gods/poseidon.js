@@ -9,11 +9,7 @@ const {
   OTHER,
   AID
 } = require("./abilityTypes");
-const {
-  calculatePercentage,
-  calculateFlat,
-  calculateRange
-} = require("../../utils/calculateUtils");
+const { calculatePercentage } = require("../../utils/calculateUtils");
 const { mapValues, toArray } = require("lodash");
 
 const info = "Poseidon, God of the Sea. His powers knock enemies away.";
@@ -203,7 +199,7 @@ const abilities = {
   dash,
   revenge,
   cast,
-  wrath: seaGodsRage,
+  aid: poseidonsAid,
   "typhoons fury": typhoonsFury,
   "sunken treasure": sunkenTreasure,
   "breaking wave": breakingWave,
