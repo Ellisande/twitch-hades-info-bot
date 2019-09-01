@@ -7,52 +7,49 @@ const {
   DASH,
   REVENGE,
   OTHER,
-  WRATH
+  AID
 } = require("./abilityTypes");
+const {
+  calculatePercentage,
+  calculateFlat,
+  calculateRange
+} = require("../../utils/calculateUtils");
 const { mapValues, toArray } = require("lodash");
 
 const info = "Poseidon, God of the Sea. His powers knock enemies away.";
 
+const attackBase = 30;
 const attack = {
   name: "Tempest Strike",
   type: ATTACK,
   info: value => `Your Attack deals ${value} more damage and knocks foes away`,
-  values: {
-    [COMMON]: {
-      1: "60%"
-    },
-    [RARE]: {
-      1: `${60 * 1.3}-${60 * 1.5}%`
-    },
-    [EPIC]: {
-      1: `${60 * 1.8}-120%`
-    },
-    [HEROIC]: {
-      1: `${60 * 2.3}-${60 * 2.5}%`
-    }
-  }
+  values: calculatePercentage(attackBase, true)
 };
 
+specialBase = 70;
 const special = {
   name: "Tempest Flourish",
   type: SPECIAL,
   info: value => `Your Special deals ${value} more damage and knocks foes away`,
+  values: calculatePercentage(specialBase, true)
+};
+
+const cast = {
+  name: "Flood Shot",
+  type: CAST,
+  info: value => `Your Cast damages foes for ${value} and knocks them away`,
   values: {
     [COMMON]: {
-      1: "100%",
-      2: "148%",
-      3: "168%",
-      4: "188%",
-      5: "202%"
+      1: 60
     },
     [RARE]: {
-      1: "130-150%"
+      1: 72
     },
     [EPIC]: {
-      1: "180-200%"
+      1: 84
     },
     [HEROIC]: {
-      1: "230-250%"
+      1: 96
     }
   }
 };
@@ -78,26 +75,6 @@ const dash = {
   }
 };
 
-const cast = {
-  name: "Flood Shot",
-  type: CAST,
-  info: value => `Your Cast damages foes for ${value} and knocks them away`,
-  values: {
-    [COMMON]: {
-      1: 60
-    },
-    [RARE]: {
-      1: 72
-    },
-    [EPIC]: {
-      1: 84
-    },
-    [HEROIC]: {
-      1: 96
-    }
-  }
-};
-
 const revenge = {
   name: "None",
   type: REVENGE,
@@ -113,7 +90,7 @@ const typhoonsFury = {
   values: {
     [COMMON]: { 1: "100%" },
     [RARE]: { 1: "130-150%" },
-    [EPIC]: { 1: "200-250%" }
+    [EPIC]: { 1: "180-200%" }
   }
 };
 
@@ -145,7 +122,7 @@ const oceansBounty = {
   name: "Ocean's Bounty",
   type: OTHER,
   info: value =>
-    `After clearing encounters gain ${value} more darkness, money, and max health than usual`,
+    `After clearing encounters gain ${value} more darkness and money than usual`,
   values: {
     [COMMON]: { 1: "50%" },
     [RARE]: { 1: "55%" },
@@ -157,19 +134,6 @@ const sunkenTreasure = {
   name: "Sunken Treasure",
   type: OTHER,
   info: () => `Gain an assortment of darkness, money, and health`
-};
-
-const seaGodsRage = {
-  name: "Sea God's Rage",
-  type: WRATH,
-  info: value =>
-    `Your Wrath makes you surge into foes while Invlunerable for 5 secs and deal ${value} damage on hit`,
-  values: {
-    [COMMON]: { 1: 150 },
-    [RARE]: { 1: 180 },
-    [EPIC]: { 1: 210 },
-    [HEROIC]: { 1: 240 }
-  }
 };
 
 const boilingPoint = {
@@ -184,11 +148,17 @@ const boilingPoint = {
   }
 };
 
-const secondWave = {
-  name: "Second Wave",
-  type: OTHER,
-  info: () => `Your knock-away effects show foes a second time after the first`,
-  values: {}
+const poseidonsAid = {
+  name: "Poseidon's Aid",
+  type: AID,
+  info: value =>
+    `Your Call makes you surge into foes dealing ${value} damage while Invulnerable for 1.5 Sec. Max gauge: 12 second duration.`,
+  values: {
+    [COMMON]: { 1: 150 },
+    [RARE]: { 1: 180 },
+    [EPIC]: { 1: 210 },
+    [HEROIC]: { 1: 240 }
+  }
 };
 
 const seaStorm = {
@@ -200,6 +170,33 @@ const seaStorm = {
     [DUO]: { 1: 40 }
   }
 };
+
+const exclusiveAccess = {
+  name: "Exclusive Access",
+  type: OTHER,
+  info: value => `Any boons you find have ${value} rarity effects`,
+  values: {
+    [DUO]: { 1: "epic" }
+  }
+};
+
+const sweetNectar = {
+  name: "Sweet Nectar",
+  type: OTHER,
+  info: value =>
+    `Any Poms of Power you find are now ${value} level more effective`,
+  values: {
+    [DUO]: { 1: 1 }
+  }
+};
+
+const secondWave = {
+  name: "Second Wave",
+  type: OTHER,
+  info: () => `Your knock-away effects show foes a second time after the first`,
+  values: {}
+};
+
 const abilities = {
   attack,
   special,
@@ -210,11 +207,13 @@ const abilities = {
   "typhoons fury": typhoonsFury,
   "sunken treasure": sunkenTreasure,
   "breaking wave": breakingWave,
-  "razor shaols": razorShoals,
+  "razor shoals": razorShoals,
   "oceans bounty": oceansBounty,
   "boiling point": boilingPoint,
-  "second wave": secondWave,
-  "sea storm": seaStorm
+  "sea storm": seaStorm,
+  "exclusive access": exclusiveAccess,
+  "sweet nectar": sweetNectar,
+  "second wave": secondWave
 };
 
 const base = {
