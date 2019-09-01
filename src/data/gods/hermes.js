@@ -7,7 +7,7 @@ const {
   DASH,
   REVENGE,
   OTHER,
-  WRATH
+  AID
 } = require("./abilityTypes");
 const { mapValues, toArray } = require("lodash");
 
@@ -48,26 +48,6 @@ const special = {
   }
 };
 
-const dash = {
-  name: "Divine Dash",
-  type: DASH,
-  info: value => `Your Dash deals ${value} damage and can Deflect`,
-  values: {
-    [COMMON]: {
-      1: 15
-    },
-    [RARE]: {
-      1: `${15 * 1.3}-${15 * 1.5}`
-    },
-    [EPIC]: {
-      1: `${15 * 1.8}-${15 * 2.0}`
-    },
-    [HEROIC]: {
-      1: `${15 * 2.3}-${15 * 2.5}`
-    }
-  }
-};
-
 const cast = {
   name: "Rapid Cast",
   type: CAST,
@@ -80,7 +60,27 @@ const cast = {
       1: "60%"
     },
     [EPIC]: {
-      1: "80%"
+      1: "88%"
+    }
+  }
+};
+
+const dash = {
+  name: "Greatest Reflex",
+  type: DASH,
+  info: value => `You can dash ${value} additional times`,
+  values: {
+    [COMMON]: {
+      1: 15
+    },
+    [RARE]: {
+      1: `${15 * 1.3}-${15 * 1.5}`
+    },
+    [EPIC]: {
+      1: `${15 * 1.8}-${15 * 2.0}`
+    },
+    [HEROIC]: {
+      1: `${15 * 2.3}-${15 * 2.5}`
     }
   }
 };
@@ -101,9 +101,9 @@ const passingThrough = {
   type: OTHER,
   info: value => `Running into foes makes then ${value} slows for 3 seconds`,
   values: {
-    [COMMON]: { 1: "60%" },
-    [RARE]: { 1: "75%" },
-    [EPIC]: { 1: "90%" }
+    [COMMON]: { 1: "20%" },
+    [RARE]: { 1: "25%" },
+    [EPIC]: { 1: "30%" }
   }
 };
 
@@ -131,24 +131,25 @@ const quickRecovery = {
 };
 
 const greaterEvasion = {
-  name: "Greater Evaasion",
+  name: "Greater Evasion",
   type: OTHER,
   info: value => `Your have ${value} chance to dodge`,
   values: {
     [COMMON]: { 1: "15%" },
-    [RARE]: { 1: `${15 * 1.3}-${15 * 1.5}` },
-    [EPIC]: { 1: `${15 * 1.8}-${15 * 2}` }
+    [RARE]: { 1: `20%` },
+    [EPIC]: { 1: `25%` }
   }
 };
 
-const greatestReflext = {
-  name: "Greatest Reflex",
-  type: DASH,
-  info: value => `You can Dash ${value} more times`,
+const secondWind = {
+  name: "Second Wind",
+  type: AID,
+  info: value =>
+    `After using Call, gain ${value} Dodge chance and move speed for 5 Sec.`,
   values: {
-    [COMMON]: { 1: 1 },
-    [RARE]: { 1: 2 },
-    [EPIC]: { 1: 3 }
+    [COMMON]: { 1: "30%" },
+    [RARE]: { 1: "37%" },
+    [EPIC]: { 1: "45%" }
   }
 };
 
@@ -156,6 +157,13 @@ const relativeSpeed = {
   name: "Relative Speed",
   type: OTHER,
   info: () => `Your Dash makes nearby foes 50% for 1 second`,
+  values: {}
+};
+
+const greaterRecall = {
+  name: "Greater Recall",
+  type: OTHER,
+  info: () => `Your casts are automatically returned to you`,
   values: {}
 };
 
@@ -172,13 +180,14 @@ const abilities = {
   dash,
   revenge,
   cast,
+  aid: secondWind,
   "drift dash": driftDash,
   "passing through": passingThrough,
   "greater haste": greaterHaste,
   "quick recovery": quickRecovery,
-  "greater evaasion": greaterEvasion,
-  "greater reflect": greatestReflext,
-  "relative speed": relativeSpeed
+  "greater evasion": greaterEvasion,
+  "relative speed": relativeSpeed,
+  "greater recall": greaterRecall
 };
 
 const base = {
