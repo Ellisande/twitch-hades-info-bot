@@ -7,70 +7,30 @@ const {
   DASH,
   REVENGE,
   OTHER,
-  WRATH
+  AID
 } = require("./abilityTypes");
+const {
+  calculatePercentage,
+  calculateFlat
+} = require("../../utils/calculateUtils");
 const { mapValues, toArray } = require("lodash");
 
 const info = "Athena, Goddess of Wisdom. Her powers deflect attacks.";
 
+const attackBase = 40;
 const attack = {
   name: "Divine Strike",
   type: ATTACK,
   info: value => `Your Attack is ${value} stronger and can Deflect`,
-  values: {
-    [COMMON]: {
-      1: "30%"
-    },
-    [RARE]: {
-      1: `${30 * 1.3}-${30 * 1.5}%`
-    },
-    [EPIC]: {
-      1: `${30 * 1.8}-${30 * 2.0}%`
-    },
-    [HEROIC]: {
-      1: `${30 * 2.3}-${30 * 2.5}%`
-    }
-  }
+  values: calculatePercentage(attackBase, true)
 };
 
+const specialBase = 60;
 const special = {
   name: "Divine Flourish",
   type: SPECIAL,
   info: value => `Your Special is ${value} stronger and Deflect`,
-  values: {
-    [COMMON]: {
-      1: "60%"
-    },
-    [RARE]: {
-      1: `${60 * 1.3}-${60 * 1.5}`
-    },
-    [EPIC]: {
-      1: `${60 * 1.8}-${60 * 2.0}`
-    },
-    [HEROIC]: {
-      1: `${60 * 2.3}-${60 * 2.5}`
-    }
-  }
-};
-
-const dash = {
-  name: "Divine Dash",
-  type: DASH,
-  info: value => `Your Dash deals ${value} damage and can Deflect`,
-  values: {
-    [COMMON]: {
-      1: 15
-    },
-    [RARE]: {
-      1: `${15 * 1.3}-${15 * 1.5}`
-    },
-    [EPIC]: {
-      1: `${15 * 1.8}-${15 * 2.0}`
-    },
-    [HEROIC]: {
-      1: `${15 * 2.3}-${15 * 2.5}`
-    }
-  }
+  values: calculatePercentage(specialBase, true)
 };
 
 const cast = {
@@ -94,21 +54,22 @@ const cast = {
   }
 };
 
-const revenge = {
-  name: "Holy Shield",
-  type: REVENGE,
-  info: value =>
-    `After you take damage, damage nearby foes for ${value} and briefly Deflect`,
+const dashBase = 15;
+const dash = {
+  name: "Divine Dash",
+  type: DASH,
+  info: value => `Your Dash deals ${value} damage and can Deflect`,
+  values: calculateFlat(dashBase, true)
+};
+
+const brilliantRiposte = {
+  name: "Brilliant Riposte",
+  type: OTHER,
+  info: value => `When you Deflect attacks they deal ${value} more damage`,
   values: {
-    [COMMON]: {
-      1: 30
-    },
-    [RARE]: {
-      1: `${30 * 1.3}-${30 * 1.5}`
-    },
-    [EPIC]: {
-      1: `${30 * 1.8}-60`
-    }
+    [COMMON]: { 1: "20%" },
+    [RARE]: { 1: `${20 * 1.3}-${20 * 1.5}%` },
+    [EPIC]: { 1: `${20 * 2}-${20 * 2.5}%` }
   }
 };
 
@@ -129,25 +90,32 @@ const bronzeSkin = {
   info: value => `Resist ${value} damage from foes's attack`,
   values: {
     [COMMON]: {
-      1: "5-10%"
+      1: "5%-10%"
     },
     [RARE]: {
-      1: `${5 * 1.3}-${10 * 1.5}%`
+      1: `${5 * 1.3}%-${10 * 1.5}%`
     },
     [EPIC]: {
-      1: `${5 * 0.18}-${10 * 2.0}%`
+      1: `${(5 * 0.18).toFixed(0)}%-${10 * 2.0}%`
     }
   }
 };
 
-const brilliantRiposte = {
-  name: "Brilliant Riposte",
-  type: OTHER,
-  info: value => `When you Deflect attacks they deal ${value} more damage`,
+const revenge = {
+  name: "Holy Shield",
+  type: REVENGE,
+  info: value =>
+    `After you take damage, damage nearby foes for ${value} and briefly Deflect`,
   values: {
-    [COMMON]: { 1: "20%" },
-    [RARE]: { 1: `${20 * 1.3}-${20 * 1.5}%` },
-    [EPIC]: { 1: `${20 * 2}-${20 * 2.5}%` }
+    [COMMON]: {
+      1: 30
+    },
+    [RARE]: {
+      1: `${30 * 1.3}-${30 * 1.5}`
+    },
+    [EPIC]: {
+      1: `${30 * 1.8}-60`
+    }
   }
 };
 
@@ -192,21 +160,61 @@ const proudBearing = {
   type: OTHER,
   info: value => `You begin each Encounter with your Wrath Gauge ${value} full`,
   values: {
-    [COMMON]: { 1: "10%" },
-    [RARE]: { 1: "15%" },
-    [EPIC]: { 1: "20%" }
+    [COMMON]: { 1: "20%" },
+    [RARE]: { 1: "25%" },
+    [EPIC]: { 1: "30%" }
   }
 };
 
-const grayEyedVigiliance = {
-  name: "Gray Eyed Vigiliance",
-  type: WRATH,
+const athenasAid = {
+  name: "Athena's Aid",
+  type: AID,
   info: value =>
-    `Your Wrath makes Invulnerable for ${value} seconds and Deflect`,
+    `Your Call makes you invulnerable for ${value} seconds and Deflect all attacks`,
   values: {
-    [COMMON]: { 1: 3 },
-    [RARE]: { 1: 4.5 },
-    [EPIC]: { 1: 6 }
+    [COMMON]: { 1: 1 },
+    [RARE]: { 1: 1.2 },
+    [EPIC]: { 1: 1.4 },
+    [HEROIC]: { 1: 1.6 }
+  }
+};
+
+const mercifulEnd = {
+  name: "Merciful End",
+  type: OTHER,
+  info: value =>
+    `Your attacks that can Deflect immediately active Doom effects for ${value} damage`,
+  values: {
+    [DUO]: { 1: 90 }
+  }
+};
+
+const deadlyReversal = {
+  name: "Deadly Reversal",
+  type: OTHER,
+  info: value =>
+    `After you Deflect briefly gain +35% change to deal Critical damage for ${value} seconds`,
+  values: {
+    [DUO]: { 1: 2 }
+  }
+};
+
+const lightningPhalanx = {
+  name: "Lightning Phalanx",
+  type: OTHER,
+  info: value =>
+    `Your phalanx shot casts bounce between nearby foes ${value} times`,
+  values: {
+    [DUO]: { 1: 5 }
+  }
+};
+
+const spentSpirit = {
+  name: "Spent Spirit",
+  type: OTHER,
+  info: value => `Your foes' ranged-attack projectiles are ${value} slower`,
+  values: {
+    [DUO]: { 1: "40%" }
   }
 };
 
@@ -220,43 +228,25 @@ const divineProtection = {
   }
 };
 
-const mercifulEnd = {
-  name: "Merciful End",
-  type: OTHER,
-  info: value =>
-    `Your attacks that can Deflect immediately active Doom effects for ${value} damage`,
-  values: {
-    [DUO]: { 1: 120 }
-  }
-};
-
-const deadyReversal = {
-  name: "Deadly Reversal",
-  type: OTHER,
-  info: value =>
-    `After you Deflect briefly gain +35% change to deal Critical damage for ${value} seconds`,
-  values: {
-    [DUO]: { 1: 2 }
-  }
-};
-
 const abilities = {
   attack,
   special,
   dash,
   revenge,
   cast,
-  wrath: grayEyedVigiliance,
+  aid: athenasAid,
   "sure footing": sureFooting,
   "bronze skin": bronzeSkin,
-  "brilliant ripsote": brilliantRiposte,
+  "brilliant riposte": brilliantRiposte,
   "deathless stand": deathlessStand,
   "last stand": lastStand,
   "blinding flash": blindingFlash,
   "proud bearing": proudBearing,
-  "divine protection": divineProtection,
   "merciful end": mercifulEnd,
-  "deadyly reversal": deadyReversal
+  "deadly reversal": deadlyReversal,
+  "lightning phalanx": lightningPhalanx,
+  "spent spirit": spentSpirit,
+  "divine protection": divineProtection
 };
 
 const base = {
