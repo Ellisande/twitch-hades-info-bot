@@ -1,1 +1,1 @@
-module.exports = ["ellisandepoet", "hadesinfobot", "w4stedspace"];
+module.exports = ["ellisandepoet", "achillescodex"];
