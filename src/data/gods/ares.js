@@ -37,15 +37,6 @@ const special = {
   values: calculateFlat(specialBase, true)
 };
 
-const dashBase = 5;
-const dash = {
-  name: "Blade Dash",
-  type: DASH,
-  info: value =>
-    `Your Dash creates a Blade Rift where you started dealing ${value} damage per 0.1 seconds for 0.7 seconds`,
-  values: calculateFlat(dashBase, true)
-};
-
 const cast = {
   name: "Slicing Shot",
   type: CAST,
@@ -67,16 +58,13 @@ const cast = {
   }
 };
 
-const revenge = {
-  name: "Curse of Vengeance",
-  type: REVENGE,
+const dashBase = 5;
+const dash = {
+  name: "Blade Dash",
+  type: DASH,
   info: value =>
-    `After you take damage, inflict Doom on surrounding foes dealing ${value} damage after 1.1 seconds`,
-  values: {
-    [COMMON]: { 1: 60 },
-    [RARE]: { 1: `${60 * 1.3}-${60 * 1.5}` },
-    [EPIC]: { 1: `${60 * 1.8}-${60 * 2}` }
-  }
+    `Your Dash creates a Blade Rift where you started dealing ${value} damage per 0.1 seconds for 0.7 seconds`,
+  values: calculateFlat(dashBase, true)
 };
 
 const urgeToKill = {
@@ -87,6 +75,18 @@ const urgeToKill = {
     [COMMON]: { 1: "8%" },
     [RARE]: { 1: "10%" },
     [EPIC]: { 1: "12%" }
+  }
+};
+
+const revenge = {
+  name: "Curse of Vengeance",
+  type: REVENGE,
+  info: value =>
+    `After you take damage, inflict Doom on surrounding foes dealing ${value} damage after 1.1 seconds`,
+  values: {
+    [COMMON]: { 1: 60 },
+    [RARE]: { 1: `${60 * 1.3}-${60 * 1.5}` },
+    [EPIC]: { 1: `${60 * 1.8}-${60 * 2}` }
   }
 };
 

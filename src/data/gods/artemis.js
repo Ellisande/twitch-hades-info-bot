@@ -125,13 +125,7 @@ const fullyLoaded = {
   type: OTHER,
   info: value => `Gain ${value} extra charges for your Cast`,
   values: {
-    [COMMON]: {
-      1: "1"
-    },
-    [RARE]: {
-      1: "2"
-    },
-    [EPIC]: {
+    [LEGENDARY]: {
       1: "3"
     }
   }

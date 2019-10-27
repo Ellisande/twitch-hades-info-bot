@@ -35,16 +35,6 @@ const special = {
   values: calculatePercentage(specialBase, true)
 };
 
-const dashMin = 17;
-const dashMax = 19;
-const dash = {
-  name: "Passion Dash",
-  type: DASH,
-  info: value =>
-    `Your Dash deals ${value} damage at the start and end, and inflicts Weak`,
-  values: calculateRange(dashMin, dashMax, true)
-};
-
 const cast = {
   name: "Shatter Shot",
   type: CAST,
@@ -66,19 +56,25 @@ const cast = {
   }
 };
 
-const revengeMin = 20;
-const revengeMax = 25;
-const revenge = {
-  name: "Wave of Despair",
-  type: REVENGE,
+const dashMin = 17;
+const dashMax = 19;
+const dash = {
+  name: "Passion Dash",
+  type: DASH,
   info: value =>
-    `After you take damage, damage nearby fores for ${value} and turn them Weak`,
+    `Your Dash deals ${value} damage at the start and end, and inflicts Weak`,
+  values: calculateRange(dashMin, dashMax, true)
+};
+
+const emptyInside = {
+  name: "Empty Inside",
+  type: OTHER,
+  info: value =>
+    `Your weak effects have a longer duration. Adds ${value} additional seconds`,
   values: {
-    [COMMON]: {
-      1: `${revengeMin}-${revengeMax}`
-    },
-    [RARE]: { 1: `${revengeMin * 1.3}-${revengeMax * 1.5}` },
-    [EPIC]: { 1: `${revengeMin * 2}-${(revengeMax * 2.2).toFixed(0)}` }
+    [COMMON]: { 1: 5 },
+    [RARE]: { 1: 7.5 },
+    [EPIC]: { 1: 10 }
   }
 };
 
@@ -92,19 +88,23 @@ const dyingLament = {
   values: {
     [COMMON]: { 1: `${lamentMin}-${lamentMax}` },
     [RARE]: { 1: `${lamentMin * 1.3}-${lamentMax * 1.5}` },
-    [EPIC]: { 1: `${lamentMin * 1.8}-${lamentMax * 2}` }
+    [EPIC]: { 1: `${lamentMin * 2}-${lamentMax * 2.2}` }
   }
 };
 
-const emptyInside = {
-  name: "Empty Inside",
-  type: OTHER,
+const revengeMin = 20;
+const revengeMax = 25;
+const revenge = {
+  name: "Wave of Despair",
+  type: REVENGE,
   info: value =>
-    `Your weak effects have a longer duration. Adds ${value} additional seconds`,
+    `After you take damage, damage nearby fores for ${value} and turn them Weak`,
   values: {
-    [COMMON]: { 1: 5 },
-    [RARE]: { 1: 7.5 },
-    [EPIC]: { 1: 10 }
+    [COMMON]: {
+      1: `${revengeMin}-${revengeMax}`
+    },
+    [RARE]: { 1: `${revengeMin * 1.3}-${revengeMax * 1.5}` },
+    [EPIC]: { 1: `${revengeMin * 2}-${(revengeMax * 2.2).toFixed(0)}` }
   }
 };
 
@@ -139,7 +139,7 @@ const lifeAffirmation = {
   values: {
     [COMMON]: { 1: `50%` },
     [RARE]: { 1: `65%` },
-    [EPIC]: { 1: `96%` }
+    [EPIC]: { 1: `80%` }
   }
 };
 
@@ -151,9 +151,9 @@ const aphroditesAid = {
     `Your Call fires a seeking project that inflicts Charm. Max gauge projectile does ${value} damage.`,
   values: {
     [COMMON]: { 1: aidBase },
-    [RARE]: { 1: "??" },
-    [EPIC]: { 1: "??" },
-    [HEROIC]: { 1: "??" }
+    [RARE]: { 1: aidBase },
+    [EPIC]: { 1: aidBase },
+    [HEROIC]: { 1: aidBase }
   }
 };
 
