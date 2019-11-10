@@ -2,7 +2,7 @@ const { groupBy } = require("lodash");
 const { Command } = require("./command");
 const gods = require("../data/gods/all.js");
 
-const abilities = gods.map(god => god.other);
+const abilities = gods.map(god => god.abilities);
 const abilityMap = groupBy(abilities, ability => ability.name);
 const abilityRegexes = Object.keys(abilityMap).map(abilityName =>
   abilityName.replace(" ", " *")
