@@ -19,9 +19,12 @@ const summaryFormatter = values => {
   return "(" + Object.values(summarized).join(" ") + ")";
 };
 
-const abilityFormatter = ({ name, type, info, values }) => (rarity, level) => {
+const abilityFormatter = god => ({ name, type, info, values }) => (
+  rarity,
+  level
+) => {
   const valueString = summaryFormatter(values);
-  return `${name} (${type}) - ${info(valueString)}`;
+  return `${name} (${god}) - ${info(valueString)}`;
 };
 
 module.exports = { summaryFormatter, abilityFormatter };

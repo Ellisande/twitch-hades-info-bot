@@ -242,7 +242,7 @@ const base = {
   other: toArray(abilities).filter(ability => ability.type === OTHER)
 };
 
-const formattedAbilities = mapValues(abilities, abilityFormatter);
+const formattedAbilities = mapValues(abilities, abilityFormatter(base.name));
 
 const aphrodite = {
   ...base,
