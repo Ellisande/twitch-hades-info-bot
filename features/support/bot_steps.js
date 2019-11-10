@@ -60,6 +60,12 @@ Then(/the bot does not respond with {(.*)}/, function(expectedMessage) {
   expect(actualResponseMessage).not.to.include(expectedMessage);
 });
 
+Then(/^the bot does not respond$/, function() {
+  const { bot } = this.mocks;
+  const calledWith = bot.say.lastArg;
+  expect(calledWith).not.to.exist;
+});
+
 Then(/no error occurs/, function() {
   expect(this.when.result).to.be.fulfilled;
 });

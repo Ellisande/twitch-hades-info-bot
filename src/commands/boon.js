@@ -1,26 +1,42 @@
-const { groupBy } = require("lodash");
+const { find, reduce, mapKeys, omitBy } = require("lodash");
 const { Command } = require("./command");
 const gods = require("../data/gods/all.js");
 
-const abilities = gods.map(god => god.abilities);
-const abilityMap = groupBy(abilities, ability => ability.name);
-const abilityRegexes = Object.keys(abilityMap).map(abilityName =>
+const abilityMap = gods
+  .map(god =>
+    reduce(
+      god.abilities,
+      (hash, ability, key) => ({
+        ...hash,
+        [ability.name]: god[key]()
+      }),
+      {}
+    )
+  )
+  .reduce((resultObj, current) => ({ ...resultObj, ...current }));
+
+const abilityMapWithoutNone = omitBy(abilityMap, (value, key) =>
+  /None/i.test(key)
+);
+
+const abilityExpressionMap = mapKeys(abilityMapWithoutNone, (_, abilityName) =>
   abilityName.replace(" ", " *")
 );
 
-const abilityCommand = RegExp(`^(${abilityRegexes})$`, "i");
+const abilityNameRegexes = Object.keys(abilityExpressionMap).join("|");
+
+const abilityCommand = RegExp(`^(${abilityNameRegexes})$`, "i");
 
 const boonCommand = new Command({
   command: abilityCommand,
   name: "Ability",
-  test: true,
+  test: false,
   example: "tipsy shot",
   handler: ({ bot, channelId, commandMatches, logger }) => {
-    logger.debug("Command matches: " + JSON.stringify(commandMatches));
     const abilityName = commandMatches[1];
-    logger.debug("Ability to look up " + abilityName);
-    const message = abilityMap[abilityName];
-    logger.debug("Ability message " + message);
+    const message = find(abilityExpressionMap, (_, expressionString) =>
+      RegExp(expressionString, "i").test(abilityName)
+    );
     bot.say(channelId, message);
   }
 });
