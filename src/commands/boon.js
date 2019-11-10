@@ -8,7 +8,7 @@ const abilityMap = gods
       god.abilities,
       (hash, ability, key) => ({
         ...hash,
-        [ability.name]: god[key]()
+        [ability.name]: god[key]
       }),
       {}
     )
@@ -36,7 +36,7 @@ const boonCommand = new Command({
     const abilityName = commandMatches[1];
     const message = find(abilityExpressionMap, (_, expressionString) =>
       RegExp(expressionString, "i").test(abilityName)
-    );
+    )();
     bot.say(channelId, message);
   }
 });
