@@ -235,6 +235,7 @@ const abilities = {
 const base = {
   name: "Ares",
   info,
+  abilities,
   other: toArray(abilities).filter(ability => ability.type === OTHER)
 };
 
