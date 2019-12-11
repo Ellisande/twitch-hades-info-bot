@@ -223,8 +223,8 @@ const artemisAid = {
   name: "Artemis' Aid",
   type: AID,
   info: value =>
-    `Your Call fies a seeking arrow towards the nearest foe dealing ${value} damage. Max guage: 12 arrows fired for ${value *
-      12} damage.`,
+    `Your Call fires a seeking arrow towards the nearest foe dealing ${value} damage. Max guage: 15 arrows fired for ${value *
+      15} damage. Each arrow has a 35% chance to crit.`,
   values: {
     [COMMON]: { 1: 130 },
     [RARE]: { 1: 156 },
@@ -278,7 +278,9 @@ const supportFire = {
   info: value =>
     `Your Attack, Cast, and Special spawn an additional seeking shot that deals ${value} damage`,
   values: {
-    [LEGENDARY]: { 1: 15 }
+    [COMMON]: { 1: 15 },
+    [RARE]: { 1: 19 },
+    [EPIC]: { 1: 24 }
   }
 };
 

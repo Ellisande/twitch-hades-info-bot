@@ -78,8 +78,8 @@ const emptyInside = {
   }
 };
 
-const lamentMin = 25;
-const lamentMax = 30;
+const lamentMin = 35;
+const lamentMax = 38;
 const dyingLament = {
   name: "Dying Lament",
   type: OTHER,
