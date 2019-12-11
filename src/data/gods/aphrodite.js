@@ -88,7 +88,7 @@ const dyingLament = {
   values: {
     [COMMON]: { 1: `${lamentMin}-${lamentMax}` },
     [RARE]: { 1: `${lamentMin * 1.3}-${lamentMax * 1.5}` },
-    [EPIC]: { 1: `${lamentMin * 2}-${lamentMax * 2.2}` }
+    [EPIC]: { 1: `${lamentMin * 2}-${(lamentMax * 2.2).toFixed(0)}` }
   }
 };
 

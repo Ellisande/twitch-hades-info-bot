@@ -223,8 +223,7 @@ const artemisAid = {
   name: "Artemis' Aid",
   type: AID,
   info: value =>
-    `Your Call fires a seeking arrow towards the nearest foe dealing ${value} damage. Max guage: 15 arrows fired for ${value *
-      15} damage. Each arrow has a 35% chance to crit.`,
+    `Your Call fires a seeking arrow towards the nearest foe dealing ${value} damage. Max guage: 15 arrows fired. Each arrow has a 35% chance to crit.`,
   values: {
     [COMMON]: { 1: 130 },
     [RARE]: { 1: 156 },
