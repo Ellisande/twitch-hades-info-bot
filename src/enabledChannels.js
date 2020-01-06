@@ -1,1 +1,6 @@
-module.exports = ["ellisandepoet", "achillescodex", "oldmansethus"];
+module.exports = [
+  "ellisandepoet",
+  "achillescodex",
+  "oldmansethus",
+  "miniminotvur"
+];
