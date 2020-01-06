@@ -153,8 +153,9 @@ const afterParty = {
     `If your health is lower than ${value} after Encounters restore to the threshold`,
   values: {
     [COMMON]: { 1: "20%" },
-    [RARE]: { 1: "25%" },
-    [EPIC]: { 1: "30%" }
+    [RARE]: { 1: "38%" },
+    [EPIC]: { 1: "45%" },
+    [HEROIC]: { 1: "60%" }
   }
 };
 
