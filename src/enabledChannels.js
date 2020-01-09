@@ -2,5 +2,6 @@ module.exports = [
   "ellisandepoet",
   "achillescodex",
   "oldmansethus",
-  "miniminotvur"
+  "miniminotvur",
+  "sneakyteak"
 ];
