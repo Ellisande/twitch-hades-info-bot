@@ -94,7 +94,9 @@ const cast = {
       1: 100
     },
     [RARE]: {
-      1: 120
+      1: 120,
+      2: 180,
+      3: 222
     },
     [EPIC]: {
       1: 140
@@ -212,7 +214,7 @@ const scintillatingFeast = {
   info: value =>
     `Your Festive Fog effects also deal ${value} lightning damage periodically`,
   values: {
-    [DUO]: { 1: 60 }
+    [DUO]: { 1: 80 }
   }
 };
 
