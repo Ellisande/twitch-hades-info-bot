@@ -53,6 +53,12 @@ const flurryJab = {
   exclusives: ["massive spin", "quick spin"]
 };
 
+const serratedEdge = {
+  name: "Serrated Edge",
+  description: "Your Dash-Stike hits 3 times, but your dash has -20% range.",
+  exclusives: []
+};
+
 const formatter = hammerFormatter(weaponNameString);
 
 const spearHammerAbilities = [
@@ -63,7 +69,8 @@ const spearHammerAbilities = [
   explodingLauncher,
   massiveSpin,
   quickSpin,
-  flurryJab
+  flurryJab,
+  serratedEdge
 ].map(formatter);
 
 module.exports = {

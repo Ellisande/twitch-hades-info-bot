@@ -30,7 +30,7 @@ const attack = {
       1: 56
     },
     [EPIC]: {
-      1: 0
+      1: 79
     },
     [HEROIC]: {
       1: 0
@@ -85,7 +85,8 @@ const dashMax = 19;
 const dash = {
   name: "[TODO] Dash",
   type: DASH,
-  info: value => `Your Dash [TODO]`,
+  info: value =>
+    `Your Dash shoots a gust ahead for ${value} damage that inflicts Chill`,
   values: {
     [COMMON]: {
       1: 0
@@ -94,7 +95,7 @@ const dash = {
       1: 0
     },
     [EPIC]: {
-      1: 0
+      1: 20
     },
     [HEROIC]: {
       1: 0
@@ -237,6 +238,18 @@ const rareCrop = {
   }
 };
 
+const winterHarvest = {
+  name: "Winter Harvest",
+  type: OTHER,
+  info: value =>
+    `Chill-afflicted foes shatter at 10% health for ${value} area damage, inflicting Chill nearby.`,
+  values: {
+    [LEGENDARY]: {
+      1: 50
+    }
+  }
+};
+
 const todoDuo = {
   name: "[TODO] Duo",
   type: OTHER,
@@ -257,6 +270,7 @@ const abilities = {
   nourishedSoul,
   rareCrop,
   snowBurst,
+  winterHarvest,
   todoDuo
 };
 
