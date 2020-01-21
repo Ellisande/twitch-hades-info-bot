@@ -6,6 +6,7 @@ const { poseidon } = require("./poseidon");
 const { aphrodite } = require("./aphrodite");
 const { hermes } = require("./hermes");
 const { dionysus } = require("./dionysus");
+const { demeter } = require("./demeter");
 
 module.exports = [
   athena,
@@ -15,5 +16,6 @@ module.exports = [
   poseidon,
   aphrodite,
   hermes,
-  dionysus
+  dionysus,
+  demeter
 ];
