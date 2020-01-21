@@ -27,7 +27,7 @@ const attack = {
       1: 40
     },
     [RARE]: {
-      1: 0
+      1: 56
     },
     [EPIC]: {
       1: 0
@@ -152,16 +152,38 @@ const aid = {
   }
 };
 
-const otherTodo = {
-  name: "[TODO]",
+const arcticBlast = {
+  name: "Arctic Blast",
   type: OTHER,
-  info: value => `[TODO]`,
+  info: value =>
+    `Applying 10 stacks of Chill causes a blast for ${value} damage, clearing the effect.`,
+  values: {
+    [COMMON]: {
+      1: 50
+    },
+    [RARE]: {
+      1: 0
+    },
+    [EPIC]: {
+      1: 0
+    },
+    [HEROIC]: {
+      1: 0
+    }
+  }
+};
+
+const nourishedSoul = {
+  name: "Nourished Soul",
+  type: OTHER,
+  info: value =>
+    `Any Healing effects are ${value}% more potent. Restore 13% health now.`,
   values: {
     [COMMON]: {
       1: 0
     },
     [RARE]: {
-      1: 0
+      1: 32
     },
     [EPIC]: {
       1: 0
