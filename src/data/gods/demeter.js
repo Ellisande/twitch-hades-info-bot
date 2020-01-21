@@ -238,6 +238,27 @@ const rareCrop = {
   }
 };
 
+const ravenousWill = {
+  name: "Ravenous Will",
+  type: OTHER,
+  info: value =>
+    `While you have no Casts, take 10% less damage and do ${value}% more damage.`,
+  values: {
+    [COMMON]: {
+      1: 10
+    },
+    [RARE]: {
+      1: 0
+    },
+    [EPIC]: {
+      1: 3
+    },
+    [HEROIC]: {
+      1: 0
+    }
+  }
+};
+
 const winterHarvest = {
   name: "Winter Harvest",
   type: OTHER,
@@ -271,7 +292,7 @@ const abilities = {
   rareCrop,
   snowBurst,
   winterHarvest,
-  todoDuo
+  ravenousWill
 };
 
 const base = {
