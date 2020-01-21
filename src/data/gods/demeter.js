@@ -15,7 +15,7 @@ const {
 } = require("../../utils/calculateUtils");
 const { mapValues, toArray } = require("lodash");
 
-const info = "Demeter, God of the Harvest. His abilities [TODO]";
+const info = "Demeter, Goddess of Seasons. Her abilities slows enemies.";
 
 const attackBase = "50";
 const attack = {
