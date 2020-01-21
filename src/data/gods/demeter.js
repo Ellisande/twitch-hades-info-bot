@@ -200,9 +200,9 @@ const base = {
 
 const formattedAbilities = mapValues(abilities, abilityFormatter(base.name));
 
-const Demeter = {
+const demeter = {
   ...base,
   ...formattedAbilities
 };
 
-module.exports = { Demeter };
+module.exports = { demeter };
