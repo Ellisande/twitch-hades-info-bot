@@ -60,21 +60,22 @@ const special = {
 };
 
 const cast = {
-  name: "[TODO] Shot",
+  name: "Crystal Beam",
   type: CAST,
-  info: value => `Your Cast [TODO]`,
+  info: value =>
+    `Your Cast drops a crystal that fires a beam stright ahead for ${value} damage every 0.2s for 5s.`,
   values: {
     [COMMON]: {
-      1: 90
+      1: 0
     },
     [RARE]: {
-      1: 108
+      1: 0
     },
     [EPIC]: {
-      1: 126
+      1: 10
     },
     [HEROIC]: {
-      1: 144
+      1: 0
     }
   }
 };
@@ -162,7 +163,7 @@ const arcticBlast = {
       1: 50
     },
     [RARE]: {
-      1: 0
+      1: 75
     },
     [EPIC]: {
       1: 0
@@ -194,6 +195,27 @@ const nourishedSoul = {
   }
 };
 
+const rareCrop = {
+  name: "Rare Crop",
+  type: OTHER,
+  info: value =>
+    `${value} of your boons randomly become common, then gain rarity every 3 encounters.`,
+  values: {
+    [COMMON]: {
+      1: 0
+    },
+    [RARE]: {
+      1: 0
+    },
+    [EPIC]: {
+      1: 3
+    },
+    [HEROIC]: {
+      1: 0
+    }
+  }
+};
+
 const todoDuo = {
   name: "[TODO] Duo",
   type: OTHER,
@@ -210,8 +232,10 @@ const abilities = {
   revenge,
   cast,
   aid,
-  todoDuo,
-  otherTodo
+  arcticBlast,
+  nourishedSoul,
+  rareCrop,
+  todoDuo
 };
 
 const base = {
