@@ -19,12 +19,12 @@ const info = "Demeter, Goddess of Seasons. Her abilities slows enemies.";
 
 const attackBase = "50";
 const attack = {
-  name: "[TODO] Strike",
+  name: "Frost Strike",
   type: ATTACK,
-  info: value => `[TODO]`,
+  info: value => `Your Attack is ${value}% stronger and inflicts Chill`,
   values: {
     [COMMON]: {
-      1: 0
+      1: 40
     },
     [RARE]: {
       1: 0
@@ -40,21 +40,21 @@ const attack = {
 
 const specialBase = 80;
 const special = {
-  name: "[TODO] Flourish",
+  name: "Frost Flourish",
   type: SPECIAL,
-  info: value => `Your Special  [TODO]`,
+  info: value => `Your Special is ${value} stronger and inflicts Chill`,
   values: {
     [COMMON]: {
-      1: 90
+      1: 0
     },
     [RARE]: {
-      1: 108
+      1: 82
     },
     [EPIC]: {
-      1: 126
+      1: 0
     },
     [HEROIC]: {
-      1: 144
+      1: 0
     }
   }
 };
@@ -134,13 +134,14 @@ const aidBase = 2500;
 const aid = {
   name: "Demeter's Aid",
   type: AID,
-  info: value => `Your Call [TODO]`,
+  info: value =>
+    `Your Call creates a winter vortex for 5s, inflicting ${value} every 0.25s and Chill. Max gauge increases duration to 15 seconds.`,
   values: {
     [COMMON]: {
       1: 0
     },
     [RARE]: {
-      1: 0
+      1: 11
     },
     [EPIC]: {
       1: 0
