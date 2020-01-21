@@ -51,7 +51,7 @@ const special = {
       1: 82
     },
     [EPIC]: {
-      1: 0
+      1: 111
     },
     [HEROIC]: {
       1: 0
@@ -139,7 +139,7 @@ const aid = {
     `Your Call creates a winter vortex for 5s, inflicting ${value} every 0.25s and Chill. Max gauge increases duration to 15 seconds.`,
   values: {
     [COMMON]: {
-      1: 0
+      1: 10
     },
     [RARE]: {
       1: 11
@@ -166,7 +166,7 @@ const arcticBlast = {
       1: 75
     },
     [EPIC]: {
-      1: 0
+      1: 100
     },
     [HEROIC]: {
       1: 0
@@ -185,6 +185,27 @@ const nourishedSoul = {
     },
     [RARE]: {
       1: 32
+    },
+    [EPIC]: {
+      1: 35
+    },
+    [HEROIC]: {
+      1: 0
+    }
+  }
+};
+
+const snowBurst = {
+  name: "Snow Burst",
+  type: OTHER,
+  info: value =>
+    `Whenver you Cast, damage nearby foes for ${value} and inflict Chill.`,
+  values: {
+    [COMMON]: {
+      1: 0
+    },
+    [RARE]: {
+      1: 50
     },
     [EPIC]: {
       1: 0
@@ -235,6 +256,7 @@ const abilities = {
   arcticBlast,
   nourishedSoul,
   rareCrop,
+  snowBurst,
   todoDuo
 };
 
