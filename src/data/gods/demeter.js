@@ -83,7 +83,7 @@ const cast = {
 const dashMin = 17;
 const dashMax = 19;
 const dash = {
-  name: "[TODO] Dash",
+  name: "Gusty Dash",
   type: DASH,
   info: value =>
     `Your Dash shoots a gust ahead for ${value} damage that inflicts Chill`,
