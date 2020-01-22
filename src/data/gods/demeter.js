@@ -251,7 +251,7 @@ const ravenousWill = {
       1: 20
     },
     [EPIC]: {
-      1: 3
+      1: 30
     },
     [HEROIC]: {
       1: 0
