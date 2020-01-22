@@ -38,8 +38,8 @@ const minotaurRush = {
   exclusives: []
 };
 
-const armorShredder = {
-  name: "Armor Shredder",
+const breachingRush = {
+  name: "Breaching Rush",
   description: "Your Bull Rush deals +400% damage to Armor.",
   exclusives: []
 };
@@ -60,7 +60,7 @@ const shieldHammerAbilities = [
   dashingWallop,
   explosiveReturn,
   minotaurRush,
-  armorShredder,
+  breachingRush,
   chargedShot
 ].map(formatter);
 
