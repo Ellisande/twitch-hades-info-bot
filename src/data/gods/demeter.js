@@ -209,7 +209,7 @@ const snowBurst = {
       1: 50
     },
     [EPIC]: {
-      1: 0
+      1: 60
     },
     [HEROIC]: {
       1: 0
@@ -248,7 +248,7 @@ const ravenousWill = {
       1: 10
     },
     [RARE]: {
-      1: 0
+      1: 20
     },
     [EPIC]: {
       1: 3
