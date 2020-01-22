@@ -20,9 +20,10 @@ const info =
   "Dionysus, God of Wine and the Revel. His abilities poison and disorient";
 
 const attack = {
-  name: "Blight Strike",
+  name: "Drunken Strike",
   type: ATTACK,
-  info: value => `Your Attack inflicts Poison dealing ${value} damage per tick`,
+  info: value =>
+    `Your Attack inflicts Hangover dealing ${value} damage per tick`,
   values: {
     [COMMON]: {
       1: 4,
