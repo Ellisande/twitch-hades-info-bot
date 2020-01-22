@@ -171,8 +171,8 @@ const pressurePoints = {
   }
 };
 
-const burstShot = {
-  name: "Burst Shot",
+const dualShot = {
+  name: "Dual Shot",
   type: OTHER,
   info: value =>
     `Your Cast fires a second projectile, though it does ${value} of the original damage`,
@@ -296,7 +296,7 @@ const abilities = {
   "hide breaker": hideBreaker,
   "clean kill": cleanKill,
   "exit wounds": exitWounds,
-  "burst shot": burstShot,
+  "dual shot": dualShot,
   "hunter instinct": hunterInstinct,
   "hunters mark": huntersMark,
   "deadly reversal": deadlyReversal,
