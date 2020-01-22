@@ -66,6 +66,13 @@ const clusterBomb = {
   exclusives: ["rocket bomb", "hazard bomb"]
 };
 
+const concentratedFire = {
+  name: "Concentrated Fire",
+  description:
+    "Your Attack deals +1 damage for each uninterrupted hit to a foe",
+  exclusives: []
+};
+
 const formatter = hammerFormatter(weaponNameString);
 
 const gunHammerAbilities = [
@@ -78,7 +85,8 @@ const gunHammerAbilities = [
   rocketBomb,
   inescapableBlast,
   hazardBomb,
-  clusterBomb
+  clusterBomb,
+  concentratedFire
 ].map(formatter);
 
 module.exports = {
