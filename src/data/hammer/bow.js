@@ -50,6 +50,13 @@ const tripleShot = {
   exclusives: ["twin shot"]
 };
 
+const chainShot = {
+  name: "Chain Shot",
+  description:
+    "Your Attack bounces to up to 3 foes, dealing +15% damage for each.",
+  exclusives: []
+};
+
 const formatter = hammerFormatter(weaponNameString);
 
 const bowHammerAbilities = [
@@ -60,7 +67,8 @@ const bowHammerAbilities = [
   piercingBarrage,
   perfectShot,
   relentlessBarrage,
-  tripleShot
+  tripleShot,
+  chainShot
 ].map(formatter);
 
 module.exports = {
