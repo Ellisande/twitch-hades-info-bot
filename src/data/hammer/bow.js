@@ -57,6 +57,12 @@ const chainShot = {
   exclusives: []
 };
 
+const chargedVolley = {
+  name: "Charged Volley",
+  description: "Hold Special to charge your volley for up to 300% damage",
+  exclusives: []
+};
+
 const formatter = hammerFormatter(weaponNameString);
 
 const bowHammerAbilities = [
@@ -68,7 +74,8 @@ const bowHammerAbilities = [
   perfectShot,
   relentlessBarrage,
   tripleShot,
-  chainShot
+  chainShot,
+  chargedVolley
 ].map(formatter);
 
 module.exports = {
