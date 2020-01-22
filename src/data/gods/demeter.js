@@ -83,7 +83,7 @@ const cast = {
 const dashMin = 17;
 const dashMax = 19;
 const dash = {
-  name: "Gusty Dash",
+  name: "Mistral Dash",
   type: DASH,
   info: value =>
     `Your Dash shoots a gust ahead for ${value} damage that inflicts Chill`,
@@ -252,6 +252,27 @@ const ravenousWill = {
     },
     [EPIC]: {
       1: 30
+    },
+    [HEROIC]: {
+      1: 0
+    }
+  }
+};
+
+const killingFreeze = {
+  name: "Killing Freeze",
+  type: OTHER,
+  info: value =>
+    `While all foes are Chill-afllicted, they are 12% slower and take ${value} decay damage every 0.5s`,
+  values: {
+    [COMMON]: {
+      1: 0
+    },
+    [RARE]: {
+      1: 24
+    },
+    [EPIC]: {
+      1: 0
     },
     [HEROIC]: {
       1: 0

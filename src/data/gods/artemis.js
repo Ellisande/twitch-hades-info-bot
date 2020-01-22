@@ -23,7 +23,7 @@ const attack = {
   name: "Deadly Strike",
   type: ATTACK,
   info: value =>
-    `Your Attack is ${value} stronger, with a +15% chance to deal Critical damage`,
+    `Your Attack is ${value} stronger, with a +10% chance to deal Critical damage`,
   values: {
     [COMMON]: {
       1: "20%"
@@ -32,7 +32,7 @@ const attack = {
       1: `${20 * 1.3}-${20 * 1.5}`
     },
     [EPIC]: {
-      1: `${20 * 1.8}-${20 * 2.0}`
+      1: `55`
     },
     [HEROIC]: {
       1: `${20 * 2.3}-${20 * 2.5}`
