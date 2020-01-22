@@ -259,6 +259,7 @@ const ravenousWill = {
   }
 };
 
+// Needs two values.
 const killingFreeze = {
   name: "Killing Freeze",
   type: OTHER,
@@ -272,7 +273,7 @@ const killingFreeze = {
       1: 24
     },
     [EPIC]: {
-      1: 0
+      1: 28
     },
     [HEROIC]: {
       1: 0

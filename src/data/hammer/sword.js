@@ -51,6 +51,13 @@ const piercingWave = {
   exclusives: []
 };
 
+const cursedSlash = {
+  name: "Cursed Slash",
+  description:
+    "You Attack restores health for 5% of damage, but you have -70% max health.",
+  exclusives: []
+};
+
 const formatter = hammerFormatter(weaponNameString);
 
 const swordHammerAbilities = [
@@ -61,7 +68,8 @@ const swordHammerAbilities = [
   doubleEdge,
   armorSlayer,
   cruelThrust,
-  piercingWave
+  piercingWave,
+  cursedSlash
 ].map(formatter);
 
 module.exports = {
