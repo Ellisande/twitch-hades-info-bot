@@ -52,6 +52,20 @@ const inescapableBlast = {
   exclusives: []
 };
 
+const hazardBomb = {
+  name: "Hazard Bomb",
+  description:
+    "Your Special deals +100% damage in a large area around you, beware!",
+  exclusives: ["rocket bomb", "cluster bomb"]
+};
+
+const clusterBomb = {
+  name: "Cluster Bomb",
+  description:
+    "Your Special fires a spread of 5 bombs, but each deals -50% damage",
+  exclusives: ["rocket bomb", "hazard bomb"]
+};
+
 const formatter = hammerFormatter(weaponNameString);
 
 const gunHammerAbilities = [
@@ -62,7 +76,9 @@ const gunHammerAbilities = [
   piercingFire,
   tripleBomb,
   rocketBomb,
-  inescapableBlast
+  inescapableBlast,
+  hazardBomb,
+  clusterBomb
 ].map(formatter);
 
 module.exports = {
