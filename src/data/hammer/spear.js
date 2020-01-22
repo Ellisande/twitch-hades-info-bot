@@ -15,8 +15,8 @@ const multiSkewer = {
   exclusives: ["exploding launcher"]
 };
 
-const armorSkewer = {
-  name: "Armor Skewer",
+const breachingSkewer = {
+  name: "Breaching Skewer",
   description: "Your Special deal +400% damage to Armor",
   exclusives: []
 };
@@ -59,18 +59,25 @@ const serratedEdge = {
   exclusives: []
 };
 
+const chargedSkewer = {
+  name: "Charged Skewer",
+  description: "Hold Special to charge your skewer for up to +200% damage",
+  exclusives: []
+};
+
 const formatter = hammerFormatter(weaponNameString);
 
 const spearHammerAbilities = [
   extendingJab,
   multiSkewer,
-  armorSkewer,
+  breachingSkewer,
   viciousSkewer,
   explodingLauncher,
   massiveSpin,
   quickSpin,
   flurryJab,
-  serratedEdge
+  serratedEdge,
+  chargedSkewer
 ].map(formatter);
 
 module.exports = {
