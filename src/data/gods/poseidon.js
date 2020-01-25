@@ -102,6 +102,18 @@ const breakingWave = {
   }
 };
 
+const wavePounding = {
+  name: "Wave Pouding",
+  type: OTHER,
+  info: value =>
+    `Your Boons with knock-away effect deal ${value}% bonus damage to Bosses.`,
+  values: {
+    [COMMON]: { 1: 0 },
+    [RARE]: { 1: 10 },
+    [EPIC]: { 1: 0 }
+  }
+};
+
 const razorShoals = {
   name: "Razor Shoals",
   type: OTHER,
@@ -206,6 +218,7 @@ const abilities = {
   "razor shoals": razorShoals,
   "oceans bounty": oceansBounty,
   "boiling point": boilingPoint,
+  "wave pounding": wavePounding,
   "sea storm": seaStorm,
   "exclusive access": exclusiveAccess,
   "sweet nectar": sweetNectar,

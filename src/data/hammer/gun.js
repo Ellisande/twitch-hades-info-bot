@@ -16,7 +16,7 @@ const spreadFire = {
 
 const explosiveFire = {
   name: "Explosive Fire",
-  description: "Your Attack deals damage in an area and briefly staggers foes.",
+  description: "Your Attack deals damage in an area and briefly slows foes.",
   exclusives: ["piercing fire"]
 };
 
