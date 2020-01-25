@@ -33,8 +33,8 @@ const doubleEdge = {
   exclusives: []
 };
 
-const armorSlayer = {
-  name: "Armor Slayer",
+const breachingSlash = {
+  name: "Breaching Slash",
   description: "Your Attack deals +300% damage to Armor.",
   exclusives: []
 };
@@ -66,7 +66,7 @@ const swordHammerAbilities = [
   superNova,
   doubleNova,
   doubleEdge,
-  armorSlayer,
+  breachingSlash,
   cruelThrust,
   piercingWave,
   cursedSlash
