@@ -103,7 +103,7 @@ const breakingWave = {
 };
 
 const wavePounding = {
-  name: "Wave Pouding",
+  name: "Wave Pounding",
   type: OTHER,
   info: value =>
     `Your Boons with knock-away effect deal ${value}% bonus damage to Bosses.`,
