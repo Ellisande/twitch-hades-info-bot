@@ -20,9 +20,9 @@ const explosiveFire = {
   exclusives: ["piercing fire"]
 };
 
-const infinityChamber = {
-  name: "Infinity Chamber",
-  description: "You never have to reload.",
+const deltaChamber = {
+  name: "Delta Chamber",
+  description: "Your Attack is a 3-round burst; you never have to reload.",
   exclusives: ["spread fire", "flurry fire"]
 };
 
@@ -41,7 +41,7 @@ const tripleBomb = {
 const rocketBomb = {
   name: "Rocket Bomb",
   description:
-    "Your Special is replaced with a rocket that deals 80 base damage.",
+    "Your Special is replaced with a rocket that deals 100 base damage.",
   exclusives: []
 };
 
@@ -79,7 +79,7 @@ const gunHammerAbilities = [
   flurryFire,
   spreadFire,
   explosiveFire,
-  infinityChamber,
+  deltaChamber,
   piercingFire,
   tripleBomb,
   rocketBomb,
