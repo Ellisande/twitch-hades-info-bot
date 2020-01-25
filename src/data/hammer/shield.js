@@ -51,6 +51,12 @@ const chargedShot = {
   exclusives: []
 };
 
+const chargedThrow = {
+  name: "Charged Throw",
+  description: "Hold Special to charge your throw for up to +300% damage.",
+  exclusives: []
+};
+
 const formatter = hammerFormatter(weaponNameString);
 
 const shieldHammerAbilities = [
@@ -61,7 +67,8 @@ const shieldHammerAbilities = [
   explosiveReturn,
   minotaurRush,
   breachingRush,
-  chargedShot
+  chargedShot,
+  chargedThrow
 ].map(formatter);
 
 module.exports = {
