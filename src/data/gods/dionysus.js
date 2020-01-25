@@ -44,7 +44,7 @@ const attack = {
 };
 
 const special = {
-  name: "Blight Flourish",
+  name: "Drunken Flourish",
   type: SPECIAL,
   info: value =>
     `Your Special inflicts Poison dealing ${value} damage per tick`,
@@ -65,7 +65,7 @@ const special = {
 };
 
 const dash = {
-  name: "Nasty Dash",
+  name: "Drunken Dash",
   type: DASH,
   info: value =>
     `Your Dash inflicts foes near you with Poison dealing ${value} per tick`,
@@ -86,7 +86,7 @@ const dash = {
 };
 
 const cast = {
-  name: "Tipsy Shot",
+  name: "Trippy Shot",
   type: CAST,
   info: value =>
     `Your Cast lobs a projectile that bursts into Festive Fog dealing ${value} damage when it lands`,
