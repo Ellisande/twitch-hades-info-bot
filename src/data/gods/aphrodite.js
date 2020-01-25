@@ -143,6 +143,17 @@ const lifeAffirmation = {
   }
 };
 
+const brokenResolve = {
+  name: "Broken Resolve",
+  type: OTHER,
+  info: value => `Your Weak effects are ${value}% more potent.`,
+  values: {
+    [COMMON]: { 1: 0 },
+    [RARE]: { 1: 12 },
+    [EPIC]: { 1: 0 }
+  }
+};
+
 const aidBase = 2500;
 const aphroditesAid = {
   name: "Aphrodite's Aid",
@@ -227,6 +238,7 @@ const abilities = {
   "different league": differentLeague,
   "sweet surrender": sweetSurrender,
   "life affirmation": lifeAffirmation,
+  "broken resolve": brokenResolve,
   "unhealthy fixation": unhealthyFixation,
   "curse of longing": curseOfLonging,
   "low tolerance": lowTolerance,
