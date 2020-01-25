@@ -293,12 +293,13 @@ const winterHarvest = {
   }
 };
 
-const todoDuo = {
-  name: "[TODO] Duo",
+const coldFusion = {
+  name: "Cold Fusion",
   type: OTHER,
-  info: value => `[TODO]`,
+  info: value =>
+    `Your Jolted effects do not expire when foes attack. Instead it lasts for ${value} seconds.`,
   values: {
-    [DUO]: { 1: 1 }
+    [DUO]: { 1: 10 }
   }
 };
 
@@ -314,7 +315,9 @@ const abilities = {
   rareCrop,
   snowBurst,
   winterHarvest,
-  ravenousWill
+  ravenousWill,
+  killingFreeze,
+  coldFusion
 };
 
 const base = {

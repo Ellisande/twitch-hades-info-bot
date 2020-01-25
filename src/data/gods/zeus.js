@@ -246,6 +246,16 @@ const vengefulMood = {
   }
 };
 
+const coldFusion = {
+  name: "Cold Fusion",
+  type: OTHER,
+  info: value =>
+    `Your Jolted effects do not expire when foes attack. Instead it lasts for ${value} seconds.`,
+  values: {
+    [DUO]: { 1: 10 }
+  }
+};
+
 const splittingBolt = {
   name: "Splitting Bolt",
   type: OTHER,
@@ -274,7 +284,8 @@ const abilities = {
   "lightning rod": lightningRod,
   "lightning phalanx": lightningPhalanx,
   "vengeful mood": vengefulMood,
-  "splitting bolt": splittingBolt
+  "splitting bolt": splittingBolt,
+  "cold fusion": coldFusion
 };
 
 const base = {
