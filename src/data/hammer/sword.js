@@ -53,8 +53,7 @@ const piercingWave = {
 
 const cursedSlash = {
   name: "Cursed Slash",
-  description:
-    "You Attack restores health for 5% of damage, but you have -70% max health.",
+  description: "You Attack restores 1 health, but you have -70% max health.",
   exclusives: []
 };
 

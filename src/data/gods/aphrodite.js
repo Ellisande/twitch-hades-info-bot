@@ -150,7 +150,7 @@ const brokenResolve = {
   values: {
     [COMMON]: { 1: 0 },
     [RARE]: { 1: 12 },
-    [EPIC]: { 1: 0 }
+    [EPIC]: { 1: 15 }
   }
 };
 
