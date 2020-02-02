@@ -148,7 +148,7 @@ const brokenResolve = {
   type: OTHER,
   info: value => `Your Weak effects are ${value}% more potent.`,
   values: {
-    [COMMON]: { 1: 0 },
+    [COMMON]: { 1: 10 },
     [RARE]: { 1: 12 },
     [EPIC]: { 1: 15 }
   }
