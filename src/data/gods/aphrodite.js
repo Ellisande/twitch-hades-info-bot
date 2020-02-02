@@ -36,34 +36,46 @@ const special = {
 };
 
 const cast = {
-  name: "Shatter Shot",
+  name: "Crush Shot",
   type: CAST,
   info: value =>
-    `Your Cast fires in a reduced-range spread pattern that deals ${value} damage and inflicts Weak`,
+    `Your Cast is a wide, short-range blast that deals ${value} damage and inflicts Weak`,
   values: {
     [COMMON]: {
       1: 90
     },
     [RARE]: {
-      1: 108
+      1: 99
     },
     [EPIC]: {
-      1: 126
+      1: 108
     },
     [HEROIC]: {
-      1: 144
+      1: 117
     }
   }
 };
 
-const dashMin = 17;
-const dashMax = 19;
 const dash = {
   name: "Passion Dash",
   type: DASH,
   info: value =>
     `Your Dash deals ${value} damage at the start and end, and inflicts Weak`,
-  values: calculateRange(dashMin, dashMax, true)
+  values: {
+    [COMMON]: {
+      1: 20
+    },
+    [RARE]: {
+      1: 24
+    },
+    [EPIC]: {
+      1: 28
+    },
+    [HEROIC]: {
+      1: 32
+    }
+  }
+  }
 };
 
 const emptyInside = {
@@ -74,22 +86,17 @@ const emptyInside = {
   values: {
     [COMMON]: { 1: 5 },
     [RARE]: { 1: 7.5 },
-    [EPIC]: { 1: 10 }
+    [EPIC]: { 1: 10 },
+    [HEROIC]: {1: 12.5}
   }
 };
 
-const lamentMin = 35;
-const lamentMax = 38;
 const dyingLament = {
   name: "Dying Lament",
   type: OTHER,
   info: value =>
     `When slain, foes damage other nearby foes for ${value} damage and inflict Weak`,
-  values: {
-    [COMMON]: { 1: `${lamentMin}-${lamentMax}` },
-    [RARE]: { 1: `${lamentMin * 1.3}-${lamentMax * 1.5}` },
-    [EPIC]: { 1: `${lamentMin * 2}-${(lamentMax * 2.2).toFixed(0)}` }
-  }
+  values: calculateFlat(40, true)
 };
 
 const revengeMin = 20;
@@ -115,7 +122,8 @@ const differentLeague = {
   values: {
     [COMMON]: { 1: "10%" },
     [RARE]: { 1: "12%" },
-    [EPIC]: { 1: "15%" }
+    [EPIC]: { 1: "15%" },
+    [HEROIC]: {1: "17%"}
   }
 };
 
@@ -125,11 +133,7 @@ const sweetSurrender = {
   type: OTHER,
   info: value =>
     `Your Weak effects also make foes ${value} more susceptible to damage`,
-  values: {
-    [COMMON]: { 1: `${surrdenderBase}%` },
-    [RARE]: { 1: `${surrdenderBase * 1.3}%-${surrdenderBase * 1.5}` },
-    [EPIC]: { 1: `${surrdenderBase * 2}%-${surrdenderBase * 2.5}` }
-  }
+  values: calculatePercentage(surrdenderBase, true)
 };
 
 const lifeAffirmation = {
@@ -137,9 +141,9 @@ const lifeAffirmation = {
   type: OTHER,
   info: value => `Your max health chamber rewards are worth ${value} more`,
   values: {
-    [COMMON]: { 1: `50%` },
-    [RARE]: { 1: `65%` },
-    [EPIC]: { 1: `80%` }
+    [COMMON]: { 1: `30%` },
+    [RARE]: { 1: `36%` },
+    [EPIC]: { 1: `42%` }
   }
 };
 
@@ -150,7 +154,8 @@ const brokenResolve = {
   values: {
     [COMMON]: { 1: 10 },
     [RARE]: { 1: 12 },
-    [EPIC]: { 1: 15 }
+    [EPIC]: { 1: 15 },
+    [HEROIC]: {1: 17}
   }
 };
 
@@ -192,7 +197,7 @@ const lowTolerance = {
   name: "Low Tolerance",
   type: OTHER,
   info: value =>
-    `Your Blight Wine effects stack ${value} more times against Weak foes`,
+    `Your Hangover effects stack ${value} more times against Weak foes`,
   values: {
     [DUO]: { 1: 3 }
   }
