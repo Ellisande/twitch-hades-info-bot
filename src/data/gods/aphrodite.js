@@ -75,7 +75,6 @@ const dash = {
       1: 32
     }
   }
-  }
 };
 
 const emptyInside = {
@@ -87,7 +86,7 @@ const emptyInside = {
     [COMMON]: { 1: 5 },
     [RARE]: { 1: 7.5 },
     [EPIC]: { 1: 10 },
-    [HEROIC]: {1: 12.5}
+    [HEROIC]: { 1: 12.5 }
   }
 };
 
@@ -123,7 +122,7 @@ const differentLeague = {
     [COMMON]: { 1: "10%" },
     [RARE]: { 1: "12%" },
     [EPIC]: { 1: "15%" },
-    [HEROIC]: {1: "17%"}
+    [HEROIC]: { 1: "17%" }
   }
 };
 
@@ -155,7 +154,7 @@ const brokenResolve = {
     [COMMON]: { 1: 10 },
     [RARE]: { 1: 12 },
     [EPIC]: { 1: 15 },
-    [HEROIC]: {1: 17}
+    [HEROIC]: { 1: 17 }
   }
 };
 
