@@ -11,7 +11,7 @@ const {
 } = require("./abilityTypes");
 const {
   calculatePercentage,
-  calculateRange
+  calculateFlat
 } = require("../../utils/calculateUtils");
 const { mapValues, toArray } = require("lodash");
 
