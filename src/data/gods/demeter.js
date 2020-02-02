@@ -217,20 +217,20 @@ const ravenousWill = {
 const killingFreeze = {
   name: "Killing Freeze",
   type: OTHER,
-  info: ([slow, damage]) =>
-    `While all foes are Chill-afllicted, they are ${slow} slower and take ${damage} decay damage every 0.5s`,
+  info: value =>
+    `While all foes are Chill-afllicted, they are slower and take ${value} decay damage every 0.5s`,
   values: {
     [COMMON]: {
-      1: [10, 20]
+      1: 20
     },
     [RARE]: {
-      1: [15, 30]
+      1: 30
     },
     [EPIC]: {
-      1: [20, 40]
+      1: 40
     },
     [HEROIC]: {
-      1: [25, 50]
+      1: 50
     }
   }
 };
