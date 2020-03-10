@@ -33,6 +33,12 @@ const drainingCutter = {
   exclusives: []
 };
 
+const longKnuckle = {
+  name: "Long Knuckle",
+  description: "Your Attack has more range and deals 20% increased damage",
+  exclusives: []
+};
+
 const formatter = hammerFormatter(weaponNameString);
 
 const fistHammerAbilities = [
@@ -40,7 +46,8 @@ const fistHammerAbilities = [
   flyingCutter,
   quakeCutter,
   concentratedKnuckle,
-  drainingCutter
+  drainingCutter,
+  longKnuckle
 ].map(formatter);
 
 module.exports = {
