@@ -205,6 +205,16 @@ const secondWave = {
   values: {}
 };
 
+const hugeCatch = {
+  name: "Huge Catch",
+  type: OTHER,
+  info: value =>
+    `You have a ${value}% greater chance to find a Fishing Point in each Chamber`,
+  values: {
+    [LEGENDARY]: { 1: 20 }
+  }
+};
+
 const abilities = {
   attack,
   special,
@@ -222,7 +232,8 @@ const abilities = {
   "sea storm": seaStorm,
   "exclusive access": exclusiveAccess,
   "sweet nectar": sweetNectar,
-  "second wave": secondWave
+  "second wave": secondWave,
+  "huge catch": hugeCatch
 };
 
 const base = {
