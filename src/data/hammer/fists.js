@@ -1,5 +1,5 @@
 const { hammerFormatter } = require("./formatter");
-const weaponNameString = "Fists";
+const weaponNameString = "fists";
 
 const rollingKnuckle = {
   name: "Rolling Knuckle",
@@ -20,11 +20,28 @@ const quakeCutter = {
   exclusives: []
 };
 
+const concentratedKnuckle = {
+  name: "Concentrated Knuckle",
+  description:
+    "Your Attack deals +5 damage for each uninterrupted hit to a foe.",
+  exclusives: []
+};
+
+const drainingCutter = {
+  name: "Draining Cutter",
+  description: "Whenever your Special slays foes, restore 2% health",
+  exclusives: []
+};
+
 const formatter = hammerFormatter(weaponNameString);
 
-const fistHammerAbilities = [rollingKnuckle, flyingCutter, quakeCutter].map(
-  formatter
-);
+const fistHammerAbilities = [
+  rollingKnuckle,
+  flyingCutter,
+  quakeCutter,
+  concentratedKnuckle,
+  drainingCutter
+].map(formatter);
 
 module.exports = {
   fistHammerAbilities
