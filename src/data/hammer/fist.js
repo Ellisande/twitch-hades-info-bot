@@ -27,5 +27,5 @@ const fistHammerAbilities = [rollingKnuckle, flyingCutter, quakeCutter].map(
 );
 
 module.exports = {
-  fistHammerAbilities;
+  fistHammerAbilities
 };
