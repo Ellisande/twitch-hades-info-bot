@@ -14,7 +14,7 @@ const flyingCutter = {
 };
 
 const quakeCutter = {
-  name: "Quick Cutter",
+  name: "Quake Cutter",
   description:
     "After using your Special, deal 80 damage in an area where you land.",
   exclusives: []
