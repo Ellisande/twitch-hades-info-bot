@@ -28,6 +28,14 @@ Feature: Ask the bot about deadulus hammer abilities
         Then the bot responds with {Sword hammer upgrades:}
         And the bot responds with {[world splitter] [flurry slash] [super nova] [double nova] [double edge] [armor slayer] [cruel thrust] [piercing wave]}
 
+    Scenario: User can ask about fist daedalus hammer upgrades
+        Given a user {user1}
+        And a channel {sneakyteak}
+        When the user says to the bot {!hammer fists}
+        Then the bot responds with {Fists hammer upgrades:}
+        And the bot responds with {[rolling knuckle] [flying
+    cutter] [quick cutter] [concentrated knuckle] [draining cutter] [long knuckle] [explosive upper] [breaching cross]}
+
 
     Scenario: User can ask about flurry slash
         Given a user {user1}
