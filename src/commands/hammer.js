@@ -16,7 +16,7 @@ const weaponAbilities = {
 };
 
 const baseDescription =
-  "Daedalus Hammer modifies the core mechanics of each weapon in unique ways. A maximum of 2 hammers can be found per run. Learn more with !hammer [sword] [shield] [gun] [spear] [bow].";
+  "Daedalus Hammer modifies the core mechanics of each weapon in unique ways. A maximum of 2 hammers can be found per run. Learn more with !hammer [sword] [shield] [gun] [spear] [bow] [fists].";
 
 const hammerCommand = new Command({
   command: /^(hammer|daedalus|daedalus hammer)(?: *)(sword|shield|bow|gun|spear|fists?)?$/i,
