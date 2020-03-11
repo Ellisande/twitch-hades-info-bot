@@ -39,6 +39,19 @@ const longKnuckle = {
   exclusives: []
 };
 
+const explosiveUpper = {
+  name: "Explosive Upper",
+  description: "Your Dash-Upper deals +50% damage in an area",
+  exclusives: []
+};
+
+const breachingCross = {
+  name: "Breaching Cross",
+  description:
+    "Your Dash-Strike pierces foes and deals +1000% damage to Armor.",
+  exclusives: []
+};
+
 const formatter = hammerFormatter(weaponNameString);
 
 const fistHammerAbilities = [
@@ -47,7 +60,9 @@ const fistHammerAbilities = [
   quakeCutter,
   concentratedKnuckle,
   drainingCutter,
-  longKnuckle
+  longKnuckle,
+  explosiveUpper,
+  breachingCross
 ].map(formatter);
 
 module.exports = {
