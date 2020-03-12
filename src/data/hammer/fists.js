@@ -52,6 +52,13 @@ const breachingCross = {
   exclusives: []
 };
 
+const rushKick = {
+  name: "Rush Kick",
+  description:
+    "Your Special dashes toward foes with a kick that deals 50 damage",
+  exclusives: []
+};
+
 const formatter = hammerFormatter(weaponNameString);
 
 const fistHammerAbilities = [
@@ -62,7 +69,8 @@ const fistHammerAbilities = [
   drainingCutter,
   longKnuckle,
   explosiveUpper,
-  breachingCross
+  breachingCross,
+  rushKick
 ].map(formatter);
 
 module.exports = {
