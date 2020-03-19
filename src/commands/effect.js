@@ -1,7 +1,8 @@
 const { statuses } = require("../data/status");
 const { pactModifiers } = require("../data/pact");
+const { mirrorTalents } = require("../data/mirror");
 const { Command } = require("./command");
-const allEffects = [...statuses, ...pactModifiers];
+const allEffects = [...statuses, ...pactModifiers, ...mirrorTalents];
 const effectCommandBase = allEffects.map(effect => effect.matcher);
 const effectCommandExp = RegExp(`^(${effectCommandBase.join("|")})$`, "i");
 
