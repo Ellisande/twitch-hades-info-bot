@@ -5,6 +5,7 @@ const { godListCommand } = require("./godList");
 const { boonCommand } = require("./boon");
 const { hammerAbilityCommand } = require("./hammerAbility");
 const { hammerCommand } = require("./hammer");
+const { effectCommand } = require("./effect");
 
 const allCommands = [
   pingCommand,
@@ -13,7 +14,8 @@ const allCommands = [
   godListCommand,
   boonCommand,
   hammerAbilityCommand,
-  hammerCommand
+  hammerCommand,
+  effectCommand
 ];
 
 module.exports = { allCommands };
