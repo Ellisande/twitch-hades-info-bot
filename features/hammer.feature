@@ -33,8 +33,7 @@ Feature: Ask the bot about deadulus hammer abilities
         And a channel {sneakyteak}
         When the user says to the bot {!hammer fists}
         Then the bot responds with {Fists hammer upgrades:}
-        And the bot responds with {[rolling knuckle] [flying
-    cutter] [quick cutter] [concentrated knuckle] [draining cutter] [long knuckle] [explosive upper] [breaching cross]}
+        And the bot responds with {[rolling knuckle] [flying cutter] [quick cutter] [concentrated knuckle] [draining cutter] [long knuckle] [explosive upper] [breaching cross]}
 
 
     Scenario: User can ask about flurry slash
