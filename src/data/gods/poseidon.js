@@ -162,11 +162,11 @@ const hydraulicMight = {
   name: "Hydraulic Might",
   type: OTHER,
   info: (value) =>
-    `Your Attack and Special are stronger the first ${value} seconds in Encounters`,
+    `Your Attack and Special are ${value} strong the first 5 seconds in Encounters`,
   values: {
     [COMMON]: { 1: "0" },
-    [RARE]: { 1: "5" },
-    [EPIC]: { 1: "0" },
+    [RARE]: { 1: "0" },
+    [EPIC]: { 1: "217%" },
   },
 };
 
