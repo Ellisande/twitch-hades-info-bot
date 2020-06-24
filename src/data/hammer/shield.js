@@ -77,7 +77,7 @@ const empoweringFlight = {
 };
 
 const unyieldingDefense = {
-  name: "Unuielding Defense",
+  name: "Unyielding Defense",
   description:
     "After using your Naegling's Board Cast your are Sturdy for 3 seconds",
   exclusives: [],
