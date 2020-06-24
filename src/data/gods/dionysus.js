@@ -108,6 +108,27 @@ const cast = {
   },
 };
 
+const trippyFlare = {
+  name: "Trippy Flare",
+  type: OTHER,
+  info: (value) =>
+    `Your Cast damages foes around you for ${value} leaving behind Festive Fog`,
+  values: {
+    [COMMON]: {
+      1: 120,
+    },
+    [RARE]: {
+      1: 0,
+    },
+    [EPIC]: {
+      1: 0,
+    },
+    [HEROIC]: {
+      1: 0,
+    },
+  },
+};
+
 const revenge = {
   name: "None",
   type: REVENGE,
@@ -280,6 +301,7 @@ const abilities = {
   "exclusive access": exclusiveAccess,
   "black out": blackOut,
   "strong drink": strongDrink,
+  "trippy flare": trippyFlare,
 };
 
 const base = {
