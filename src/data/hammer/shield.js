@@ -76,6 +76,13 @@ const empoweringFlight = {
   exclusives: [],
 };
 
+const unyieldingDefense = {
+  name: "Unuielding Defense",
+  description:
+    "After using your Naegling's Board Cast your are Sturdy for 3 seconds",
+  exclusives: [],
+};
+
 const formatter = hammerFormatter(weaponNameString);
 
 const shieldHammerAbilities = [
@@ -91,6 +98,7 @@ const shieldHammerAbilities = [
   chargedFlight,
   dashingFlight,
   empoweringFlight,
+  unyieldingDefense,
 ].map(formatter);
 
 module.exports = {
