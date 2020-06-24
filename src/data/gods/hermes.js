@@ -160,7 +160,7 @@ const sideHustle = {
   values: {
     [COMMON]: { 1: "10" },
     [RARE]: { 1: "0" },
-    [EPIC]: { 1: "0" },
+    [EPIC]: { 1: "16" },
   },
 };
 
