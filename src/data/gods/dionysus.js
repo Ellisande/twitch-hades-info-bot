@@ -133,8 +133,8 @@ const strongDrink = {
     `Using a Fountain restores all health and gives you ${value} bonus damage.`,
   values: {
     [COMMON]: { 1: "3%" },
-    [RARE]: { 1: `0%` },
-    [EPIC]: { 1: `0%` },
+    [RARE]: { 1: `4%` },
+    [EPIC]: { 1: `5%` },
   },
 };
 
