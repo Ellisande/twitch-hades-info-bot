@@ -288,6 +288,14 @@ const iceWine = {
   },
 };
 
+const stubbornRoots = {
+  name: "Stubborn Roots",
+  type: DUO,
+  info: (value) =>
+    `While you have no Death Defiance, you recover ${value} health every 0.8 seconds`,
+  values: { [DUO]: { 1: 1 } },
+};
+
 const abilities = {
   attack,
   special,
@@ -306,6 +314,7 @@ const abilities = {
   crystalClarity,
   blizzardShot,
   iceWine,
+  stubbornRoots,
 };
 
 const base = {
