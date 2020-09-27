@@ -43,14 +43,24 @@ const cast = {
       1: 8,
     },
     [RARE]: {
-      1: 9,
+      1: 9.2,
     },
     [EPIC]: {
-      1: 10,
+      1: 10.4,
     },
     [HEROIC]: {
-      1: 11,
+      1: 11.6,
     },
+  },
+};
+
+const icyFlare = {
+  name: "Icy Flare",
+  type: OTHER,
+  info: (value) =>
+    `Your Cast damages foes around you for ${value} damage and inflicts Chill`,
+  values: {
+    [COMMON]: { 1: 70 },
   },
 };
 
@@ -61,16 +71,16 @@ const dash = {
     `Your Dash shoots a gust ahead for ${value} damage that inflicts Chill`,
   values: {
     [COMMON]: {
-      1: 10,
-    },
-    [RARE]: {
       1: 15,
     },
+    [RARE]: {
+      1: 22.5,
+    },
     [EPIC]: {
-      1: 20,
+      1: 30,
     },
     [HEROIC]: {
-      1: 25,
+      1: 37.5,
     },
   },
 };
@@ -81,9 +91,12 @@ const revenge = {
   info: () =>
     `After you take damage, deal ${value} damage and completely Chill your foe.`,
   values: {
+    [COMMON]: { 1: 10 },
     [RARE]: {
       1: 15,
     },
+    [EPIC]: { 1: 20 },
+    [HEROIC]: { 1: 25 },
   },
 };
 
@@ -104,7 +117,7 @@ const aid = {
       1: 12,
     },
     [HEROIC]: {
-      1: 0,
+      1: 13,
     },
   },
 };
@@ -116,16 +129,16 @@ const arcticBlast = {
     `Applying 10 stacks of Chill causes a blast for ${value} damage, clearing the effect.`,
   values: {
     [COMMON]: {
-      1: 100,
+      1: 80,
     },
     [RARE]: {
-      1: 120,
+      1: 100,
     },
     [EPIC]: {
-      1: 140,
+      1: 120,
     },
     [HEROIC]: {
-      1: 160,
+      1: 140,
     },
   },
 };
@@ -140,13 +153,13 @@ const nourishedSoul = {
       1: 30,
     },
     [RARE]: {
-      1: 32,
+      1: 32.25,
     },
     [EPIC]: {
-      1: 35,
+      1: 34.5,
     },
     [HEROIC]: {
-      1: 38,
+      1: 36.75,
     },
   },
 };
@@ -236,6 +249,18 @@ const killingFreeze = {
   },
 };
 
+const glacialGlare = {
+  name: "Glacial Glare",
+  type: OTHER,
+  info: (value) => `Your Cast fires ${value} seconds longer and inflicts Chill`,
+  values: {
+    [COMMON]: { 1: 2 },
+    [RARE]: { 1: 2.4 },
+    [EPIC]: { 1: 2.8 },
+    [HEROIC]: { 1: 3.2 },
+  },
+};
+
 const winterHarvest = {
   name: "Winter Harvest",
   type: OTHER,
@@ -274,7 +299,7 @@ const blizzardShot = {
   info: (value) =>
     `Your Cast moves slowly, piercing foes and firing shards around it for ${value} damage`,
   values: {
-    [DUO]: { 1: 40 },
+    [DUO]: { 1: 20 },
   },
 };
 
@@ -282,9 +307,9 @@ const iceWine = {
   name: "Ice Wine",
   type: OTHER,
   info: (value) =>
-    `After a brief delay your Cast bursts and damages nearby foes for ${value}% more damage.`,
+    `Your Cast blasts an area with freezing Festive Fog and inflicts Chill. Increases blast damage by ${value}%`,
   values: {
-    [DUO]: { 1: 50 },
+    [DUO]: { 1: 30 },
   },
 };
 
@@ -294,6 +319,24 @@ const stubbornRoots = {
   info: (value) =>
     `While you have no Death Defiance, you recover ${value} health every 0.8 seconds`,
   values: { [DUO]: { 1: 1 } },
+};
+
+const coldEmbrace = {
+  name: "Cold Embrace",
+  type: DUO,
+  info: (value) =>
+    `Your Cast crystal fires its beam directly at your for 4 additional seconds and increases cast damage by ${value}%`,
+  values: {
+    [DUO]: { 1: 30 },
+  },
+};
+
+const freezingVortex = {
+  name: "Freezing Vortex",
+  type: OTHER,
+  info: (value) =>
+    `Your Cast inflicts Chill, but is ${value}% smaller and moves slower`,
+  [DUO]: { 1: -15 },
 };
 
 const abilities = {
@@ -315,6 +358,10 @@ const abilities = {
   blizzardShot,
   iceWine,
   stubbornRoots,
+  icyFlare,
+  glacialGlare,
+  coldEmbrace,
+  freezingVortex,
 };
 
 const base = {
