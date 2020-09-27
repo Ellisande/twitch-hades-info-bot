@@ -246,7 +246,7 @@ const sweetNectar = {
 
 const partingShot = {
   name: "Parting Shot",
-  type: DUO,
+  type: OTHER,
   info: (value) =>
     `Your Cast gains any bonuses you have for striking foes from behind and gains ${value}% bonus backstab damage.`,
   values: {
@@ -256,7 +256,7 @@ const partingShot = {
 
 const smolderingAir = {
   name: "Smoldering Air",
-  type: DUO,
+  type: OTHER,
   info: (value) => `Your God Gauge charges up ${value}, but is capped at 25%`,
   values: {
     [DUO]: { 1: "1% (every 0.2 sec" },
@@ -265,7 +265,7 @@ const smolderingAir = {
 
 const coldEmbrace = {
   name: "Cold Embrace",
-  type: DUO,
+  type: OTHER,
   info: (value) =>
     `Your Cast crystal fires its beam directly at your for 4 additional seconds and increases cast damage by ${value}%`,
   values: {

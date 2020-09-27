@@ -315,7 +315,7 @@ const iceWine = {
 
 const stubbornRoots = {
   name: "Stubborn Roots",
-  type: DUO,
+  type: OTHER,
   info: (value) =>
     `While you have no Death Defiance, you recover ${value} health every 0.8 seconds`,
   values: { [DUO]: { 1: 1 } },
@@ -323,7 +323,7 @@ const stubbornRoots = {
 
 const coldEmbrace = {
   name: "Cold Embrace",
-  type: DUO,
+  type: OTHER,
   info: (value) =>
     `Your Cast crystal fires its beam directly at your for 4 additional seconds and increases cast damage by ${value}%`,
   values: {
