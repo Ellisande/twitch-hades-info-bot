@@ -20,10 +20,10 @@ const attack = {
   info: (value) => `Your Attack is ${value} faster`,
   values: {
     [COMMON]: {
-      1: "12-13%",
+      1: "10%",
     },
     [RARE]: {
-      1: "21%",
+      1: "20%",
     },
     [EPIC]: {
       1: "30%",
@@ -37,10 +37,10 @@ const special = {
   info: (value) => `Your Special is ${value} faster`,
   values: {
     [COMMON]: {
-      1: "12-13%",
+      1: "10%",
     },
     [RARE]: {
-      1: "21%",
+      1: "20%",
     },
     [EPIC]: {
       1: "30%",
@@ -49,19 +49,21 @@ const special = {
 };
 
 const cast = {
-  name: "Rapid Cast",
+  name: "Flurry Cast",
   type: CAST,
-  info: (value) => `Your Cast is ${value} faster and fully automatic`,
+  info: (value) =>
+    `Hold Cast to fire in rapid succession with ${value}% faster cast speed`,
   values: {
     [COMMON]: {
-      1: "20%",
+      1: 20,
     },
     [RARE]: {
-      1: "60%",
+      1: 40,
     },
     [EPIC]: {
-      1: "88%",
+      1: 60,
     },
+    [HEROIC]: { 1: 80 },
   },
 };
 
@@ -71,28 +73,30 @@ const dash = {
   info: (value) => `You can dash ${value} additional times`,
   values: {
     [COMMON]: {
-      1: 15,
+      1: 1,
     },
     [RARE]: {
-      1: `${15 * 1.3}-${15 * 1.5}`,
+      1: 2,
     },
     [EPIC]: {
-      1: `${15 * 1.8}-${15 * 2.0}`,
+      1: 3,
     },
     [HEROIC]: {
-      1: `${15 * 2.3}-${15 * 2.5}`,
+      1: 4,
     },
   },
 };
 
-const driftDash = {
-  name: "Drift Dash",
+const hyperSprint = {
+  name: "Hyper Sprint",
   type: OTHER,
-  info: (value) => `After you Dash, gain +100% move speed for ${value} seconds`,
+  info: (value) =>
+    `After you Dash, briefly becomes strudy and move 100% faster for ${value} seconds`,
   values: {
-    [COMMON]: { 1: 0.6 },
-    [RARE]: { 1: 0.75 },
-    [EPIC]: { 1: 0.9 },
+    [COMMON]: { 1: 0.5 },
+    [RARE]: { 1: 0.6 },
+    [EPIC]: { 1: 0.7 },
+    [HEROIC]: { 1: 0.9 },
   },
 };
 
@@ -115,6 +119,7 @@ const greaterHaste = {
     [COMMON]: { 1: "20%" },
     [RARE]: { 1: "30%" },
     [EPIC]: { 1: "40%" },
+    [HEROIC]: { 1: "49%" },
   },
 };
 
@@ -124,9 +129,9 @@ const quickRecovery = {
   info: (value) =>
     `After you damage, quickly Dash to recover up to ${value} of health lost`,
   values: {
-    [COMMON]: { 1: "20%" },
-    [RARE]: { 1: "30%" },
-    [EPIC]: { 1: "40%" },
+    [COMMON]: { 1: "30%" },
+    [RARE]: { 1: "40%" },
+    [EPIC]: { 1: "50%" },
   },
 };
 
@@ -135,9 +140,10 @@ const greaterEvasion = {
   type: OTHER,
   info: (value) => `Your have ${value} chance to dodge`,
   values: {
-    [COMMON]: { 1: "15%" },
-    [RARE]: { 1: `20%` },
-    [EPIC]: { 1: `25%` },
+    [COMMON]: { 1: "10%" },
+    [RARE]: { 1: `15%` },
+    [EPIC]: { 1: `20%` },
+    [HEROIC]: { 1: "25%" },
   },
 };
 
@@ -150,6 +156,7 @@ const secondWind = {
     [COMMON]: { 1: "30%" },
     [RARE]: { 1: "37%" },
     [EPIC]: { 1: "45%" },
+    [HEROIC]: { 1: "52.5%" },
   },
 };
 
@@ -159,8 +166,9 @@ const sideHustle = {
   info: (value) => `Each time you enter a Chamber gain ${value} money`,
   values: {
     [COMMON]: { 1: "10" },
-    [RARE]: { 1: "0" },
+    [RARE]: { 1: "13" },
     [EPIC]: { 1: "16" },
+    [HEROIC]: { 1: "19" },
   },
 };
 
@@ -197,6 +205,56 @@ const revenge = {
   values: {},
 };
 
+const quickReload = {
+  name: "Quick Reload",
+  type: OTHER,
+  info: (value) => `Foes drop Casts stuck in them ${value} seconds faster`,
+  values: {
+    [COMMON]: { 1: 5 },
+  },
+};
+
+const autoReload = {
+  name: "Auto Reload",
+  type: OTHER,
+  info: (value) => `Your regenerate Casts ${value} faster`,
+  values: {
+    [COMMON]: { 1: 2.75 },
+  },
+};
+
+const quickFavor = {
+  name: "Quick Favor",
+  type: OTHER,
+  info: (value) =>
+    `Your God Gauge charges up automatically at a rate of ${value}% every 2 seconds.`,
+  values: {
+    [COMMON]: { 1: 1 },
+  },
+};
+
+const rushDelivery = {
+  name: "Rush Delivery",
+  type: OTHER,
+  info: (value) =>
+    `You deal bonus damage based on ${value}% of any bonus move speed`,
+  values: {
+    [COMMON]: { 1: 50 },
+    [RARE]: { 1: 75 },
+    [EPIC]: { 1: 100 },
+  },
+};
+
+const badNews = {
+  name: "Bad News",
+  type: OTHER,
+  info: (value) =>
+    `Your Cast deals ${value}% bonus damage to foes without a Cast stuck in them.`,
+  values: {
+    [LEGENDARY]: { 1: 50 },
+  },
+};
+
 const abilities = {
   attack,
   special,
@@ -204,7 +262,7 @@ const abilities = {
   revenge,
   cast,
   aid: secondWind,
-  "drift dash": driftDash,
+  hyperSprint,
   "passing through": passingThrough,
   "greater haste": greaterHaste,
   "quick recovery": quickRecovery,
@@ -213,6 +271,10 @@ const abilities = {
   "greater recall": greaterRecall,
   "side hustle": sideHustle,
   "rush delivery": rushDelivery,
+  quickReload,
+  autoReload,
+  quickFavor,
+  badNews,
 };
 
 const base = {
