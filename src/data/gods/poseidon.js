@@ -9,7 +9,10 @@ const {
   OTHER,
   AID,
 } = require("./abilityTypes");
-const { calculatePercentage } = require("../../utils/calculateUtils");
+const {
+  calculatePercentage,
+  calculateFlat,
+} = require("../../utils/calculateUtils");
 const { mapValues, toArray } = require("lodash");
 
 const info = "Poseidon, God of the Sea. His powers knock enemies away.";
@@ -62,13 +65,13 @@ const dash = {
       1: 35,
     },
     [RARE]: {
-      1: `${35 * 1.3}-${35 * 1.5}`,
+      1: 42,
     },
     [EPIC]: {
-      1: `${35 * 1.8}-70`,
+      1: 49,
     },
     [HEROIC]: {
-      1: `${35 * 2.3}-${35 * 2.5}`,
+      1: 56,
     },
   },
 };
@@ -86,9 +89,9 @@ const typhoonsFury = {
   info: (value) =>
     `You deal ${value} more damage when slamming foes into barriers`,
   values: {
-    [COMMON]: { 1: "100%" },
-    [RARE]: { 1: "130-150%" },
-    [EPIC]: { 1: "180-200%" },
+    [COMMON]: { 1: "200%" },
+    [RARE]: { 1: "250%" },
+    [EPIC]: { 1: "300%" },
   },
 };
 
@@ -97,11 +100,7 @@ const breakingWave = {
   type: OTHER,
   info: (value) =>
     `Slamming foes into walls or corners creates a water blast in the area that deals ${value} damage`,
-  values: {
-    [COMMON]: { 1: 100 },
-    [RARE]: { 1: "130-150" },
-    [EPIC]: { 1: "200-250" },
-  },
+  values: calculateFlat(100, true),
 };
 
 const wavePounding = {
@@ -110,9 +109,10 @@ const wavePounding = {
   info: (value) =>
     `Your Boons with knock-away effect deal ${value}% bonus damage to Bosses.`,
   values: {
-    [COMMON]: { 1: 0 },
-    [RARE]: { 1: 10 },
-    [EPIC]: { 1: 0 },
+    [COMMON]: { 1: 20 },
+    [RARE]: { 1: 30 },
+    [EPIC]: { 1: 40 },
+    [HEROIC]: { 1: 50 },
   },
 };
 
@@ -120,11 +120,9 @@ const razorShoals = {
   name: "Razor Shoals",
   type: OTHER,
   info: (value) =>
-    `Your knock-away effects make foes Rupture for ${value} of impulse distance`,
+    `Your Boons with knock-away effects also Rupture for ${value} every 0.2 seconds`,
   values: {
-    [COMMON]: { 1: "5%" },
-    [RARE]: { 1: "7.5%" },
-    [EPIC]: { 1: "10%" },
+    [COMMON]: { 1: "10" },
   },
 };
 
@@ -137,6 +135,7 @@ const oceansBounty = {
     [COMMON]: { 1: "50%" },
     [RARE]: { 1: "55%" },
     [EPIC]: { 1: "60%" },
+    [HEROIC]: { 1: "65%" },
   },
 };
 
@@ -153,8 +152,9 @@ const boilingPoint = {
     `Your Wrath Gauge charges ${value} faster when you take damage`,
   values: {
     [COMMON]: { 1: "40%" },
-    [RARE]: { 1: "75%" },
-    [EPIC]: { 1: "100%" },
+    [RARE]: { 1: "50%" },
+    [EPIC]: { 1: "60%" },
+    [HEROIC]: { 1: "70%" },
   },
 };
 
@@ -162,11 +162,19 @@ const hydraulicMight = {
   name: "Hydraulic Might",
   type: OTHER,
   info: (value) =>
-    `Your Attack and Special are ${value} strong the first 5 seconds in Encounters`,
+    `Your Attack and Special are ${value} stronger for the first 10 seconds in Encounters`,
   values: {
-    [COMMON]: { 1: "0" },
-    [RARE]: { 1: "0" },
-    [EPIC]: { 1: "217%" },
+    [COMMON]: { 1: "50" },
+  },
+};
+
+const ripCurrent = {
+  name: "Rip Current",
+  type: OTHER,
+  info: (value) =>
+    `Your Call pulls in foes and the effects last ${value} seconds longer`,
+  values: {
+    [COMMON]: { 1: 1 },
   },
 };
 
@@ -174,12 +182,12 @@ const poseidonsAid = {
   name: "Poseidon's Aid",
   type: AID,
   info: (value) =>
-    `Your Call makes you surge into foes dealing ${value} damage while Invulnerable for 1.5 Sec. Max gauge: 12 second duration.`,
+    `Your Call makes you surge into foes dealing ${value} damage while Invulnerable for 1.2 Sec. Max gauge: 7.2 second duration.`,
   values: {
-    [COMMON]: { 1: 150 },
-    [RARE]: { 1: 180 },
-    [EPIC]: { 1: 210 },
-    [HEROIC]: { 1: 240 },
+    [COMMON]: { 1: 250 },
+    [RARE]: { 1: 300 },
+    [EPIC]: { 1: 350 },
+    [HEROIC]: { 1: 400 },
   },
 };
 
@@ -215,8 +223,11 @@ const sweetNectar = {
 const secondWave = {
   name: "Second Wave",
   type: OTHER,
-  info: () => `Your knock-away effects show foes a second time after the first`,
-  values: {},
+  info: (value) =>
+    `Your Boons with knock-away effects shove foes ${value} more times`,
+  values: {
+    [LEGENDARY]: { 1: 1 },
+  },
 };
 
 const hugeCatch = {
@@ -226,6 +237,44 @@ const hugeCatch = {
     `You have a ${value}% greater chance to find a Fishing Point in each Chamber`,
   values: {
     [LEGENDARY]: { 1: 20 },
+  },
+};
+
+const mirageShot = {
+  name: "Mirage Shot",
+  type: OTHER,
+  info: (value) =>
+    `Your Cast fires a second projectile which deals ${value}% reduced base damage`,
+  values: {
+    [DUO]: { 1: "30%" },
+  },
+};
+
+const blizzardShot = {
+  name: "Blizzard Shot",
+  type: OTHER,
+  info: (value) =>
+    `Your Cast moves slowly, piercing foes and firing shards around it for ${value} damage`,
+  values: {
+    [DUO]: { 1: 20 },
+  },
+};
+
+const curseOfDrowning = {
+  name: "Curse of Drowning",
+  type: OTHER,
+  info: (value) =>
+    `Your Flood Shot becomes a pulse that damages foes around you for ${value}`,
+  [DUO]: { 1: 3 },
+};
+
+const unshakeableMettle = {
+  name: "Unshakable Mettle",
+  type: OTHER,
+  info: (value) =>
+    `You cannot be stunned and resist ${value}% damage from Bosses`,
+  values: {
+    [DUO]: 10,
   },
 };
 
@@ -249,6 +298,11 @@ const abilities = {
   "second wave": secondWave,
   "huge catch": hugeCatch,
   "hydraulic might": hydraulicMight,
+  ripCurrent,
+  mirageShot,
+  blizzardShot,
+  unshakeableMettle,
+  curseOfDrowning,
 };
 
 const base = {
