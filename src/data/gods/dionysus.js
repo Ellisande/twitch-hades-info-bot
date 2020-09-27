@@ -164,11 +164,7 @@ const peerPressure = {
   type: OTHER,
   info: (value) =>
     `Poison-afflicted foes contaminate other nearby foes every 4 seconds for ${value} poison`,
-  values: {
-    [COMMON]: { 1: 2 },
-    [RARE]: { 1: `${2 * 1.3}-${2 * 1.5}` },
-    [EPIC]: { 1: `4-5` },
-  },
+  values: calculateFlat(4, true),
 };
 
 const highTolerance = {
@@ -188,7 +184,7 @@ const afterParty = {
   info: (value) =>
     `If your health is lower than ${value} after Encounters restore to the threshold`,
   values: {
-    [COMMON]: { 1: "20%" },
+    [COMMON]: { 1: "30%" },
     [RARE]: { 1: "38%" },
     [EPIC]: { 1: "45%" },
     [HEROIC]: { 1: "60%" },
@@ -227,6 +223,7 @@ const premiumVintage = {
     [COMMON]: { 1: 20 },
     [RARE]: { 1: 25 },
     [EPIC]: { 1: 30 },
+    [HEROIC]: { 1: 35 },
   },
 };
 
@@ -234,12 +231,12 @@ const dionysussAid = {
   name: "Dionysus's Aid",
   type: AID,
   info: (value) =>
-    `Your Call inflicts Poison dealing ${value} damage to foes all around you for 1.5 Sec. Full gauge: 12 second duration.`,
+    `Your Call inflicts Poison dealing ${value} damage to foes all around you for 1.5 Sec. Full gauge: 9 second duration.`,
   values: {
-    [COMMON]: { 1: 10 },
-    [RARE]: { 1: 12 },
-    [EPIC]: { 1: 14 },
-    [HEROIC]: { 1: 16 },
+    [COMMON]: { 1: 15 },
+    [RARE]: { 1: 16.5 },
+    [EPIC]: { 1: 18 },
+    [HEROIC]: { 1: 19.5 },
   },
 };
 
@@ -249,7 +246,7 @@ const scintillatingFeast = {
   info: (value) =>
     `Your Festive Fog effects also deal ${value} lightning damage periodically`,
   values: {
-    [DUO]: { 1: 80 },
+    [DUO]: { 1: 60 },
   },
 };
 
@@ -257,7 +254,7 @@ const lowTolerance = {
   name: "Low Tolerance",
   type: OTHER,
   info: (value) =>
-    `Your Blight Wine effects stack ${value} more times against Weak foes`,
+    `Your Hangover effects stack ${value} more times against Weak foes`,
   values: {
     [DUO]: { 1: 3 },
   },
@@ -278,7 +275,43 @@ const blackOut = {
   info: (value) =>
     `Poison-afflicted foes take ${value} bonus damage in Festive Fog`,
   values: {
-    [LEGENDARY]: { 1: "100%" },
+    [LEGENDARY]: { 1: "60%" },
+  },
+};
+
+const iceWine = {
+  name: "Ice Wine",
+  type: OTHER,
+  info: (value) =>
+    `Your Cast blasts an area with freezing Festive Fog and inflicts Chill. Increases blast damage by ${value}%`,
+  values: {
+    [DUO]: { 1: 30 },
+  },
+};
+
+const splittingHeadache = {
+  name: "Splitting Headache",
+  type: OTHER,
+  info: (value) =>
+    `Hangover-afflicted foes are ${value}% more likely to take Critical damage`,
+  values: {
+    [DUO]: { 1: 1.5 },
+  },
+};
+
+const curseOfNausea = {
+  name: "Curse of Nausea",
+  type: OTHER,
+  info: (value) => `Your Hangover effects deal damage every ${value} seconds`,
+  [DUO]: { 1: 0.35 },
+};
+
+const calculatedRisk = {
+  name: "Calculated Risk",
+  type: OTHER,
+  info: (value) => `Your foes' ranged-attack projectiles are ${value}% slower`,
+  values: {
+    [DUO]: 40,
   },
 };
 
@@ -302,6 +335,10 @@ const abilities = {
   "black out": blackOut,
   "strong drink": strongDrink,
   "trippy flare": trippyFlare,
+  "ice wine": iceWine,
+  "splitting headache": splittingHeadache,
+  "curse of nausea": curseOfNausea,
+  "calculated risk": calculatedRisk,
 };
 
 const base = {
