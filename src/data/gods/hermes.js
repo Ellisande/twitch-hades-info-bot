@@ -172,18 +172,6 @@ const sideHustle = {
   },
 };
 
-const rushDelivery = {
-  name: "Rush Delivery",
-  type: OTHER,
-  info: (value) =>
-    `You deal ${value} of your bonus move speed as extra damage.`,
-  values: {
-    [COMMON]: { 1: "50%" },
-    [RARE]: { 1: "0" },
-    [EPIC]: { 1: "0" },
-  },
-};
-
 const relativeSpeed = {
   name: "Relative Speed",
   type: OTHER,

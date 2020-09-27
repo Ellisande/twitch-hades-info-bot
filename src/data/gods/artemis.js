@@ -336,7 +336,6 @@ const abilities = {
   "hide breaker": hideBreaker,
   "clean kill": cleanKill,
   "exit wounds": exitWounds,
-  "dual shot": dualShot,
   "hunter instinct": hunterInstinct,
   "hunters mark": huntersMark,
   "deadly reversal": deadlyReversal,
