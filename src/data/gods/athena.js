@@ -54,7 +54,17 @@ const cast = {
   },
 };
 
-const dashBase = 15;
+const phalanxFlare = {
+  name: "Phalanx Flare",
+  type: OTHER,
+  info: (value) =>
+    `Your Cast damages foes around you for ${value} and can Deflect`,
+  values: {
+    [COMMON]: { 1: 80 },
+  },
+};
+
+const dashBase = 10;
 const dash = {
   name: "Divine Dash",
   type: DASH,
@@ -66,11 +76,7 @@ const brilliantRiposte = {
   name: "Brilliant Riposte",
   type: OTHER,
   info: (value) => `When you Deflect attacks they deal ${value} more damage`,
-  values: {
-    [COMMON]: { 1: "20%" },
-    [RARE]: { 1: `${20 * 1.3}-${20 * 1.5}%` },
-    [EPIC]: { 1: `${20 * 2}-${20 * 2.5}%` },
-  },
+  values: calculatePercentage(80, false),
 };
 
 const sureFooting = {
@@ -78,25 +84,29 @@ const sureFooting = {
   type: OTHER,
   info: (value) => `Resist ${value} damage from Traps`,
   values: {
-    [COMMON]: { 1: "40%" },
-    [RARE]: { 1: "50%" },
-    [EPIC]: { 1: "60%" },
+    [COMMON]: { 1: "60%" },
+    [RARE]: { 1: "75%" },
+    [EPIC]: { 1: "90%" },
+    [HEROIC]: { 1: "95%" },
   },
 };
 
 const bronzeSkin = {
   name: "Bronze Skin",
   type: OTHER,
-  info: (value) => `Resist ${value} damage from foes's attack`,
+  info: (value) => `Resist ${value}% damage from foes's attack`,
   values: {
     [COMMON]: {
-      1: "5%-10%",
+      1: 5,
     },
     [RARE]: {
-      1: `${5 * 1.3}%-${10 * 1.5}%`,
+      1: 7.5,
     },
     [EPIC]: {
-      1: `${(5 * 0.18).toFixed(0)}%-${10 * 2.0}%`,
+      1: 10,
+    },
+    [HEROIC]: {
+      1: 12.5,
     },
   },
 };
@@ -116,6 +126,9 @@ const revenge = {
     [EPIC]: {
       1: `${30 * 1.8}-60`,
     },
+    [HEROIC]: {
+      1: `${30 * 2.3}-${30 * 2.5}`,
+    },
   },
 };
 
@@ -128,6 +141,7 @@ const deathlessStand = {
     [COMMON]: { 1: 2 },
     [RARE]: { 1: 2.5 },
     [EPIC]: { 1: 3 },
+    [HEROIC]: { 1: 3.5 },
   },
 };
 
@@ -138,8 +152,9 @@ const lastStand = {
     `Death Defiance restores ${value} more health than usual. Gain 1 charge now.`,
   values: {
     [COMMON]: { 1: "10%" },
-    [RARE]: { 1: "15%" },
-    [EPIC]: { 1: "20%" },
+    [RARE]: { 1: "12%" },
+    [EPIC]: { 1: "14%" },
+    [HEROIC]: { 1: "16%" },
   },
 };
 
@@ -150,8 +165,9 @@ const blindingFlash = {
     `Your attacks that Deflect also make foes Exposed for 5 seconds increasing backstab damage by ${value}`,
   values: {
     [COMMON]: { 1: "50%" },
-    [RARE]: { 1: `${50 * 1.3}-${50 * 1.8}%` },
-    [EPIC]: { 1: `${50 * 1.8}-${50 * 2}%` },
+    [RARE]: { 1: "62.5%" },
+    [EPIC]: { 1: "75%" },
+    [HEROIC]: { 1: "87.5%" },
   },
 };
 
@@ -164,6 +180,7 @@ const proudBearing = {
     [COMMON]: { 1: "20%" },
     [RARE]: { 1: "25%" },
     [EPIC]: { 1: "30%" },
+    [HEROIC]: { 1: "40%" },
   },
 };
 
@@ -171,12 +188,12 @@ const athenasAid = {
   name: "Athena's Aid",
   type: AID,
   info: (value) =>
-    `Your Call makes you invulnerable for ${value} seconds and Deflect all attacks`,
+    `Your Call makes you invulnerable for ${value} seconds and Deflect all attacks. Max gauage: 6x duration`,
   values: {
-    [COMMON]: { 1: 1 },
-    [RARE]: { 1: 1.2 },
-    [EPIC]: { 1: 1.4 },
-    [HEROIC]: { 1: 1.6 },
+    [COMMON]: { 1: 1.5 },
+    [RARE]: { 1: 1.65 },
+    [EPIC]: { 1: 1.8 },
+    [HEROIC]: { 1: 1.95 },
   },
 };
 
@@ -184,9 +201,9 @@ const mercifulEnd = {
   name: "Merciful End",
   type: OTHER,
   info: (value) =>
-    `Your attacks that can Deflect immediately active Doom effects for ${value} damage`,
+    `Your attacks that can Deflect immediately active Doom effects for ${value} additional damage`,
   values: {
-    [DUO]: { 1: 90 },
+    [DUO]: { 1: 40 },
   },
 };
 
@@ -194,7 +211,7 @@ const deadlyReversal = {
   name: "Deadly Reversal",
   type: OTHER,
   info: (value) =>
-    `After you Deflect briefly gain +35% change to deal Critical damage for ${value} seconds`,
+    `After you Deflect briefly gain +20% change to deal Critical damage for ${value} seconds`,
   values: {
     [DUO]: { 1: 2 },
   },
@@ -206,7 +223,7 @@ const lightningPhalanx = {
   info: (value) =>
     `Your phalanx shot casts bounce between nearby foes ${value} times`,
   values: {
-    [DUO]: { 1: 5 },
+    [DUO]: { 1: 3 },
   },
 };
 
@@ -231,10 +248,39 @@ const divineProtection = {
 
 const stubbornRoots = {
   name: "Stubborn Roots",
-  type: DUO,
+  type: OTHER,
   info: (value) =>
     `While you have no Death Defiance, you recover ${value} health every 0.8 seconds`,
   values: { [DUO]: { 1: 1 } },
+};
+
+const partingShot = {
+  name: "Parting Shot",
+  type: OTHER,
+  info: (value) =>
+    `Your Cast gains any bonuses you have for striking foes from behind and gains ${value}% bonus backstab damage.`,
+  values: {
+    [DUO]: { 1: 35 },
+  },
+};
+
+const calculatedRisk = {
+  name: "Calculated Risk",
+  type: OTHER,
+  info: (value) => `Your foes' ranged-attack projectiles are ${value}% slower`,
+  values: {
+    [DUO]: 40,
+  },
+};
+
+const unshakeableMettle = {
+  name: "Unshakable Mettle",
+  type: OTHER,
+  info: (value) =>
+    `You cannot be stunned and resist ${value}% damage from Bosses`,
+  values: {
+    [DUO]: 10,
+  },
 };
 
 const abilities = {
@@ -257,6 +303,10 @@ const abilities = {
   "spent spirit": spentSpirit,
   "divine protection": divineProtection,
   "stubborn roots": stubbornRoots,
+  "phalanx flare": phalanxFlare,
+  "parting shot": partingShot,
+  "calculated risk": calculatedRisk,
+  "unshakeable mettle": unshakeableMettle,
 };
 
 const base = {
