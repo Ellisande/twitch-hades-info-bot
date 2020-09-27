@@ -62,6 +62,7 @@ const passionFlare = {
   info: (value) =>
     `Your Cast damages foes around you for ${value} and inflicts Weak.`,
   values: {
+    [COMMON]: 80,
     [RARE]: { 1: 96 },
   },
 };
@@ -108,20 +109,12 @@ const dyingLament = {
   values: calculateFlat(40, true),
 };
 
-const revengeMin = 20;
-const revengeMax = 25;
 const revenge = {
   name: "Wave of Despair",
   type: REVENGE,
   info: (value) =>
     `After you take damage, damage nearby fores for ${value} and turn them Weak`,
-  values: {
-    [COMMON]: {
-      1: `${revengeMin}-${revengeMax}`,
-    },
-    [RARE]: { 1: `${revengeMin * 1.3}-${revengeMax * 1.5}` },
-    [EPIC]: { 1: `${revengeMin * 2}-${(revengeMax * 2.2).toFixed(0)}` },
-  },
+  values: calculateFlat(50, true),
 };
 
 const differentLeague = {
@@ -168,6 +161,16 @@ const brokenResolve = {
   },
 };
 
+const blownKiss = {
+  name: "Blown Kiss",
+  type: OTHER,
+  info: (value) =>
+    `Your Cast shoots farther and is ${value}% stronger against undamaged foes`,
+  values: {
+    [COMMON]: 50,
+  },
+};
+
 const aidBase = 2500;
 const aphroditesAid = {
   name: "Aphrodite's Aid",
@@ -186,9 +189,9 @@ const unhealthyFixation = {
   name: "Unhealthy Fixation",
   type: OTHER,
   info: (value) =>
-    `Your Weak effects also have a ${value} chance to make foes Charmed for 4 seconds`,
+    `Your Weak effects also have a 15% chance to make foes Charmed for ${value} seconds`,
   values: {
-    [LEGENDARY]: { 1: "15%" },
+    [LEGENDARY]: { 1: 4 },
   },
 };
 
@@ -198,7 +201,7 @@ const curseOfLonging = {
   info: (value) =>
     `Your Doom effects continuously strike Weak foes for ${value} damage`,
   values: {
-    [DUO]: { 1: "25%" },
+    [DUO]: { 1: "50%" },
   },
 };
 
@@ -218,7 +221,7 @@ const heartRend = {
   info: (value) =>
     `Your Critical effects deal ${value} more damage to Weak foes`,
   values: {
-    [DUO]: { 1: "35%" },
+    [DUO]: { 1: "50%" },
   },
 };
 
@@ -238,6 +241,35 @@ const sweetNectar = {
     `Any Poms of Power you find are now ${value} level more effective`,
   values: {
     [DUO]: { 1: 1 },
+  },
+};
+
+const partingShot = {
+  name: "Parting Shot",
+  type: DUO,
+  info: (value) =>
+    `Your Cast gains any bonuses you have for striking foes from behind and gains ${value}% bonus backstab damage.`,
+  values: {
+    [DUO]: { 1: 35 },
+  },
+};
+
+const smolderingAir = {
+  name: "Smoldering Air",
+  type: DUO,
+  info: (value) => `Your God Gauge charges up ${value}, but is capped at 25%`,
+  values: {
+    [DUO]: { 1: "1% (every 0.2 sec" },
+  },
+};
+
+const coldEmbrace = {
+  name: "Cold Embrace",
+  type: DUO,
+  info: (value) =>
+    `Your Cast crystal fires its beam directly at your for 4 additional seconds and increases cast damage by ${value}%`,
+  values: {
+    [DUO]: { 1: 30 },
   },
 };
 
@@ -261,6 +293,10 @@ const abilities = {
   "spent spirit": spentSpirit,
   "sweet nectar": sweetNectar,
   "passion flare": passionFlare,
+  "blown kiss": blownKiss,
+  "parting shot": partingShot,
+  "smoldering air": smolderingAir,
+  "cold embrace": coldEmbrace,
 };
 
 const base = {
