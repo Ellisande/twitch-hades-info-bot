@@ -28,13 +28,13 @@ const attack = {
       1: 10,
     },
     [RARE]: {
-      1: 12,
+      1: 12.5,
     },
     [EPIC]: {
       1: 15,
     },
     [HEROIC]: {
-      1: 18,
+      1: 20,
     },
   },
 };
@@ -52,7 +52,7 @@ const special = {
       1: "37.5",
     },
     [EPIC]: {
-      1: "40",
+      1: "45",
     },
     [HEROIC]: {
       1: 60,
@@ -70,18 +70,28 @@ const cast = {
       1: 60,
     },
     [RARE]: {
-      1: 75,
+      1: 72,
     },
     [EPIC]: {
-      1: 90,
+      1: 84,
     },
     [HEROIC]: {
-      1: 105,
+      1: 96,
     },
   },
 };
 
-dashBase = 18;
+const thunderFlare = {
+  name: "Thunder Flare",
+  type: OTHER,
+  info: (value) =>
+    `Your Cast causes a lightning bolt to strike nearby foes for ${value} damage`,
+  values: {
+    [COMMON]: { 1: 60 },
+  },
+};
+
+dashBase = 10;
 const dash = {
   name: "Thunder Dash",
   type: DASH,
@@ -95,15 +105,7 @@ const revenge = {
   type: REVENGE,
   info: (value) =>
     `After you take damage, your foe is struck by lightning for ${value} damage`,
-  values: {
-    [COMMON]: {
-      1: "60-80",
-    },
-    [RARE]: {
-      1: "78-120",
-    },
-    [EPIC]: { 1: "108-160" },
-  },
+  values: calculateFlat(80, true),
 };
 
 const stormLightning = {
@@ -115,6 +117,7 @@ const stormLightning = {
     [COMMON]: { 1: 2 },
     [RARE]: { 1: 4 },
     [EPIC]: { 1: 6 },
+    [HEROIC]: { 1: 8 },
   },
 };
 
@@ -133,6 +136,9 @@ const highVoltage = {
     [EPIC]: {
       1: "84%",
     },
+    [HEROIC]: {
+      1: "95%",
+    },
   },
 };
 
@@ -145,6 +151,7 @@ const doubleStrike = {
     [COMMON]: { 1: "25%" },
     [RARE]: { 1: "30%" },
     [EPIC]: { 1: "35%" },
+    [HEROIC]: { 1: "40%" },
   },
 };
 
@@ -153,11 +160,7 @@ const staticDischarge = {
   type: OTHER,
   info: (value) =>
     `Your lighting effect also make foes Jolted. Jolted: when an enemy attacks they take ${value} damage`,
-  values: {
-    [COMMON]: { 1: "50-60" },
-    [RARE]: { 1: "65-90" },
-    [EPIC]: { 1: "90-120" },
-  },
+  values: calculateFlat(60, true),
 };
 
 const cloudedJudgement = {
@@ -166,9 +169,10 @@ const cloudedJudgement = {
   info: (value) =>
     `Your Wrath Gauge charges ${value} faster when you deal or take damage`,
   values: {
-    [COMMON]: { 1: "15%" },
-    [RARE]: { 1: "38%" },
-    [EPIC]: { 1: "61%" },
+    [COMMON]: { 1: "10%" },
+    [RARE]: { 1: "12%" },
+    [EPIC]: { 1: "14%" },
+    [HEROIC]: { 1: "16%" },
   },
 };
 
@@ -177,9 +181,23 @@ const billowingStrength = {
   type: OTHER,
   info: (value) => `After using Call, you deal ${value} more damage for 5 Sec.`,
   values: {
-    [COMMON]: { 1: "30%" },
-    [RARE]: { 1: "37%" },
-    [EPIC]: { 1: "45%" },
+    [COMMON]: { 1: "20%" },
+    [RARE]: { 1: "22%" },
+    [EPIC]: { 1: "24%" },
+    [HEROIC]: { 1: "26%" },
+  },
+};
+
+const lightningReflexes = {
+  name: "Lightning Reflexes",
+  type: OTHER,
+  info: (value) =>
+    `After you Dash just before getting hit, a bolt strikes a nearby foe for ${value} damage`,
+  values: {
+    [COMMON]: { 1: 20 },
+    [RARE]: { 1: 30 },
+    [EPIC]: { 1: 40 },
+    [HEROIC]: { 1: 50 },
   },
 };
 
@@ -189,10 +207,7 @@ const zeusAid = {
   info: (value) =>
     `Your Call makes lightning strike nearby foes for ${value} damage repeatedly for 1.5 Sec. Max gauge: 15 second duration.`,
   values: {
-    [COMMON]: { 1: 80 },
-    [RARE]: { 1: 100 },
-    [EPIC]: { 1: 120 },
-    [HEROIC]: { 1: 140 },
+    [COMMON]: { 1: 50 },
   },
 };
 
@@ -242,7 +257,7 @@ const vengefulMood = {
   info: (value) =>
     `All of your Revenge attacks occur without taking damage every ${value} seconds`,
   values: {
-    [DUO]: { 1: `3.5` },
+    [DUO]: { 1: `3` },
   },
 };
 
@@ -266,6 +281,15 @@ const splittingBolt = {
   },
 };
 
+const smolderingAir = {
+  name: "Smoldering Air",
+  type: OTHER,
+  info: (value) => `Your God Gauge charges up ${value}, but is capped at 25%`,
+  values: {
+    [DUO]: { 1: "1% (every 0.2 sec" },
+  },
+};
+
 const abilities = {
   attack,
   special,
@@ -286,6 +310,9 @@ const abilities = {
   "vengeful mood": vengefulMood,
   "splitting bolt": splittingBolt,
   "cold fusion": coldFusion,
+  thunderFlare,
+  lightningReflexes,
+  smolderingAir,
 };
 
 const base = {
