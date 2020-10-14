@@ -3,5 +3,6 @@ module.exports = [
   "achillescodex",
   "oldmansethus",
   "miniminotvur",
-  "sneakyteak"
+  "sneakyteak",
+  "danelawton"
 ];
