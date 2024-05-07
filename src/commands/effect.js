@@ -1,9 +1,7 @@
 const { statuses } = require("../data/status");
-const { pactModifiers } = require("../data/pact");
-const { mirrorTalents } = require("../data/mirror");
 const { Command } = require("./command");
-const allEffects = [...statuses, ...pactModifiers, ...mirrorTalents];
-const effectCommandBase = allEffects.map(effect => effect.matcher);
+const allEffects = [...statuses]; //TODO: Add arcana, keepsakes
+const effectCommandBase = allEffects.map((effect) => effect.matcher);
 const effectCommandExp = RegExp(`^(${effectCommandBase.join("|")})$`, "i");
 
 const effectCommand = new Command({
@@ -13,7 +11,7 @@ const effectCommand = new Command({
   example: "weak",
   handler: ({ bot, channelId, commandMatches, logger }) => {
     const abilityName = commandMatches[1];
-    const currentAbility = allEffects.find(ability => {
+    const currentAbility = allEffects.find((ability) => {
       const matches = RegExp(ability.matcher, "i").test(abilityName);
       return matches;
     });
@@ -21,7 +19,7 @@ const effectCommand = new Command({
       return;
     }
     const message = bot.say(channelId, currentAbility.description);
-  }
+  },
 });
 
 module.exports = { effectCommand };

@@ -4,6 +4,8 @@ const { poseidon } = require("./poseidon");
 const { aphrodite } = require("./aphrodite");
 const { hermes } = require("./hermes");
 const { demeter } = require("./demeter");
+const { hestia } = require("./hestia");
+const { hephaestus } = require("./hephaestus");
 
 module.exports = [
   zeus,
@@ -12,6 +14,6 @@ module.exports = [
   aphrodite,
   hermes,
   demeter,
-  // hestia,
-  // hephaestus
+  hestia,
+  hephaestus,
 ];

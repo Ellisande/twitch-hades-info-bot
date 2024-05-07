@@ -1,19 +1,15 @@
-const { swordHammerAbilities } = require("./sword");
-const { spearHammerAbilities } = require("./spear");
-const { bowHammerAbilities } = require("./bow");
-const { shieldHammerAbilities } = require("./shield");
-const { gunHammerAbilities } = require("./gun");
-const { fistHammerAbilities } = require("./fists");
+const { axeHammerAbilities } = require("./axe");
+const { staffHammerAbilities } = require("./staff");
+const { torchHammerAbilities } = require("./torch");
+const { daggersHammerAbilities } = require("./daggers");
 
 const all = [
-  ...swordHammerAbilities,
-  ...spearHammerAbilities,
-  ...bowHammerAbilities,
-  ...shieldHammerAbilities,
-  ...gunHammerAbilities,
-  ...fistHammerAbilities
+  axeHammerAbilities,
+  staffHammerAbilities,
+  torchHammerAbilities,
+  daggersHammerAbilities,
 ];
 
 module.exports = {
-  allHammerAbilities: all
+  allHammerAbilities: all,
 };

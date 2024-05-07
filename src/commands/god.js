@@ -21,7 +21,7 @@ const godCommand = new Command({
   command: godCommandExpression,
   name: "God",
   test: false,
-  example: "athena attack",
+  example: "zeus attack",
   handler: ({ bot, channelId, commandMatches, logger }) => {
     logger.debug("Command matches: " + JSON.stringify(commandMatches));
     const godName = commandMatches[1];
@@ -40,7 +40,7 @@ const godCommand = new Command({
       if (ability && god[ability]) {
         return god[ability]();
       }
-      return `${god.info} ${godOptions}`;
+      return `${god?.info} ${godOptions}`;
     })();
     logger.debug("God message " + message);
     bot.say(channelId, message);
