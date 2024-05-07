@@ -1,7 +1,7 @@
-const { username, token } = require("../auth.json");
+const { identity } = require("../auth.json");
 
-const actualUsername = process.env.BOT_USERNAME || username;
-const actualPassword = process.env.BOT_OAUTH_TOKEN || token;
+const actualUsername = process.env.BOT_USERNAME || identity.username;
+const actualPassword = process.env.BOT_OAUTH_TOKEN || identity.password;
 
 if (!actualUsername) {
   process.exit(
@@ -18,5 +18,5 @@ if (!actualPassword) {
 }
 module.exports = {
   username: actualUsername,
-  password: actualPassword
+  password: actualPassword,
 };

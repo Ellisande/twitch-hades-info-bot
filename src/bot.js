@@ -7,7 +7,7 @@ const { handleMessage } = require("./bot/messageHandler");
 const channels = require("./enabledChannels");
 
 const logger = winston.createLogger({
-  transports: [new winston.transports.Console()]
+  transports: [new winston.transports.Console()],
 });
 logger.level = process.env.LOG_LEVEL || "debug";
 
@@ -15,12 +15,12 @@ logger.level = process.env.LOG_LEVEL || "debug";
 const bot = new tmi.client({
   identity: {
     username,
-    password
+    password,
   },
-  channels
+  channels,
 });
 
-const onConnectedHandler = event => {
+const onConnectedHandler = (event) => {
   logger.info("Connected");
   logger.info("Logged in as");
   logger.info(`${bot.username}`);
@@ -31,7 +31,7 @@ const onMessageHandler = (channelId, context, originalMessage, self) => {
     channelId,
     originalMessage,
     bot,
-    self
+    self,
   });
 };
 
@@ -40,4 +40,5 @@ bot.on("message", onMessageHandler);
 bot.on("connected", onConnectedHandler);
 
 // Connect to Twitch:
-bot.connect();
+const connectionPromise = bot.connect();
+connectionPromise.catch((e) => console.log(e));

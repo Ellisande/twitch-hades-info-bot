@@ -1,25 +1,22 @@
 const { capitalize } = require("lodash");
 const { Command } = require("./command");
-const { swordHammerAbilities } = require("../data/hammer/sword");
-const { shieldHammerAbilities } = require("../data/hammer/shield");
-const { gunHammerAbilities } = require("../data/hammer/gun");
-const { spearHammerAbilities } = require("../data/hammer/spear");
-const { bowHammerAbilities } = require("../data/hammer/bow");
-const { fistHammerAbilities } = require("../data/hammer/fists");
+const { staffHammerAbilities } = require("../data/hammer/staff");
+const { axeHammerAbilities } = require("../data/hammer/axe");
+const { daggersHammerAbilities } = require("../data/hammer/daggers");
+const { torchHammerAbilities } = require("../data/hammer/torch");
 const weaponAbilities = {
-  sword: swordHammerAbilities,
-  shield: shieldHammerAbilities,
-  gun: gunHammerAbilities,
-  bow: bowHammerAbilities,
-  spear: spearHammerAbilities,
-  fists: fistHammerAbilities
+  staff: staffHammerAbilities,
+  axe: axeHammerAbilities,
+  daggers: daggersHammerAbilities,
+  torch: torchHammerAbilities,
 };
 
 const baseDescription =
-  "Daedalus Hammer modifies the core mechanics of each weapon in unique ways. A maximum of 2 hammers can be found per run. Learn more with !hammer [sword] [shield] [gun] [spear] [bow] [fists].";
+  "Daedalus Hammer modifies the core mechanics of each weapon in unique ways. A maximum of 2 hammers can be found per run. Learn more with !hammer [staff] [axe] [daggers] [torch] [bow] [fists].";
 
 const hammerCommand = new Command({
-  command: /^(hammer|daedalus|daedalus hammer)(?: *)(sword|shield|bow|gun|spear|fists?)?$/i,
+  command:
+    /^(hammer|daedalus|daedalus hammer)(?: *)(staff|axe|daggers|torch?)?$/i,
   name: "Hammer Command",
   test: false,
   example: "hammer",
@@ -36,11 +33,11 @@ const hammerCommand = new Command({
       return;
     }
 
-    const message = `${capitalize(
-      secondCommand
-    )} hammer upgrades: ${abilities.map(({ name }) => `[${name}]`).join(" ")}`;
+    const message = `${capitalize(secondCommand)} hammer upgrades: ${abilities
+      .map(({ name }) => `[${name}]`)
+      .join(" ")}`;
     bot.say(channelId, message);
-  }
+  },
 });
 
 module.exports = { hammerCommand };
