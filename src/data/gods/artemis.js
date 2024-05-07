@@ -126,6 +126,32 @@ const supportFire = {
     `After you hit with your Attacks or Specials, fire a seeking arrow for ${value} damage`,
   values: {
     [COMMON]: { 1: 10 },
+    [RARE]: { 1: 15 },
+    // [EPIC]: { 1: 14 },
+    // [HEROIC]: { 1: 16 },
+  },
+};
+
+const deathWarrant = {
+  name: "Death Warrant",
+  type: OTHER,
+  info: (value) =>
+    `A random foe becomes [marked] every ${value} seconds. If it takes Critical damage, this repeats.`,
+  values: {
+    [RARE]: { 1: 18 },
+    // [RARE]: { 1: 12 },
+    // [EPIC]: { 1: 14 },
+    // [HEROIC]: { 1: 16 },
+  },
+};
+
+const firstBlood = {
+  name: "First Blood",
+  type: OTHER,
+  info: (value) =>
+    `Foes with at least 80% health or 80% armor have a ${value} chance to take Critical damage`,
+  values: {
+    [RARE]: { 1: "15%" },
     // [RARE]: { 1: 12 },
     // [EPIC]: { 1: 14 },
     // [HEROIC]: { 1: 16 },
@@ -141,6 +167,8 @@ const abilities = {
   "support fire": supportFire,
   "lethal snare": lethalSnare,
   "hunter's flare": huntersFlare,
+  deathWarrant,
+  firstBlood,
 };
 
 const base = {

@@ -43,6 +43,12 @@ const extendingWallop = {
   exclusives: [],
 };
 
+const doubleMoonshot = {
+  name: "Double Moonshot",
+  description: "Your Special fires 2 projectiles that seek foes.",
+  exclusives: [],
+};
+
 const formatter = hammerFormatter(weaponNameString);
 
 const staffHammerAbilities = [
@@ -52,6 +58,7 @@ const staffHammerAbilities = [
   meltingSwipe,
   crossCataclysm,
   extendingWallop,
+  doubleMoonshot,
 ].map(formatter);
 
 module.exports = {

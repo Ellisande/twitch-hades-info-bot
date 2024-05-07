@@ -6,9 +6,11 @@ const { hermes } = require("./hermes");
 const { demeter } = require("./demeter");
 const { hestia } = require("./hestia");
 const { hephaestus } = require("./hephaestus");
+const { apollo } = require("./apollo");
 
 module.exports = [
   zeus,
+  apollo,
   artemis,
   poseidon,
   aphrodite,
