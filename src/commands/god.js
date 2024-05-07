@@ -1,7 +1,7 @@
 const { Command } = require("./command");
 const gods = require("../data/gods/all.js");
 
-const allGodNames = gods.map(god => god.name).join("|");
+const allGodNames = gods.map((god) => god.name).join("|");
 
 const godCommandExpression = RegExp(`^(${allGodNames}) ?(.*)?$`, "i");
 
@@ -12,9 +12,9 @@ const godOptions = [
   "dash",
   "revenge",
   "aid",
-  "other"
+  "other",
 ]
-  .map(opt => `[${opt}]`)
+  .map((opt) => `[${opt}]`)
   .join(" ");
 
 const godCommand = new Command({
@@ -26,14 +26,14 @@ const godCommand = new Command({
     logger.debug("Command matches: " + JSON.stringify(commandMatches));
     const godName = commandMatches[1];
     logger.debug("God to find " + godName);
-    const god = gods.find(god => god.name.toLowerCase() == godName);
+    const god = gods.find((god) => god.name.toLowerCase() == godName);
     logger.debug("God info found ", god);
     const ability = commandMatches[2];
     logger.debug("Variant to use " + ability);
-    const message = (function() {
+    const message = (function () {
       if (ability == "other") {
         const abilityNames = god.other
-          .map(ability => `[${ability.name.toLowerCase()}]`)
+          .map((ability) => `[${ability.name.toLowerCase()}]`)
           .join(" ");
         return `${god.name}'s other abilities: ${abilityNames}`;
       }
@@ -44,7 +44,7 @@ const godCommand = new Command({
     })();
     logger.debug("God message " + message);
     bot.say(channelId, message);
-  }
+  },
 });
 
 module.exports = { godCommand };

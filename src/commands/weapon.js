@@ -1,8 +1,9 @@
 const { Command } = require("./command");
 const weapons = require("../data/weapons.js");
+const weaponNames = Object.keys(weapons);
 
 const weaponCommand = new Command({
-  command: /^(sword|bow|spear|shield|aegis|stygius|varatha) ?(special|attack|info)?$/i,
+  command: /^(staff|daggers|axe|torch) ?(special|attack|info)?$/i,
   name: "Weapon",
   test: false,
   example: "sword",
@@ -17,7 +18,7 @@ const weaponCommand = new Command({
     const message = variant ? weaponInfo[variant] : weaponInfo.info;
     logger.debug("Weapon message " + message);
     bot.say(channelId, message);
-  }
+  },
 });
 
 module.exports = { weaponCommand };
