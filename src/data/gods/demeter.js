@@ -19,10 +19,18 @@ const info = "Demeter, Goddess of Seasons. Her abilities slows enemies.";
 
 const attackBase = "40";
 const attack = {
-  name: "Unknown",
+  name: "Ice Strike",
   type: ATTACK,
-  info: (value) => `Unknown`,
-  values: calculatePercentage(attackBase, true),
+  info: (value) =>
+    `Your Attacks deals ${value} additional damage and apply [freeze]`,
+  values: {
+    [COMMON]: {
+      1: "10%",
+    },
+    [RARE]: {
+      1: "45%",
+    },
+  },
 };
 
 const specialBase = 60;
@@ -64,6 +72,7 @@ const tranquilGain = {
   info: (value) =>
     `After remaining inactive for 1 second, rapidly restore ${value} [mana]/second until you act`,
   values: {
+    [COMMON]: { 1: 25 },
     [RARE]: { 1: 35 },
   },
 };
@@ -135,6 +144,43 @@ const rareCrop = {
   },
 };
 
+const galeForce = {
+  name: "Gale Force",
+  type: OTHER,
+  info: (value) =>
+    `Your Casts also create a Cyclone at the binding circle dealing ${value} damage rapidly.`,
+  values: {
+    [EPIC]: {
+      1: 12,
+      2: 14,
+    },
+  },
+};
+
+const plentifulForage = {
+  name: `Plentiful Forage`,
+  type: OTHER,
+  info: (value) =>
+    `Whenever you gather plants, seeds, or mushrooms gain ${value} max health. Receive 1 mystery seed now.`,
+  values: {
+    [RARE]: {
+      1: 8,
+    },
+  },
+};
+
+const coarseGrit = {
+  name: `Coarse Grit`,
+  type: OTHER,
+  info: (value) =>
+    `While you have at least 6 [earth] boons, you cannot take more than ${value} damage per hit`,
+  values: {
+    [EPIC]: {
+      1: 15,
+    },
+  },
+};
+
 const abilities = {
   attack,
   special,
@@ -144,6 +190,9 @@ const abilities = {
   rareCrop,
   weedKiller,
   tranquilGain,
+  galeForce,
+  plentifulForage,
+  coarseGrit,
 };
 
 const base = {

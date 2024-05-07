@@ -22,6 +22,7 @@ const attack = {
     [COMMON]: {
       1: "10%",
     },
+    [RARE]: { 1: "15%" },
     // [RARE]: {
     //   1: "20%",
     // },
@@ -40,7 +41,7 @@ const special = {
       1: "10%",
     },
     [RARE]: {
-      1: "20%",
+      1: "18%",
     },
     [EPIC]: {
       1: "30%",
@@ -84,6 +85,7 @@ const hardTarget = {
   info: (value) => `Most foes' ranged shots are ${value} slower`,
   values: {
     [COMMON]: { 1: "-30%" },
+    [RARE]: { 1: "-40%" },
   },
 };
 
@@ -94,14 +96,18 @@ const meanStreak = {
     `Each time you slay a foe, deal ${value} more damage for the next 30 seconds`,
   values: {
     [COMMON]: { 1: "1%" },
+    [RARE]: { 1: "1.5%" },
   },
 };
 
 const revenge = {
-  name: "None",
+  name: "Greater Evasion",
   type: REVENGE,
-  info: () => `Hermes has no revenge ability`,
-  values: {},
+  info: () =>
+    `Whenever you are struck, you have a ${value} chance to Dodge any damage`,
+  values: {
+    [RARE]: { 1: "15%" },
+  },
 };
 
 const abilities = {

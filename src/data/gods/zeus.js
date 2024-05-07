@@ -19,21 +19,12 @@ const info =
   "Zeus, God of Thunder. His powers create bouncing lightning projectiles.";
 
 const attack = {
-  name: "Unknown",
+  name: "Heaven Strike",
   type: ATTACK,
-  info: (value) => `Unknown`,
+  info: (value) => `Your Attacks inflict ${value} [blitz] damage`,
   values: {
-    [COMMON]: {
-      1: 10,
-    },
     [RARE]: {
-      1: 12.5,
-    },
-    [EPIC]: {
-      1: 15,
-    },
-    [HEROIC]: {
-      1: 20,
+      1: 120,
     },
   },
 };
@@ -46,9 +37,9 @@ const special = {
     [COMMON]: {
       1: 100,
     },
-    // [RARE]: {
-    //   1: "37.5",
-    // },
+    [RARE]: {
+      3: "210",
+    },
     // [EPIC]: {
     //   1: "45",
     // },
@@ -85,6 +76,7 @@ const stormRing = {
     `Your omega cast also causes lightning bolts to repeatedly strike 1 foe at a time for ${value} damage`,
   values: {
     [COMMON]: { 1: 30, 2: 40 },
+    [EPIC]: { 2: 60 },
   },
 };
 
@@ -94,7 +86,10 @@ const dash = {
   type: DASH,
   info: (value) =>
     `Your Sprint causes nearby foes to be struck by lightning bolts for ${value} damage, which use 3 [mana] each`,
-  values: calculateFlat(dashBase, true),
+  values: {
+    [COMMON]: { 1: 20 },
+    [RARE]: { 1: 25 },
+  },
 };
 
 const revenge = {
@@ -102,7 +97,9 @@ const revenge = {
   type: REVENGE,
   info: (value) =>
     `After you take damage, your foe is stuck by lightning for ${value}, and again 50% of the time (up to 3 times)`,
-  values: calculateFlat(100, true),
+  values: {
+    [RARE]: { 1: 100 },
+  },
 };
 
 const ionicGain = {
@@ -112,8 +109,47 @@ const ionicGain = {
     `Gradually restore [mana] by ${value}/sec, but your total amount is reduced by 70%`,
   values: {
     [COMMON]: { 1: 6 },
-    // [RARE]: { 1: 4 },
+    [RARE]: { 1: 6 },
     // [EPIC]: { 1: 6 },
+    // [HEROIC]: { 1: 8 },
+  },
+};
+
+const staticShock = {
+  name: "Static Shock",
+  type: OTHER,
+  info: (value) =>
+    `After you enter a Location, [prime] 50 [mana] to make your strikes emit chain-lightning that deals ${value} damage`,
+  values: {
+    // [COMMON]: { 1: 6 },
+    [RARE]: { 1: 15 },
+    // [EPIC]: { 1: 6 },
+    // [HEROIC]: { 1: 8 },
+  },
+};
+
+const doubleStrike = {
+  name: "Double Strike",
+  type: OTHER,
+  info: (value) =>
+    `Your lightning bolt effects have a ${value} chance to strike 1 more time`,
+  values: {
+    // [COMMON]: { 1: 6 },
+    // [RARE]: { 1: 15 },
+    [EPIC]: { 1: "15%" },
+    // [HEROIC]: { 1: 8 },
+  },
+};
+
+const spiritSurge = {
+  name: "Spirit Surge",
+  type: OTHER,
+  info: (value) =>
+    `While you have no more than 10 [mana], all foes are occasionally struck by lightning for ${value} damage`,
+  values: {
+    // [COMMON]: { 1: 6 },
+    // [RARE]: { 1: 15 },
+    [EPIC]: { 1: "90" },
     // [HEROIC]: { 1: 8 },
   },
 };
@@ -124,6 +160,7 @@ const lightningLance = {
   info: (value) =>
     `Hold Cast to aim where the binding circle appears. Foes within are stuck by lightning for ${value} damage`,
   values: {
+    [COMMON]: { 1: 50 },
     [RARE]: {
       1: "70",
       2: "90",
@@ -151,6 +188,8 @@ const abilities = {
   lightningLance,
   ionicGain,
   stormRing,
+  staticShock,
+  doubleStrike,
 };
 
 const base = {

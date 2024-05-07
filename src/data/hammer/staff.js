@@ -43,9 +43,29 @@ const extendingWallop = {
   exclusives: [],
 };
 
+const doubleCataclysm = {
+  name: "Double Cataclysm",
+  description:
+    "Your [omega] Attack hits 2 times, but not longer strikes behind you",
+  exclusives: [],
+};
+
+const doubleWallop = {
+  name: "Double Wallop",
+  description: "Your Attack hits 2 times",
+  exclusives: [],
+};
+
 const doubleMoonshot = {
   name: "Double Moonshot",
   description: "Your Special fires 2 projectiles that seek foes.",
+  exclusives: [],
+};
+
+const marauderWallop = {
+  name: "Double Moonshot",
+  description:
+    "Hold Attack to strike 50% faster, but you cannot use your [omega] Attack",
   exclusives: [],
 };
 
@@ -59,6 +79,9 @@ const staffHammerAbilities = [
   crossCataclysm,
   extendingWallop,
   doubleMoonshot,
+  doubleCataclysm,
+  doubleWallop,
+  marauderWallop,
 ].map(formatter);
 
 module.exports = {

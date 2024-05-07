@@ -27,6 +27,9 @@ const attack = {
       1: 20,
       2: 25,
     },
+    [RARE]: {
+      1: 25,
+    },
   },
 };
 
@@ -35,7 +38,9 @@ const special = {
   name: "Flame Flourish",
   type: SPECIAL,
   info: (value) => `Your Special inflicts ${value} [scorch] damage`,
-  values: calculatePercentage(specialBase, true),
+  values: {
+    [EPIC]: { 1: 25 },
+  },
 };
 
 const cast = {
@@ -67,6 +72,57 @@ const dash = {
     [COMMON]: {
       1: 2,
     },
+    [EPIC]: {
+      1: 6,
+    },
+  },
+};
+
+const hearthGain = {
+  name: "Hearth Gain",
+  type: OTHER,
+  info: (value) =>
+    `Rapidly restore ${value} [mana] every second, but you have -20% less max health`,
+  values: {
+    [RARE]: {
+      1: 10,
+    },
+  },
+};
+
+const controlledBurn = {
+  name: "Controlled Burn",
+  type: OTHER,
+  info: (value) =>
+    `Your [omega] Special also launches a fiery projectile that deals ${value} damage, but also uses +10 [mana]`,
+  values: {
+    [RARE]: {
+      1: 10,
+    },
+  },
+};
+
+const burntOffering = {
+  name: "Burnt Offering",
+  type: OTHER,
+  info: (value) =>
+    `Gain ${value} max health and max magic, but give up 1 boon selected by Hestia`,
+  values: {
+    [RARE]: {
+      1: 10,
+    },
+  },
+};
+
+const naturalGas = {
+  name: "Natural Gas",
+  type: OTHER,
+  info: (value) =>
+    `Whenever [scorch]-afflicted foes are slain, they damage nearby foes for ${value} damage`,
+  values: {
+    [EPIC]: {
+      1: 120,
+    },
   },
 };
 
@@ -83,6 +139,10 @@ const abilities = {
   dash,
   revenge,
   cast,
+  hearthGain,
+  controlledBurn,
+  burntOffering,
+  naturalGas,
 };
 
 const base = {
