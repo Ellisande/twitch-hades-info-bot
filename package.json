@@ -22,10 +22,11 @@
     "winston": "^3.13.0"
   },
   "devDependencies": {
+    "@flydotio/dockerfile": "^0.5.7",
     "chai": "^4.1.2",
     "chai-as-promised": "^7.1.1",
     "cucumber": "^5.1.0",
-    "sinon": "^17.0.1",
-    "nodemon": "^3.1.0"
+    "nodemon": "^3.1.0",
+    "sinon": "^17.0.1"
   }
 }
