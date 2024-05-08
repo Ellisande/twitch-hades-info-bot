@@ -38,6 +38,9 @@ const special = {
     [RARE]: {
       1: 30,
     },
+    [EPIC]: {
+      1: 40,
+    },
   },
 };
 
@@ -92,6 +95,7 @@ const fluidGain = {
   info: (value) =>
     `After you strike foes with your Weapon, a Spirit Bubble has a ${value} chance to appear`,
   values: {
+    [COMMON]: { 1: "10%" },
     [RARE]: {
       1: "12%",
     },
@@ -117,6 +121,46 @@ const waterFitness = {
   },
 };
 
+const oceansBounty = {
+  name: "Ocean's Bounty",
+  type: OTHER,
+  info: (value) =>
+    `Any Minor Finds and [coins] you find are worth ${value} more`,
+  values: {
+    [RARE]: { 1: "75%" },
+  },
+};
+
+const slipperySlope = {
+  name: "Slippery Slope",
+  type: OTHER,
+  info: (value) =>
+    `Your splash effects from Poseidon also inflict Slip on foes for ${value} bonus damage`,
+  values: {
+    [RARE]: { 1: "10%" },
+  },
+};
+
+const crashingWave = {
+  name: "Crashing Wave",
+  type: OTHER,
+  info: (value) =>
+    `Whenever your knock-away effects slam foes into barriers, create a blast in the area that deals ${value} damage`,
+  values: {
+    [EPIC]: { 1: 94 },
+  },
+};
+
+const kingTide = {
+  name: "King Tide",
+  type: OTHER,
+  info: (value) =>
+    `Your splash effects from Poseidon are larger and deal ${value} bonus damage to Guardians`,
+  values: {
+    [LEGENDARY]: { 1: "150%" },
+  },
+};
+
 const abilities = {
   attack,
   special,
@@ -127,6 +171,10 @@ const abilities = {
   hydraulicMight,
   fluidGain,
   doubleUp,
+  "ocean's bounty": oceansBounty,
+  slipperySlope,
+  crashingWave,
+  kingTide,
 };
 
 const base = {

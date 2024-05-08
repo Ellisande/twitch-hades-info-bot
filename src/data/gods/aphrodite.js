@@ -74,6 +74,7 @@ const glamourGain = {
     `In each encounter, 1 foe is always Weak. You gradually restore ${value} [mana]/second while near [weak] foes.`,
   values: {
     [COMMON]: { 1: 6 },
+    [EPIC]: { 1: 10 },
   },
 };
 
@@ -81,8 +82,28 @@ const shamelessAttitude = {
   name: "Shameless Attitude",
   type: OTHER,
   info: (value) =>
-    `WHile you have at least 80% health, you deal ${value} more damage`,
+    `While you have at least 80% health, you deal ${value} more damage`,
   values: { [RARE]: { 1: "15%" } },
+};
+
+const heartBreaker = {
+  name: "Heart Breaker",
+  type: OTHER,
+  info: (value) =>
+    `Whenever you use 30 [mana], create a Heartthrob that deals ${value} area damage.`,
+  values: {
+    [COMMON]: { 1: 120 },
+  },
+};
+
+const lifeAffirmation = {
+  name: "Life Affirmation",
+  type: OTHER,
+  info: (value) =>
+    `Any max health rewards you find have ${value} greater effect`,
+  values: {
+    [COMMON]: { 1: "40%" },
+  },
 };
 
 const revenge = {
@@ -111,6 +132,8 @@ const abilities = {
   "secret crush": secretCrush,
   "shameless attitude": shamelessAttitude,
   "glamour gain": glamourGain,
+  heartBreaker,
+  lifeAffirmation,
 };
 
 const base = {

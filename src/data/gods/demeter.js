@@ -47,21 +47,13 @@ const special = {
 };
 
 const cast = {
-  name: "Unknown",
+  name: "Arctic Ring",
   type: CAST,
-  info: (value) => `Unknown`,
+  info: (value) =>
+    `Your Casts repeatedly deal ${value} damage in the area and inflict Freeze`,
   values: {
     [COMMON]: {
-      1: 8,
-    },
-    [RARE]: {
-      1: 9.2,
-    },
-    [EPIC]: {
-      1: 10.4,
-    },
-    [HEROIC]: {
-      1: 11.6,
+      1: 10,
     },
   },
 };
@@ -181,6 +173,18 @@ const coarseGrit = {
   },
 };
 
+const winterCoat = {
+  name: `Winter Coat`,
+  type: OTHER,
+  info: (value) =>
+    `After you enter a Location, Prime ${value} [mana] a barrier that absorbs 1 instance of damage`,
+  values: {
+    [RARE]: {
+      1: 15,
+    },
+  },
+};
+
 const abilities = {
   attack,
   special,
@@ -193,6 +197,7 @@ const abilities = {
   galeForce,
   plentifulForage,
   coarseGrit,
+  winterCoat,
 };
 
 const base = {

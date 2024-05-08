@@ -119,6 +119,15 @@ const mintCondition = {
   },
 };
 
+const uncannyFortitude = {
+  name: "Uncanny Fortitude",
+  type: OTHER,
+  info: (value) => `Gain ${value} max health, based on your [mana] limit`,
+  values: {
+    [COMMON]: { 1: "20%" },
+  },
+};
+
 const revenge = {
   name: "Unknown",
   type: REVENGE,
@@ -137,6 +146,7 @@ const abilities = {
   furnaceBlast,
   heavyMetal,
   mintCondition,
+  uncannyFortitude,
 };
 
 const base = {

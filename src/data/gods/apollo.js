@@ -21,7 +21,7 @@ const attack = {
   name: "Nova Strike",
   type: ATTACK,
   info: (value) => `Your Attacks deal ${value} more damage in a larger area`,
-  values: { [RARE]: { 1: "50%" } },
+  values: { [RARE]: { 1: "50%" }, [EPIC]: { 1: "60%", 2: "70%" } },
 };
 
 const special = {
@@ -125,6 +125,15 @@ const perfectImage = {
   values: { [RARE]: { 1: "15%" } },
 };
 
+const dazzlingDisplay = {
+  name: "Dazzling Display",
+  type: OTHER,
+  info: (value) => `Your Attacks have a ${value} chance to inflict [daze]`,
+  values: {
+    [RARE]: { 1: "15%" },
+  },
+};
+
 const abilities = {
   attack,
   special,
@@ -136,6 +145,7 @@ const abilities = {
   "super nova": superNova,
   "self healing": selfHealing,
   "perfect image": perfectImage,
+  dazzlingDisplay,
 };
 
 const base = {
