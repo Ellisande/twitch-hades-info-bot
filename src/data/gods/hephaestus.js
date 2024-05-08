@@ -119,11 +119,60 @@ const mintCondition = {
   },
 };
 
+const uncannyFortitude = {
+  name: "Uncanny Fortitude",
+  type: OTHER,
+  info: (value) => `Gain ${value} max health, based on your [mana] limit`,
+  values: {
+    [COMMON]: { 1: "20%" },
+  },
+};
+
 const revenge = {
   name: "Unknown",
   type: REVENGE,
   info: (value) => `Unknown`,
   values: calculateFlat(50, true),
+};
+
+const roomTemperature = {
+  name: "Room Temperature",
+  type: DUO,
+  info: (value) =>
+    `Your blast effects from Hephaestus clear [freeze], so you [freeze] foes again right away`,
+  values: {
+    [RARE]: { 1: 50 },
+  },
+};
+
+const chainReaction = {
+  name: "Chain Reaction",
+  type: DUO,
+  info: (value) =>
+    `If you use your blast effects from Hephaestus just within ${value} seconds of them recharging, they fire 2 times`,
+  values: {
+    [DUO]: { 1: 0.85 },
+  },
+};
+
+const stellarSlam = {
+  name: "Stellar Slam",
+  type: DUO,
+  info: (value) =>
+    `Your blast effects from Hephaestus deal damage in a ${value} larger area`,
+  values: {
+    [DUO]: { 1: "50%" },
+  },
+};
+
+const moltenTouch = {
+  name: "Molten Touch",
+  type: OTHER,
+  info: (value) =>
+    `Your Attacks and Specials deal ${value} bonus damage to Armor`,
+  values: {
+    [EPIC]: { 1: "40%", 4: "75%" },
+  },
 };
 
 const abilities = {
@@ -137,6 +186,11 @@ const abilities = {
   furnaceBlast,
   heavyMetal,
   mintCondition,
+  uncannyFortitude,
+  roomTemperature,
+  chainReaction,
+  stellarSlam,
+  moltenTouch,
 };
 
 const base = {

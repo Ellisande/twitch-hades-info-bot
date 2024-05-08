@@ -16,7 +16,7 @@ const baseDescription =
 
 const hammerCommand = new Command({
   command:
-    /^(hammer|daedalus|daedalus hammer)(?: *)(staff|axe|daggers|torch?)?$/i,
+    /^(hammer|daedalus|daedalus hammer)(?: *)(staff|axe|daggers|torch|skull?)?$/i,
   name: "Hammer Command",
   test: false,
   example: "hammer",

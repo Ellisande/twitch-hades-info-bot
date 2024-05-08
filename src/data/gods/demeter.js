@@ -40,6 +40,11 @@ const special = {
   info: (value) =>
     `Your Specials deal ${value} more damage and inflict [freeze]`,
   values: {
+    [COMMON]: {
+      1: "40%",
+      3: "70%",
+      4: "75%",
+    },
     [RARE]: {
       1: "60%",
     },
@@ -47,21 +52,18 @@ const special = {
 };
 
 const cast = {
-  name: "Unknown",
+  name: "Arctic Ring",
   type: CAST,
-  info: (value) => `Unknown`,
+  info: (value) =>
+    `Your Casts repeatedly deal ${value} damage in the area and inflict Freeze`,
   values: {
     [COMMON]: {
-      1: 8,
+      1: 10,
     },
     [RARE]: {
-      1: 9.2,
-    },
-    [EPIC]: {
-      1: 10.4,
-    },
-    [HEROIC]: {
-      1: 11.6,
+      1: 15,
+      2: 20,
+      3: 23,
     },
   },
 };
@@ -181,6 +183,36 @@ const coarseGrit = {
   },
 };
 
+const winterCoat = {
+  name: `Winter Coat`,
+  type: OTHER,
+  info: (value) =>
+    `After you enter a Location, Prime ${value} [mana] a barrier that absorbs 1 instance of damage`,
+  values: {
+    [RARE]: {
+      1: 15,
+    },
+  },
+};
+
+const roomTemperature = {
+  name: "Room Temperature",
+  type: DUO,
+  info: (value) =>
+    `Your blast effects from Hephaestus clear [freeze], so you [freeze] foes again right away`,
+  values: {
+    [RARE]: { 1: 50 },
+  },
+};
+
+const coldStorage = {
+  name: "Cold Storage",
+  type: OTHER,
+  info: (value) => `Your [freeze] effects last ${value} seconds longer`,
+  values: {
+    [COMMON]: { 1: 2 },
+  },
+};
 const abilities = {
   attack,
   special,
@@ -193,6 +225,9 @@ const abilities = {
   galeForce,
   plentifulForage,
   coarseGrit,
+  winterCoat,
+  roomTemperature,
+  coldStorage,
 };
 
 const base = {

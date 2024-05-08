@@ -19,10 +19,22 @@ const freeze = {
 const marked = {
   name: "Marked",
   description:
-    "[status] [Artemis] Increases the chance to the enemy receiving a crital hit.",
+    "[status] [Artemis] Increases the chance to the enemy receiving a critical hit.",
 };
 
-const statuses = [marked, freeze, weak, blitz].map((status) => ({
+const hitch = {
+  name: "Hitch",
+  description:
+    "[status] [Hera] Hitched enemies take 30% of damage dealt to other hitched enemies",
+};
+
+const slip = {
+  name: "Slip",
+  description:
+    "[status] [Poseidon] Afflicted foes take more damage and are knocked farther away. Lasts 3 seconds",
+};
+
+const statuses = [marked, freeze, weak, blitz, hitch, slip].map((status) => ({
   ...status,
   matcher: status.name.replace(" ", "*"),
 }));

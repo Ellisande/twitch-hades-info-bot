@@ -90,9 +90,9 @@ const dash = {
     [COMMON]: {
       1: "10%",
     },
-    // [RARE]: {
-    //   1: "75%",
-    // },
+    [RARE]: {
+      1: "15%",
+    },
     // [EPIC]: {
     //   1: "100%",
     // },
@@ -158,6 +158,25 @@ const firstBlood = {
   },
 };
 
+const pressurePoints = {
+  name: "Pressure Points",
+  type: OTHER,
+  info: (value) => `Any damage you deal has a ${value} chance to be Critical`,
+  values: {
+    [RARE]: { 1: "4%" },
+  },
+};
+
+const easyShot = {
+  name: "Easy Shot",
+  type: OTHER,
+  info: (value) =>
+    `A piercing arrow fires toward any foe damage by your [omega] Cast for ${value} damage`,
+  values: {
+    [RARE]: 30,
+  },
+};
+
 const abilities = {
   attack,
   special,
@@ -169,6 +188,8 @@ const abilities = {
   "hunter's flare": huntersFlare,
   deathWarrant,
   firstBlood,
+  pressurePoints,
+  easyShot,
 };
 
 const base = {

@@ -26,6 +26,9 @@ const attack = {
     [RARE]: {
       1: 120,
     },
+    [EPIC]: {
+      1: 160,
+    },
   },
 };
 
@@ -76,6 +79,7 @@ const stormRing = {
     `Your omega cast also causes lightning bolts to repeatedly strike 1 foe at a time for ${value} damage`,
   values: {
     [COMMON]: { 1: 30, 2: 40 },
+    [RARE]: { 1: 40 },
     [EPIC]: { 2: 60 },
   },
 };
@@ -123,7 +127,7 @@ const staticShock = {
   values: {
     // [COMMON]: { 1: 6 },
     [RARE]: { 1: 15 },
-    // [EPIC]: { 1: 6 },
+    [EPIC]: { 1: 20 },
     // [HEROIC]: { 1: 8 },
   },
 };
@@ -134,7 +138,7 @@ const doubleStrike = {
   info: (value) =>
     `Your lightning bolt effects have a ${value} chance to strike 1 more time`,
   values: {
-    // [COMMON]: { 1: 6 },
+    [COMMON]: { 1: "5%", 2: "10%" },
     // [RARE]: { 1: 15 },
     [EPIC]: { 1: "15%" },
     // [HEROIC]: { 1: 8 },
@@ -179,6 +183,36 @@ const lightningLance = {
   },
 };
 
+const kingsRansom = {
+  name: "King's Ransom",
+  type: DUO,
+  info: (value) =>
+    `Give up all your Boons of Hera. For each raise all of your Boons of Zeus by ${value} levels`,
+  values: {
+    [DUO]: 2,
+  },
+};
+
+const electricOverload = {
+  name: "Electric Overload",
+  type: OTHER,
+  info: (value) =>
+    `Whenever your [blitz] effects activate, a bolt of chain-lightning fires from the foe dealing ${value} damage`,
+  values: {
+    [RARE]: { 1: 15 },
+  },
+};
+
+const airQuality = {
+  name: "Air Quality",
+  type: OTHER,
+  info: (value) =>
+    `While you have at least 5 [air], you can never deal less damage than the limit`,
+  values: {
+    [RARE]: { 1: "30" },
+  },
+};
+
 const abilities = {
   attack,
   special,
@@ -190,6 +224,9 @@ const abilities = {
   stormRing,
   staticShock,
   doubleStrike,
+  spiritSurge,
+  "king's ransom": kingsRansom,
+  electricOverload,
 };
 
 const base = {

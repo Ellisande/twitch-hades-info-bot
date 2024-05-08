@@ -30,9 +30,18 @@ const torch = {
   info: "The Flames of Ygnium burn with an extraordinary light that does not pierce the dark. [attack] [special]",
 };
 
+const skull = {
+  attack:
+    "Lob a skull that deals 50 damage. Collect the skulls to reload ammo, 3 shots. Omega: Fire a seeking skull that does damage in a wide area deals 90 damage and uses 10 [mana]",
+  special:
+    "Dash forward dealing 25 damage to enemies along your pash. Omega: Dash forward hitting enemies in a wide area for 100 damage, uses 20 [mana]",
+  info: "The argent skull [attack] [special]",
+};
+
 module.exports = {
   staff,
   daggers,
   axe,
   torch,
+  skull,
 };

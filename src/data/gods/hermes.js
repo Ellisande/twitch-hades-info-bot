@@ -26,9 +26,9 @@ const attack = {
     // [RARE]: {
     //   1: "20%",
     // },
-    // [EPIC]: {
-    //   1: "30%",
-    // },
+    [EPIC]: {
+      1: "20%",
+    },
   },
 };
 
@@ -110,6 +110,16 @@ const wittyRetort = {
   },
 };
 
+const quickBuck = {
+  name: "Quick Buck",
+  type: OTHER,
+  info: (value) =>
+    `You find ${value} more [gold]. Receive 100 [gold] now, plus the bonus!`,
+  values: {
+    [COMMON]: { 1: "20%" },
+  },
+};
+
 const revenge = {
   name: "Greater Evasion",
   type: REVENGE,
@@ -117,6 +127,15 @@ const revenge = {
     `Whenever you are struck, you have a ${value} chance to Dodge any damage`,
   values: {
     [RARE]: { 1: "15%" },
+  },
+};
+
+const savedBreath = {
+  name: "Saved Breath",
+  type: OTHER,
+  info: (value) => `Your [omega] Cast uses ${value} less [mana]`,
+  values: {
+    [RARE]: { 1: "-60%" },
   },
 };
 
@@ -128,6 +147,9 @@ const abilities = {
   cast,
   meanStreak,
   hardTarget,
+  wittyRetort,
+  quickBuck,
+  savedBreath,
 };
 
 const base = {
