@@ -35,16 +35,20 @@ const special = {
     [COMMON]: {
       1: "20",
     },
+    [RARE]: {
+      1: 18,
+    },
   },
 };
 
 const cast = {
-  name: "Unknown",
+  name: "Anvil Ring",
   type: CAST,
-  info: (value) => `Unknown`,
+  info: (value) =>
+    `Your Casts deal ${value} damage 3 times in succession, but in a smaller area`,
   values: {
-    [COMMON]: {
-      1: 24,
+    [RARE]: {
+      1: 70,
     },
   },
 };
@@ -60,9 +64,10 @@ const fixedGain = {
 };
 
 const dash = {
-  name: "Unknown",
+  name: "Smithy Sprint",
   type: DASH,
-  info: (value) => `Unknown`,
+  info: (value) =>
+    `After you Sprint for 1 second, use 10 [mana] to create a blast for ${value} damage to nearby foes`,
   values: {
     [RARE]: {
       1: "40%",
@@ -80,6 +85,37 @@ const toughTrade = {
     `If you take damage during your Attacks and Specials, they are ${value} stronger if they hit.`,
   values: {
     [COMMON]: { 1: "100%" },
+    [EPIC]: { 1: "150%" },
+  },
+};
+
+const furnaceBlast = {
+  name: "Furnace Blast",
+  type: OTHER,
+  info: (value) =>
+    `Your blast effects from Hephaestus also inflict ${value} [vent] damage on foes.`,
+  values: {
+    [RARE]: { 1: "400" },
+  },
+};
+
+const heavyMetal = {
+  name: "Heavy Metal",
+  type: OTHER,
+  info: (value) =>
+    `Gain some ${value} [armor]. Foe's attacks cannot knock you away.`,
+  values: {
+    [RARE]: { 1: "75" },
+  },
+};
+
+const mintCondition = {
+  name: "Mint Condition",
+  type: OTHER,
+  info: (value) =>
+    `At the start of each Encounter you are impervious for ${value} seconds`,
+  values: {
+    [COMMON]: { 1: "8" },
   },
 };
 
@@ -98,6 +134,9 @@ const abilities = {
   cast,
   toughTrade,
   fixedGain,
+  furnaceBlast,
+  heavyMetal,
+  mintCondition,
 };
 
 const base = {

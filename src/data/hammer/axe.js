@@ -21,12 +21,34 @@ const gigaCleaver = {
   exclusives: [],
 };
 
+const meltingShedder = {
+  name: "Melting Shredder",
+  description: "Your Special destroys 35% of any Armor (based on the total)",
+  exclusives: [],
+};
+
+const marauderSlash = {
+  name: "Marauder Slash",
+  description:
+    "Hold Attack to strike 30% faster, but you can not use your [omega] attack",
+  exclusives: [],
+};
+
+const suddenCleaver = {
+  name: "Sudden Cleaver",
+  description: "Your Channel your [omega] Special 50% faster",
+  exclusives: [],
+};
+
 const formatter = hammerFormatter(weaponNameString);
 
 const axeHammerAbilities = [
   advancingWhirlwind,
   empoweringGuard,
   gigaCleaver,
+  meltingShedder,
+  marauderSlash,
+  suddenCleaver,
 ].map(formatter);
 
 module.exports = {

@@ -100,6 +100,16 @@ const meanStreak = {
   },
 };
 
+const wittyRetort = {
+  name: "Witty Retort",
+  type: OTHER,
+  info: (value) =>
+    `Your Hex requires using less ${value} [mana] before it is ready`,
+  values: {
+    [RARE]: { 1: "-20%" },
+  },
+};
+
 const revenge = {
   name: "Greater Evasion",
   type: REVENGE,
