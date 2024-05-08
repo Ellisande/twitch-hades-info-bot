@@ -42,6 +42,19 @@ const furiousFire = {
   exclusives: [],
 };
 
+const crushingComet = {
+  name: "Crushing Comet",
+  description: "Your Special has +50 Power, but dissipates after striking foes",
+  exclusives: [],
+};
+
+const cleanCandle = {
+  name: "Clean Candle",
+  description:
+    "You Channel your [omega] Attack 10% faster and it uses -3 [mana]",
+  exclusives: [],
+};
+
 const formatter = hammerFormatter(weaponNameString);
 
 const torchHammerAbilities = [
@@ -51,6 +64,8 @@ const torchHammerAbilities = [
   meltingComet,
   direCandle,
   furiousFire,
+  crushingComet,
+  cleanCandle,
 ].map(formatter);
 
 module.exports = {

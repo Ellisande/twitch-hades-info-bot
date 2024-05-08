@@ -19,10 +19,11 @@ const info = "Hera, Queen of the Gods";
 
 const attackBase = "50";
 const attack = {
-  name: "Unknown",
+  name: "Sworn Strike",
   type: ATTACK,
-  info: (value) => `Unknown`,
-  values: { [RARE]: { 1: "50%" } },
+  info: (value) =>
+    `Your Attacks deal more ${value} more damage and inflict [hitch]`,
+  values: { [COMMON]: { 1: "50%" }, [RARE]: { 1: "60%" } },
 };
 
 const specialBase = 80;
@@ -62,7 +63,7 @@ const dash = {
       1: 1,
     },
     [RARE]: {
-      1: 3,
+      1: 2,
     },
   },
 };
@@ -73,7 +74,7 @@ const bornGain = {
   info: (value) =>
     `Whenever you run out of [mana], Prime ${value} [mana] to restore all [mana] up to the reduced limit`,
   values: {
-    [COMMON]: 8,
+    [COMMON]: 10,
   },
 };
 
@@ -114,6 +115,66 @@ const kingsRansom = {
   },
 };
 
+const familyTrade = {
+  name: "Family Trade",
+  type: OTHER,
+  info: (value) =>
+    `Any Sacrifice Boons you choose are ${value} levels stronger. One will be offered as soon as possible.`,
+  values: {
+    [COMMON]: { 1: "2" },
+  },
+};
+
+const hereditaryBane = {
+  name: "Hereditary Bane",
+  type: OTHER,
+  info: (value) =>
+    `Your [hitch] effects deal ${value} more damage and last +5 seconds`,
+  values: {
+    [EPIC]: { 1: "20%", 2: "30%" },
+  },
+};
+
+const nastyComeback = {
+  name: "Nasty Comeback",
+  type: OTHER,
+  info: (value) =>
+    `After you take damage, inflict your foe with [hitch] and deal ${value} damage in greater measure`,
+  values: {
+    [COMMON]: "500%",
+  },
+};
+
+const bridalGlow = {
+  name: "Bridal Glow",
+  type: OTHER,
+  info: (value) =>
+    `${value} random Boons become Heroic, then lose Rarity every 7 Encounters`,
+  values: {
+    [RARE]: "2",
+  },
+};
+
+const uncommonGrace = {
+  name: "Uncommon Grace",
+  type: OTHER,
+  info: (value) =>
+    `While none of your other Boons are Common, deal ${value} more damage`,
+  values: {
+    [COMMON]: "10%",
+  },
+};
+
+const dyingWish = {
+  name: "Dying Wish",
+  type: OTHER,
+  info: (value) =>
+    `Whenever [hitch]-afflicted foes are slain, damage all over [hitch] afflicted foes for ${value}`,
+  values: {
+    [COMMON]: "60",
+  },
+};
+
 const abilities = {
   attack,
   special,
@@ -124,6 +185,11 @@ const abilities = {
   engagementRing,
   keenIntuition,
   "king's ransom": kingsRansom,
+  familyTrade,
+  hereditaryBane,
+  bridalGlow,
+  uncommonGrace,
+  dyingWish,
 };
 
 const base = {

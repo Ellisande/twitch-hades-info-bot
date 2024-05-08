@@ -79,6 +79,7 @@ const stormRing = {
     `Your omega cast also causes lightning bolts to repeatedly strike 1 foe at a time for ${value} damage`,
   values: {
     [COMMON]: { 1: 30, 2: 40 },
+    [RARE]: { 1: 40 },
     [EPIC]: { 2: 60 },
   },
 };
@@ -126,7 +127,7 @@ const staticShock = {
   values: {
     // [COMMON]: { 1: 6 },
     [RARE]: { 1: 15 },
-    // [EPIC]: { 1: 6 },
+    [EPIC]: { 1: 20 },
     // [HEROIC]: { 1: 8 },
   },
 };

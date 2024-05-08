@@ -21,7 +21,10 @@ const attack = {
   name: "Nova Strike",
   type: ATTACK,
   info: (value) => `Your Attacks deal ${value} more damage in a larger area`,
-  values: { [RARE]: { 1: "50%" }, [EPIC]: { 1: "60%", 2: "70%" } },
+  values: {
+    [RARE]: { 1: "50%", 4: "70%" },
+    [EPIC]: { 1: "60%", 2: "70%", 4: "80%" },
+  },
 };
 
 const special = {
@@ -78,6 +81,7 @@ const dash = {
     },
     [EPIC]: {
       1: "50%",
+      2: "60%",
     },
   },
 };
@@ -88,6 +92,7 @@ const extraDose = {
   info: (value) => `Your Attack has a ${value} chance to hit 2 times`,
   values: {
     [COMMON]: { 1: "5%", 2: "8%" },
+    [RARE]: { 1: "8%", 4: "14%" },
   },
 };
 
@@ -97,14 +102,19 @@ const superNova = {
   info: (value) => `Your Casts expand in size by ${value} until they expire`,
   values: {
     [COMMON]: { 1: "40%" },
+    [RARE]: { 1: "50%", 2: "60%", 3: "68%", 5: "78%" },
+    [EPIC]: { 1: "60%", 2: "70%" },
   },
 };
 
 const revenge = {
-  name: "Unknown",
+  name: "Light Smite",
   type: REVENGE,
-  info: (value) => `Unknown`,
-  values: calculateFlat(50, true),
+  info: (value) =>
+    `After you take damage, your foes takes ${value} damage and you inflict Daze on all foes`,
+  values: {
+    [RARE]: { 1: 75 },
+  },
 };
 
 const selfHealing = {
@@ -134,6 +144,36 @@ const dazzlingDisplay = {
   },
 };
 
+const backBurner = {
+  name: "Back Burner",
+  type: OTHER,
+  info: (value) =>
+    `Foes with [daze] take more ${value} more damage if struck from behind`,
+  values: {
+    [COMMON]: { 1: "50%" },
+  },
+};
+
+const criticalMiss = {
+  name: "Critical Miss",
+  type: OTHER,
+  info: (value) =>
+    `Foes take ${value} damage whenever [daze] causes them to miss`,
+  values: {
+    [RARE]: { 1: 150 },
+  },
+};
+
+const stellarSlam = {
+  name: "Stellar Slam",
+  type: DUO,
+  info: (value) =>
+    `Your blast effects from Hephaestus deal damage in a ${value} larger area`,
+  values: {
+    [DUO]: { 1: "50%" },
+  },
+};
+
 const abilities = {
   attack,
   special,
@@ -146,6 +186,9 @@ const abilities = {
   "self healing": selfHealing,
   "perfect image": perfectImage,
   dazzlingDisplay,
+  backBurner,
+  criticalMiss,
+  stellarSlam,
 };
 
 const base = {

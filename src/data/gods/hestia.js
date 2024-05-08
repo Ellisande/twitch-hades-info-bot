@@ -39,6 +39,7 @@ const special = {
   type: SPECIAL,
   info: (value) => `Your Special inflicts ${value} [scorch] damage`,
   values: {
+    [RARE]: { 1: 20, 2: 25 },
     [EPIC]: { 1: 25 },
   },
 };
@@ -72,6 +73,7 @@ const dash = {
     [COMMON]: {
       1: 2,
     },
+    [RARE]: { 1: 4, 3: 7 },
     [EPIC]: {
       1: 6,
     },
@@ -133,6 +135,82 @@ const revenge = {
   values: calculateFlat(50, true),
 };
 
+const funeralPyre = {
+  name: "Funeral Pyre",
+  type: DUO,
+  info: (value) =>
+    `While you Channel your [omega] Moves, repeatedly inflict ${value} [scorch] on nearby foes.`,
+  values: {
+    [DUO]: {
+      1: 90,
+    },
+  },
+};
+
+const slowCooker = {
+  name: "Slow Cooker",
+  type: OTHER,
+  info: (value) =>
+    `Your Attacks and Specials gain ${value} Power for each [fire] boon you have`,
+  values: {
+    [COMMON]: {
+      1: 2,
+    },
+  },
+};
+
+const glowingCoal = {
+  name: "Glowing Coal",
+  type: OTHER,
+  info: (value) =>
+    `Hold Cast to aim a fiery projectile that explodes on impact for ${value} damage. The binding circle forms there.`,
+  values: {
+    [EPIC]: {
+      1: 90,
+      2: 110,
+      3: 125,
+      4: 135,
+      6: 155,
+    },
+  },
+};
+
+const fireExtinguisher = {
+  name: "Fire Extinguisher",
+  type: OTHER,
+  info: (value) =>
+    `Foes with at least 300 [scorch] take a burst of damage equal to ${value} their [scorch] that consumes the effect`,
+  values: {
+    [RARE]: {
+      1: "62%",
+    },
+    [EPIC]: {
+      1: "75%",
+    },
+  },
+};
+
+const flammableCoating = {
+  name: "Flammable Coating",
+  type: OTHER,
+  info: (value) => `Your [scorch] effects deal ${value} bonus damage to Armor`,
+  values: {
+    [EPIC]: {
+      1: "200%",
+    },
+  },
+};
+
+const chainReaction = {
+  name: "Chain Reaction",
+  type: DUO,
+  info: (value) =>
+    `If you use your blast effects from Hephaestus just within ${value} seconds of them recharging, they fire 2 times`,
+  values: {
+    [DUO]: { 1: 0.85 },
+  },
+};
+
 const abilities = {
   attack,
   special,
@@ -143,6 +221,12 @@ const abilities = {
   controlledBurn,
   burntOffering,
   naturalGas,
+  funeralPyre,
+  slowCooker,
+  glowingCoal,
+  fireExtinguisher,
+  flammableCoating,
+  chainReaction,
 };
 
 const base = {

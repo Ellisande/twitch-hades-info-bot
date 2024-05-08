@@ -7,6 +7,7 @@ const { demeter } = require("./demeter");
 const { hestia } = require("./hestia");
 const { hephaestus } = require("./hephaestus");
 const { apollo } = require("./apollo");
+const { hera } = require("./hera");
 
 module.exports = [
   zeus,
@@ -18,4 +19,5 @@ module.exports = [
   demeter,
   hestia,
   hephaestus,
+  hera,
 ];

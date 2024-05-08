@@ -40,6 +40,13 @@ const suddenCleaver = {
   exclusives: [],
 };
 
+const psychicWhirlwind = {
+  name: "Psychic Whirlwind",
+  description:
+    "During your [omega] Attack, you are free to use your Attacks and Specials",
+  exclusives: [],
+};
+
 const formatter = hammerFormatter(weaponNameString);
 
 const axeHammerAbilities = [
@@ -49,6 +56,7 @@ const axeHammerAbilities = [
   meltingShedder,
   marauderSlash,
   suddenCleaver,
+  psychicWhirlwind,
 ].map(formatter);
 
 module.exports = {

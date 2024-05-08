@@ -3,7 +3,7 @@ const weapons = require("../data/weapons.js");
 const weaponNames = Object.keys(weapons);
 
 const weaponCommand = new Command({
-  command: /^(staff|daggers|axe|torch) ?(special|attack|info)?$/i,
+  command: /^(staff|daggers|axe|torch|skull) ?(special|attack|info)?$/i,
   name: "Weapon",
   test: false,
   example: "sword",
