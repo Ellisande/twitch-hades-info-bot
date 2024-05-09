@@ -6,7 +6,6 @@ const {
   CAST,
   DASH,
   OTHER,
-  AID,
 } = require("./abilityTypes");
 const {
   calculatePercentage,

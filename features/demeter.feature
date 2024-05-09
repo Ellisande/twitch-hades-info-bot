@@ -5,7 +5,7 @@ Feature: Users can ask about Demeter
         And a channel {sneakyteak}
         When the user says to the bot {!demeter}
         Then the bot responds with {Demeter, God of the Harvest}
-        And the bot responds with {[attack] [special] [cast] [dash] [aid] [other]}
+        And the bot responds with {[attack] [special] [cast] [dash] [other]}
 
     Scenario: Abilites with 2 values should have only 1 formatted
         Given a user {user1}
