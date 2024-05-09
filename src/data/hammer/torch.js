@@ -55,6 +55,12 @@ const cleanCandle = {
   exclusives: [],
 };
 
+const splitFire = {
+  name: "Split Fire",
+  description: "Your Attacks split in 2 the first time they strike foes",
+  exclusives: [],
+};
+
 const formatter = hammerFormatter(weaponNameString);
 
 const torchHammerAbilities = [
@@ -66,6 +72,7 @@ const torchHammerAbilities = [
   furiousFire,
   crushingComet,
   cleanCandle,
+  splitFire,
 ].map(formatter);
 
 module.exports = {

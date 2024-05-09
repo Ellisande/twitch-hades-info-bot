@@ -211,6 +211,16 @@ const airQuality = {
   },
 };
 
+const masterConductor = {
+  name: "Master Conductor",
+  type: DUO,
+  info: (value) =>
+    `Your chain-lightning deals ${value} more damage per bounce and can bounce to you`,
+  values: {
+    [DUO]: { 1: "15%" },
+  },
+};
+
 const abilities = {
   attack,
   special,
@@ -225,6 +235,8 @@ const abilities = {
   spiritSurge,
   "king's ransom": kingsRansom,
   electricOverload,
+  airQuality,
+  masterConductor,
 };
 
 const base = {
