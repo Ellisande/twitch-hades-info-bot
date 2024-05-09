@@ -5,7 +5,6 @@ const {
   SPECIAL,
   CAST,
   DASH,
-  REVENGE,
   OTHER,
   AID,
 } = require("./abilityTypes");
@@ -98,13 +97,6 @@ const keenIntuition = {
   },
 };
 
-const revenge = {
-  name: "Unknown",
-  type: REVENGE,
-  info: (value) => `Unknown`,
-  values: calculateFlat(50, true),
-};
-
 const kingsRansom = {
   name: "King's Ransom",
   type: DUO,
@@ -179,7 +171,6 @@ const abilities = {
   attack,
   special,
   dash,
-  revenge,
   cast,
   bornGain,
   engagementRing,

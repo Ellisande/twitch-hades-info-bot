@@ -5,7 +5,6 @@ const {
   SPECIAL,
   CAST,
   DASH,
-  REVENGE,
   OTHER,
   AID,
 } = require("./abilityTypes");
@@ -70,13 +69,6 @@ const dash = {
       2: 120,
     },
   },
-};
-
-const revenge = {
-  name: "None",
-  type: REVENGE,
-  info: () => `Poseidon does not have a revenge ability.`,
-  values: {},
 };
 
 const doubleUp = {
@@ -165,7 +157,6 @@ const abilities = {
   attack,
   special,
   dash,
-  revenge,
   cast,
   waterFitness,
   hydraulicMight,

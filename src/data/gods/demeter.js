@@ -5,7 +5,6 @@ const {
   SPECIAL,
   CAST,
   DASH,
-  REVENGE,
   OTHER,
   AID,
 } = require("./abilityTypes");
@@ -96,20 +95,6 @@ const dash = {
     [HEROIC]: {
       1: 37.5,
     },
-  },
-};
-
-const revenge = {
-  name: "Unknown",
-  type: REVENGE,
-  info: () => `Unknown`,
-  values: {
-    [COMMON]: { 1: 10 },
-    [RARE]: {
-      1: 15,
-    },
-    [EPIC]: { 1: 20 },
-    [HEROIC]: { 1: 25 },
   },
 };
 
@@ -217,7 +202,6 @@ const abilities = {
   attack,
   special,
   dash,
-  revenge,
   cast,
   rareCrop,
   weedKiller,

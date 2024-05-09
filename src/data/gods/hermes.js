@@ -5,7 +5,6 @@ const {
   SPECIAL,
   CAST,
   DASH,
-  REVENGE,
   OTHER,
   AID,
 } = require("./abilityTypes");
@@ -120,9 +119,9 @@ const quickBuck = {
   },
 };
 
-const revenge = {
+const greaterEvasion = {
   name: "Greater Evasion",
-  type: REVENGE,
+  type: OTHER,
   info: () =>
     `Whenever you are struck, you have a ${value} chance to Dodge any damage`,
   values: {
@@ -143,12 +142,12 @@ const abilities = {
   attack,
   special,
   dash,
-  revenge,
   cast,
   meanStreak,
   hardTarget,
   wittyRetort,
   quickBuck,
+  greaterEvasion,
   savedBreath,
 };
 

@@ -5,7 +5,6 @@ const {
   SPECIAL,
   CAST,
   DASH,
-  REVENGE,
   OTHER,
   AID,
 } = require("./abilityTypes");
@@ -96,9 +95,9 @@ const dash = {
   },
 };
 
-const revenge = {
+const divineVengeance = {
   name: "Divine Vengeance",
-  type: REVENGE,
+  type: OTHER,
   info: (value) =>
     `After you take damage, your foe is stuck by lightning for ${value}, and again 50% of the time (up to 3 times)`,
   values: {
@@ -217,9 +216,9 @@ const abilities = {
   attack,
   special,
   dash,
-  revenge,
   cast,
   lightningLance,
+  divineVengeance,
   ionicGain,
   stormRing,
   staticShock,

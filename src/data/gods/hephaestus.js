@@ -5,7 +5,6 @@ const {
   SPECIAL,
   CAST,
   DASH,
-  REVENGE,
   OTHER,
   AID,
 } = require("./abilityTypes");
@@ -128,13 +127,6 @@ const uncannyFortitude = {
   },
 };
 
-const revenge = {
-  name: "Unknown",
-  type: REVENGE,
-  info: (value) => `Unknown`,
-  values: calculateFlat(50, true),
-};
-
 const roomTemperature = {
   name: "Room Temperature",
   type: DUO,
@@ -179,7 +171,6 @@ const abilities = {
   attack,
   special,
   dash,
-  revenge,
   cast,
   toughTrade,
   fixedGain,

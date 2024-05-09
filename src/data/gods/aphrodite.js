@@ -5,7 +5,6 @@ const {
   SPECIAL,
   CAST,
   DASH,
-  REVENGE,
   OTHER,
   AID,
 } = require("./abilityTypes");
@@ -106,13 +105,6 @@ const lifeAffirmation = {
   },
 };
 
-const revenge = {
-  name: "Unknown",
-  type: REVENGE,
-  info: (value) => `Unknown`,
-  values: calculateFlat(50, true),
-};
-
 const secretCrush = {
   name: "Secret Crash",
   type: OTHER,
@@ -127,7 +119,6 @@ const abilities = {
   attack,
   special,
   dash,
-  revenge,
   cast,
   "secret crush": secretCrush,
   "shameless attitude": shamelessAttitude,

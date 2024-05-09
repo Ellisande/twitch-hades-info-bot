@@ -10,7 +10,6 @@ const godOptions = [
   "special",
   "cast",
   "dash",
-  "revenge",
   "aid",
   "other",
 ]
