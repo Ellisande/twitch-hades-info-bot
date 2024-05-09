@@ -4,7 +4,7 @@ Feature: User can ask for information about Artemis
         Given a user {user1}
         And a channel {sneakyteak}
         When the user says to the bot {!artemis}
-        Then the bot responds with {Artemis, Goddess of the Hunt. Her powers cause critical hits and create seeking projectiles. [attack] [special] [cast] [dash] [revenge] [other]}
+        Then the bot responds with {Artemis, Goddess of the Hunt. Her powers cause critical hits and create seeking projectiles. [attack] [special] [cast] [dash] [other]}
 
     Scenario: User can ask for attack information about Artemis
         Given a user {user1}
@@ -29,12 +29,6 @@ Feature: User can ask for information about Artemis
         And a channel {sneakyteak}
         When the user says to the bot {!artemis cast}
         Then the bot responds with {True Shot (Cast) - Cast seeks enemies and deals (e:149-179) damage}
-
-    Scenario: User can ask for revenge information about Artemis
-        Given a user {user1}
-        And a channel {sneakyteak}
-        When the user says to the bot {!artemis revenge}
-        Then the bot responds with {Heaven's Vengeance (Revenge) - Taking damage strikes nearby enemies for (e:151-173) damage}
 
     Scenario: User can ask for the names of other abilities for Artemis
         Given a user {user1}

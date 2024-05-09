@@ -5,7 +5,7 @@ Feature: User can ask for information about Aphrodite
         And a channel {sneakyteak}
         When the user says to the bot {!aphrodite}
         Then the bot responds with {Aphrodite, Goddess of Love. Her powers weaken enemies causing them to do less damage}
-        And the bot responds with {[attack] [special] [cast] [dash] [revenge] [other]}
+        And the bot responds with {[attack] [special] [cast] [dash] [other]}
 
     Scenario: User can ask for attack information about Aphrodite
         Given PENDING: need info
@@ -37,14 +37,6 @@ Feature: User can ask for information about Aphrodite
         When the user says to the bot {!aphrodite cast}
         Then the bot responds with {Shatter Shot (Cast)}
         And the bot responds with {Cast shoots six short range projectiles that each deal (c:15) damage}
-
-    Scenario: User can ask for revenge information about Aphrodite
-        Given PENDING: need info
-        And a user {user1}
-        And a channel {sneakyteak}
-        When the user says to the bot {!aphrodite revenge}
-        Then the bot responds with {Wave of Despair (Revenge)}
-        And the bot responds with {Taking damage deals (c:14 r:17) damage to nearby enemies and applies weak}
 
     Scenario: User can ask for the names of other abilities for Aphrodite
         Given a user {user1}

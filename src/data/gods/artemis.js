@@ -5,9 +5,7 @@ const {
   SPECIAL,
   CAST,
   DASH,
-  REVENGE,
   OTHER,
-  AID,
 } = require("./abilityTypes");
 const {
   calculatePercentage,
@@ -102,13 +100,6 @@ const dash = {
   },
 };
 
-const revenge = {
-  name: "None",
-  type: REVENGE,
-  info: (value) => `Artemis does not have a revenge ability`,
-  values: {},
-};
-
 const lethalSnare = {
   name: "Lethal Snare",
   type: OTHER,
@@ -181,7 +172,6 @@ const abilities = {
   attack,
   special,
   dash,
-  revenge,
   cast,
   "support fire": supportFire,
   "lethal snare": lethalSnare,

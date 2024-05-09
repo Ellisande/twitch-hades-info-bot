@@ -5,9 +5,7 @@ const {
   SPECIAL,
   CAST,
   DASH,
-  REVENGE,
   OTHER,
-  AID,
 } = require("./abilityTypes");
 const {
   calculatePercentage,
@@ -107,9 +105,9 @@ const superNova = {
   },
 };
 
-const revenge = {
+const lightSmite = {
   name: "Light Smite",
-  type: REVENGE,
+  type: OTHER,
   info: (value) =>
     `After you take damage, your foes takes ${value} damage and you inflict Daze on all foes`,
   values: {
@@ -178,7 +176,6 @@ const abilities = {
   attack,
   special,
   dash,
-  revenge,
   cast,
   "lucid gain": lucidGain,
   "extra dose": extraDose,
@@ -189,6 +186,7 @@ const abilities = {
   backBurner,
   criticalMiss,
   stellarSlam,
+  lightSmite,
 };
 
 const base = {

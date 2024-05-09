@@ -4,7 +4,7 @@ Feature: User can ask for information about Zeus
         Given a user {user1}
         And a channel {sneakyteak}
         When the user says to the bot {!zeus}
-        Then the bot responds with {Zeus, God of Thunder. His powers create bouncing lightning projectiles. [attack] [special] [cast] [dash] [revenge] [other]}
+        Then the bot responds with {Zeus, God of Thunder. His powers create bouncing lightning projectiles. [attack] [special] [cast] [dash] [other]}
 
     Scenario: User can ask for attack information about Zeus
         Given a user {user1}
@@ -29,12 +29,6 @@ Feature: User can ask for information about Zeus
         And a channel {sneakyteak}
         When the user says to the bot {!zeus cast}
         Then the bot responds with {Electric Shot (Cast) - Cast bounces and deals (c:60 r:84-86 e:122) damage}
-
-    Scenario: User can ask for revenge information about Zeus
-        Given a user {user1}
-        And a channel {sneakyteak}
-        When the user says to the bot {!zeus revenge}
-        Then the bot responds with {Heaven's Vengeance (Revenge) - Taking damage strikes nearby enemies for (e:151-173) damage}
 
     Scenario: User can ask for the names of other abilities for Zeus
         Given a user {user1}

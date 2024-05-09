@@ -4,7 +4,7 @@ Feature: User can ask for information about Ares
         Given a user {user1}
         And a channel {sneakyteak}
         When the user says to the bot {!ares}
-        Then the bot responds with {Ares, God of War. His powers cause spinning clouds of blades or damaging curses. [attack] [special] [cast] [dash] [revenge] [other]}
+        Then the bot responds with {Ares, God of War. His powers cause spinning clouds of blades or damaging curses. [attack] [special] [cast] [dash]] [other]}
 
     Scenario: User can ask for attack information about Ares
         Given a user {user1}
@@ -31,12 +31,6 @@ Feature: User can ask for information about Ares
         And a channel {sneakyteak}
         When the user says to the bot {!ares cast}
         Then the bot responds with {True Shot (Cast) - Cast seeks enemies and deals (e:149-179) damage}
-
-    Scenario: User can ask for revenge information about Ares
-        Given a user {user1}
-        And a channel {sneakyteak}
-        When the user says to the bot {!ares revenge}
-        Then the bot responds with {Curse of Vengeance (Revenge) - Taking damage causes nearby enemies to take (e:140) damage a short time later}
 
     Scenario: User can ask for the names of other abilities for Ares
         Given a user {user1}

@@ -5,9 +5,7 @@ const {
   SPECIAL,
   CAST,
   DASH,
-  REVENGE,
   OTHER,
-  AID,
 } = require("./abilityTypes");
 const {
   calculatePercentage,
@@ -128,13 +126,6 @@ const naturalGas = {
   },
 };
 
-const revenge = {
-  name: "Unknown",
-  type: REVENGE,
-  info: (value) => `Unknown`,
-  values: calculateFlat(50, true),
-};
-
 const funeralPyre = {
   name: "Funeral Pyre",
   type: DUO,
@@ -215,7 +206,6 @@ const abilities = {
   attack,
   special,
   dash,
-  revenge,
   cast,
   hearthGain,
   controlledBurn,

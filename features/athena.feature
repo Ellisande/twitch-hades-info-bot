@@ -4,7 +4,7 @@ Feature: User can ask for information about Athena
         Given a user {user1}
         And a channel {sneakyteak}
         When the user says to the bot {!athena}
-        Then the bot responds with {Athena, Goddess of Wisdom. Her powers deflect attacks. [attack] [special] [cast] [dash] [revenge] [other]}
+        Then the bot responds with {Athena, Goddess of Wisdom. Her powers deflect attacks. [attack] [special] [cast] [dash] [other]}
 
     Scenario: User can ask for attack information about Athena
         Given a user {user1}
@@ -30,12 +30,6 @@ Feature: User can ask for information about Athena
         And a channel {sneakyteak}
         When the user says to the bot {!athena cast}
         Then the bot responds with {Titan Toppler (Dash) - Your dash is now slower but deals (e:30) and deflects}
-
-    Scenario: User can ask for revenge information about Athena
-        Given a user {user1}
-        And a channel {sneakyteak}
-        When the user says to the bot {!athena revenge}
-        Then the bot responds with {Brilliant Riposte (Revenge) - Taking damage causes you to deflect and deal (c:20 r:27) damage to nearby enemies}
 
     Scenario: User can ask for the names of other abilities for Athena
         Given a user {user1}
