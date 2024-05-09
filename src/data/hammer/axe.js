@@ -47,6 +47,19 @@ const psychicWhirlwind = {
   exclusives: [],
 };
 
+const unyieldingSlash = {
+  name: "Unyielding Slash",
+  description:
+    "Your Attacks have +10 Power and you take -20% damage while using them",
+  exclusives: [],
+};
+
+const hellSplitter = {
+  name: "Hell Splitter",
+  description: "Your Attack becomes a big chop with 300 power",
+  exclusives: [],
+};
+
 const formatter = hammerFormatter(weaponNameString);
 
 const axeHammerAbilities = [
@@ -57,6 +70,7 @@ const axeHammerAbilities = [
   marauderSlash,
   suddenCleaver,
   psychicWhirlwind,
+  hellSplitter,
 ].map(formatter);
 
 module.exports = {
