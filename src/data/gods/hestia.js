@@ -1,12 +1,6 @@
 const { COMMON, RARE, EPIC, LEGENDARY, HEROIC, DUO } = require("./rarities");
 const { abilityFormatter } = require("./formatters");
-const {
-  ATTACK,
-  SPECIAL,
-  CAST,
-  DASH,
-  OTHER,
-} = require("./abilityTypes");
+const { ATTACK, SPECIAL, CAST, DASH, OTHER } = require("./abilityTypes");
 const {
   calculatePercentage,
   calculateFlat,
@@ -199,6 +193,18 @@ const chainReaction = {
     `If you use your blast effects from Hephaestus just within ${value} seconds of them recharging, they fire 2 times`,
   values: {
     [DUO]: { 1: 0.85 },
+  },
+};
+
+const phoenixSkin = {
+  name: "Phoenix Skin",
+  type: DUO,
+  info: (value) =>
+    `Give up -100 max health. If you do not take or deal damage for 3 seconds, rapidly restore ${value} health/sec`,
+  values: {
+    [DUO]: {
+      1: 3,
+    },
   },
 };
 

@@ -71,6 +71,7 @@ const axeHammerAbilities = [
   suddenCleaver,
   psychicWhirlwind,
   hellSplitter,
+  unyieldingSlash,
 ].map(formatter);
 
 module.exports = {
