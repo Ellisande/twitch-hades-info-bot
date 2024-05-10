@@ -223,6 +223,7 @@ const abilities = {
   fireExtinguisher,
   flammableCoating,
   chainReaction,
+  phoenixSkin,
 };
 
 const base = {
