@@ -48,6 +48,19 @@ const bolsteredArray = {
   exclusives: [],
 };
 
+const rocketBombard = {
+  name: "Rocket Bombard",
+  description: "Your [omega] Attack fires straight ahead and has +20 power",
+  exclusives: [],
+};
+
+const twistingCrash = {
+  name: "Twisting Crash",
+  description:
+    "After you [omega] Special projectiles fire, they fire again towards you",
+  exclusives: [],
+};
+
 const skullHammerAbilities = [
   possessedArray,
   fullSalvo,
@@ -56,6 +69,8 @@ const skullHammerAbilities = [
   sidelongCrash,
   suddenDriver,
   bolsteredArray,
+  rocketBombard,
+  twistingCrash,
 ].map(formatter);
 
 module.exports = {

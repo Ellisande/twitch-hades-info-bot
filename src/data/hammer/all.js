@@ -5,11 +5,11 @@ const { daggersHammerAbilities } = require("./daggers");
 const { skullHammerAbilities } = require("./skull");
 
 const all = [
-  axeHammerAbilities,
-  staffHammerAbilities,
-  torchHammerAbilities,
-  daggersHammerAbilities,
-  skullHammerAbilities,
+  ...axeHammerAbilities,
+  ...staffHammerAbilities,
+  ...torchHammerAbilities,
+  ...daggersHammerAbilities,
+  ...skullHammerAbilities,
 ];
 
 module.exports = {
