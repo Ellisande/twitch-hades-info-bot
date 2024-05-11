@@ -61,6 +61,13 @@ const twistingCrash = {
   exclusives: [],
 };
 
+const destructiveArray = {
+  name: "Destructive Array",
+  description:
+    "Every 2.5 seconds skulls deal damage around them based on 50% of your Attack",
+  exclusives: [],
+};
+
 const skullHammerAbilities = [
   possessedArray,
   fullSalvo,

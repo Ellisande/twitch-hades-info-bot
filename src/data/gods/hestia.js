@@ -208,6 +208,16 @@ const phoenixSkin = {
   },
 };
 
+const burningDesire = {
+  name: "Burning Desire",
+  type: DUO,
+  info: (value) =>
+    `Up to +12 Lone Shades appear in Locations. Sprint into them to launch a fiery blast for ${value} damage`,
+  values: {
+    [DUO]: { 1: 160 },
+  },
+};
+
 const abilities = {
   attack,
   special,
@@ -224,6 +234,7 @@ const abilities = {
   flammableCoating,
   chainReaction,
   phoenixSkin,
+  burningDesire,
 };
 
 const base = {

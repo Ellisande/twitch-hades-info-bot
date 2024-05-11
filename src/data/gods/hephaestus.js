@@ -1,12 +1,6 @@
 const { COMMON, RARE, EPIC, LEGENDARY, HEROIC, DUO } = require("./rarities");
 const { abilityFormatter } = require("./formatters");
-const {
-  ATTACK,
-  SPECIAL,
-  CAST,
-  DASH,
-  OTHER,
-} = require("./abilityTypes");
+const { ATTACK, SPECIAL, CAST, DASH, OTHER } = require("./abilityTypes");
 const {
   calculatePercentage,
   calculateFlat,
@@ -17,10 +11,11 @@ const info = "Hephaestus, God of the Forge";
 
 const attackBase = "50";
 const attack = {
-  name: "Unknown",
+  name: "Volcanic Strike",
   type: ATTACK,
-  info: (value) => `Unknown`,
-  values: { [RARE]: { 1: "50%" } },
+  info: (value) =>
+    `Your Attacks occasionally create a blast that deals 200 damage. Recharges after ${value} seconds`,
+  values: { [RARE]: { 2: 8, 5: 5 } },
 };
 
 const specialBase = 80;

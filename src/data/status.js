@@ -34,7 +34,14 @@ const slip = {
     "[status] [Poseidon] Afflicted foes take more damage and are knocked farther away. Lasts 3 seconds",
 };
 
-const statuses = [marked, freeze, weak, blitz, hitch, slip].map((status) => ({
+const vent = {
+  name: "Vent",
+  description:
+    "[status] [Hephaestus] After being hit by a volcanic blast, the enemy takes damage after 4 seconds. Reapplying this effect resets the timer.",
+};
+
+
+const statuses = [marked, freeze, weak, blitz, hitch, slip, vent].map((status) => ({
   ...status,
   matcher: status.name.replace(" ", "*"),
 }));
