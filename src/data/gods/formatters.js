@@ -19,12 +19,14 @@ const summaryFormatter = values => {
   return "(" + Object.values(summarized).join(" ") + ")";
 };
 
-const abilityFormatter = god => ({ name, type, info, values }) => (
+const abilityFormatter = god => ({ name, type, element, info, values }) => (
   rarity,
   level
 ) => {
   const valueString = summaryFormatter(values);
-  return `${name} (${god}) - ${info(valueString)}`;
+  // Some boons, like infusions, have no element
+  const formattedElement = element ? `[${element}] ` : '';
+  return `${name} (${god}) ${formattedElement}- ${info(valueString)}`
 };
 
 module.exports = { summaryFormatter, abilityFormatter };
