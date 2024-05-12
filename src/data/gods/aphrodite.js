@@ -1,12 +1,6 @@
 const { COMMON, RARE, EPIC, LEGENDARY, HEROIC, DUO } = require("./rarities");
 const { abilityFormatter } = require("./formatters");
-const {
-  ATTACK,
-  SPECIAL,
-  CAST,
-  DASH,
-  OTHER,
-} = require("./abilityTypes");
+const { ATTACK, SPECIAL, CAST, DASH, OTHER } = require("./abilityTypes");
 const {
   calculatePercentage,
   calculateFlat,
@@ -32,6 +26,8 @@ const attack = {
     },
     [EPIC]: {
       2: "145%",
+      4: "300%",
+      7: "330%",
     },
     [HEROIC]: {
       2: "165%",
@@ -121,6 +117,26 @@ const secretCrush = {
   },
 };
 
+const burningDesire = {
+  name: "Burning Desire",
+  type: DUO,
+  info: (value) =>
+    `Up to +12 Lone Shades appear in Locations. Sprint into them to launch a fiery blast for ${value} damage`,
+  values: {
+    [DUO]: { 1: 160 },
+  },
+};
+
+const ecstaticObsession = {
+  name: "Ecstatic Obsession",
+  type: OTHER,
+  info: (value) =>
+    `During Encounters with at least ${value} foes, 1 foe is always afflicted with Charm`,
+  values: {
+    [LEGENDARY]: { 1: 3 },
+  },
+};
+
 const abilities = {
   attack,
   special,
@@ -131,6 +147,8 @@ const abilities = {
   "glamour gain": glamourGain,
   heartBreaker,
   lifeAffirmation,
+  burningDesire,
+  ecstaticObsession,
 };
 
 const base = {
