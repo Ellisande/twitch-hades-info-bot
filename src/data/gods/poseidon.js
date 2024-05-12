@@ -1,12 +1,6 @@
 const { COMMON, RARE, EPIC, LEGENDARY, HEROIC, DUO } = require("./rarities");
 const { abilityFormatter } = require("./formatters");
-const {
-  ATTACK,
-  SPECIAL,
-  CAST,
-  DASH,
-  OTHER,
-} = require("./abilityTypes");
+const { ATTACK, SPECIAL, CAST, DASH, OTHER } = require("./abilityTypes");
 const {
   calculatePercentage,
   calculateFlat,
@@ -152,6 +146,16 @@ const kingTide = {
   },
 };
 
+const islandGetaway = {
+  name: "Island Getaway",
+  type: DUO,
+  info: (value) =>
+    `You take ${value} less damage from nearby foes. Boons of Aphrodite treat all foes as nearby.`,
+  values: {
+    [DUO]: { 1: "15%" },
+  },
+};
+
 const abilities = {
   attack,
   special,
@@ -165,6 +169,7 @@ const abilities = {
   slipperySlope,
   crashingWave,
   kingTide,
+  islandGetaway,
 };
 
 const base = {

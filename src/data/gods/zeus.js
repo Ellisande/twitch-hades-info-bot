@@ -1,12 +1,6 @@
 const { COMMON, RARE, EPIC, LEGENDARY, HEROIC, DUO } = require("./rarities");
 const { abilityFormatter } = require("./formatters");
-const {
-  ATTACK,
-  SPECIAL,
-  CAST,
-  DASH,
-  OTHER,
-} = require("./abilityTypes");
+const { ATTACK, SPECIAL, CAST, DASH, OTHER } = require("./abilityTypes");
 const {
   calculatePercentage,
   calculateFlat,
@@ -137,9 +131,7 @@ const doubleStrike = {
     `Your lightning bolt effects have a ${value} chance to strike 1 more time`,
   values: {
     [COMMON]: { 1: "5%", 2: "10%" },
-    // [RARE]: { 1: 15 },
-    [EPIC]: { 1: "15%" },
-    // [HEROIC]: { 1: 8 },
+    [EPIC]: { 1: "15%", 4: "25%" },
   },
 };
 
@@ -221,6 +213,16 @@ const masterConductor = {
   },
 };
 
+const toastingFork = {
+  name: "Toasting Fork",
+  type: OTHER,
+  info: (value) =>
+    `Your [blitz] effects deal ${value} damage even if they expire without being activated.`,
+  values: {
+    [RARE]: { 1: "100%" },
+  },
+};
+
 const abilities = {
   attack,
   special,
@@ -237,6 +239,7 @@ const abilities = {
   electricOverload,
   airQuality,
   masterConductor,
+  toastingFork,
 };
 
 const base = {

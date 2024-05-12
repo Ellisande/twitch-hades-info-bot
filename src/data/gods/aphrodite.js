@@ -137,6 +137,16 @@ const ecstaticObsession = {
   },
 };
 
+const islandGetaway = {
+  name: "Island Getaway",
+  type: DUO,
+  info: (value) =>
+    `You take ${value} less damage from nearby foes. Boons of Aphrodite treat all foes as nearby.`,
+  values: {
+    [DUO]: { 1: "15%" },
+  },
+};
+
 const abilities = {
   attack,
   special,
@@ -149,6 +159,7 @@ const abilities = {
   lifeAffirmation,
   burningDesire,
   ecstaticObsession,
+  islandGetaway,
 };
 
 const base = {
