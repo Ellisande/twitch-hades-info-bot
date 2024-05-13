@@ -1,6 +1,6 @@
 import express from "express";
 import axios from "axios";
-import * as auth from "../.auth.json";
+import * as auth from "../auth.json";
 import { Auth } from "./config";
 const post = axios.post;
 const identity = (auth as Auth)?.identity;
