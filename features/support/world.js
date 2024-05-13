@@ -1,8 +1,8 @@
-const { setWorldConstructor } = require("cucumber");
+const { setWorldConstructor, BeforeAll } = require("cucumber");
 const sinon = require("sinon");
 
 const botMock = () => ({
-  say: sinon.fake()
+  say: sinon.fake(),
 });
 
 const given = Symbol("given");
@@ -16,7 +16,7 @@ class CustomWorld {
     this[then] = {};
     this.mocks = {
       bot: botMock(),
-      user: sinon.fake()
+      user: sinon.fake(),
     };
   }
 
@@ -50,3 +50,7 @@ class CustomWorld {
 }
 
 setWorldConstructor(CustomWorld);
+
+BeforeAll(function () {
+  process.env.LOG_LEVEL = "error";
+});

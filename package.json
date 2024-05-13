@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node src/bot.js",
     "dev": "nodemon src/bot.js",
-    "test": "LOG_LEVEL=error cucumber-js",
+    "test": "cucumber-js",
     "test:debug": "cucumber-js"
   },
   "author": "ellisande",
