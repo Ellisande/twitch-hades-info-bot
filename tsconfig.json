@@ -6,7 +6,7 @@
     "lib": ["esnext"],
     "esModuleInterop": true,
     "target": "ES2020",
-    "moduleResolution": "node",
+    "moduleResolution": "Node",
     "resolveJsonModule": true
   }
 }
