@@ -1,0 +1,228 @@
+[
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "user's-can-request-information-about-boon-elements;users-can-request-a-list-of-all-elements",
+        "keyword": "Scenario",
+        "line": 6,
+        "name": "Users can request a list of all elements",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 3,
+            "name": "a user {user1}",
+            "match": {
+              "location": "features\\support\\bot_steps.ts:15"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 5180800
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 4,
+            "name": "a channel {sneakyteak}",
+            "match": {
+              "location": "features\\support\\bot_steps.ts:8"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 818399
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 7,
+            "name": "the user says to the bot {!elements}",
+            "match": {
+              "location": "features\\support\\bot_steps.ts:34"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 579461599
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 8,
+            "name": "the bot responds with {Put ! then the name of an element to find out more.}",
+            "match": {
+              "location": "features\\support\\bot_steps.ts:48"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1677400
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 9,
+            "name": "the bot responds with {[Earth] [Water] [Air] [Fire] [Cosmic]}",
+            "match": {
+              "location": "features\\support\\bot_steps.ts:48"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 300700
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "user's-can-request-information-about-boon-elements;users-can-ask-about-a-specific-element",
+        "keyword": "Scenario",
+        "line": 11,
+        "name": "Users can ask about a specific element",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 3,
+            "name": "a user {user1}",
+            "match": {
+              "location": "features\\support\\bot_steps.ts:15"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 124499
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 4,
+            "name": "a channel {sneakyteak}",
+            "match": {
+              "location": "features\\support\\bot_steps.ts:8"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 101999
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 12,
+            "name": "the user says to the bot {!water}",
+            "match": {
+              "location": "features\\support\\bot_steps.ts:34"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1976500
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 13,
+            "name": "the bot responds with {Gods with [Water] boons:}",
+            "match": {
+              "location": "features\\support\\bot_steps.ts:48"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 215199
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 14,
+            "name": "the bot responds with {[Aphrodite]}",
+            "match": {
+              "location": "features\\support\\bot_steps.ts:48"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 115699
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "user's-can-request-information-about-boon-elements;the-bot-doesn't-respond-when-an-unknown-element-is-requested",
+        "keyword": "Scenario",
+        "line": 16,
+        "name": "The bot doesn't respond when an unknown element is requested",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 3,
+            "name": "a user {user1}",
+            "match": {
+              "location": "features\\support\\bot_steps.ts:15"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 100599
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 4,
+            "name": "a channel {sneakyteak}",
+            "match": {
+              "location": "features\\support\\bot_steps.ts:8"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 51600
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 17,
+            "name": "the user says to the bot {!boogers}",
+            "match": {
+              "location": "features\\support\\bot_steps.ts:34"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 462100
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 18,
+            "name": "the bot does not respond",
+            "match": {
+              "location": "features\\support\\bot_steps.ts:74"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 656400
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      }
+    ],
+    "id": "user's-can-request-information-about-boon-elements",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "User's can request information about boon elements",
+    "tags": [],
+    "uri": "features\\elements.feature"
+  }
+]

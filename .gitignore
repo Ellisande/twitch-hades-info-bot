@@ -4,3 +4,4 @@ node_modules
 *auth.json
 **/auth.json
 *auth.example.json
+dist

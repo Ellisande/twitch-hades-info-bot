@@ -1,0 +1,33 @@
+┌───────────────────────────────────────────────────────────────────────────────┬──────────┬──────────────────────────────────┐
+│ Pattern / Text                                                                │ Duration │ Location                         │
+├───────────────────────────────────────────────────────────────────────────────┼──────────┼──────────────────────────────────┤
+│ /the user says to the bot {(.*)}/                                             │ 193.97ms │ features\support\bot_steps.ts:34 │
+│   the user says to the bot {!elements}                                        │ 579.46ms │ features\elements.feature:7      │
+│   the user says to the bot {!water}                                           │ 1.98ms   │ features\elements.feature:12     │
+│   the user says to the bot {!boogers}                                         │ 0.46ms   │ features\elements.feature:17     │
+├───────────────────────────────────────────────────────────────────────────────┼──────────┼──────────────────────────────────┤
+│ /a user {(.*)}/                                                               │ 1.80ms   │ features\support\bot_steps.ts:15 │
+│   a user {user1}                                                              │ 5.18ms   │ features\elements.feature:3      │
+│   a user {user1}                                                              │ 0.12ms   │ features\elements.feature:3      │
+│   a user {user1}                                                              │ 0.10ms   │ features\elements.feature:3      │
+├───────────────────────────────────────────────────────────────────────────────┼──────────┼──────────────────────────────────┤
+│ /^the bot does not respond$/                                                  │ 0.66ms   │ features\support\bot_steps.ts:74 │
+│   the bot does not respond                                                    │ 0.66ms   │ features\elements.feature:18     │
+├───────────────────────────────────────────────────────────────────────────────┼──────────┼──────────────────────────────────┤
+│ /the bot responds with {(.*)}/                                                │ 0.58ms   │ features\support\bot_steps.ts:48 │
+│   the bot responds with {Put ! then the name of an element to find out more.} │ 1.68ms   │ features\elements.feature:8      │
+│   the bot responds with {[Earth] [Water] [Air] [Fire] [Cosmic]}               │ 0.30ms   │ features\elements.feature:9      │
+│   the bot responds with {Gods with [Water] boons:}                            │ 0.22ms   │ features\elements.feature:13     │
+│   the bot responds with {[Aphrodite]}                                         │ 0.12ms   │ features\elements.feature:14     │
+├───────────────────────────────────────────────────────────────────────────────┼──────────┼──────────────────────────────────┤
+│ /a channel {(.*)}/                                                            │ 0.32ms   │ features\support\bot_steps.ts:8  │
+│   a channel {sneakyteak}                                                      │ 0.82ms   │ features\elements.feature:4      │
+│   a channel {sneakyteak}                                                      │ 0.10ms   │ features\elements.feature:4      │
+│   a channel {sneakyteak}                                                      │ 0.05ms   │ features\elements.feature:4      │
+├───────────────────────────────────────────────────────────────────────────────┼──────────┼──────────────────────────────────┤
+│ /a test user/                                                                 │ UNUSED   │ features\support\bot_steps.ts:22 │
+├───────────────────────────────────────────────────────────────────────────────┼──────────┼──────────────────────────────────┤
+│ /^PENDING/                                                                    │ UNUSED   │ features\support\bot_steps.ts:30 │
+├───────────────────────────────────────────────────────────────────────────────┼──────────┼──────────────────────────────────┤
+│ /the bot does not respond with {(.*)}/                                        │ UNUSED   │ features\support\bot_steps.ts:61 │
+└───────────────────────────────────────────────────────────────────────────────┴──────────┴──────────────────────────────────┘
