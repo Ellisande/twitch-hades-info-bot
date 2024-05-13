@@ -218,6 +218,17 @@ const burningDesire = {
   },
 };
 
+const pyroTechnique = {
+  name: "Pyro Technique",
+  type: OTHER,
+  info: (value) => `Your [scorch] effects deal damage ${value} faster`,
+  values: {
+    [LEGENDARY]: {
+      1: "100%",
+    },
+  },
+};
+
 const abilities = {
   attack,
   special,
@@ -235,6 +246,7 @@ const abilities = {
   chainReaction,
   phoenixSkin,
   burningDesire,
+  pyroTechnique,
 };
 
 const base = {
