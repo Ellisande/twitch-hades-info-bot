@@ -1,5 +1,5 @@
 const { Command } = require("./command");
-const { EARTH, WATER, AIR, FIRE, COSMIC, } = require("../data/elements");
+const { EARTH, WATER, AIR, FIRE, COSMIC, } = require("../data/gods/elements");
 const allElements = [ EARTH, WATER, AIR, FIRE, COSMIC, ];
 
 const elementListCommand = new Command({

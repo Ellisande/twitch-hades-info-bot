@@ -1,5 +1,5 @@
 const { Command } = require("./command");
-const { EARTH, WATER, AIR, FIRE, COSMIC, } = require("../data/elements");
+const { EARTH, WATER, AIR, FIRE, COSMIC, } = require("../data/gods/elements");
 const allElements = [ EARTH, WATER, AIR, FIRE, COSMIC, ];
 
 const allElementNames = allElements.join("|");
@@ -28,9 +28,9 @@ const elementCommand = new Command({
   example: "water",
   handler: ({ bot, channelId, commandMatches, logger }) => {
     const elementName = commandMatches[1];
-    const currentElement = allElements.find((element) => {
-      RegExp(element, "i").test(elementName);
-    });
+    const currentElement = allElements.find((element) =>
+      element.match(RegExp(elementName, "i"))
+    );
     if (!currentElement) {
       logger.debug("Matched elementCommand with: " + elementName + " but failed to find element in list.");
       return;
