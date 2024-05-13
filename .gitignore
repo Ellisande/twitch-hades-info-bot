@@ -1,6 +1,5 @@
 auth.json
 node_modules
-.vscode
 *auth.json
 **/auth.json
 *auth.example.json
