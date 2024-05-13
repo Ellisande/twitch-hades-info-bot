@@ -167,6 +167,7 @@ const base = {
   info,
   abilities,
   other: toArray(abilities).filter((ability) => ability.type === OTHER),
+  elements: [...new Set(toArray(abilities).map(ability => ability.element).filter(element => element))],
 };
 
 const formattedAbilities = mapValues(abilities, abilityFormatter(base.name));

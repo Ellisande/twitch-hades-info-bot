@@ -7,6 +7,8 @@ const { hammerAbilityCommand } = require("./hammerAbility");
 const { hammerCommand } = require("./hammer");
 const { effectCommand } = require("./effect");
 const { effectListCommand } = require("./effectList");
+const { elementCommand } = require("./element");
+const { elementListCommand } = require("./elementList");
 
 const allCommands = [
   pingCommand,
@@ -17,7 +19,9 @@ const allCommands = [
   hammerAbilityCommand,
   hammerCommand,
   effectCommand,
-  effectListCommand
+  effectListCommand,
+  elementCommand,
+  elementListCommand,
 ];
 
 module.exports = { allCommands };
