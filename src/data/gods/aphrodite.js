@@ -1,6 +1,7 @@
 const { COMMON, RARE, EPIC, LEGENDARY, HEROIC, DUO } = require("./rarities");
 const { abilityFormatter } = require("./formatters");
 const { ATTACK, SPECIAL, CAST, DASH, OTHER } = require("./abilityTypes");
+const { WATER, AIR, COSMIC, } = require("./elements")
 const {
   calculatePercentage,
   calculateFlat,
@@ -14,6 +15,7 @@ const attackBase = "50";
 const attack = {
   name: "Flutter Strike",
   type: ATTACK,
+  element: WATER,
   info: (value) => `Your Attacks ${value} more damage to nearby foes`,
   values: {
     [COMMON]: {
@@ -39,6 +41,7 @@ const specialBase = 80;
 const special = {
   name: "Unknown",
   type: SPECIAL,
+  element: WATER,
   info: (value) => `Unknown`,
   values: calculatePercentage(specialBase, true),
 };
@@ -46,6 +49,7 @@ const special = {
 const cast = {
   name: "Rapture Ring",
   type: CAST,
+  element: AIR,
   info: (value) =>
     `Your Casts drag foes in and inflict [weak] reducing their damage by ${value}`,
   values: {
@@ -60,6 +64,7 @@ const cast = {
 const dash = {
   name: "Unknown",
   type: DASH,
+  element: AIR,
   info: (value) => `Unknown`,
   values: {
     [RARE]: {
@@ -71,6 +76,7 @@ const dash = {
 const glamourGain = {
   name: "Glamour Gain",
   type: OTHER,
+  element: AIR,
   info: (value) =>
     `In each encounter, 1 foe is always Weak. You gradually restore ${value} [mana]/second while near [weak] foes.`,
   values: {
@@ -82,6 +88,7 @@ const glamourGain = {
 const shamelessAttitude = {
   name: "Shameless Attitude",
   type: OTHER,
+  element: AIR,
   info: (value) =>
     `While you have at least 80% health, you deal ${value} more damage`,
   values: { [RARE]: { 1: "15%" } },
@@ -90,6 +97,7 @@ const shamelessAttitude = {
 const heartBreaker = {
   name: "Heart Breaker",
   type: OTHER,
+  element: WATER,
   info: (value) =>
     `Whenever you use 30 [mana], create a Heartthrob that deals ${value} area damage.`,
   values: {
@@ -100,6 +108,7 @@ const heartBreaker = {
 const lifeAffirmation = {
   name: "Life Affirmation",
   type: OTHER,
+  element: AIR,
   info: (value) =>
     `Any max health rewards you find have ${value} greater effect`,
   values: {
@@ -110,6 +119,7 @@ const lifeAffirmation = {
 const secretCrush = {
   name: "Secret Crash",
   type: OTHER,
+  element: AIR,
   info: (value) =>
     `After you enter a Location, [prime] 20 [mana] to add ${value} Power to your Attack`,
   values: {
@@ -130,6 +140,7 @@ const burningDesire = {
 const ecstaticObsession = {
   name: "Ecstatic Obsession",
   type: OTHER,
+  element: AIR,
   info: (value) =>
     `During Encounters with at least ${value} foes, 1 foe is always afflicted with Charm`,
   values: {
@@ -167,6 +178,7 @@ const base = {
   info,
   abilities,
   other: toArray(abilities).filter((ability) => ability.type === OTHER),
+  elements: [...new Set(toArray(abilities).map(ability => ability.element).filter(element => element))],
 };
 
 const formattedAbilities = mapValues(abilities, abilityFormatter(base.name));
