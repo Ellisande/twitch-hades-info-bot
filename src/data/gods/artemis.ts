@@ -3,6 +3,7 @@ import { abilityFormatter } from "./formatters";
 import { ATTACK, SPECIAL, CAST, DASH, OTHER } from "./abilityTypes";
 import { mapValues, toArray } from "lodash";
 import { Boon, God } from "./god";
+import { EARTH, AIR, } from "./elements";
 
 const info =
   "Artemis, Goddess of the Hunt. Her powers cause critical hits and create seeking projectiles.";
@@ -72,6 +73,7 @@ const huntersFlare: Boon = {
 const dash: Boon = {
   name: "Silver Streak",
   type: DASH,
+  element: AIR,
   info: (value) =>
     `After you Dash, your omega moves deal ${value} more damage for 2 seconds.`,
   values: {
@@ -97,6 +99,7 @@ const lethalSnare: Boon = {
 const supportFire: Boon = {
   name: "Support Fire",
   type: OTHER,
+  element: AIR,
   info: (value) =>
     `After you hit with your Attacks or Specials, fire a seeking arrow for ${value} damage`,
   values: {
@@ -118,10 +121,12 @@ const deathWarrant: Boon = {
 const firstBlood: Boon = {
   name: "First Blood",
   type: OTHER,
+  element: EARTH,
   info: (value) =>
     `Foes with at least 80% health or 80% armor have a ${value} chance to take Critical damage`,
   values: {
     [RARE]: { 1: "15%" },
+    [EPIC]: { 1: "20%" },
   },
 };
 

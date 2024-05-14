@@ -1,8 +1,8 @@
 import { hammerFormatter } from "./formatter";
 const weaponNameString = "Torch";
 
-const tripleHex = {
-  name: "Triple Hex",
+const tripleHelix = {
+  name: "Triple Helix",
   description: "Your [omega] special creates +1 flame",
   exclusives: [],
 };
@@ -64,7 +64,7 @@ const splitFire = {
 const formatter = hammerFormatter(weaponNameString);
 
 const torchHammerAbilities = [
-  tripleHex,
+  tripleHelix,
   cleanHelix,
   growingCoils,
   meltingComet,

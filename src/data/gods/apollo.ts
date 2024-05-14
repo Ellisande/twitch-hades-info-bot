@@ -1,16 +1,19 @@
 import { COMMON, RARE, EPIC, LEGENDARY, HEROIC, DUO } from "./rarities";
 import { abilityFormatter } from "./formatters";
-import { ATTACK, SPECIAL, CAST, DASH, OTHER } from "./abilityTypes";
+import { ATTACK, SPECIAL, CAST, DASH, GAIN, OTHER } from "./abilityTypes";
 import { mapValues, toArray } from "lodash";
 import { Boon, God } from "./god";
+import { AIR, FIRE, } from "./elements";
 
 const info = "Apollo, God of Light and Sun";
 
 const attack: Boon = {
   name: "Nova Strike",
   type: ATTACK,
+  element: AIR,
   info: (value) => `Your Attacks deal ${value} more damage in a larger area`,
   values: {
+    [COMMON]: { 1: "40%", },
     [RARE]: { 1: "50%", 4: "70%" },
     [EPIC]: { 1: "60%", 2: "70%", 4: "80%" },
   },
@@ -19,6 +22,7 @@ const attack: Boon = {
 const special: Boon = {
   name: "Nova Flourish",
   type: SPECIAL,
+  element: AIR,
   info: (value) => `Your Special deals ${value} more damage in a larger area`,
   values: {
     [COMMON]: {
@@ -27,6 +31,10 @@ const special: Boon = {
     },
     [RARE]: {
       1: "80%",
+    },
+    [EPIC]: {
+      1: "100%",
+      2: "120%",
     },
     [HEROIC]: {
       5: "170",
@@ -37,11 +45,12 @@ const special: Boon = {
 const cast: Boon = {
   name: "Solar Ring",
   type: CAST,
+  element: FIRE,
   info: (value) =>
     `After your [omega] cast expires, rapidly deal ${value} damage in the area for 2 seconds`,
   values: {
     [COMMON]: {
-      1: 24,
+      1: 10,
     },
     [RARE]: {
       1: 15,
@@ -51,14 +60,15 @@ const cast: Boon = {
   },
 };
 
-const lucidGain: Boon = {
+const gain: Boon = {
   name: "Lucid Gain",
-  type: OTHER,
+  type: GAIN,
+  element: AIR,
   info: (value) =>
     `While standing in your Casts, gradually restore ${value} mana per second`,
   values: {
-    [COMMON]: { 1: 12 },
-    [RARE]: { 1: 18 },
+    [COMMON]: { 1: 12, },
+    [RARE]: { 1: 18, 2: 24, },
   },
 };
 
@@ -93,9 +103,9 @@ const superNova: Boon = {
   type: OTHER,
   info: (value) => `Your Casts expand in size by ${value} until they expire`,
   values: {
-    [COMMON]: { 1: "40%" },
-    [RARE]: { 1: "50%", 2: "60%", 3: "68%", 5: "78%" },
-    [EPIC]: { 1: "60%", 2: "70%" },
+    [COMMON]: { 1: "40%", 2: "50%", },
+    [RARE]: { 1: "50%", 2: "60%", 3: "68%", 5: "78%", },
+    [EPIC]: { 1: "60%", 2: "70%", },
   },
 };
 
@@ -122,6 +132,7 @@ const selfHealing: Boon = {
 const perfectImage: Boon = {
   name: "Perfect Image",
   type: OTHER,
+  element: AIR,
   info: (value) =>
     `In each encounter, you deal ${value} more damage until you take damage`,
   values: { [RARE]: { 1: "15%" } },
@@ -183,7 +194,7 @@ const abilities = {
   special,
   dash,
   cast,
-  "lucid gain": lucidGain,
+  gain,
   "extra dose": extraDose,
   "super nova": superNova,
   "self healing": selfHealing,

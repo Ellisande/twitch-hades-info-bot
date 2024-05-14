@@ -3,6 +3,7 @@ import { abilityFormatter } from "./formatters";
 import { ATTACK, SPECIAL, CAST, DASH, OTHER } from "./abilityTypes";
 import { mapValues, toArray } from "lodash";
 import { Boon, God } from "./god";
+import { EARTH, AIR, } from "./elements";
 
 const info =
   "Hermes, God of Speed and Commerce. His abilities increase your speed";
@@ -25,10 +26,11 @@ const attack: Boon = {
 const special: Boon = {
   name: "Swift Flourish",
   type: SPECIAL,
+  element: EARTH,
   info: (value) => `Your Special is ${value} faster`,
   values: {
     [COMMON]: {
-      1: "10%",
+      1: "15%",
     },
     [RARE]: {
       1: "18%",
@@ -71,6 +73,7 @@ const hardTarget: Boon = {
 const meanStreak: Boon = {
   name: "Mean Streak",
   type: OTHER,
+  element: AIR,
   info: (value) =>
     `Each time you slay a foe, deal ${value} more damage for the next 30 seconds`,
   values: {
@@ -92,6 +95,7 @@ const wittyRetort: Boon = {
 const quickBuck: Boon = {
   name: "Quick Buck",
   type: OTHER,
+  element: AIR,
   info: (value) =>
     `You find ${value} more [gold]. Receive 100 [gold] now, plus the bonus!`,
   values: {
