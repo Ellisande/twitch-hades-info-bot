@@ -22,7 +22,7 @@ RUN apt-get update -qq && \
 
 # Install node modules
 COPY --link package-lock.json package.json ./
-RUN npm i --production=false
+RUN npm install --product=false
 
 # Copy application code
 COPY --link . .
@@ -33,6 +33,7 @@ FROM base
 
 # Copy built application
 COPY --from=build /app /app
+RUN npm run build
 
 # Start the server by default, this can be overwritten at runtime
 EXPOSE 3000
