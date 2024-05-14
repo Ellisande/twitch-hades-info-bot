@@ -9,6 +9,8 @@ import { effectCommand } from "./effect";
 import { effectListCommand } from "./effectList";
 import { elementCommand } from "./element";
 import { elementListCommand } from "./elementList";
+import { hexCommand } from "./hex";
+import { hexListCommand } from "./hexList";
 
 const allCommands = [
   pingCommand,
@@ -22,5 +24,7 @@ const allCommands = [
   effectListCommand,
   elementCommand,
   elementListCommand,
+  hexCommand,
+  hexListCommand,
 ];
 export { allCommands };
