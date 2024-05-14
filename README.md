@@ -30,7 +30,7 @@ Ability Schema:
 ```js
 const ability = {
     name: "Name of the ability",
-    type: ATTACK|SPECIAL|CAST|DASH|OTHER
+    type: ATTACK|SPECIAL|CAST|DASH|GAIN|OTHER
     info: value => `message for the boss to respond with`
     values: {
         [RARITY]: {

@@ -1,6 +1,6 @@
 import { mapValues, toArray } from "lodash";
 import { notNullOrUndefined } from "../../utils/arrayUtils";
-import { ATTACK, CAST, DASH, OTHER, SPECIAL } from "./abilityTypes";
+import { ATTACK, CAST, DASH, OTHER, SPECIAL, GAIN, } from "./abilityTypes";
 import { AIR, WATER } from "./elements";
 import { abilityFormatter } from "./formatters";
 import { Boon, God } from "./god";
@@ -69,9 +69,9 @@ const dash: Boon = {
   },
 };
 
-const glamourGain: Boon = {
+const gain: Boon = {
   name: "Glamour Gain",
-  type: OTHER,
+  type: GAIN,
   element: AIR,
   info: (value) =>
     `In each encounter, 1 foe is always Weak. You gradually restore ${value} [mana]/second while near [weak] foes.`,
@@ -159,9 +159,9 @@ const abilities = {
   special,
   dash,
   cast,
+  gain,
   "secret crush": secretCrush,
   "shameless attitude": shamelessAttitude,
-  "glamour gain": glamourGain,
   heartBreaker,
   lifeAffirmation,
   burningDesire,
