@@ -5,7 +5,7 @@ const allGodNames = gods.map((god) => god.name).join("|");
 
 const godCommandExpression = RegExp(`^(${allGodNames}) ?(.*)?$`, "i");
 
-const godOptions = ["attack", "special", "cast", "dash", "other"]
+const godOptions = ["attack", "special", "cast", "dash", "gain", "other"]
   .map((opt) => `[${opt}]`)
   .join(" ");
 
