@@ -37,6 +37,16 @@ Feature: Users can ask about God's ability by type
             | gain                  | Ionic Gain      |
             | infusion              | Air Quality     |
 
+    Scenario: A user can ask about categories from a God that is missing a category
+        When the user says to the bot {!<GOD>}
+        And the bot responds with {[<EXPECTED_CATEGORY>]}
+        Examples:
+            | GOD     | EXPECTED_CATEGORY |
+            | artemis | other             |
+            | hermes  | infusion          |
+            | hermes  | other             |
+
+
 
 
 
