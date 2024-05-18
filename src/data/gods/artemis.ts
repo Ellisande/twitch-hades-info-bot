@@ -1,5 +1,5 @@
 import { mapValues, toArray } from "lodash";
-import { CAST, DASH, OTHER } from "./abilityTypes";
+import { OTHER } from "./abilityTypes";
 import { AIR, EARTH } from "./elements";
 import { abilityFormatter } from "./formatters";
 import { Boon, God } from "./god";
@@ -10,7 +10,7 @@ const info =
 
 const easyShot: Boon = {
   name: "Easy Shot",
-  type: CAST,
+  type: OTHER,
   element: AIR,
   info: (value) =>
     `A piercing arrow dealing ${value} damage fires toward any foe damage by your [omega] Cast`,
@@ -33,7 +33,7 @@ const huntersFlare: Boon = {
 
 const silverStreak: Boon = {
   name: "Silver Streak",
-  type: DASH,
+  type: OTHER,
   element: AIR,
   info: (value) =>
     `After you Dash, your omega moves deal ${value} more damage for 2 seconds.`,

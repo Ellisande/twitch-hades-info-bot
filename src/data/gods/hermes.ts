@@ -1,5 +1,5 @@
 import { mapValues, toArray } from "lodash";
-import { ATTACK, CAST, DASH, INFUSION, OTHER, SPECIAL } from "./abilityTypes";
+import { INFUSION, OTHER } from "./abilityTypes";
 import { AIR, EARTH, FIRE } from "./elements";
 import { abilityFormatter } from "./formatters";
 import { Boon, God } from "./god";
@@ -10,7 +10,7 @@ const info =
 
 const attack: Boon = {
   name: "Swift Strike",
-  type: ATTACK,
+  type: OTHER,
   element: EARTH,
   info: (value) => `Your Attack is ${value} faster`,
   values: {
@@ -26,7 +26,7 @@ const attack: Boon = {
 
 const special: Boon = {
   name: "Swift Flourish",
-  type: SPECIAL,
+  type: OTHER,
   element: EARTH,
   info: (value) => `Your Special is ${value} faster`,
   values: {
@@ -42,16 +42,9 @@ const special: Boon = {
   },
 };
 
-const cast: Boon = {
-  name: "Unknown",
-  type: CAST,
-  info: (value) => `Unknown`,
-  values: {},
-};
-
-const dash: Boon = {
+const nitroBoost: Boon = {
   name: "Nitro Boost",
-  type: DASH,
+  type: OTHER,
   element: FIRE,
   info: (value) =>
     `Your Sprint is 20% faster and gives you a barrier that ignores ${value} instance(s) of damage per encounter`,
@@ -165,8 +158,7 @@ const closeCall: Boon = {
 const abilities = {
   attack,
   special,
-  dash,
-  cast,
+  nitroBoost,
   meanStreak,
   hardTarget,
   wittyRetort,
