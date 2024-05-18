@@ -28,7 +28,7 @@ type CommandHandler = ({
   originalMessage: string;
   logger: winston.Logger;
   commandMatches: RegExpMatchArray;
-}) => Promise<void>;
+}) => Promise<any>;
 
 class Command {
   test: boolean;
