@@ -12,6 +12,7 @@ export type Boon = {
   element?: BoonElement;
   info: (value: string) => string;
   values: BoonValues;
+  prerequisites?: Array<Array<Boon>>;
 };
 
 export type God = {
