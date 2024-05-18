@@ -1,56 +1,17 @@
-import { COMMON, RARE, EPIC, HEROIC, DUO } from "./rarities";
-import { abilityFormatter } from "./formatters";
-import { ATTACK, SPECIAL, CAST, DASH, OTHER } from "./abilityTypes";
 import { mapValues, toArray } from "lodash";
+import { CAST, DASH, OTHER } from "./abilityTypes";
+import { AIR, EARTH } from "./elements";
+import { abilityFormatter } from "./formatters";
 import { Boon, God } from "./god";
-import { EARTH, AIR, } from "./elements";
+import { COMMON, EPIC, RARE } from "./rarities";
 
 const info =
   "Artemis, Goddess of the Hunt. Her powers cause critical hits and create seeking projectiles.";
 
-const attack: Boon = {
-  name: "Unknown",
-  type: ATTACK,
-  info: (value) => `Unknown`,
-  values: {
-    [COMMON]: {
-      1: "20%",
-    },
-    [RARE]: {
-      1: `${20 * 1.3}-${20 * 1.5}`,
-    },
-    [EPIC]: {
-      1: `${20 * 1.8}-${20 * 2}`,
-    },
-    [HEROIC]: {
-      1: `${20 * 2.3}-${20 * 2.5}`,
-    },
-  },
-};
-
-const special: Boon = {
-  name: "Unknown",
-  type: SPECIAL,
-  info: (value) => `Unknown`,
-  values: {
-    [COMMON]: {
-      1: "40%",
-    },
-    [RARE]: {
-      1: `${40 * 1.3}-${40 * 1.5}`,
-    },
-    [EPIC]: {
-      1: `${40 * 1.8}-${40 * 2}`,
-    },
-    [HEROIC]: {
-      1: `${40 * 2.3}-${40 * 2.5}`,
-    },
-  },
-};
-
-const cast: Boon = {
+const easyShot: Boon = {
   name: "Easy Shot",
   type: CAST,
+  element: AIR,
   info: (value) =>
     `A piercing arrow dealing ${value} damage fires toward any foe damage by your [omega] Cast`,
   values: {
@@ -70,7 +31,7 @@ const huntersFlare: Boon = {
   },
 };
 
-const dash: Boon = {
+const silverStreak: Boon = {
   name: "Silver Streak",
   type: DASH,
   element: AIR,
@@ -89,6 +50,7 @@ const dash: Boon = {
 const lethalSnare: Boon = {
   name: "Lethal Snare",
   type: OTHER,
+  element: EARTH,
   info: (value) =>
     `Foes in your Casts have an ${value} chance to take Critical damage from your Attacks`,
   values: {
@@ -111,9 +73,11 @@ const supportFire: Boon = {
 const deathWarrant: Boon = {
   name: "Death Warrant",
   type: OTHER,
+  element: EARTH,
   info: (value) =>
     `A random foe becomes [marked] every ${value} seconds. If it takes Critical damage, this repeats.`,
   values: {
+    [COMMON]: { 1: 20 },
     [RARE]: { 1: 18 },
   },
 };
@@ -125,6 +89,7 @@ const firstBlood: Boon = {
   info: (value) =>
     `Foes with at least 80% health or 80% armor have a ${value} chance to take Critical damage`,
   values: {
+    [COMMON]: { 1: "10%" },
     [RARE]: { 1: "15%" },
     [EPIC]: { 1: "20%" },
   },
@@ -133,27 +98,15 @@ const firstBlood: Boon = {
 const pressurePoints: Boon = {
   name: "Pressure Points",
   type: OTHER,
+  element: EARTH,
   info: (value) => `Any damage you deal has a ${value} chance to be Critical`,
   values: {
+    [COMMON]: { 1: "3%" },
     [RARE]: { 1: "4%" },
   },
 };
 
-const easyShot: Boon = {
-  name: "Easy Shot",
-  type: OTHER,
-  info: (value) =>
-    `A piercing arrow fires toward any foe damage by your [omega] Cast for ${value} damage`,
-  values: {
-    [RARE]: { 1: 30 },
-  },
-};
-
 const abilities = {
-  attack,
-  special,
-  dash,
-  cast,
   "support fire": supportFire,
   "lethal snare": lethalSnare,
   "hunter's flare": huntersFlare,
@@ -161,6 +114,7 @@ const abilities = {
   firstBlood,
   pressurePoints,
   easyShot,
+  silverStreak,
 };
 
 const base: God = {

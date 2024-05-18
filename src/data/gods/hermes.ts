@@ -1,9 +1,9 @@
-import { COMMON, RARE, EPIC, LEGENDARY, HEROIC, DUO } from "./rarities";
-import { abilityFormatter } from "./formatters";
-import { ATTACK, SPECIAL, CAST, DASH, OTHER } from "./abilityTypes";
 import { mapValues, toArray } from "lodash";
+import { ATTACK, CAST, DASH, INFUSION, OTHER, SPECIAL } from "./abilityTypes";
+import { AIR, EARTH, FIRE } from "./elements";
+import { abilityFormatter } from "./formatters";
 import { Boon, God } from "./god";
-import { EARTH, AIR, } from "./elements";
+import { COMMON, EPIC, LEGENDARY, RARE } from "./rarities";
 
 const info =
   "Hermes, God of Speed and Commerce. His abilities increase your speed";
@@ -11,6 +11,7 @@ const info =
 const attack: Boon = {
   name: "Swift Strike",
   type: ATTACK,
+  element: EARTH,
   info: (value) => `Your Attack is ${value} faster`,
   values: {
     [COMMON]: {
@@ -51,6 +52,7 @@ const cast: Boon = {
 const dash: Boon = {
   name: "Nitro Boost",
   type: DASH,
+  element: FIRE,
   info: (value) =>
     `Your Sprint is 20% faster and gives you a barrier that ignores ${value} instance(s) of damage per encounter`,
   values: {
@@ -63,6 +65,7 @@ const dash: Boon = {
 const hardTarget: Boon = {
   name: "Hard Target",
   type: OTHER,
+  element: AIR,
   info: (value) => `Most foes' ranged shots are ${value} slower`,
   values: {
     [COMMON]: { 1: "-30%" },
@@ -85,6 +88,7 @@ const meanStreak: Boon = {
 const wittyRetort: Boon = {
   name: "Witty Retort",
   type: OTHER,
+  element: EARTH,
   info: (value) =>
     `Your Hex requires using less ${value} [mana] before it is ready`,
   values: {
@@ -106,9 +110,11 @@ const quickBuck: Boon = {
 const greaterEvasion: Boon = {
   name: "Greater Evasion",
   type: OTHER,
+  element: AIR,
   info: (value) =>
     `Whenever you are struck, you have a ${value} chance to Dodge any damage`,
   values: {
+    [COMMON]: { 1: "10%" },
     [RARE]: { 1: "15%" },
   },
 };
@@ -116,9 +122,43 @@ const greaterEvasion: Boon = {
 const savedBreath: Boon = {
   name: "Saved Breath",
   type: OTHER,
+  element: EARTH,
   info: (value) => `Your [omega] Cast uses ${value} less [mana]`,
   values: {
+    [COMMON]: { 1: "-50%" },
     [RARE]: { 1: "-60%" },
+  },
+};
+
+const tallOrder: Boon = {
+  name: "Tall Order",
+  type: INFUSION,
+  info: (value) =>
+    `WHile you have at least 2 of each [earth] [water] [air] [fire], you deal ${value} more damage`,
+  values: {
+    [COMMON]: { 1: "20%" },
+  },
+};
+
+const midnightOil: Boon = {
+  name: "Midnight Oil",
+  type: OTHER,
+  element: AIR,
+  info: (value) =>
+    `While your Hex is ready, you move and strike ${value} faster`,
+  values: {
+    [COMMON]: { 1: "15%" },
+  },
+};
+
+const closeCall: Boon = {
+  name: "Close Call",
+  type: OTHER,
+  element: AIR,
+  info: (value) =>
+    `Gain +1 use of Death Defiance that makes everything else move 90% slower for ${value} seconds`,
+  values: {
+    [LEGENDARY]: { 1: 8 },
   },
 };
 
@@ -133,6 +173,9 @@ const abilities = {
   quickBuck,
   greaterEvasion,
   savedBreath,
+  tallOrder,
+  midnightOil,
+  closeCall,
 };
 
 const base: God = {
