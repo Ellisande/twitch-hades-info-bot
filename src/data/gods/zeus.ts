@@ -370,6 +370,12 @@ const abilities = {
   electricOverload,
   masterConductor,
   toastingFork,
+  shockingLoss,
+  gloriousDisaster,
+  apocalypticStorm,
+  thermalDynamics,
+  killerCurrent,
+  romanticSpark,
 };
 
 const base: God = {
