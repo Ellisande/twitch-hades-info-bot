@@ -59,6 +59,21 @@ Then(
 );
 
 Then(
+  "the bot responds with {int} abilities",
+  function (this: CustomWorld, expectedCount: number) {
+    const { bot } = this.mocks;
+    const calledWith = bot.say.getCall(0).args;
+    const actualResponseChannel = sanitizeChannel(calledWith[0]);
+    const actualResponseMessage = calledWith[1];
+    const expectedResponseChannel = sanitizeChannel(this.given.channelId);
+    expect(actualResponseChannel).to.equal(expectedResponseChannel);
+    const abilitiesInResponse = actualResponseMessage.match(/\[[^\[\]]*\]/g);
+    const actualCount = abilitiesInResponse?.length;
+    expect(actualCount).to.equal(expectedCount);
+  }
+);
+
+Then(
   /the bot does not respond with {(.*)}/,
   function (this: CustomWorld, expectedMessage: string) {
     const { bot } = this.mocks;
