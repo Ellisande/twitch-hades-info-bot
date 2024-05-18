@@ -8,6 +8,7 @@
     "dev": "ts-node src/bot.ts",
     "test": "cucumber-js",
     "test:debug": "cucumber-js",
+    "test:ci": "cucumber-js -p ci",
     "build": "tsc"
   },
 
