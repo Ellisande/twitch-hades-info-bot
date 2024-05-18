@@ -98,7 +98,10 @@ const godCommand = new Command({
     }
     logger.debug("God info found ", god);
     const godOptions = abilityFilters
-      .filter((filter) => Object.values(god.abilities).filter(filter.filter))
+      .filter(
+        (filter) =>
+          Object.values(god.abilities).filter(filter.filter).length > 0
+      )
       .map((filter) => filter.display)
       .join(" ");
     const requestedAbilityType = commandMatches[2];
