@@ -1,6 +1,20 @@
 import { find, reduce, mapKeys, omitBy } from "lodash";
 import { Command } from "./command";
 import { gods } from "../data/gods/all";
+import { prereqsFormatter } from "../data/gods/formatters";
+
+const abilityPrereqMap = gods
+  .map((god) =>
+    reduce(
+      god.abilities,
+      (hash, ability) => ({
+        ...hash,
+        [ability.name]: () => prereqsFormatter(god.name)(ability),
+      }), {}
+    )
+  ).reduce(
+    (resultObj, current) => ({ ...resultObj, ...current })
+  ) as { [key: string]: () => string };
 
 const abilityMap = gods
   .map((god) =>
@@ -25,7 +39,7 @@ const abilityExpressionMap = mapKeys(abilityMapWithoutNone, (_, abilityName) =>
 
 const abilityNameRegexes = Object.keys(abilityExpressionMap).join("|");
 
-const abilityCommand = RegExp(`^(${abilityNameRegexes})$`, "i");
+const abilityCommand = RegExp(`^(${abilityNameRegexes}) ?((?:pre)?reqs)?$`, "i");
 
 const boonCommand = new Command({
   command: abilityCommand,
@@ -40,6 +54,25 @@ const boonCommand = new Command({
     if (!messageFactory) {
       return;
     }
+
+    const prereqsRequest = commandMatches[2];
+    if (prereqsRequest) {
+      const abilityKey = Object.keys(abilityPrereqMap).find((ability) =>
+        RegExp(ability, "i").test(abilityName)
+      ) as keyof typeof abilityPrereqMap;
+      if (!abilityKey) {
+        logger.debug(`Error. Failed to match user input ability ${abilityName} in boonCommand.`);
+        return;
+      }
+
+      const prereqMessage = abilityPrereqMap[abilityKey]();
+      if (!prereqMessage || prereqMessage === "") {
+        return bot.say(channelId, "No known prereqs.");
+      }
+
+      return bot.say(channelId, prereqMessage);
+    }
+
     const message = messageFactory();
     bot.say(channelId, message);
   },

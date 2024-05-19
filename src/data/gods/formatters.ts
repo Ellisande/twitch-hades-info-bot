@@ -28,11 +28,35 @@ const summaryFormatter = (values: BoonValues) => {
 
 const abilityFormatter =
   (god: string) =>
-  ({ name, type, element, info, values }: Boon) =>
+  ({ name, type, element, info, values, prerequisites }: Boon) =>
   (rarity?: BoonRarity, level?: number) => {
     const valueString = summaryFormatter(values);
     // Some boons, like infusions, have no element
     const formattedElement = element ? `[${element}] ` : "";
-    return `${name} (${god}) ${formattedElement}- ${info(valueString)}`;
+    const hasPrereqs = prerequisites ? " [has prereqs]" : "";
+    return `${name} (${god}) ${formattedElement}- ${info(valueString)}${hasPrereqs}`;
   };
-export { summaryFormatter, abilityFormatter };
+
+const prereqsFormatter =
+  (god: string) =>
+  ({ name, prerequisites }: Boon) => {
+    if (!prerequisites) {
+      return "";
+    }
+
+    const prereqsString = prerequisites
+      .map(
+        (boonList) => {
+          let boonSet = boonList.reduce(
+            (currentBoons, boon) => {
+              return `${currentBoons}[${boon.name}]`
+            }, ""
+          );
+          return `(one of ${boonSet})`;
+        }
+      ).join(" and ");
+
+    return `Prerequisites for ${name} (${god}): ${prereqsString}`
+  };
+
+export { summaryFormatter, abilityFormatter, prereqsFormatter };
