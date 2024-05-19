@@ -5,9 +5,9 @@ name: Behavior Tests
 
 on:
   push:
-    branches: ["main", "ability-categories"]
+    branches: ["master", "fix-ci"]
   pull_request:
-    branches: ["main", "ability-categories"]
+    branches: ["master", "fix-ci"]
 
 jobs:
   test:
