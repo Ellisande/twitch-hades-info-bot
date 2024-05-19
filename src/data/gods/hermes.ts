@@ -1,8 +1,8 @@
 import { mapValues, toArray } from "lodash";
 import { INFUSION, OTHER } from "./abilityTypes";
-import { AIR, EARTH, FIRE } from "./elements";
+import { AIR, EARTH, FIRE, WATER } from "./elements";
 import { abilityFormatter } from "./formatters";
-import { Boon, God } from "./god";
+import { Boon, God, InfusionBoon } from "./god";
 import { COMMON, EPIC, LEGENDARY, RARE } from "./rarities";
 
 const info =
@@ -123,7 +123,7 @@ const savedBreath: Boon = {
   },
 };
 
-const tallOrder: Boon = {
+const tallOrder: InfusionBoon = {
   name: "Tall Order",
   type: INFUSION,
   info: (value) =>
@@ -131,6 +131,7 @@ const tallOrder: Boon = {
   values: {
     [COMMON]: { 1: "20%" },
   },
+  requiredElements: [EARTH, WATER, AIR, FIRE],
 };
 
 const midnightOil: Boon = {

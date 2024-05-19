@@ -5,7 +5,7 @@ import { novaFlourish, novaStrike, superNova } from "./apollo";
 import { iceFlourish, iceStrike } from "./demeter";
 import { COSMIC, EARTH, FIRE } from "./elements";
 import { abilityFormatter } from "./formatters";
-import { Boon, God } from "./god";
+import { Boon, God, InfusionBoon } from "./god";
 import { bornGain, braveFace, keenIntuition, nastyComeback } from "./hera";
 import { flameFlourish, flameStrike, smolderRing } from "./hestia";
 import { geyserRing } from "./poseidon";
@@ -83,14 +83,16 @@ const dash: Boon = {
 
 export const smithySprint: Boon = dash;
 
-const martialArt: Boon = {
+const martialArt: InfusionBoon = {
   name: "Martial Art",
   type: INFUSION,
+  // TODO(sneakyteak): Verify this infusion. Did it change from +5% damage per Earth?
   info: (value) =>
     `After you hit with an Attack or Special, your next Attack or Special deals ${value} more damage`,
   values: {
     [RARE]: { 1: "50%" },
   },
+  requiredElements: [EARTH],
 };
 
 export const toughTrade: Boon = {

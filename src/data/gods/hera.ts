@@ -5,7 +5,7 @@ import { blindingSprint, lucidGain, solarRing } from "./apollo";
 import { arcticRing, frigidSprint, tranquilGain } from "./demeter";
 import { COSMIC, EARTH } from "./elements";
 import { abilityFormatter } from "./formatters";
-import { Boon, God } from "./god";
+import { Boon, God, InfusionBoon } from "./god";
 import {
   fixedGain,
   heavyMetal,
@@ -105,7 +105,7 @@ const cast: Boon = {
 
 export const engagementRing = cast;
 
-const properUpbringing: Boon = {
+const properUpbringing: InfusionBoon = {
   name: "Proper Upbringing",
   type: INFUSION,
   info: (value) =>
@@ -113,6 +113,7 @@ const properUpbringing: Boon = {
   values: {
     [COMMON]: { 1: "RARE" },
   },
+  requiredElements: [EARTH],
 };
 
 export const keenIntuition: Boon = {

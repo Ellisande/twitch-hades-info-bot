@@ -18,7 +18,7 @@ import { solarRing } from "./apollo";
 import { arcticRing, frigidSprint, iceFlourish, iceStrike } from "./demeter";
 import { AIR, COSMIC } from "./elements";
 import { abilityFormatter } from "./formatters";
-import { Boon, God } from "./god";
+import { Boon, God, InfusionBoon } from "./god";
 import {
   fixedGain,
   heavyMetal,
@@ -120,8 +120,7 @@ const gain: Boon = {
 
 export const ionicGain: Boon = gain;
 
-// Infusion
-const airQuality: Boon = {
+const airQuality: InfusionBoon = {
   name: "Air Quality",
   type: INFUSION,
   info: (value) =>
@@ -129,6 +128,7 @@ const airQuality: Boon = {
   values: {
     [COMMON]: { 1: 30 },
   },
+  requiredElements: [AIR],
 };
 
 export const divineVengeance: Boon = {

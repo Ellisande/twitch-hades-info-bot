@@ -1,11 +1,12 @@
-export type BoonType =
+export type StandardBoonType =
   | typeof ATTACK
   | typeof SPECIAL
   | typeof CAST
   | typeof DASH
   | typeof GAIN
-  | typeof OTHER
-  | typeof INFUSION;
+  | typeof OTHER;
+
+export type InfusionBoonType = typeof INFUSION;
 
 const ATTACK = "Attack";
 const SPECIAL = "Special";
