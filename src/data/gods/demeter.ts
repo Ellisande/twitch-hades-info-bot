@@ -8,7 +8,7 @@ import {
 import { blindingSprint, lucidGain, solarRing } from "./apollo";
 import { COSMIC, EARTH, WATER } from "./elements";
 import { abilityFormatter } from "./formatters";
-import { Boon, God } from "./god";
+import { Boon, God, InfusionBoon } from "./god";
 import { smithySprint, volcanicFlourish, volcanicStrike } from "./hephaestus";
 import { bornGain, engagementRing, nexusSprint } from "./hera";
 import { flameFlourish, flameStrike } from "./hestia";
@@ -173,7 +173,7 @@ export const plentifulForage: Boon = {
   },
 };
 
-const coarseGrit: Boon = {
+const coarseGrit: InfusionBoon = {
   name: `Coarse Grit`,
   type: INFUSION,
   info: (value) =>
@@ -183,6 +183,7 @@ const coarseGrit: Boon = {
       1: 15,
     },
   },
+  requiredElements: [EARTH],
 };
 
 export const winterCoat: Boon = {

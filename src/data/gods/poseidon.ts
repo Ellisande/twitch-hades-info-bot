@@ -11,7 +11,7 @@ import {
 } from "./demeter";
 import { COSMIC, WATER } from "./elements";
 import { abilityFormatter } from "./formatters";
-import { Boon, God } from "./god";
+import { Boon, God, InfusionBoon } from "./god";
 import { smithySprint, volcanicFlourish, volcanicStrike } from "./hephaestus";
 import { bornGain, nexusSprint, swornStrike } from "./hera";
 import {
@@ -159,7 +159,7 @@ const hydraulicMight: Boon = {
   },
 };
 
-const waterFitness: Boon = {
+const waterFitness: InfusionBoon = {
   name: "Water Fitness",
   type: INFUSION,
   info: (value) =>
@@ -167,6 +167,7 @@ const waterFitness: Boon = {
   values: {
     [COMMON]: { 1: 100 },
   },
+  requiredElements: [WATER],
 };
 
 export const sunkenTreasure: Boon = {

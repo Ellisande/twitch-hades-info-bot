@@ -12,7 +12,7 @@ import { heartBreaker } from "./aphrodite";
 import { arcticRing, frigidSprint, tranquilGain } from "./demeter";
 import { AIR, COSMIC, FIRE } from "./elements";
 import { abilityFormatter } from "./formatters";
-import { Boon, God } from "./god";
+import { Boon, God, InfusionBoon } from "./god";
 import { smithySprint, volcanicFlourish, volcanicStrike } from "./hephaestus";
 import { bornGain, engagementRing, nexusSprint } from "./hera";
 import {
@@ -157,7 +157,7 @@ const lightSmite: Boon = {
   },
 };
 
-const selfHealing: Boon = {
+const selfHealing: InfusionBoon = {
   name: `Self Healing`,
   type: INFUSION,
   info: (value) =>
@@ -165,6 +165,7 @@ const selfHealing: Boon = {
   values: {
     [COMMON]: { 1: "30%" },
   },
+  requiredElements: [FIRE],
 };
 
 const perfectImage: Boon = {

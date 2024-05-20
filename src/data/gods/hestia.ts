@@ -5,7 +5,7 @@ import { lucidGain, novaFlourish, novaStrike } from "./apollo";
 import { iceFlourish, iceStrike } from "./demeter";
 import { COSMIC, FIRE } from "./elements";
 import { abilityFormatter } from "./formatters";
-import { Boon, God } from "./god";
+import { Boon, God, InfusionBoon } from "./god";
 import { volcanicFlourish, volcanicStrike } from "./hephaestus";
 import { bornGain, engagementRing, swornFlourish, swornStrike } from "./hera";
 import { slipperySlope } from "./poseidon";
@@ -119,7 +119,7 @@ export const burntOffering: Boon = {
     },
   },
 };
-const slowCooker: Boon = {
+const slowCooker: InfusionBoon = {
   name: "Slow Cooker",
   type: INFUSION,
   info: (value) =>
@@ -129,6 +129,7 @@ const slowCooker: Boon = {
       1: 2,
     },
   },
+  requiredElements: [FIRE],
 };
 
 export const glowingCoal: Boon = {

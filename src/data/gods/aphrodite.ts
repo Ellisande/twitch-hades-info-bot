@@ -13,7 +13,7 @@ import { lucidGain, novaFlourish, novaStrike, solarRing } from "./apollo";
 import { plentifulForage, winterCoat } from "./demeter";
 import { AIR, COSMIC, WATER } from "./elements";
 import { abilityFormatter } from "./formatters";
-import { Boon, God } from "./god";
+import { Boon, God, InfusionBoon } from "./god";
 import { anvilRing, fixedGain, smithySprint } from "./hephaestus";
 import { nastyComeback, nexusSprint, swornFlourish, swornStrike } from "./hera";
 import { hearthGain, smolderRing, sootSprint } from "./hestia";
@@ -112,7 +112,7 @@ const gain: Boon = {
 
 export const glamourGain = gain;
 
-const wispyWiles: Boon = {
+const wispyWiles: InfusionBoon = {
   name: "Wispy Wiles",
   type: INFUSION,
   info: (value) =>
@@ -120,6 +120,7 @@ const wispyWiles: Boon = {
   values: {
     [COMMON]: { 1: "15%" },
   },
+  requiredElements: [AIR],
 };
 
 export const shamelessAttitude: Boon = {

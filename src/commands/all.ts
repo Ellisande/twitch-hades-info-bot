@@ -11,6 +11,7 @@ import { elementCommand } from "./element";
 import { elementListCommand } from "./elementList";
 import { hexCommand } from "./hex";
 import { hexListCommand } from "./hexList";
+import { infusionCommand } from "./infusion";
 
 const allCommands = [
   pingCommand,
@@ -26,5 +27,6 @@ const allCommands = [
   elementListCommand,
   hexCommand,
   hexListCommand,
+  infusionCommand,
 ];
 export { allCommands };
