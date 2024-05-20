@@ -15,31 +15,20 @@ type InfusionRecord = {
 const elementInfusionMap = gods.reduce<Record<BoonElement, InfusionRecord[]>>(
   (hash, god) => {
     // Assumes each god has no more than one infusion, which is currently true.
-    let infusionBoon = find(god.abilities, (boon, _) =>
-      isInfusion(boon)
-    ) as InfusionBoon;
-    if (!infusionBoon || !infusionBoon.requiredElements) {
+    const infusionBoon = Object.values(god.abilities).find(isInfusion);
+    if (!infusionBoon) {
       return hash;
     }
 
-    let record: InfusionRecord = { boon: infusionBoon.name, god: god.name };
-    return {
-      [EARTH]: infusionBoon.requiredElements.find((element) => element === EARTH)
-        ? [...hash[EARTH], record]
-        : hash[EARTH],
-      [WATER]: infusionBoon.requiredElements.find((element) => element === WATER)
-        ? [...hash[WATER], record]
-        : hash[WATER],
-      [AIR]: infusionBoon.requiredElements.find((element) => element === AIR)
-        ? [...hash[AIR], record]
-        : hash[AIR],
-      [FIRE]: infusionBoon.requiredElements.find((element) => element === FIRE)
-        ? [...hash[FIRE], record]
-        : hash[FIRE],
-      [COSMIC]: infusionBoon.requiredElements.find((element) => element === COSMIC)
-        ? [...hash[COSMIC], record]
-        : hash[COSMIC],
-    }
+    const record: InfusionRecord = { boon: infusionBoon.name, god: god.name };
+    const requiredElements = infusionBoon.requiredElements;
+    const result = requiredElements.reduce((resultHash, requiredElement) => {
+      return {
+        ...resultHash,
+        [requiredElement]: [...hash[requiredElement], record]
+      }
+    }, {...hash});
+    return result;
   },
   {
     [EARTH]: [],

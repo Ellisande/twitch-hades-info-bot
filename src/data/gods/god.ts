@@ -20,7 +20,7 @@ type StandardBoon = {
 export const isInfusion =
   (boon: Boon): boon is InfusionBoon => boon.type === INFUSION
 
-export type InfusionBoon = Omit<StandardBoon, "type" | "requiredElements"> & {
+export type InfusionBoon = Omit<StandardBoon, "type" | "element?" | "prerequisites?"> & {
   type: InfusionBoonType;
   requiredElements: Array<BoonElement>;
 };
