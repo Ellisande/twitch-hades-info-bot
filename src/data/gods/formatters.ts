@@ -33,7 +33,7 @@ const abilityFormatter =
     const valueString = summaryFormatter(values);
     // Some boons, like infusions, have no element
     const formattedElement = element ? `[${element}] ` : "";
-    const hasPrereqs = prerequisites ? " [has prereqs]" : "";
+    const hasPrereqs = prerequisites ? " [has requirements]" : "";
     return `${name} (${god}) ${formattedElement}- ${info(valueString)}${hasPrereqs}`;
   };
 
@@ -56,7 +56,7 @@ const prereqsFormatter =
         }
       ).join(" and ");
 
-    return `Prerequisites for ${name} (${god}): ${prereqsString}`
+    return `Requirements for ${name} (${god}): ${prereqsString}`
   };
 
 export { summaryFormatter, abilityFormatter, prereqsFormatter };

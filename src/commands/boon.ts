@@ -39,7 +39,7 @@ const abilityExpressionMap = mapKeys(abilityMapWithoutNone, (_, abilityName) =>
 
 const abilityNameRegexes = Object.keys(abilityExpressionMap).join("|");
 
-const abilityCommand = RegExp(`^(${abilityNameRegexes}) ?((?:pre)?reqs)?$`, "i");
+const abilityCommand = RegExp(`^(${abilityNameRegexes})( req(?:uirement)?s)?$`, "i");
 
 const boonCommand = new Command({
   command: abilityCommand,
@@ -67,7 +67,7 @@ const boonCommand = new Command({
 
       const prereqMessage = abilityPrereqMap[abilityKey]();
       if (!prereqMessage || prereqMessage === "") {
-        return bot.say(channelId, "No known prereqs.");
+        return bot.say(channelId, "No known requirements.");
       }
 
       return bot.say(channelId, prereqMessage);
