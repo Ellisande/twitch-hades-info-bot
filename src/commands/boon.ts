@@ -9,7 +9,7 @@ const abilityPrereqMap = gods
       god.abilities,
       (hash, ability) => ({
         ...hash,
-        [ability.name]: () => prereqsFormatter(god.name)(ability),
+        [ability.name.replace(" ", " *")]: () => prereqsFormatter(god.name)(ability),
       }), {}
     )
   ).reduce(
