@@ -1,4 +1,4 @@
-import { mapValues, toArray } from "lodash";
+import { toArray } from "lodash";
 import { ATTACK, CAST, DASH, INFUSION, OTHER, SPECIAL } from "./abilityTypes";
 import { flutterFlourish, flutterStrike } from "./aphrodite";
 import { blindingSprint, lucidGain } from "./apollo";
@@ -10,7 +10,6 @@ import {
   winterCoat,
 } from "./demeter";
 import { COSMIC, WATER } from "./elements";
-import { abilityFormatter } from "./formatters";
 import { Boon, God, InfusionBoon } from "./god";
 import { smithySprint, volcanicFlourish, volcanicStrike } from "./hephaestus";
 import { bornGain, nexusSprint, swornStrike } from "./hera";
@@ -372,18 +371,9 @@ const abilities = {
   scaldingVapor,
 };
 
-const base: God = {
+export const poseidon: God = {
   name: "Poseidon",
   info,
   abilities,
   other: toArray(abilities).filter((ability) => ability.type === OTHER),
 };
-
-const formattedAbilities = mapValues(abilities, abilityFormatter(base.name));
-
-const poseidon: God = {
-  ...base,
-  ...formattedAbilities,
-};
-
-export { poseidon };

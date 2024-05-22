@@ -8,7 +8,7 @@ import {
   SPECIAL,
 } from "../data/gods/abilityTypes";
 import { gods } from "../data/gods/all";
-import { abilityFormatter } from "../data/gods/formatters";
+import { abilityFormatter } from "./utils/formatters";
 import { Boon } from "../data/gods/god";
 import { DUO } from "../data/gods/rarities";
 import { Command } from "./command";

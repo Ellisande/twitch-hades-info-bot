@@ -1,10 +1,9 @@
-import { mapValues, toArray } from "lodash";
+import { toArray } from "lodash";
 import { ATTACK, CAST, DASH, INFUSION, OTHER, SPECIAL } from "./abilityTypes";
 import { glamourGain, passionDash, raptureRing } from "./aphrodite";
 import { lucidGain, novaFlourish, novaStrike } from "./apollo";
 import { iceFlourish, iceStrike } from "./demeter";
 import { COSMIC, FIRE } from "./elements";
-import { abilityFormatter } from "./formatters";
 import { Boon, God, InfusionBoon } from "./god";
 import { volcanicFlourish, volcanicStrike } from "./hephaestus";
 import { bornGain, engagementRing, swornFlourish, swornStrike } from "./hera";
@@ -372,18 +371,9 @@ const abilities = {
   thermalDynamics,
 };
 
-const base: God = {
+export const hestia: God = {
   name: "Hestia",
   info,
   abilities,
   other: toArray(abilities).filter((ability) => ability.type === OTHER),
 };
-
-const formattedAbilities = mapValues(abilities, abilityFormatter(base.name));
-
-const hestia: God = {
-  ...base,
-  ...formattedAbilities,
-};
-
-export { hestia };

@@ -1,7 +1,7 @@
 import { find, reduce } from "lodash";
 import { Command } from "./command";
 import { gods } from "../data/gods/all";
-import { abilityFormatter, prereqsFormatter } from "../data/gods/formatters";
+import { abilityFormatter, prereqsFormatter } from "./utils/formatters";
 import { Boon } from "../data/gods/god";
 
 type BoonRecord = {

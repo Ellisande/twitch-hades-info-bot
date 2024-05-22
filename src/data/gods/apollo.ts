@@ -1,4 +1,4 @@
-import { mapValues, toArray } from "lodash";
+import { toArray } from "lodash";
 import {
   ATTACK,
   CAST,
@@ -11,7 +11,6 @@ import {
 import { heartBreaker } from "./aphrodite";
 import { arcticRing, frigidSprint, tranquilGain } from "./demeter";
 import { AIR, COSMIC, FIRE } from "./elements";
-import { abilityFormatter } from "./formatters";
 import { Boon, God, InfusionBoon } from "./god";
 import { smithySprint, volcanicFlourish, volcanicStrike } from "./hephaestus";
 import { bornGain, engagementRing, nexusSprint } from "./hera";
@@ -354,18 +353,9 @@ const abilities = {
   sunWorshiper,
 };
 
-const base: God = {
+export const apollo: God = {
   name: "Apollo",
   info,
   abilities,
   other: toArray(abilities).filter((ability) => ability.type === OTHER),
 };
-
-const formattedAbilities = mapValues(abilities, abilityFormatter(base.name));
-
-const apollo: God = {
-  ...base,
-  ...formattedAbilities,
-};
-
-export { apollo };
