@@ -117,7 +117,7 @@ const godCommand = new Command({
       abilityFilter.filter
     );
     if (filteredAbilities.length === 1) {
-      const message = abilityFormatter(god.name)(filteredAbilities[0])();
+      const message = abilityFormatter(god.name)(filteredAbilities[0]);
       logger.debug("God message " + message);
       return bot.say(channelId, message);
     }

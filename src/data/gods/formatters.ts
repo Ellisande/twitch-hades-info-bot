@@ -28,8 +28,7 @@ const summaryFormatter = (values: BoonValues) => {
 
 const abilityFormatter =
   (god: string) =>
-  ({ name, type, element, info, values, prerequisites }: Boon) =>
-  (rarity?: BoonRarity, level?: number) => {
+  ({ name, type, element, info, values, prerequisites }: Boon) => {
     const valueString = summaryFormatter(values);
     // Some boons, like infusions, have no element
     const formattedElement = element ? `[${element}] ` : "";
@@ -40,8 +39,8 @@ const abilityFormatter =
 const prereqsFormatter =
   (god: string) =>
   ({ name, prerequisites }: Boon) => {
-    if (!prerequisites) {
-      return "";
+    if (!prerequisites || prerequisites.length === 0) {
+      return "No known requirements.";
     }
 
     const prereqsString = prerequisites

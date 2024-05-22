@@ -40,3 +40,8 @@ Feature: A user can request information about a specific boon
         Then the bot responds with {Requirements for Ecstatic Obsession (Aphrodite)}
         And the bot responds with {(one of [Broken Resolve][Sweet Surrender])}
         And the bot responds with {and (one of [Rapture Ring][Passion Dash][Glamour Gain])}
+
+    Scenario: A user asks for a duo that has the same name for two gods
+        Given PENDING
+        When the user says to the bot {!golden rule}
+        Then the bot responds with {this is broken; chooses one of the two gods}
