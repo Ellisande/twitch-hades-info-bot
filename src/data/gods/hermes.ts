@@ -1,4 +1,3 @@
-import { toArray } from "lodash";
 import { INFUSION, OTHER } from "./abilityTypes";
 import { AIR, EARTH, FIRE, WATER } from "./elements";
 import { Boon, God, InfusionBoon } from "./god";
@@ -174,5 +173,4 @@ export const hermes: God = {
   name: "Hermes",
   info,
   abilities,
-  other: toArray(abilities).filter((ability) => ability.type === OTHER),
 };

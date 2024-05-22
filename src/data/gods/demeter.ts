@@ -1,4 +1,3 @@
-import { toArray } from "lodash";
 import { ATTACK, CAST, DASH, INFUSION, OTHER, SPECIAL } from "./abilityTypes";
 import {
   healthyRebound,
@@ -366,5 +365,4 @@ export const demeter: God = {
   name: "Demeter",
   info,
   abilities,
-  other: toArray(abilities).filter((ability) => ability.type === OTHER),
 };

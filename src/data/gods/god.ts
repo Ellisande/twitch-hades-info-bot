@@ -29,6 +29,5 @@ export type God = {
   name: string;
   info: string;
   abilities: { [key: string]: Boon };
-  other: Boon[];
   elements?: BoonElement[];
 };

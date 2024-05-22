@@ -341,7 +341,6 @@ export const aphrodite: God = {
   name: "Aphrodite",
   info,
   abilities,
-  other: toArray(abilities).filter((ability) => ability.type === OTHER),
   elements: [
     ...new Set(
       toArray(abilities)

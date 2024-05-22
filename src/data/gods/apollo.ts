@@ -1,4 +1,3 @@
-import { toArray } from "lodash";
 import {
   ATTACK,
   CAST,
@@ -357,5 +356,4 @@ export const apollo: God = {
   name: "Apollo",
   info,
   abilities,
-  other: toArray(abilities).filter((ability) => ability.type === OTHER),
 };

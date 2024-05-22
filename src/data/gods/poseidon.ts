@@ -1,4 +1,3 @@
-import { toArray } from "lodash";
 import { ATTACK, CAST, DASH, INFUSION, OTHER, SPECIAL } from "./abilityTypes";
 import { flutterFlourish, flutterStrike } from "./aphrodite";
 import { blindingSprint, lucidGain } from "./apollo";
@@ -375,5 +374,4 @@ export const poseidon: God = {
   name: "Poseidon",
   info,
   abilities,
-  other: toArray(abilities).filter((ability) => ability.type === OTHER),
 };

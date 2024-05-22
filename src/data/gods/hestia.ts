@@ -1,4 +1,3 @@
-import { toArray } from "lodash";
 import { ATTACK, CAST, DASH, INFUSION, OTHER, SPECIAL } from "./abilityTypes";
 import { glamourGain, passionDash, raptureRing } from "./aphrodite";
 import { lucidGain, novaFlourish, novaStrike } from "./apollo";
@@ -375,5 +374,4 @@ export const hestia: God = {
   name: "Hestia",
   info,
   abilities,
-  other: toArray(abilities).filter((ability) => ability.type === OTHER),
 };
