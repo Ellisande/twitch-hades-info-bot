@@ -1,6 +1,6 @@
 import { OTHER } from "./abilityTypes";
 import { AIR, EARTH } from "./elements";
-import { Boon, God } from "./god";
+import { Boon, God, listElements } from "./god";
 import { COMMON, EPIC, RARE } from "./rarities";
 
 const info =
@@ -119,4 +119,5 @@ export const artemis: God = {
   name: "Artemis",
   info,
   abilities,
+  elements: listElements(abilities),
 };

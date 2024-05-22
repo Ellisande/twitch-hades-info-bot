@@ -3,7 +3,7 @@ import { glamourGain, passionDash, raptureRing } from "./aphrodite";
 import { lucidGain, novaFlourish, novaStrike } from "./apollo";
 import { iceFlourish, iceStrike } from "./demeter";
 import { COSMIC, FIRE } from "./elements";
-import { Boon, God, InfusionBoon } from "./god";
+import { Boon, God, InfusionBoon, listElements } from "./god";
 import { volcanicFlourish, volcanicStrike } from "./hephaestus";
 import { bornGain, engagementRing, swornFlourish, swornStrike } from "./hera";
 import { slipperySlope } from "./poseidon";
@@ -374,4 +374,5 @@ export const hestia: God = {
   name: "Hestia",
   info,
   abilities,
+  elements: listElements(abilities),
 };

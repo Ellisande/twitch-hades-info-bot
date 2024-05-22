@@ -9,7 +9,7 @@ import {
   winterCoat,
 } from "./demeter";
 import { COSMIC, WATER } from "./elements";
-import { Boon, God, InfusionBoon } from "./god";
+import { Boon, God, InfusionBoon, listElements } from "./god";
 import { smithySprint, volcanicFlourish, volcanicStrike } from "./hephaestus";
 import { bornGain, nexusSprint, swornStrike } from "./hera";
 import {
@@ -374,4 +374,5 @@ export const poseidon: God = {
   name: "Poseidon",
   info,
   abilities,
+  elements: listElements(abilities),
 };

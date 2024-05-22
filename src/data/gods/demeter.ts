@@ -6,7 +6,7 @@ import {
 } from "./aphrodite";
 import { blindingSprint, lucidGain, solarRing } from "./apollo";
 import { COSMIC, EARTH, WATER } from "./elements";
-import { Boon, God, InfusionBoon } from "./god";
+import { Boon, God, InfusionBoon, listElements } from "./god";
 import { smithySprint, volcanicFlourish, volcanicStrike } from "./hephaestus";
 import { bornGain, engagementRing, nexusSprint } from "./hera";
 import { flameFlourish, flameStrike } from "./hestia";
@@ -365,4 +365,5 @@ export const demeter: God = {
   name: "Demeter",
   info,
   abilities,
+  elements: listElements(abilities),
 };

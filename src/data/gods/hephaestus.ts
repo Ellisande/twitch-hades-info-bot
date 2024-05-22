@@ -3,7 +3,7 @@ import { glamourGain, passionDash, raptureRing } from "./aphrodite";
 import { novaFlourish, novaStrike, superNova } from "./apollo";
 import { iceFlourish, iceStrike } from "./demeter";
 import { COSMIC, EARTH, FIRE } from "./elements";
-import { Boon, God, InfusionBoon } from "./god";
+import { Boon, God, InfusionBoon, listElements } from "./god";
 import { bornGain, braveFace, keenIntuition, nastyComeback } from "./hera";
 import { flameFlourish, flameStrike, smolderRing } from "./hestia";
 import { geyserRing } from "./poseidon";
@@ -324,4 +324,5 @@ export const hephaestus: God = {
   name: "Hephaestus",
   info,
   abilities,
+  elements: listElements(abilities),
 };

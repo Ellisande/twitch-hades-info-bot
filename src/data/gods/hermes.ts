@@ -1,6 +1,6 @@
 import { INFUSION, OTHER } from "./abilityTypes";
 import { AIR, EARTH, FIRE, WATER } from "./elements";
-import { Boon, God, InfusionBoon } from "./god";
+import { Boon, God, InfusionBoon, listElements } from "./god";
 import { COMMON, EPIC, LEGENDARY, RARE } from "./rarities";
 
 const info =
@@ -173,4 +173,5 @@ export const hermes: God = {
   name: "Hermes",
   info,
   abilities,
+  elements: listElements(abilities),
 };

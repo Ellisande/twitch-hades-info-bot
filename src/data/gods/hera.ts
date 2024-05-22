@@ -3,7 +3,7 @@ import { glamourGain, passionDash, raptureRing } from "./aphrodite";
 import { blindingSprint, lucidGain, solarRing } from "./apollo";
 import { arcticRing, frigidSprint, tranquilGain } from "./demeter";
 import { COSMIC, EARTH } from "./elements";
-import { Boon, God, InfusionBoon } from "./god";
+import { Boon, God, InfusionBoon, listElements } from "./god";
 import {
   fixedGain,
   heavyMetal,
@@ -348,4 +348,5 @@ export const hera: God = {
   name: "Hera",
   info,
   abilities,
+  elements: listElements(abilities),
 };

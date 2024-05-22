@@ -10,7 +10,7 @@ import {
 import { heartBreaker } from "./aphrodite";
 import { arcticRing, frigidSprint, tranquilGain } from "./demeter";
 import { AIR, COSMIC, FIRE } from "./elements";
-import { Boon, God, InfusionBoon } from "./god";
+import { Boon, God, InfusionBoon, listElements } from "./god";
 import { smithySprint, volcanicFlourish, volcanicStrike } from "./hephaestus";
 import { bornGain, engagementRing, nexusSprint } from "./hera";
 import {
@@ -356,4 +356,5 @@ export const apollo: God = {
   name: "Apollo",
   info,
   abilities,
+  elements: listElements(abilities),
 };

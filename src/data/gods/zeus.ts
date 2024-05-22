@@ -16,7 +16,7 @@ import {
 import { solarRing } from "./apollo";
 import { arcticRing, frigidSprint, iceFlourish, iceStrike } from "./demeter";
 import { AIR, COSMIC } from "./elements";
-import { Boon, God, InfusionBoon } from "./god";
+import { Boon, God, InfusionBoon, listElements } from "./god";
 import {
   fixedGain,
   heavyMetal,
@@ -380,4 +380,5 @@ export const zeus: God = {
   name: "Zeus",
   info,
   abilities,
+  elements: listElements(abilities),
 };

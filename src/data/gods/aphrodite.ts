@@ -1,5 +1,3 @@
-import { toArray } from "lodash";
-import { notNullOrUndefined } from "../../utils/arrayUtils";
 import {
   ATTACK,
   CAST,
@@ -12,7 +10,7 @@ import {
 import { lucidGain, novaFlourish, novaStrike, solarRing } from "./apollo";
 import { plentifulForage, winterCoat } from "./demeter";
 import { AIR, COSMIC, WATER } from "./elements";
-import { Boon, God, InfusionBoon } from "./god";
+import { Boon, God, InfusionBoon, listElements } from "./god";
 import { anvilRing, fixedGain, smithySprint } from "./hephaestus";
 import { nastyComeback, nexusSprint, swornFlourish, swornStrike } from "./hera";
 import { hearthGain, smolderRing, sootSprint } from "./hestia";
@@ -341,12 +339,5 @@ export const aphrodite: God = {
   name: "Aphrodite",
   info,
   abilities,
-  elements: [
-    ...new Set(
-      toArray(abilities)
-        .map((ability) => ability.element)
-        .filter((element) => element)
-        .filter(notNullOrUndefined)
-    ),
-  ],
+  elements: listElements(abilities),
 };
