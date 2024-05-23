@@ -1,8 +1,6 @@
-import { mapValues, toArray } from "lodash";
 import { OTHER } from "./abilityTypes";
 import { AIR, EARTH } from "./elements";
-import { abilityFormatter } from "./formatters";
-import { Boon, God } from "./god";
+import { Boon, God, listElements } from "./god";
 import { COMMON, EPIC, RARE } from "./rarities";
 
 const info =
@@ -117,18 +115,9 @@ const abilities = {
   silverStreak,
 };
 
-const base: God = {
+export const artemis: God = {
   name: "Artemis",
   info,
   abilities,
-  other: toArray(abilities).filter((ability) => ability.type === OTHER),
+  elements: listElements(abilities),
 };
-
-const formattedAbilities = mapValues(abilities, abilityFormatter(base.name));
-
-const artemis: God = {
-  ...base,
-  ...formattedAbilities,
-};
-
-export { artemis };

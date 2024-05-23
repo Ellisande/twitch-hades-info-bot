@@ -8,7 +8,7 @@ import {
   SPECIAL,
 } from "../data/gods/abilityTypes";
 import { gods } from "../data/gods/all";
-import { abilityFormatter } from "../data/gods/formatters";
+import { abilityFormatter } from "./utils/formatters";
 import { Boon } from "../data/gods/god";
 import { DUO } from "../data/gods/rarities";
 import { Command } from "./command";
@@ -117,7 +117,7 @@ const godCommand = new Command({
       abilityFilter.filter
     );
     if (filteredAbilities.length === 1) {
-      const message = abilityFormatter(god.name)(filteredAbilities[0])();
+      const message = abilityFormatter(god.name)(filteredAbilities[0]);
       logger.debug("God message " + message);
       return bot.say(channelId, message);
     }

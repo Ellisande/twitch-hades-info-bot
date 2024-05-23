@@ -1,11 +1,9 @@
-import { mapValues, toArray } from "lodash";
 import { ATTACK, CAST, DASH, INFUSION, OTHER, SPECIAL } from "./abilityTypes";
 import { glamourGain, passionDash, raptureRing } from "./aphrodite";
 import { novaFlourish, novaStrike, superNova } from "./apollo";
 import { iceFlourish, iceStrike } from "./demeter";
 import { COSMIC, EARTH, FIRE } from "./elements";
-import { abilityFormatter } from "./formatters";
-import { Boon, God, InfusionBoon } from "./god";
+import { Boon, God, InfusionBoon, listElements } from "./god";
 import { bornGain, braveFace, keenIntuition, nastyComeback } from "./hera";
 import { flameFlourish, flameStrike, smolderRing } from "./hestia";
 import { geyserRing } from "./poseidon";
@@ -322,18 +320,9 @@ const abilities = {
   masterConductor,
 };
 
-const base: God = {
+export const hephaestus: God = {
   name: "Hephaestus",
   info,
   abilities,
-  other: toArray(abilities).filter((ability) => ability.type === OTHER),
+  elements: listElements(abilities),
 };
-
-const formattedAbilities = mapValues(abilities, abilityFormatter(base.name));
-
-const hephaestus: God = {
-  ...base,
-  ...formattedAbilities,
-};
-
-export { hephaestus };

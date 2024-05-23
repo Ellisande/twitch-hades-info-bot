@@ -1,6 +1,8 @@
+import { toArray } from "lodash";
 import { StandardBoonType, InfusionBoonType, INFUSION } from "./abilityTypes";
 import { BoonElement } from "./elements";
 import { BoonRarity } from "./rarities";
+import { notNullOrUndefined } from "../../utils/arrayUtils";
 
 export type BoonValues = Partial<
   Record<BoonRarity, { [level: number]: string | number }>
@@ -29,6 +31,15 @@ export type God = {
   name: string;
   info: string;
   abilities: { [key: string]: Boon };
-  other: Boon[];
-  elements?: BoonElement[];
+  elements: BoonElement[];
+};
+
+export function listElements(abilities: { [key: string]: Boon }): BoonElement[] {
+  return [
+    ...new Set(
+      toArray(abilities)
+        .map((ability) => ability.element)
+        .filter(notNullOrUndefined)
+    ),
+  ];
 };

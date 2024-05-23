@@ -1,5 +1,3 @@
-import { mapValues, toArray } from "lodash";
-import { notNullOrUndefined } from "../../utils/arrayUtils";
 import {
   ATTACK,
   CAST,
@@ -12,8 +10,7 @@ import {
 import { lucidGain, novaFlourish, novaStrike, solarRing } from "./apollo";
 import { plentifulForage, winterCoat } from "./demeter";
 import { AIR, COSMIC, WATER } from "./elements";
-import { abilityFormatter } from "./formatters";
-import { Boon, God, InfusionBoon } from "./god";
+import { Boon, God, InfusionBoon, listElements } from "./god";
 import { anvilRing, fixedGain, smithySprint } from "./hephaestus";
 import { nastyComeback, nexusSprint, swornFlourish, swornStrike } from "./hera";
 import { hearthGain, smolderRing, sootSprint } from "./hestia";
@@ -338,26 +335,9 @@ const abilities = {
   wispyWiles,
 };
 
-const base: God = {
+export const aphrodite: God = {
   name: "Aphrodite",
   info,
   abilities,
-  other: toArray(abilities).filter((ability) => ability.type === OTHER),
-  elements: [
-    ...new Set(
-      toArray(abilities)
-        .map((ability) => ability.element)
-        .filter((element) => element)
-        .filter(notNullOrUndefined)
-    ),
-  ],
+  elements: listElements(abilities),
 };
-
-const formattedAbilities = mapValues(abilities, abilityFormatter(base.name));
-
-const aphrodite: God = {
-  ...base,
-  ...formattedAbilities,
-};
-
-export { aphrodite };

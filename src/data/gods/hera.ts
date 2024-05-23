@@ -1,11 +1,9 @@
-import { mapValues, toArray } from "lodash";
 import { ATTACK, DASH, INFUSION, OTHER, SPECIAL } from "./abilityTypes";
 import { glamourGain, passionDash, raptureRing } from "./aphrodite";
 import { blindingSprint, lucidGain, solarRing } from "./apollo";
 import { arcticRing, frigidSprint, tranquilGain } from "./demeter";
 import { COSMIC, EARTH } from "./elements";
-import { abilityFormatter } from "./formatters";
-import { Boon, God, InfusionBoon } from "./god";
+import { Boon, God, InfusionBoon, listElements } from "./god";
 import {
   fixedGain,
   heavyMetal,
@@ -346,18 +344,9 @@ const abilities = {
   properUpbringing,
 };
 
-const base: God = {
+export const hera: God = {
   name: "Hera",
   info,
   abilities,
-  other: toArray(abilities).filter((ability) => ability.type === OTHER),
+  elements: listElements(abilities),
 };
-
-const formattedAbilities = mapValues(abilities, abilityFormatter(base.name));
-
-const hera: God = {
-  ...base,
-  ...formattedAbilities,
-};
-
-export { hera };
