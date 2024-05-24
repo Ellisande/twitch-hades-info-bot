@@ -8,6 +8,7 @@ import { hestia } from "./hestia";
 import { hephaestus } from "./hephaestus";
 import { apollo } from "./apollo";
 import { hera } from "./hera";
+import { chaos } from "../chaos";
 
 const gods = [
   zeus,
@@ -20,6 +21,7 @@ const gods = [
   hestia,
   hephaestus,
   hera,
+  chaos,
 ];
 
 export {
@@ -33,5 +35,6 @@ export {
   hestia,
   hephaestus,
   hera,
+  chaos,
   gods,
 };

@@ -45,3 +45,8 @@ Feature: A user can request information about a specific boon
         Given PENDING
         When the user says to the bot {!golden rule}
         Then the bot responds with {this is broken; chooses one of the two gods}
+
+    Scenario: A user asks for Chaos' infusion
+        When the user says to the bot {!chant}
+        Then the bot responds with {Chant (Chaos)}
+        And the bot responds with {Afterward, your [omega] moves deal (c:30% r:36% e:42% h:48%) more damage per [cosmic] you have}
