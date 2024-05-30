@@ -3,20 +3,12 @@ import { COSMIC } from "./gods/elements";
 import { God, InfusionBoon } from "./gods/god";
 import { COMMON, RARE, EPIC, HEROIC, LEGENDARY } from "./gods/rarities";
 
-type Range = {
+export type Range = {
   min: number;
   max: number;
 };
 
-// WIP: type / interface ChaosTrait which guarantees name, type, matcher, info, and values?
-// values are ChaosBlessingValues | ChaosCurseValues? info takes one or two params?
-
 export type ChaosCurseValues = {
-  // WIP: How much utility do we get out of Range as a type here?
-  // It cleans up this definition, but it also adds another layer of object to
-  // unpack. Whatever we do, we should probably align how ChaosCurseValues
-  // and ChaosBlessingValues work. (This will also facilitate some shared
-  // formatter code.)
   value?: Range;
   duration: Range;
 
@@ -35,45 +27,37 @@ const defaultDuration: Range = {
 type ChaosCurse = {
   // Commented object name in game source code, where known
   name: string;
-  // WIP: Capture types in global constant, if they are used at all.
-  type: "curse";
   matcher: RegExp;
-  // WIP: Would it help to give the info() params different names?
   info: (value: string, duration: string) => string;
   values: ChaosCurseValues;
 };
 
+// Defining RarityMultipliers guarantees that an implementer defines
+// at least one rarity, but allows for multiple.
+type RarityMultipliers =
+  { [COMMON]: number; } |
+  { [RARE]: number; } |
+  { [EPIC]: number; } |
+  { [HEROIC]: number; } |
+  { [LEGENDARY]: number; };
 
-// WIP: Should rarityMultipliers mimic the BoonValues Partial in god.ts?
-// Almost all Chaos blessings have a range of values.
 type ChaosBlessingValues = {
-  // Should this just be a Range?
-  baseMin: number;
-  baseMax: number;
-  rarityMultipliers: {
-    [COMMON]?: number;
-    [RARE]?: number;
-    [EPIC]?: number;
-    [HEROIC]?: number;
-    [LEGENDARY]?: number;
-  };
-
+  base: Range;
+  rarityMultipliers: RarityMultipliers;
   // See ChaosCurseValues.asPercent
   asPercent: boolean;
 };
 
-const defaultRarityMultipliers = {
+const defaultRarityMultipliers: RarityMultipliers = {
   [COMMON]: 1.0,
   [RARE]: 1.5,
   [EPIC]: 2.0,
   [HEROIC]: 2.5,
 };
 
-// WIP: Should this be "boonish"?
 type ChaosBlessing = {
   // Commented object name in game source code, where known
   name: string;
-  type: "blessing";
   matcher: RegExp;
   info: (value: string) => string;
   values: ChaosBlessingValues;
@@ -109,7 +93,6 @@ export const curses: ChaosCurse[] = [
   {
     // ChaosCastCurse
     name: "Addled",
-    type: "curse",
     info: (value, duration) =>
       `For the next ${duration} Encounters, each time you use your Cast, get hit for ${value} damage.`,
     matcher: /addled/i,
@@ -122,7 +105,6 @@ export const curses: ChaosCurse[] = [
   {
     // ChaosCommonCurse
     name: "Ordinary",
-    type: "curse",
     info: (_, duration) =>
       `The next ${duration} Boons you find are limited to common blessings.`,
     matcher: /ordinary/i,
@@ -134,7 +116,6 @@ export const curses: ChaosCurse[] = [
   {
     // ChaosDamageCurse
     name: "Excruciating",
-    type: "curse",
     info: (value, duration) =>
       `For the next ${duration} Encounters, you take ${value} increased damage.`,
     matcher: /excruciating/i,
@@ -147,7 +128,6 @@ export const curses: ChaosCurse[] = [
   {
     // ChaosDashCurse
     name: "Hobbled",
-    type: "curse",
     info: (value, duration) =>
       `For the next ${duration} Encounters, your Dash is slower and uses ${value} mana (if you have it).`,
     matcher: /hobbled/i,
@@ -160,7 +140,6 @@ export const curses: ChaosCurse[] = [
   {
     // ChaosDeathWeaponCurse
     name: "Caustic",
-    type: "curse",
     info: (_, duration) =>
       `For the next ${duration} Encounters, slain foes toss and Inferno Bomb at you.`,
     matcher: /caustic/i,
@@ -172,7 +151,6 @@ export const curses: ChaosCurse[] = [
   {
     // ChaosExAttackCurse
     name: "Gagged",
-    type: "curse",
     info: (value, duration) =>
       `For the next ${duration} Encounters, each time you use [omega] moves, get hit for ${value} damage.`,
     matcher: /gagged/i,
@@ -185,7 +163,6 @@ export const curses: ChaosCurse[] = [
   {
     // ChaosHealthCurse
     name: "Atrophic",
-    type: "curse",
     info: (value, duration) =>
       `For the next ${duration} Encounters, you have ${value} less max health.`,
     matcher: /atrophic/i,
@@ -198,7 +175,6 @@ export const curses: ChaosCurse[] = [
   {
     // ChaosHiddenRoomRewardCurse
     name: "Enshrouded",
-    type: "curse",
     info: (_, duration) =>
       `For the next ${duration} Encounters, your Location Reward previews are hidden.`,
     matcher: /enshrouded/i,
@@ -210,7 +186,6 @@ export const curses: ChaosCurse[] = [
   {
     // ChaosManaFocusCurse
     name: "Fixated",
-    type: "curse",
     info: (_, duration) =>
       `For the next ${duration} Encounters, whenever you use [mana] prime it.`,
     matcher: /fixated/i,
@@ -223,7 +198,6 @@ export const curses: ChaosCurse[] = [
     // ChaosMetaUpgradeCurse
     // Special curse; guarantees a heroic blessing.
     name: "Barren",
-    type: "curse",
     info: (_, duration) =>
       `For the next ${duration} Encounters, your arcana cards have no effect. [Paired Blessing is always Heroic.]`,
     matcher: /barren/i,
@@ -235,7 +209,6 @@ export const curses: ChaosCurse[] = [
   {
     // ChaosNoMoneyCurse
     name: "Pauper's",
-    type: "curse",
     info: (_, duration) =>
       `For the next ${duration} Encounters, you cannot earn money.`,
     matcher: /pauper'?s/i,
@@ -247,7 +220,6 @@ export const curses: ChaosCurse[] = [
   {
     // ChaosPrimaryAttackCurse
     name: "Maimed",
-    type: "curse",
     info: (value, duration) =>
       `For the next ${duration} Encounters, each time you use Attacks, get hit for ${value} damage.`,
     matcher: /maimed/i,
@@ -260,7 +232,6 @@ export const curses: ChaosCurse[] = [
   {
     // ChaosRestrictBoonCurse
     name: "Rejected",
-    type: "curse",
     info: (_, duration) =>
       `Your next ${duration} Boons you find will have 1 fewer blessing to choose from.`,
     matcher: /rejected/i,
@@ -272,7 +243,6 @@ export const curses: ChaosCurse[] = [
   {
     // ChaosSecondaryAttackCurse
     name: "Flayed",
-    type: "curse",
     info: (value, duration) =>
       `For the next ${duration} Encounters, each time you use Specials, get hit for ${value} damage.`,
     matcher: /flayed/i,
@@ -285,7 +255,6 @@ export const curses: ChaosCurse[] = [
   {
     // ChaosSpeedCurse
     name: "Slothful",
-    type: "curse",
     info: (value, duration) =>
       `For the next ${duration} Encounters, you move and Sprint ${value} slower.`,
     matcher: /slothful/i,
@@ -298,7 +267,6 @@ export const curses: ChaosCurse[] = [
   {
     // ChaosStunCurse
     name: "Paralyzing",
-    type: "curse",
     info: (value, duration) =>
       `For the next ${duration} Encounters, whenever you take damage, you are stunned for ${value} seconds.`,
     matcher: /paralyzing/i,
@@ -311,7 +279,6 @@ export const curses: ChaosCurse[] = [
   {
     // ChaosTimeCurse
     name: "Doomed",
-    type: "curse",
     info: (value, duration) =>
       `You have 120 seconds to clear ${duration} Encounters, or get hit for 500 damage.`,
     matcher: /doomed/i,
@@ -326,12 +293,10 @@ export const blessings: ChaosBlessing[] = [
   {
     // ChaosCastBlessing
     name: "Chasm",
-    type: "blessing",
     info: (value) => `Afterward, your Casts deal ${value} more damage.`,
     matcher: /chasm/i,
     values: {
-      baseMin: 0.2,
-      baseMax: 0.5,
+      base: { min: 0.2, max: 0.5 },
       rarityMultipliers: defaultRarityMultipliers,
       asPercent: true,
     }
@@ -339,13 +304,11 @@ export const blessings: ChaosBlessing[] = [
   {
     // ChaosDoorHealBlessing
     name: "Blood",
-    type: "blessing",
     info: (value) =>
       `Afterward, whenever you exit a Location, restore ${value} health.`,
     matcher: /blood/i,
     values: {
-      baseMin: 3,
-      baseMax: 4,
+      base: { min: 3, max: 4 },
       rarityMultipliers: {
         [COMMON]: 1,
         [RARE]: 3,
@@ -358,13 +321,11 @@ export const blessings: ChaosBlessing[] = [
   {
     // ChaosElementalBlessing
     name: "Creation",
-    type: "blessing",
     info: (value) =>
       `Afterward, gain ${value} [earth] [water] [air] [fire] [cosmic].`,
     matcher: /creation/i,
     values: {
-      baseMin: 1,
-      baseMax: 1,
+      base: { min: 1, max: 1 },
       rarityMultipliers: {
         [COMMON]: 1,
         [RARE]: 2,
@@ -377,13 +338,11 @@ export const blessings: ChaosBlessing[] = [
   {
     // ChaosExSpeedBlessing
     name: "Revelation",
-    type: "blessing",
     info: (value) =>
       `Afterward, you Channel  your [omega] Moves ${value} faster.`,
     matcher: /revelation/i,
     values: {
-      baseMin: 0.10,
-      baseMax: 0.15,
+      base: { min: 0.10, max: 0.15 },
       rarityMultipliers: defaultRarityMultipliers,
       asPercent: true,
     },
@@ -391,13 +350,11 @@ export const blessings: ChaosBlessing[] = [
   {
     // ChaosHarvestBlessing
     name: "Discovery",
-    type: "blessing",
     info: (value) =>
       `Afterward, you have a ${value} chance to find +100% resources with your Gathering Tools.`,
     matcher: /discovery/i,
     values: {
-      baseMin: 0.4,
-      baseMax: 0.5,
+      base: { min: 0.4, max: 0.5 },
       rarityMultipliers: {
         [COMMON]: 1.4,
         [RARE]: 1.6,
@@ -410,12 +367,10 @@ export const blessings: ChaosBlessing[] = [
   {
     // ChaosHealthBlessing
     name: "Soul",
-    type: "blessing",
     info: (value) => `Afterward, you get +${value} max health.`,
     matcher: /soul/i,
     values: {
-      baseMin: 26,
-      baseMax: 35,
+      base: { min: 26, max: 35 },
       rarityMultipliers: {
         [COMMON]: 1,
         [RARE]: 2,
@@ -428,12 +383,10 @@ export const blessings: ChaosBlessing[] = [
   {
     // ChaosManaBlessing
     name: "Mind",
-    type: "blessing",
     info: (value) => `Afterward, you get +${value} max [mana].`,
     matcher: /mind/i,
     values: {
-      baseMin: 30,
-      baseMax: 40,
+      base: { min: 30, max: 40 },
       rarityMultipliers: defaultRarityMultipliers,
       asPercent: false,
     },
@@ -441,12 +394,10 @@ export const blessings: ChaosBlessing[] = [
   {
     // ChaosManaCostBlessing
     name: "Talent",
-    type: "blessing",
     info: (value) => `Afterward, you use ${value} less [mana].`,
     matcher: /talent/i,
     values: {
-      baseMin: 0.2,
-      baseMax: 0.3,
+      base: { min: 0.2, max: 0.3 },
       rarityMultipliers: defaultRarityMultipliers,
       asPercent: true,
     },
@@ -454,12 +405,10 @@ export const blessings: ChaosBlessing[] = [
   {
     // ChaosManaOverTimeBlessing
     name: "Will",
-    type: "blessing",
     info: (value) => `Afterward, restore ${value} mana every 1 second.`,
     matcher: /will/i,
     values: {
-      baseMin: 4,
-      baseMax: 6,
+      base: { min: 4, max: 6 },
       rarityMultipliers: {
         [COMMON]: 1,
         [RARE]: 2,
@@ -472,12 +421,10 @@ export const blessings: ChaosBlessing[] = [
   {
     // ChaosMoneyBlessing
     name: "Affluence",
-    type: "blessing",
     info: (value) => `Afterward, any [gold] you find is worth ${value} more.`,
     matcher: /affluence/i,
     values: {
-      baseMin: 0.4,
-      baseMax: 0.6,
+      base: { min: 0.4, max: 0.6 },
       rarityMultipliers: {
         [COMMON]: 1,
         [RARE]: 2,
@@ -490,13 +437,11 @@ export const blessings: ChaosBlessing[] = [
   {
     // ChaosRarityBlessing
     name: "Favor",
-    type: "blessing",
     info: (value) =>
       `Afterward, Boons have a ${value} chance to be Rare or better.`,
     matcher: /favor/i,
     values: {
-      baseMin: 0.4,
-      baseMax: 0.5,
+      base: { min: 0.4, max: 0.5 },
       rarityMultipliers: {
         [COMMON]: 1.0,
         [RARE]: 1.34,
@@ -509,12 +454,10 @@ export const blessings: ChaosBlessing[] = [
   {
     // ChaosSpecialBlessing
     name: "Flourish",
-    type: "blessing",
     info: (value) => `Afterward, your Specials deal ${value} more damage.`,
     matcher: /flourish/i,
     values: {
-      baseMin: 0.3,
-      baseMax: 0.6,
+      base: { min: 0.3, max: 0.6 },
       rarityMultipliers: defaultRarityMultipliers,
       asPercent: true,
     },
@@ -522,12 +465,10 @@ export const blessings: ChaosBlessing[] = [
   {
     // ChaosSpeedBlessing
     name: "Celerity",
-    type: "blessing",
     info: (value) => `Afterward, you move and Sprint ${value} faster.`,
     matcher: /celerity/i,
     values: {
-      baseMin: 0.15,
-      baseMax: 0.15,
+      base: { min: 0.15, max: 0.15 },
       rarityMultipliers: {
         [COMMON]: 1.0,
         [RARE]: 1.33,
@@ -540,12 +481,10 @@ export const blessings: ChaosBlessing[] = [
   {
     // ChaosWeaponBlessing
     name: "Strike",
-    type: "blessing",
     info: (value) => `Afterward, your Attacks deal ${value} more damage.`,
     matcher: /strike/i,
     values: {
-      baseMin: 0.2,
-      baseMax: 0.5,
+      base: { min: 0.2, max: 0.5 },
       rarityMultipliers: defaultRarityMultipliers,
       asPercent: true,
     },
@@ -554,13 +493,11 @@ export const blessings: ChaosBlessing[] = [
     // ChaosOmegaDamageBlessing
     // Prereq: >=1 cosmic / aether in current run.
     name: "Chant",
-    type: "blessing",
     info: (value) =>
       `Afterward, your [omega] moves deal ${value} more damage per [cosmic] you have.`,
     matcher: /chant/i,
     values: {
-      baseMin: 0.3,
-      baseMax: 0.3,
+      base: { min: 0.3, max: 0.3 },
       rarityMultipliers: {
         [COMMON]: 1.0,
         [RARE]: 1.2,
@@ -574,13 +511,11 @@ export const blessings: ChaosBlessing[] = [
     // ChaosLastStandBlessing
     // Prereq: At least one Chaos blessing in the current run.
     name: "Defiance",
-    type: "blessing",
     info: (value) =>
       `Afterward, gain ${value} uses of Death Defiance this night.`,
     matcher: /defiance/i,
     values: {
-      baseMin: 1,
-      baseMax: 1,
+      base: { min: 1, max: 1 },
       rarityMultipliers: { [LEGENDARY]: 1 },
       asPercent: false,
     },
