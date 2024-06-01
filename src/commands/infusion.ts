@@ -1,7 +1,6 @@
-import { find } from "lodash";
 import { gods } from "../data/gods/all";
 import { AIR, BoonElement, COSMIC, EARTH, FIRE, WATER } from "../data/gods/elements";
-import { InfusionBoon, isInfusion } from "../data/gods/god";
+import { isInfusion } from "../data/gods/god";
 import { Command } from "./command";
 
 const allElements = [EARTH, WATER, AIR, FIRE, COSMIC];

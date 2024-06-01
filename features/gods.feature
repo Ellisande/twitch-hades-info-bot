@@ -47,3 +47,8 @@ Feature: Requests about gods and their boons
         Given PENDING
         When the user says to the bot {!hermes attack}
         Then the bot responds with {Hermes has no [attack] boon}
+
+    Scenario: A user can request Chaos' infusion
+        When the user says to the bot {!chaos infusion}
+        Then the bot responds with {Chant (Chaos)}
+        And the bot responds with {Afterward, your [omega] moves deal (c:30% r:36% e:42% h:48%) more damage per [cosmic] you have}

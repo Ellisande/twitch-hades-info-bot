@@ -12,6 +12,7 @@ import { elementListCommand } from "./elementList";
 import { hexCommand } from "./hex";
 import { hexListCommand } from "./hexList";
 import { infusionCommand } from "./infusion";
+import { chaosCommand } from "./chaosBoons";
 
 const allCommands = [
   pingCommand,
@@ -28,5 +29,6 @@ const allCommands = [
   hexCommand,
   hexListCommand,
   infusionCommand,
+  chaosCommand,
 ];
 export { allCommands };
