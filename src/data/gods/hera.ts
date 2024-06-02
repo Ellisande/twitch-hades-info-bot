@@ -84,7 +84,7 @@ export const bornGain: Boon = {
   type: OTHER,
   element: EARTH,
   info: (value) =>
-    `Whenever you run out of [mana], Prime ${value} [mana] to restore all [mana] up to the reduced limit`,
+    `Whenever you run out of [magick], Prime ${value} [magick] to restore all [magick] up to the reduced limit`,
   values: {
     [COMMON]: { 1: 10 },
   },
@@ -119,7 +119,7 @@ export const keenIntuition: Boon = {
   type: OTHER,
   element: EARTH,
   info: (value) =>
-    `Whenever you use [omega] moves while you have 100% [mana], they deal ${value} more damage`,
+    `Whenever you use [omega] moves while you have 100% [magick], they deal ${value} more damage`,
   values: {
     [COMMON]: { 1: "30%" },
   },

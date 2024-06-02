@@ -12,7 +12,7 @@ const vampiricCataclysm = {
 const aethericMoonburst = {
   name: "Aetheric Moonburst",
   description:
-    "Your [omega] Special gains a Power Shot that does +20% damage and restores 5 mana",
+    "Your [omega] Special gains a Power Shot that does +20% damage and restores 5 magick",
   exclusives: [],
 };
 

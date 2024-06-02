@@ -20,7 +20,7 @@ Feature: Users can ask about hexes
         When the user says to the bot {!totalEclipse}
         Then the bot responds with {Total Eclipse}
         And the bot responds with {Your Hex blasts the target area for 1000 damage after 4 Sec}
-        And the bot responds with {Ready after 200 [mana]}
+        And the bot responds with {Ready after 200 [magick]}
 
     Scenario: User can ask about Total Eclipse capitalized and spaced
         Given a user {user1}

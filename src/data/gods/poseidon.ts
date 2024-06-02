@@ -92,7 +92,7 @@ const dash: Boon = {
   type: DASH,
   element: WATER,
   info: (value) =>
-    `Your Sprint deals ${value} damage on impact and knocks foes away, but uses 5 [mana] per hit`,
+    `Your Sprint deals ${value} damage on impact and knocks foes away, but uses 5 [magick] per hit`,
   values: {
     [COMMON]: {
       1: 80,
@@ -112,7 +112,7 @@ const floodControl: Boon = {
   type: OTHER,
   element: WATER,
   info: (value) =>
-    `After you enter a Location, Prime 30 [mana] to reduce any damage you would take by ${value} per hit.`,
+    `After you enter a Location, Prime 30 [magick] to reduce any damage you would take by ${value} per hit.`,
   values: {
     [COMMON]: { 1: -2 },
     [RARE]: { 1: -3 },
@@ -249,7 +249,7 @@ const naturalSelection: Boon = {
   name: "Natural Selection",
   type: OTHER,
   info: (value) =>
-    `Location Rewards exclude max health, max [mana], and gold. Boon are ${value} more likely to be Rare or better`,
+    `Location Rewards exclude max health, max [magick], and gold. Boon are ${value} more likely to be Rare or better`,
   values: {
     [DUO]: { 1: "20%" },
   },

@@ -62,7 +62,7 @@ export const fixedGain: Boon = {
   type: OTHER,
   element: EARTH,
   info: (value) =>
-    `You take -10% damage, and restore ${value} [mana] whenever you take damage`,
+    `You take -10% damage, and restore ${value} [magick] whenever you take damage`,
   values: {
     [COMMON]: { 1: 50 },
   },
@@ -73,7 +73,7 @@ const dash: Boon = {
   type: DASH,
   element: FIRE,
   info: (value) =>
-    `After you Sprint for 1 second, use 10 [mana] to create a blast for ${value} damage to nearby foes`,
+    `After you Sprint for 1 second, use 10 [magick] to create a blast for ${value} damage to nearby foes`,
   values: {
     [COMMON]: { 1: 200 },
   },
@@ -146,7 +146,7 @@ export const trustyShield: Boon = {
   type: OTHER,
   element: EARTH,
   info: (value) =>
-    `After you enter a Location, Prime 30 [mana] to gain ${value} Armor until the next Location`,
+    `After you enter a Location, Prime 30 [magick] to gain ${value} Armor until the next Location`,
   values: {
     [COMMON]: { 1: 10 },
   },
@@ -156,7 +156,7 @@ export const uncannyFortitude: Boon = {
   name: "Uncanny Fortitude",
   type: OTHER,
   element: EARTH,
-  info: (value) => `Gain ${value} max health, based on your [mana] limit`,
+  info: (value) => `Gain ${value} max health, based on your [magick] limit`,
   values: {
     [COMMON]: { 1: "20%" },
   },

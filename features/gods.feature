@@ -28,7 +28,7 @@ Feature: Requests about gods and their boons
     Scenario: A user can request information about a god's dash
         When the user says to the bot {!poseidon dash}
         Then the bot responds with {Breaker Sprint (Poseidon) [Water]}
-        And the bot responds with {Your Sprint deals (c:80 r:120) damage on impact and knocks foes away, but uses 5 [mana] per hit}
+        And the bot responds with {Your Sprint deals (c:80 r:120) damage on impact and knocks foes away, but uses 5 [magick] per hit}
 
     Scenario: A user can request information about other boons for a god
         When the user says to the bot {!poseidon other}

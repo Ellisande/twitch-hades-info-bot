@@ -21,7 +21,7 @@ export type ChaosCurseValues = {
 
 const defaultDuration: Range = {
   min: 3,
-  max: 5
+  max: 5,
 };
 
 type ChaosCurse = {
@@ -35,11 +35,11 @@ type ChaosCurse = {
 // Defining RarityMultipliers guarantees that an implementer defines
 // at least one rarity, but allows for multiple.
 type RarityMultipliers =
-  { [COMMON]: number; } |
-  { [RARE]: number; } |
-  { [EPIC]: number; } |
-  { [HEROIC]: number; } |
-  { [LEGENDARY]: number; };
+  | { [COMMON]: number }
+  | { [RARE]: number }
+  | { [EPIC]: number }
+  | { [HEROIC]: number }
+  | { [LEGENDARY]: number };
 
 type ChaosBlessingValues = {
   base: Range;
@@ -85,7 +85,7 @@ const chant: InfusionBoon = {
 export const chaos: God = {
   name: "Chaos",
   info: "Primordial god of the abyss. His boons provide powerful blessings, if you can survive their curses.",
-  abilities: {chant},
+  abilities: { chant },
   elements: [],
 };
 
@@ -129,7 +129,7 @@ export const curses: ChaosCurse[] = [
     // ChaosDashCurse
     name: "Hobbled",
     info: (value, duration) =>
-      `For the next ${duration} Encounters, your Dash is slower and uses ${value} mana (if you have it).`,
+      `For the next ${duration} Encounters, your Dash is slower and uses ${value} magick (if you have it).`,
     matcher: /hobbled/i,
     values: {
       value: { min: 3, max: 6 },
@@ -184,10 +184,10 @@ export const curses: ChaosCurse[] = [
     },
   },
   {
-    // ChaosManaFocusCurse
+    // ChaosMagickFocusCurse
     name: "Fixated",
     info: (_, duration) =>
-      `For the next ${duration} Encounters, whenever you use [mana] prime it.`,
+      `For the next ${duration} Encounters, whenever you use [magick] prime it.`,
     matcher: /fixated/i,
     values: {
       duration: defaultDuration,
@@ -299,7 +299,7 @@ export const blessings: ChaosBlessing[] = [
       base: { min: 0.2, max: 0.5 },
       rarityMultipliers: defaultRarityMultipliers,
       asPercent: true,
-    }
+    },
   },
   {
     // ChaosDoorHealBlessing
@@ -342,7 +342,7 @@ export const blessings: ChaosBlessing[] = [
       `Afterward, you Channel  your [omega] Moves ${value} faster.`,
     matcher: /revelation/i,
     values: {
-      base: { min: 0.10, max: 0.15 },
+      base: { min: 0.1, max: 0.15 },
       rarityMultipliers: defaultRarityMultipliers,
       asPercent: true,
     },
@@ -381,9 +381,9 @@ export const blessings: ChaosBlessing[] = [
     },
   },
   {
-    // ChaosManaBlessing
+    // ChaosMagickBlessing
     name: "Mind",
-    info: (value) => `Afterward, you get +${value} max [mana].`,
+    info: (value) => `Afterward, you get +${value} max [magick].`,
     matcher: /mind/i,
     values: {
       base: { min: 30, max: 40 },
@@ -392,9 +392,9 @@ export const blessings: ChaosBlessing[] = [
     },
   },
   {
-    // ChaosManaCostBlessing
+    // ChaosMagickCostBlessing
     name: "Talent",
-    info: (value) => `Afterward, you use ${value} less [mana].`,
+    info: (value) => `Afterward, you use ${value} less [magick].`,
     matcher: /talent/i,
     values: {
       base: { min: 0.2, max: 0.3 },
@@ -403,9 +403,9 @@ export const blessings: ChaosBlessing[] = [
     },
   },
   {
-    // ChaosManaOverTimeBlessing
+    // ChaosMagickOverTimeBlessing
     name: "Will",
-    info: (value) => `Afterward, restore ${value} mana every 1 second.`,
+    info: (value) => `Afterward, restore ${value} magick every 1 second.`,
     matcher: /will/i,
     values: {
       base: { min: 4, max: 6 },

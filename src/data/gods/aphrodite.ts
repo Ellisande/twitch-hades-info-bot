@@ -100,7 +100,7 @@ const gain: Boon = {
   type: GAIN,
   element: AIR,
   info: (value) =>
-    `In each encounter, 1 foe is always Weak. You gradually restore ${value} [mana]/second while near [weak] foes.`,
+    `In each encounter, 1 foe is always Weak. You gradually restore ${value} [magick]/second while near [weak] foes.`,
   values: {
     [COMMON]: { 1: 6 },
     [EPIC]: { 1: 10 },
@@ -134,7 +134,7 @@ export const heartBreaker: Boon = {
   type: OTHER,
   element: WATER,
   info: (value) =>
-    `Whenever you use 30 [mana], create a Heartthrob that deals ${value} area damage.`,
+    `Whenever you use 30 [magick], create a Heartthrob that deals ${value} area damage.`,
   values: {
     [COMMON]: { 1: 120 },
   },
@@ -167,7 +167,7 @@ const secretCrush: Boon = {
   type: OTHER,
   element: AIR,
   info: (value) =>
-    `After you enter a Location, [prime] 20 [mana] to add ${value} Power to your Attack`,
+    `After you enter a Location, [prime] 20 [magick] to add ${value} Power to your Attack`,
   values: {
     [COMMON]: { 1: "5" },
   },

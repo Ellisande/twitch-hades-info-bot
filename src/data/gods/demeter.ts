@@ -84,7 +84,7 @@ export const tranquilGain: Boon = {
   type: OTHER,
   element: EARTH,
   info: (value) =>
-    `After remaining inactive for 1 second, rapidly restore ${value} [mana]/second until you act`,
+    `After remaining inactive for 1 second, rapidly restore ${value} [magick]/second until you act`,
   values: {
     [COMMON]: { 1: 25 },
     [RARE]: { 1: 35 },
@@ -111,7 +111,7 @@ const weedKiller: Boon = {
   type: OTHER,
   element: EARTH,
   info: (value) =>
-    `Your [omega] Attack deals ${value} more damage, but uses 10 more [mana]`,
+    `Your [omega] Attack deals ${value} more damage, but uses 10 more [magick]`,
   values: {
     [COMMON]: { 1: "50%" },
     [RARE]: {
@@ -189,7 +189,7 @@ export const winterCoat: Boon = {
   type: OTHER,
   element: EARTH,
   info: (value) =>
-    `After you enter a Location, Prime ${value} [mana] a barrier that absorbs 1 instance of damage`,
+    `After you enter a Location, Prime ${value} [magick] a barrier that absorbs 1 instance of damage`,
   values: {
     [COMMON]: { 1: 20 },
     [RARE]: {
@@ -255,7 +255,7 @@ const torrentialDownpour: Boon = {
   name: "Torrential Downpour",
   type: OTHER,
   info: (value) =>
-    `Each time you use your [omega] Cast in an Encounter, it gets ${value} stronger but also uses +5 [mana]`,
+    `Each time you use your [omega] Cast in an Encounter, it gets ${value} stronger but also uses +5 [magick]`,
   values: {
     [DUO]: { 1: "20%" },
   },
@@ -299,7 +299,7 @@ const naturalSelection: Boon = {
   name: "Natural Selection",
   type: OTHER,
   info: (value) =>
-    `Location Rewards exclude max health, max [mana], and gold. Boon are ${value} more likely to be Rare or better`,
+    `Location Rewards exclude max health, max [magick], and gold. Boon are ${value} more likely to be Rare or better`,
   values: {
     [DUO]: { 1: "20%" },
   },

@@ -10,7 +10,7 @@ const tripleHelix = {
 const cleanHelix = {
   name: "Clean Helix",
   description:
-    "You Channel your [omega] Special 20% faster, and it uses -2 mana",
+    "You Channel your [omega] Special 20% faster, and it uses -2 magick",
   exclusives: [],
 };
 
@@ -31,7 +31,7 @@ const meltingComet = {
 const direCandle = {
   name: "Dire Candle",
   description:
-    "Your [omega] Attack first 1 shot that deals +1500% damage, but uses 20 [mana]",
+    "Your [omega] Attack first 1 shot that deals +1500% damage, but uses 20 [magick]",
   exclusives: [],
 };
 
@@ -51,7 +51,7 @@ const crushingComet = {
 const cleanCandle = {
   name: "Clean Candle",
   description:
-    "You Channel your [omega] Attack 10% faster and it uses -3 [mana]",
+    "You Channel your [omega] Attack 10% faster and it uses -3 [magick]",
   exclusives: [],
 };
 
