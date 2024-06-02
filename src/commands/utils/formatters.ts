@@ -1,8 +1,9 @@
-import { mapValues, mapKeys } from "lodash";
-import { BoonRarity, abbreviate } from "../../data/gods/rarities";
+import { mapKeys, mapValues } from "lodash";
+import { BonusBoon, BonusBoonValues } from "../../data/actBonus/actBonus";
 import { Boon, BoonValues } from "../../data/gods/god";
+import { BoonRarity, abbreviate } from "../../data/gods/rarities";
 
-const summaryFormatter = (values: BoonValues) => {
+const summaryFormatter = (values: BoonValues | BonusBoonValues) => {
   const baseValues = mapValues(values, (value = {}) =>
     Object.values(value).find(() => true)
   );
@@ -23,7 +24,16 @@ const abilityFormatter =
     // Some boons, like infusions, have no element
     const formattedElement = element ? `[${element}] ` : "";
     const hasPrereqs = prerequisites ? " [has requirements]" : "";
-    return `${name} (${god}) ${formattedElement}- ${info(valueString)}${hasPrereqs}`;
+    return `${name} (${god}) ${formattedElement}- ${info(
+      valueString
+    )}${hasPrereqs}`;
+  };
+
+export const bonusAbilityFormatter =
+  (bonus: string) =>
+  ({ name, info, values }: BonusBoon) => {
+    const valueString = summaryFormatter(values);
+    return `${name} (${bonus}) - ${info(valueString)}`;
   };
 
 const prereqsFormatter =
@@ -34,18 +44,15 @@ const prereqsFormatter =
     }
 
     const prereqsString = prerequisites
-      .map(
-        (boonList) => {
-          let boonSet = boonList.reduce(
-            (currentBoons, boon) => {
-              return `${currentBoons}[${boon.name}]`
-            }, ""
-          );
-          return `(one of ${boonSet})`;
-        }
-      ).join(" and ");
+      .map((boonList) => {
+        let boonSet = boonList.reduce((currentBoons, boon) => {
+          return `${currentBoons}[${boon.name}]`;
+        }, "");
+        return `(one of ${boonSet})`;
+      })
+      .join(" and ");
 
-    return `Requirements for ${name} (${god}): ${prereqsString}`
+    return `Requirements for ${name} (${god}): ${prereqsString}`;
   };
 
-export { summaryFormatter, abilityFormatter, prereqsFormatter };
+export { abilityFormatter, prereqsFormatter, summaryFormatter };
