@@ -1,4 +1,5 @@
 import { bonusCommand } from "./actBonus";
+import { bonusBoonCommand } from "./bonusBoon";
 import { boonCommand } from "./boon";
 import { chaosCommand } from "./chaosBoons";
 import { effectCommand } from "./effect";
@@ -32,5 +33,6 @@ const allCommands = [
   infusionCommand,
   chaosCommand,
   bonusCommand,
+  bonusBoonCommand,
 ];
 export { allCommands };
