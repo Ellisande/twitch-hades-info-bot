@@ -21,15 +21,15 @@ Feature: Users can ask about God's ability by type
         Then the bot responds with <EXPECTED_COUNT> abilities
         Examples:
             | MULTI_ABILITY_CATEGORY | EXPECTED_COUNT |
-            | duos                   | 6              |
-            | other                  | 9              |
+            | duos                   | 8              |
+            | other                  | 8              |
 
 
     Scenario: A user should get a detailed explanation if requesting a category with a single entry
-        When the user says to the bot {!zeus <SINGEL_ENTRY_CATEGORY>}
+        When the user says to the bot {!zeus <SINGLE_ENTRY_CATEGORY>}
         Then the bot responds with {<BOON_NAME>}
         Examples:
-            | SINGEL_ENTRY_CATEGORY | BOON_NAME       |
+            | SINGLE_ENTRY_CATEGORY | BOON_NAME       |
             | attack                | Heaven Strike   |
             | special               | Heaven Flourish |
             | cast                  | Storm Ring      |

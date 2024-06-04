@@ -1,6 +1,6 @@
 import { toArray } from "lodash";
-import { StandardBoonType, InfusionBoonType, INFUSION } from "./abilityTypes";
-import { BoonElement } from "./elements";
+import { StandardBoonType, InfusionBoonType, INFUSION, DuoBoonType } from "./abilityTypes";
+import { BoonElement, COSMIC } from "./elements";
 import { BoonRarity } from "./rarities";
 import { notNullOrUndefined } from "../../utils/arrayUtils";
 
@@ -8,7 +8,7 @@ export type BoonValues = Partial<
   Record<BoonRarity, { [level: number]: string | number }>
 >;
 
-export type Boon = StandardBoon | InfusionBoon;
+export type Boon = StandardBoon | InfusionBoon | DuoBoon;
 
 type StandardBoon = {
   name: string;
@@ -16,7 +16,7 @@ type StandardBoon = {
   element?: BoonElement;
   info: (value: string) => string;
   values: BoonValues;
-  prerequisites?: Array<Array<Boon>>;
+  prerequisites?: Boon[][];
 };
 
 export const isInfusion =
@@ -24,8 +24,16 @@ export const isInfusion =
 
 export type InfusionBoon = Omit<StandardBoon, "type" | "element?" | "prerequisites?"> & {
   type: InfusionBoonType;
-  requiredElements: Array<BoonElement>;
+  requiredElements: BoonElement[];
 };
+
+// TODO(sneakyteak): DuoBoon values should always be [DUO] rarity.
+export type DuoBoon = Omit<StandardBoon, "type" | "element?" | "prerequisites?"> & {
+  gods: [God, God];
+  type: DuoBoonType;
+  element: typeof COSMIC;
+  prerequisites: Boon[][];
+}
 
 export type God = {
   name: string;

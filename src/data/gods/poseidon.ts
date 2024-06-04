@@ -1,41 +1,14 @@
 import { ATTACK, CAST, DASH, INFUSION, OTHER, SPECIAL } from "./abilityTypes";
-import { flutterFlourish, flutterStrike } from "./aphrodite";
-import { blindingSprint, lucidGain } from "./apollo";
-import {
-  coldStorage,
-  frigidSprint,
-  rareCrop,
-  tranquilGain,
-  winterCoat,
-} from "./demeter";
-import { COSMIC, WATER } from "./elements";
+import { WATER } from "./elements";
 import { Boon, God, InfusionBoon, listElements } from "./god";
-import { smithySprint, volcanicFlourish, volcanicStrike } from "./hephaestus";
-import { bornGain, nexusSprint, swornStrike } from "./hera";
-import {
-  burningDesire,
-  controlledBurn,
-  flameFlourish,
-  flameStrike,
-  glowingCoal,
-  smolderRing,
-  spontaneousCombustion,
-} from "./hestia";
-import { COMMON, DUO, EPIC, LEGENDARY, RARE } from "./rarities";
-import {
-  divineVengeance,
-  heavenFlourish,
-  heavenStrike,
-  lightningLance,
-  stormRing,
-  thunderSprint,
-} from "./zeus";
+import { COMMON, EPIC, LEGENDARY, RARE } from "./rarities";
 
 const info = "Poseidon, God of the Sea. His powers knock enemies away.";
 
 const attack: Boon = {
   name: "Wave Strike",
   type: ATTACK,
+  element: WATER,
   info: (value) =>
     `Your Attacks hit foes with a splash that knocks foes away and deals ${value} damage`,
   values: {
@@ -231,121 +204,6 @@ const kingTide: Boon = {
   prerequisites: [[waveStrike, waveFlourish], [slipperySlope], [crashingWave]],
 };
 
-const islandGetaway: Boon = {
-  name: "Island Getaway",
-  type: OTHER,
-  info: (value) =>
-    `You take ${value} less damage from nearby foes. Boons of Aphrodite treat all foes as nearby.`,
-  values: {
-    [DUO]: { 1: "15%" },
-  },
-  prerequisites: [
-    [waveStrike, waveFlourish, geyserRing, breakerSprint],
-    [flutterStrike, flutterFlourish],
-  ],
-};
-
-const naturalSelection: Boon = {
-  name: "Natural Selection",
-  type: OTHER,
-  info: (value) =>
-    `Location Rewards exclude max health, max [mana], and gold. Boon are ${value} more likely to be Rare or better`,
-  values: {
-    [DUO]: { 1: "20%" },
-  },
-  prerequisites: [
-    [fluidGain, breakerSprint, oceansBounty, sunkenTreasure, doubleUp],
-    [tranquilGain, frigidSprint, winterCoat, coldStorage, rareCrop],
-  ],
-};
-
-const killerCurrent: Boon = {
-  name: "Killer Current",
-  type: OTHER,
-  element: COSMIC,
-  info: (value) =>
-    `Your lightning deals ${value} bonus damage to [slip]-afflicted foes`,
-  values: {
-    [DUO]: { 1: "30%" },
-  },
-  prerequisites: [
-    [slipperySlope],
-    [
-      heavenStrike,
-      heavenFlourish,
-      stormRing,
-      thunderSprint,
-      divineVengeance,
-      lightningLance,
-    ],
-  ],
-};
-
-const seismicHammer: Boon = {
-  name: "Seismic Hammer",
-  type: OTHER,
-  element: COSMIC,
-  info: (value) =>
-    `Your [omega] cast occasionally creates a blast that deals 500 damage in the area. Recharges after ${value} seconds`,
-  values: {
-    [DUO]: { 1: 15 },
-  },
-  prerequisites: [
-    [geyserRing],
-    [volcanicStrike, volcanicFlourish, smithySprint],
-  ],
-};
-
-const goldenRule: Boon = {
-  name: "Golden Rule",
-  type: OTHER,
-  info: (value) => `You deal ${value} more damage per 100 gold you have`,
-  values: {
-    [DUO]: "5%",
-  },
-  prerequisites: [
-    [swornStrike, nexusSprint, bornGain],
-    [geyserRing, breakerSprint, fluidGain],
-    [oceansBounty, doubleUp],
-  ],
-};
-
-const beachBall: Boon = {
-  name: "Beach Ball",
-  type: OTHER,
-  info: (value) =>
-    `Your Sprint creates a water sphere behind you. After you stop, it surges ahead and bursts for ${value} damage`,
-  values: {
-    [DUO]: { 1: 140 },
-  },
-  prerequisites: [
-    [blindingSprint, lucidGain],
-    [breakerSprint, fluidGain],
-  ],
-};
-
-const scaldingVapor: Boon = {
-  name: "Scalding Vapor",
-  type: OTHER,
-  info: (value) =>
-    `If foes with [slip] are struck with fire from Hestia, they are engulfed in [steam] that deals ${value} damage every 0.2 seconds`,
-  values: {
-    [DUO]: { 1: 25 },
-  },
-  prerequisites: [
-    [slipperySlope],
-    [
-      flameStrike,
-      flameFlourish,
-      smolderRing,
-      spontaneousCombustion,
-      burningDesire,
-      controlledBurn,
-      glowingCoal,
-    ],
-  ],
-};
-
 const abilities = {
   attack,
   special,
@@ -361,13 +219,6 @@ const abilities = {
   slipperySlope,
   crashingWave,
   kingTide,
-  islandGetaway,
-  naturalSelection,
-  killerCurrent,
-  seismicHammer,
-  goldenRule,
-  beachBall,
-  scaldingVapor,
 };
 
 export const poseidon: God = {

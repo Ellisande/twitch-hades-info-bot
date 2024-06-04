@@ -7,23 +7,9 @@ import {
   OTHER,
   SPECIAL,
 } from "./abilityTypes";
-import { heartBreaker } from "./aphrodite";
-import { arcticRing, frigidSprint, tranquilGain } from "./demeter";
-import { AIR, COSMIC, FIRE } from "./elements";
+import { AIR, FIRE } from "./elements";
 import { Boon, God, InfusionBoon, listElements } from "./god";
-import { smithySprint, volcanicFlourish, volcanicStrike } from "./hephaestus";
-import { bornGain, engagementRing, nexusSprint } from "./hera";
-import {
-  burntOffering,
-  flameFlourish,
-  flameStrike,
-  flammableCoating,
-  hearthGain,
-  smolderRing,
-} from "./hestia";
-import { breakerSprint, fluidGain } from "./poseidon";
-import { COMMON, DUO, EPIC, HEROIC, LEGENDARY, RARE } from "./rarities";
-import { heavenFlourish, heavenStrike, thunderSprint } from "./zeus";
+import { COMMON, EPIC, HEROIC, LEGENDARY, RARE } from "./rarities";
 
 const info = "Apollo, God of Light and Sun";
 
@@ -228,128 +214,21 @@ const exceptionalTalent: Boon = {
   ],
 };
 
-const gloriousDisaster: Boon = {
-  name: "Glorious Disaster",
-  type: OTHER,
-  element: COSMIC,
-  info: (value) =>
-    `You can Channel +30 [mana] into your [omega] Cast to repeatedly strike foes for ${value} bolt damage every 0.13 seconds`,
-  values: {
-    [LEGENDARY]: { 1: 50 },
-  },
-  prerequisites: [[solarRing], [heavenStrike, heavenFlourish, thunderSprint]],
-};
-
-const torrentialDownpour: Boon = {
-  name: "Torrential Downpour",
-  type: OTHER,
-  info: (value) =>
-    `Each time you use your [omega] Cast in an Encounter, it gets ${value} stronger but also uses +5 [mana]`,
-  values: {
-    [DUO]: { 1: "20%" },
-  },
-  prerequisites: [
-    [solarRing, blindingSprint, lucidGain],
-    [arcticRing, frigidSprint, tranquilGain],
-  ],
-};
-
-const stellarSlam: Boon = {
-  name: "Stellar Slam",
-  type: OTHER,
-  element: COSMIC,
-  info: (value) =>
-    `Your blast effects from Hephaestus deal damage in a ${value} larger area`,
-  values: {
-    [DUO]: { 1: "50%" },
-  },
-  prerequisites: [
-    [novaStrike, novaFlourish, superNova],
-    [volcanicFlourish, volcanicStrike, smithySprint],
-  ],
-};
-
-const phoenixSkin: Boon = {
-  name: "Phoenix Skin",
-  type: OTHER,
-  element: COSMIC,
-  info: (value) =>
-    `Give up -100 max health. If you do not take or deal damage for 3 seconds, rapidly restore ${value} health/sec`,
-  values: {
-    [DUO]: {
-      1: 3,
-    },
-  },
-  prerequisites: [
-    [novaStrike, novaFlourish, lucidGain],
-    [flameStrike, flameFlourish, smolderRing],
-    [burntOffering, flammableCoating, hearthGain],
-  ],
-};
-
-const sunnyDisposition: Boon = {
-  name: "Sunny Disposition",
-  type: OTHER,
-  info: (value) => `Whenever you create Heartthrobs, create ${value} more`,
-  values: {
-    [DUO]: { 1: 2 },
-  },
-  prerequisites: [
-    [heartBreaker],
-    [novaStrike, novaFlourish, lucidGain, solarRing],
-  ],
-};
-
-const beachBall: Boon = {
-  name: "Beach Ball",
-  type: OTHER,
-  info: (value) =>
-    `Your Sprint creates a water sphere behind you. After you stop, it surges ahead and bursts for ${value} damage`,
-  values: {
-    [DUO]: { 1: 140 },
-  },
-  prerequisites: [
-    [blindingSprint, lucidGain],
-    [breakerSprint, fluidGain],
-  ],
-};
-
-const sunWorshiper: Boon = {
-  name: "Sun Worshiper",
-  type: OTHER,
-  info: (value) =>
-    `In each Encounter, the first foe you slay returns to fight for you dealing ${value} of its normal damage`,
-  values: {
-    [DUO]: { 1: "200%" },
-  },
-  prerequisites: [
-    [engagementRing, nexusSprint, bornGain],
-    [solarRing, blindingSprint, lucidGain],
-  ],
-};
-
 const abilities = {
   attack,
   special,
   dash,
   cast,
   gain,
-  "extra dose": extraDose,
-  "super nova": superNova,
-  "self healing": selfHealing,
-  "perfect image": perfectImage,
+  extraDose,
+  superNova,
+  selfHealing,
+  perfectImage,
   dazzlingDisplay,
   backBurner,
   criticalMiss,
-  stellarSlam,
   lightSmite,
-  phoenixSkin,
   exceptionalTalent,
-  gloriousDisaster,
-  torrentialDownpour,
-  sunnyDisposition,
-  beachBall,
-  sunWorshiper,
 };
 
 export const apollo: God = {

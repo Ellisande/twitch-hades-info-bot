@@ -3,6 +3,7 @@ import { Command } from "./command";
 import { gods } from "../data/gods/all";
 import { abilityFormatter, prereqsFormatter } from "./utils/formatters";
 import { Boon } from "../data/gods/god";
+import { duos } from "../data/gods/duos";
 
 type BoonRecord = {
   god: string;
@@ -21,6 +22,13 @@ const abilityMatchersMap: { [matcher: string]: BoonRecord} = gods
   ).reduce(
     (resultObj, current) => ({ ...resultObj, ...current })
   );
+
+// A little magic: the God1 + God2 string we make here slots right into
+// the formatter later.
+duos.forEach((duo) => {
+  abilityMatchersMap[duo.name.replace(" ", " *")] =
+    {god: duo.gods[0].name + " + " + duo.gods[1].name, boon: duo};
+});
 
 const abilityNameRegexes = Object.keys(abilityMatchersMap).join("|");
 const abilityCommand = RegExp(`^(${abilityNameRegexes})( req(?:uirement)?s)?$`, "i");

@@ -1,38 +1,7 @@
 import { ATTACK, DASH, INFUSION, OTHER, SPECIAL } from "./abilityTypes";
-import { glamourGain, passionDash, raptureRing } from "./aphrodite";
-import { blindingSprint, lucidGain, solarRing } from "./apollo";
-import { arcticRing, frigidSprint, tranquilGain } from "./demeter";
-import { COSMIC, EARTH } from "./elements";
+import { EARTH } from "./elements";
 import { Boon, God, InfusionBoon, listElements } from "./god";
-import {
-  fixedGain,
-  heavyMetal,
-  mintCondition,
-  toughTrade,
-  trustyShield,
-  uncannyFortitude,
-} from "./hephaestus";
-import {
-  special as flameFlourish,
-  attack as flameStrike,
-  hearthGain,
-  cast as smolderRing,
-} from "./hestia";
-import {
-  breakerSprint,
-  doubleUp,
-  fluidGain,
-  geyserRing,
-  oceansBounty,
-} from "./poseidon";
-import { COMMON, DUO, EPIC, LEGENDARY, RARE } from "./rarities";
-import {
-  heavenFlourish,
-  heavenStrike,
-  ionicGain,
-  stormRing,
-  thunderSprint,
-} from "./zeus";
+import { COMMON, EPIC, LEGENDARY, RARE } from "./rarities";
 
 const info = "Hera, Queen of the Gods";
 
@@ -211,114 +180,6 @@ export const braveFace: Boon = {
   ],
 };
 
-const funeralPyre: Boon = {
-  name: "Funeral Pyre",
-  type: OTHER,
-  element: COSMIC,
-  info: (value) =>
-    `While you Channel your [omega] moves, repeatedly inflict ${value} [scorch] on nearby foes`,
-  values: {
-    [DUO]: { 1: 90 },
-  },
-  prerequisites: [
-    [attack, special, cast, bornGain],
-    [flameStrike, flameFlourish, smolderRing, hearthGain],
-  ],
-};
-
-const spitefulStrength: Boon = {
-  name: "Spiteful Strength",
-  type: OTHER,
-  element: COSMIC,
-  info: (value) =>
-    `Your Attacks and Specials deal ${value} more damage while not empowered by Boons`,
-  values: {
-    [DUO]: "200%",
-  },
-  prerequisites: [
-    [braveFace, nastyComeback, keenIntuition, bornGain],
-    [
-      trustyShield,
-      mintCondition,
-      heavyMetal,
-      toughTrade,
-      uncannyFortitude,
-      fixedGain,
-    ],
-  ],
-};
-
-const cherishedHeirloom: Boon = {
-  name: "Cherished Heirloom",
-  type: OTHER,
-  info: (value) =>
-    `Most other Keepsakes you equip are ${value} ranks strong this night (if possible)`,
-  values: {
-    [DUO]: { 1: 1 },
-  },
-  prerequisites: [
-    [dash, cast, bornGain],
-    [arcticRing, frigidSprint, tranquilGain],
-  ],
-};
-
-const soulMate: Boon = {
-  name: "Soul Mate",
-  type: OTHER,
-  element: COSMIC,
-  info: (value) =>
-    `Foes with [hitch] take ${value} more damage and are [weak], but only 2 can be afflicted at a time.`,
-  values: {
-    [DUO]: { 1: "20%" },
-  },
-  prerequisites: [
-    [attack, special, dash, nastyComeback],
-    [raptureRing, passionDash, glamourGain],
-  ],
-};
-
-const goldenRule: Boon = {
-  name: "Golden Rule",
-  type: OTHER,
-  info: (value) => `You deal ${value} more damage per 100 gold you have`,
-  values: {
-    [DUO]: "5%",
-  },
-  prerequisites: [
-    [cast, dash, bornGain],
-    [geyserRing, breakerSprint, fluidGain],
-    [oceansBounty, doubleUp],
-  ],
-};
-
-const sunWorshiper: Boon = {
-  name: "Sun Worshiper",
-  type: OTHER,
-  info: (value) =>
-    `In each Encounter, the first foe you slay returns to fight for you dealing ${value} of its normal damage`,
-  values: {
-    [DUO]: { 1: "200%" },
-  },
-  prerequisites: [
-    [cast, dash, bornGain],
-    [solarRing, blindingSprint, lucidGain],
-  ],
-};
-
-const queensRansom: Boon = {
-  name: "Queen's Ransom",
-  type: OTHER,
-  info: (value) =>
-    `Give up all your Boons of Zeus. For each raise all of your Boons of Hera by ${value} levels`,
-  values: {
-    [DUO]: { 1: 3 },
-  },
-  prerequisites: [
-    [attack, special, dash, cast, bornGain],
-    [heavenStrike, heavenFlourish, stormRing, thunderSprint, ionicGain],
-  ],
-};
-
 const abilities = {
   attack,
   special,
@@ -334,13 +195,6 @@ const abilities = {
   dyingWish,
   nastyComeback,
   braveFace,
-  funeralPyre,
-  spitefulStrength,
-  cherishedHeirloom,
-  soulMate,
-  goldenRule,
-  sunWorshiper,
-  queensRansom,
   properUpbringing,
 };
 

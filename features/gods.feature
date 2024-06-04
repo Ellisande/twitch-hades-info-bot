@@ -10,7 +10,7 @@ Feature: Requests about gods and their boons
 
     Scenario: A user can request information about a god's attack
         When the user says to the bot {!poseidon attack}
-        Then the bot responds with {Wave Strike (Poseidon)}
+        Then the bot responds with {Wave Strike (Poseidon) [Water]}
         And the bot responds with {Your Attacks hit foes with a splash that knocks foes away and deals}
         And the bot responds with {c:15}
 
@@ -41,10 +41,9 @@ Feature: Requests about gods and their boons
 
     Scenario: A user can request information about a god's duos
         When the user says to the bot {!poseidon duos}
-        Then the bot responds with {[island getaway] [natural selection] [killer current] [seismic hammer] [golden rule] [beach ball] [scalding vapor]}
+        Then the bot responds with {[island getaway] [beach ball] [natural selection] [seismic hammer] [golden rule] [scalding vapor] [killer current]}
 
     Scenario: A user requests an attack for a god who has none
-        Given PENDING
         When the user says to the bot {!hermes attack}
         Then the bot responds with {Hermes has no [attack] boon}
 

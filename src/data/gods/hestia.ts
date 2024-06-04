@@ -1,14 +1,7 @@
 import { ATTACK, CAST, DASH, INFUSION, OTHER, SPECIAL } from "./abilityTypes";
-import { glamourGain, passionDash, raptureRing } from "./aphrodite";
-import { lucidGain, novaFlourish, novaStrike } from "./apollo";
-import { iceFlourish, iceStrike } from "./demeter";
-import { COSMIC, FIRE } from "./elements";
+import { FIRE } from "./elements";
 import { Boon, God, InfusionBoon, listElements } from "./god";
-import { volcanicFlourish, volcanicStrike } from "./hephaestus";
-import { bornGain, engagementRing, swornFlourish, swornStrike } from "./hera";
-import { slipperySlope } from "./poseidon";
-import { COMMON, DUO, EPIC, LEGENDARY, RARE } from "./rarities";
-import { heavenFlourish, heavenStrike } from "./zeus";
+import { COMMON, EPIC, LEGENDARY, RARE } from "./rarities";
 
 const info = "Goddess of flame";
 
@@ -214,69 +207,6 @@ const fireExtinguisher: Boon = {
   ],
 };
 
-const chainReaction: Boon = {
-  name: "Chain Reaction",
-  type: OTHER,
-  element: COSMIC,
-  info: (value) =>
-    `If you use your blast effects from Hephaestus just within ${value} seconds of them recharging, they fire 2 times`,
-  values: {
-    [DUO]: { 1: 0.85 },
-  },
-  prerequisites: [
-    [volcanicFlourish, volcanicStrike],
-    [flameStrike, flameFlourish, smolderRing],
-  ],
-};
-
-const phoenixSkin: Boon = {
-  name: "Phoenix Skin",
-  type: OTHER,
-  element: COSMIC,
-  info: (value) =>
-    `Give up -100 max health. If you do not take or deal damage for 3 seconds, rapidly restore ${value} health/sec`,
-  values: {
-    [DUO]: {
-      1: 3,
-    },
-  },
-  prerequisites: [
-    [novaStrike, novaFlourish, lucidGain],
-    [flameStrike, flameFlourish, smolderRing],
-    [burntOffering, flammableCoating, hearthGain],
-  ],
-};
-
-const freezerBurn: Boon = {
-  name: "Freezer Burn",
-  type: OTHER,
-  element: COSMIC,
-  info: (value) =>
-    `Whenever you inflict [freeze], amplify any [scorch] effects already on the foe by ${value}`,
-  values: {
-    [DUO]: { 1: "100%" },
-  },
-  prerequisites: [
-    [iceStrike, iceFlourish],
-    [flameStrike, flameFlourish],
-  ],
-};
-
-export const burningDesire: Boon = {
-  name: "Burning Desire",
-  type: OTHER,
-  element: COSMIC,
-  info: (value) =>
-    `Up to +12 Lone Shades appear in Locations. Sprint into them to launch a fiery blast for ${value} damage`,
-  values: {
-    [DUO]: { 1: 160 },
-  },
-  prerequisites: [
-    [raptureRing, passionDash, glamourGain],
-    [smolderRing, sootSprint, hearthGain],
-  ],
-};
-
 const pyroTechnique: Boon = {
   name: "Pyro Technique",
   type: OTHER,
@@ -294,58 +224,6 @@ const pyroTechnique: Boon = {
   ],
 };
 
-const funeralPyre: Boon = {
-  name: "Funeral Pyre",
-  type: OTHER,
-  element: COSMIC,
-  info: (value) =>
-    `While you Channel your [omega] moves, repeatedly inflict ${value} [scorch] on nearby foes`,
-  values: {
-    [DUO]: { 1: 90 },
-  },
-  prerequisites: [
-    [swornStrike, swornFlourish, engagementRing, bornGain],
-    [flameStrike, flameFlourish, smolderRing, hearthGain],
-  ],
-};
-
-const thermalDynamics: Boon = {
-  name: "Thermal Dynamics",
-  type: OTHER,
-  element: COSMIC,
-  info: (value) =>
-    `Your [blitz] effects also inflict ${value} [scorch] whenever they deal damage`,
-  values: {
-    [DUO]: { 1: 80 },
-  },
-  prerequisites: [
-    [heavenStrike, heavenFlourish],
-    [flameFlourish, flameStrike],
-  ],
-};
-
-const scaldingVapor: Boon = {
-  name: "Scalding Vapor",
-  type: OTHER,
-  info: (value) =>
-    `If foes with [slip] are struck with fire from Hestia, they are engulfed in [steam] that deals ${value} damage every 0.2 seconds`,
-  values: {
-    [DUO]: { 1: 25 },
-  },
-  prerequisites: [
-    [slipperySlope],
-    [
-      flameStrike,
-      flameFlourish,
-      smolderRing,
-      spontaneousCombustion,
-      burningDesire,
-      controlledBurn,
-      glowingCoal,
-    ],
-  ],
-};
-
 const abilities = {
   attack,
   special,
@@ -355,19 +233,12 @@ const abilities = {
   controlledBurn,
   burntOffering,
   naturalGas,
-  funeralPyre,
   slowCooker,
   glowingCoal,
   fireExtinguisher,
   flammableCoating,
-  chainReaction,
-  phoenixSkin,
-  burningDesire,
   pyroTechnique,
   spontaneousCombustion,
-  freezerBurn,
-  scaldingVapor,
-  thermalDynamics,
 };
 
 export const hestia: God = {
