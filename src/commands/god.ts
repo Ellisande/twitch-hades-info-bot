@@ -12,6 +12,7 @@ import { abilityFormatter } from "./utils/formatters";
 import { Boon } from "../data/gods/god";
 import { DUO } from "../data/gods/rarities";
 import { Command } from "./command";
+import { duos } from "../data/gods/duos";
 
 const allGodNames = gods.map((god) => god.name).join("|");
 
@@ -56,7 +57,7 @@ const gainFilter: AbilityFilter = {
 const otherFilter: AbilityFilter = {
   matcher: /other/i,
   display: `[other]`,
-  filter: (ability) => ability.type === OTHER && !ability.values[DUO],
+  filter: (ability) => ability.type === OTHER,
 };
 
 const infusionFilter: AbilityFilter = {
@@ -68,7 +69,7 @@ const infusionFilter: AbilityFilter = {
 const duosFilter: AbilityFilter = {
   matcher: /duos/i,
   display: `[duos]`,
-  filter: (ability) => Boolean(ability.values[DUO]),
+  filter: (ability) => ability.type === DUO,
 };
 
 const abilityFilters: AbilityFilter[] = [
@@ -97,10 +98,18 @@ const godCommand = new Command({
       return;
     }
     logger.debug("God info found ", god);
+
+    var abilities = god.abilities;
+    duos.forEach((duo) => {
+      if(duo.gods[0] === god || duo.gods[1] === god) {
+        abilities[duo.name] = duo;
+      }
+    });
+
     const godOptions = abilityFilters
       .filter(
         (filter) =>
-          Object.values(god.abilities).filter(filter.filter).length > 0
+          Object.values(abilities).filter(filter.filter).length > 0
       )
       .map((filter) => filter.display)
       .join(" ");
@@ -113,9 +122,17 @@ const godCommand = new Command({
       logger.debug("Ability filter not found");
       return bot.say(channelId, `${god?.info} ${godOptions}`);
     }
-    const filteredAbilities = Object.values(god.abilities).filter(
+    const filteredAbilities = Object.values(abilities).filter(
       abilityFilter.filter
     );
+
+    if (filteredAbilities.length === 0) {
+      logger.debug("Ability filter did not apply to specified god.");
+      return bot.say(channelId, `${god.name} has no ${abilityFilter.display} boon.`);
+    }
+
+    // We don't have to worry about Duos here because Gods that have one
+    // have multiple
     if (filteredAbilities.length === 1) {
       const message = abilityFormatter(god.name)(filteredAbilities[0]);
       logger.debug("God message " + message);

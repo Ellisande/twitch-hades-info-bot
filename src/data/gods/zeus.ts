@@ -206,21 +206,6 @@ const doubleStrike: Boon = {
   ],
 };
 
-const kingsRansom: Boon = {
-  name: "King's Ransom",
-  type: OTHER,
-  element: COSMIC,
-  info: (value) =>
-    `Give up all your Boons of Hera. For each raise all of your Boons of Zeus by ${value} levels`,
-  values: {
-    [DUO]: { 1: 2 },
-  },
-  prerequisites: [
-    [swornFlourish, swornStrike, engagementRing, nexusSprint, bornGain],
-    [heavenFlourish, heavenStrike, stormRing, thunderSprint, ionicGain],
-  ],
-};
-
 const electricOverload: Boon = {
   name: "Electric Overload",
   type: OTHER,
@@ -232,21 +217,6 @@ const electricOverload: Boon = {
     [RARE]: { 1: 15 },
   },
   prerequisites: [[heavenFlourish, heavenStrike]],
-};
-
-const masterConductor: Boon = {
-  name: "Master Conductor",
-  type: OTHER,
-  element: COSMIC,
-  info: (value) =>
-    `Your chain-lightning deals ${value} more damage per bounce and can bounce to you`,
-  values: {
-    [DUO]: { 1: "15%" },
-  },
-  prerequisites: [
-    [staticShock],
-    [fixedGain, trustyShield, heavyMetal, mintCondition, toughTrade],
-  ],
 };
 
 const toastingFork: Boon = {
@@ -273,85 +243,6 @@ const shockingLoss: Boon = {
   },
 };
 
-const gloriousDisaster: Boon = {
-  name: "Glorious Disaster",
-  type: OTHER,
-  element: COSMIC,
-  info: (value) =>
-    `You can Channel +30 [mana] into your [omega] Cast to repeatedly strike foes for ${value} bolt damage every 0.13 seconds`,
-  values: {
-    [LEGENDARY]: { 1: 50 },
-  },
-  prerequisites: [[solarRing], [heavenStrike, heavenFlourish, thunderSprint]],
-};
-
-const apocalypticStorm: Boon = {
-  name: "Apocalyptic Storm",
-  type: OTHER,
-  element: COSMIC,
-  info: (value) =>
-    `Your [blitz] effects last ${value} seconds longer, and active against all [blitz]-afflicted foes at once`,
-  values: {
-    [DUO]: { 1: 8 },
-  },
-  prerequisites: [
-    [iceStrike, iceFlourish, arcticRing, frigidSprint],
-    [heavenStrike, heavenFlourish],
-  ],
-};
-
-const thermalDynamics: Boon = {
-  name: "Thermal Dynamics",
-  type: OTHER,
-  element: COSMIC,
-  info: (value) =>
-    `Your [blitz] effects also inflict ${value} [scorch] whenever they deal damage`,
-  values: {
-    [DUO]: { 1: 80 },
-  },
-  prerequisites: [
-    [heavenStrike, heavenFlourish],
-    [flameFlourish, flameStrike],
-  ],
-};
-
-const killerCurrent: Boon = {
-  name: "Killer Current",
-  type: OTHER,
-  element: COSMIC,
-  info: (value) =>
-    `Your lightning deals ${value} bonus damage to [slip]-afflicted foes`,
-  values: {
-    [DUO]: { 1: "30%" },
-  },
-  prerequisites: [
-    [slipperySlope],
-    [
-      heavenStrike,
-      heavenFlourish,
-      stormRing,
-      thunderSprint,
-      divineVengeance,
-      lightningLance,
-    ],
-  ],
-};
-
-const romanticSpark: Boon = {
-  name: "Romantic Spark",
-  type: OTHER,
-  element: COSMIC,
-  info: (value) =>
-    `If you Sprint into [blitz]-afflicted foes, the effect actives immediately and is ${value} stronger`,
-  values: {
-    [DUO]: { 1: "200%" },
-  },
-  prerequisites: [
-    [heavenFlourish, heavenStrike],
-    [passionDash, raptureRing, flutterFlourish, flutterStrike],
-  ],
-};
-
 const abilities = {
   attack,
   special,
@@ -364,16 +255,9 @@ const abilities = {
   staticShock,
   doubleStrike,
   spiritSurge,
-  "king's ransom": kingsRansom,
   electricOverload,
-  masterConductor,
   toastingFork,
   shockingLoss,
-  gloriousDisaster,
-  apocalypticStorm,
-  thermalDynamics,
-  killerCurrent,
-  romanticSpark,
 };
 
 export const zeus: God = {

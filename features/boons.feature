@@ -25,6 +25,17 @@ Feature: A user can request information about a specific boon
         And the bot responds with {(one of [Broken Resolve][Sweet Surrender])}
         And the bot responds with {and (one of [Rapture Ring][Passion Dash][Glamour Gain])}
 
+    Scenario: A user asks about a duo boon
+        When the user says to the bot {!burning desire}
+        Then the bot responds with {Burning Desire (Aphrodite + Hestia) [Cosmic]}
+        And then the bot responds with {Up to +12 Lone Shades appear in Locations. Sprint into them to launch a fiery blast for (d:160) damage}
+
+    Scenario: A user asks for a duo boon's prereqs
+        When the user says to the bot {!burning desire reqs}
+        Then the bot responds with {Requirements for Burning Desire (Aphrodite + Hestia)}
+        And the bot responds with {(one of [Rapture Ring][Passion Dash][Glamour Gain])}
+        And the bot responds with {(one of [Smolder Ring][Soot Sprint][Hearth Gain])}
+
     Scenario: A user asks for prereqs for a boon that has none
         When the user says to the bot {!flutter strike reqs}
         Then the bot responds with {No known requirements}
@@ -40,11 +51,6 @@ Feature: A user can request information about a specific boon
         Then the bot responds with {Requirements for Ecstatic Obsession (Aphrodite)}
         And the bot responds with {(one of [Broken Resolve][Sweet Surrender])}
         And the bot responds with {and (one of [Rapture Ring][Passion Dash][Glamour Gain])}
-
-    Scenario: A user asks for a duo that has the same name for two gods
-        Given PENDING
-        When the user says to the bot {!golden rule}
-        Then the bot responds with {this is broken; chooses one of the two gods}
 
     Scenario: A user asks for Chaos' infusion
         When the user says to the bot {!chant}

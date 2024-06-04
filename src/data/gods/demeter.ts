@@ -1,24 +1,7 @@
 import { ATTACK, CAST, DASH, INFUSION, OTHER, SPECIAL } from "./abilityTypes";
-import {
-  healthyRebound,
-  lifeAffirmation,
-  shamelessAttitude,
-} from "./aphrodite";
-import { blindingSprint, lucidGain, solarRing } from "./apollo";
-import { COSMIC, EARTH, WATER } from "./elements";
+import { EARTH, WATER } from "./elements";
 import { Boon, God, InfusionBoon, listElements } from "./god";
-import { smithySprint, volcanicFlourish, volcanicStrike } from "./hephaestus";
-import { bornGain, engagementRing, nexusSprint } from "./hera";
-import { flameFlourish, flameStrike } from "./hestia";
-import {
-  breakerSprint,
-  doubleUp,
-  fluidGain,
-  oceansBounty,
-  sunkenTreasure,
-} from "./poseidon";
-import { COMMON, DUO, EPIC, HEROIC, LEGENDARY, RARE } from "./rarities";
-import { heavenFlourish, heavenStrike } from "./zeus";
+import { COMMON, EPIC, HEROIC, LEGENDARY, RARE } from "./rarities";
 
 const info = "Demeter, Goddess of Seasons. Her abilities slows enemies.";
 
@@ -209,21 +192,6 @@ const localClimate: Boon = {
   },
 };
 
-const roomTemperature: Boon = {
-  name: "Room Temperature",
-  type: OTHER,
-  element: COSMIC,
-  info: (value) =>
-    `Your blast effects from Hephaestus clear [freeze], so you [freeze] foes again right away.`,
-  values: {
-    [DUO]: { 1: 0 },
-  },
-  prerequisites: [
-    [volcanicFlourish, volcanicStrike, smithySprint],
-    [iceStrike, iceFlourish],
-  ],
-};
-
 export const coldStorage: Boon = {
   name: "Cold Storage",
   type: OTHER,
@@ -251,92 +219,6 @@ const winterHarvest: Boon = {
   ],
 };
 
-const torrentialDownpour: Boon = {
-  name: "Torrential Downpour",
-  type: OTHER,
-  info: (value) =>
-    `Each time you use your [omega] Cast in an Encounter, it gets ${value} stronger but also uses +5 [mana]`,
-  values: {
-    [DUO]: { 1: "20%" },
-  },
-  prerequisites: [
-    [solarRing, blindingSprint, lucidGain],
-    [arcticRing, frigidSprint, tranquilGain],
-  ],
-};
-
-const freezerBurn: Boon = {
-  name: "Freezer Burn",
-  type: OTHER,
-  element: COSMIC,
-  info: (value) =>
-    `Whenever you inflict [freeze], amplify any [scorch] effects already on the foe by ${value}`,
-  values: {
-    [DUO]: { 1: "100%" },
-  },
-  prerequisites: [
-    [iceStrike, iceFlourish],
-    [flameStrike, flameFlourish],
-  ],
-};
-
-const apocalypticStorm: Boon = {
-  name: "Apocalyptic Storm",
-  type: OTHER,
-  element: COSMIC,
-  info: (value) =>
-    `Your [blitz] effects last ${value} seconds longer, and active against all [blitz]-afflicted foes at once`,
-  values: {
-    [DUO]: { 1: 8 },
-  },
-  prerequisites: [
-    [iceStrike, iceFlourish, arcticRing, frigidSprint],
-    [heavenStrike, heavenFlourish],
-  ],
-};
-
-const naturalSelection: Boon = {
-  name: "Natural Selection",
-  type: OTHER,
-  info: (value) =>
-    `Location Rewards exclude max health, max [mana], and gold. Boon are ${value} more likely to be Rare or better`,
-  values: {
-    [DUO]: { 1: "20%" },
-  },
-  prerequisites: [
-    [fluidGain, breakerSprint, oceansBounty, sunkenTreasure, doubleUp],
-    [tranquilGain, frigidSprint, winterCoat, coldStorage, rareCrop],
-  ],
-};
-
-const cherishedHeirloom: Boon = {
-  name: "Cherished Heirloom",
-  type: OTHER,
-  info: (value) =>
-    `Most other Keepsakes you equip are ${value} ranks strong this night (if possible)`,
-  values: {
-    [DUO]: { 1: 1 },
-  },
-  prerequisites: [
-    [nexusSprint, engagementRing, bornGain],
-    [arcticRing, frigidSprint, tranquilGain],
-  ],
-};
-
-const heartyAppetite: Boon = {
-  name: "Hearty Appetite",
-  type: OTHER,
-  element: COSMIC,
-  info: (value) => `You deal ${value} more damage per 100 max health`,
-  values: {
-    [DUO]: { 1: "10%" },
-  },
-  prerequisites: [
-    [plentifulForage, winterCoat],
-    [shamelessAttitude, lifeAffirmation, healthyRebound],
-  ],
-};
-
 const abilities = {
   attack,
   special,
@@ -349,16 +231,9 @@ const abilities = {
   plentifulForage,
   coarseGrit,
   winterCoat,
-  roomTemperature,
   coldStorage,
   localClimate,
   winterHarvest,
-  torrentialDownpour,
-  freezerBurn,
-  apocalypticStorm,
-  naturalSelection,
-  cherishedHeirloom,
-  heartyAppetite,
 };
 
 export const demeter: God = {

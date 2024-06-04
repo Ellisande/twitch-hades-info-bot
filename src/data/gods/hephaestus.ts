@@ -1,14 +1,7 @@
 import { ATTACK, CAST, DASH, INFUSION, OTHER, SPECIAL } from "./abilityTypes";
-import { glamourGain, passionDash, raptureRing } from "./aphrodite";
-import { novaFlourish, novaStrike, superNova } from "./apollo";
-import { iceFlourish, iceStrike } from "./demeter";
-import { COSMIC, EARTH, FIRE } from "./elements";
+import { EARTH, FIRE } from "./elements";
 import { Boon, God, InfusionBoon, listElements } from "./god";
-import { bornGain, braveFace, keenIntuition, nastyComeback } from "./hera";
-import { flameFlourish, flameStrike, smolderRing } from "./hestia";
-import { geyserRing } from "./poseidon";
-import { COMMON, DUO, EPIC, LEGENDARY, RARE } from "./rarities";
-import { staticShock } from "./zeus";
+import { COMMON, EPIC, LEGENDARY, RARE } from "./rarities";
 
 const info = "Hephaestus, God of the Forge";
 
@@ -173,36 +166,6 @@ const fineTuning: Boon = {
   },
 };
 
-const roomTemperature: Boon = {
-  name: "Room Temperature",
-  type: OTHER,
-  element: COSMIC,
-  info: (value) =>
-    `Your blast effects from Hephaestus clear [freeze], so you [freeze] foes again right away.`,
-  values: {
-    [DUO]: { 1: 0 },
-  },
-  prerequisites: [
-    [volcanicFlourish, volcanicStrike, smithySprint],
-    [iceStrike, iceFlourish],
-  ],
-};
-
-const chainReaction: Boon = {
-  name: "Chain Reaction",
-  type: OTHER,
-  element: COSMIC,
-  info: (value) =>
-    `If you use your blast effects from Hephaestus just within ${value} seconds of them recharging, they fire 2 times`,
-  values: {
-    [DUO]: { 1: 0.85 },
-  },
-  prerequisites: [
-    [volcanicFlourish, volcanicStrike],
-    [flameStrike, flameFlourish, smolderRing],
-  ],
-};
-
 const moltenTouch: Boon = {
   name: "Molten Touch",
   type: OTHER,
@@ -213,88 +176,6 @@ const moltenTouch: Boon = {
     [COMMON]: { 1: "20%" },
     [EPIC]: { 1: "40%", 4: "75%" },
   },
-};
-
-const spitefulStrength: Boon = {
-  name: "Spiteful Strength",
-  type: OTHER,
-  element: COSMIC,
-  info: (value) =>
-    `Your Attacks and Specials deal ${value} more damage while not empowered by Boons`,
-  values: {
-    [DUO]: "200%",
-  },
-  prerequisites: [
-    [braveFace, nastyComeback, keenIntuition, bornGain],
-    [
-      trustyShield,
-      mintCondition,
-      heavyMetal,
-      toughTrade,
-      uncannyFortitude,
-      fixedGain,
-    ],
-  ],
-};
-
-const softCaress: Boon = {
-  name: "Soft Caress",
-  type: OTHER,
-  element: COSMIC,
-  info: (value) =>
-    `The first time you would take damage in each Encounter, turn ${value} of the hit into healing`,
-  values: {
-    [DUO]: { 1: "75%" },
-  },
-  prerequisites: [
-    [raptureRing, passionDash, glamourGain],
-    [anvilRing, smithySprint, fixedGain],
-  ],
-};
-
-const stellarSlam: Boon = {
-  name: "Stellar Slam",
-  type: OTHER,
-  element: COSMIC,
-  info: (value) =>
-    `Your blast effects from Hephaestus deal damage in a ${value} larger area`,
-  values: {
-    [DUO]: { 1: "50%" },
-  },
-  prerequisites: [
-    [novaStrike, novaFlourish, superNova],
-    [volcanicFlourish, volcanicStrike, smithySprint],
-  ],
-};
-
-const seismicHammer: Boon = {
-  name: "Seismic Hammer",
-  type: OTHER,
-  element: COSMIC,
-  info: (value) =>
-    `Your [omega] cast occasionally creates a blast that deals 500 damage in the area. Recharges after ${value} seconds`,
-  values: {
-    [DUO]: { 1: 15 },
-  },
-  prerequisites: [
-    [geyserRing],
-    [volcanicStrike, volcanicFlourish, smithySprint],
-  ],
-};
-
-const masterConductor: Boon = {
-  name: "Master Conductor",
-  type: OTHER,
-  element: COSMIC,
-  info: (value) =>
-    `Your chain-lightning deals ${value} more damage per bounce and can bounce to you`,
-  values: {
-    [DUO]: { 1: "15%" },
-  },
-  prerequisites: [
-    [staticShock],
-    [fixedGain, trustyShield, heavyMetal, mintCondition, toughTrade],
-  ],
 };
 
 const abilities = {
@@ -308,16 +189,9 @@ const abilities = {
   heavyMetal,
   mintCondition,
   uncannyFortitude,
-  roomTemperature,
-  chainReaction,
-  stellarSlam,
   moltenTouch,
-  spitefulStrength,
-  softCaress,
   martialArt,
   fineTuning,
-  seismicHammer,
-  masterConductor,
 };
 
 export const hephaestus: God = {
