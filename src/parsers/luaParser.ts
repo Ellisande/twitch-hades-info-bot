@@ -1,22 +1,31 @@
-import parser from "luaparse";
-import { readFileSync } from "fs";
+import luaParser from "luaparse";
+import { readFileSync, writeFileSync } from "fs";
 import path from "path";
 import { notNullOrUndefined } from "../utils/arrayUtils";
+import { ArgumentParser } from "argparse";
 
-const luaFilePath = path.resolve(__dirname, "../examples/TraitData_Chaos.lua");
+const argParser = new ArgumentParser({
+  description: "Lua parser cli tool",
+});
+argParser.add_argument("-o", "--output", {
+  help: "Output file. Example: chaosParsedAst.json",
+  required: true,
+});
+argParser.add_argument("-i", "--input", {
+  help: "Input file. Example: TraitData_Chaos.lua",
+  required: true,
+});
+argParser.add_argument("-s", "--start", {
+  help: "Start path to walk. Example: TraitSetData.Chaos.ChaosSpecialBlessing",
+  required: true,
+});
+const args: { output: string; input: string; start: string } =
+  argParser.parse_args();
+const { input, output, start } = args;
+
+const luaFilePath = path.resolve(__dirname, `../luaFiles/${input}`);
 const luaFile = readFileSync(luaFilePath, "utf8");
-const exampleAst = parser.parse(luaFile);
-
-// console.log(JSON.stringify(exampleAst, null, 2));
-
-const chunk = exampleAst;
-const firstBody = chunk.body[0] as any;
-const chaosBlessing = firstBody.init[0].fields.find(
-  (field: any) => field.key.name === "ChaosBlessing"
-);
-const rarities = chaosBlessing.value.fields.find(
-  (field: any) => field.key.name === "RarityLevels"
-);
+const luaAst = luaParser.parse(luaFile);
 
 type Node = {
   type: string;
@@ -32,7 +41,7 @@ type Node = {
   };
 };
 
-const convertToJson2 = (node: Node): any => {
+const luaToJson = (node: Node): any => {
   if (node.type === "TableKeyString" && node.value.type === "NumericLiteral") {
     return {
       [node.key.name]: node.value.value,
@@ -49,7 +58,7 @@ const convertToJson2 = (node: Node): any => {
   ) {
     return {
       [node.key.name]: node.value.fields?.reduce((acc: any, field: Node) => {
-        return { ...acc, ...convertToJson2(field) };
+        return { ...acc, ...luaToJson(field) };
       }, {}),
     };
   }
@@ -82,10 +91,10 @@ const extractExpressionFromRootPiece = (rootPiece: AssignmentStatement) => {
   return `${base}.${identifier}`;
 };
 
-const walkForValueNode = (chunk: parser.Chunk, expression: string) => {
+const walkForValueNode = (chunk: luaParser.Chunk, expression: string) => {
   const expressionPieces = expression.split(".");
   const rootPieces = chunk.body.filter(
-    (bodyPiece) => bodyPiece.type === "AssignmentStatement"
+    (bodyPiece: any) => bodyPiece.type === "AssignmentStatement"
   ) as unknown as AssignmentStatement[];
   const possibleRootExpressionPieces = [
     expressionPieces[0],
@@ -123,7 +132,7 @@ const walkForValueNode = (chunk: parser.Chunk, expression: string) => {
     (node) => node.key.name === expressionPieces[startingIndex]
   );
   if (startingIndex === expressionPieces.length - 1 && firstNode) {
-    const obj = convertToJson2(firstNode);
+    const obj = luaToJson(firstNode);
     // console.log("Didn't need to walk far", JSON.stringify(obj, null, 2));
     console.log(JSON.stringify(obj, null, 2));
     return obj;
@@ -145,14 +154,17 @@ const walkForValueNode = (chunk: parser.Chunk, expression: string) => {
   } else {
     throw new Error("Could not find target node");
   }
-  const obj = convertToJson2(targetNode);
-  console.log(JSON.stringify(obj, null, 2));
+  const obj = luaToJson(targetNode);
+  return obj;
 };
 // console.log(process.argv);
-walkForValueNode(
-  exampleAst,
+const parsedObject = walkForValueNode(
+  luaAst,
   // Change this to whatever object you want to extract.
   // Needs to resolve to primitive values (number or string for now)
   // "TraitSetData.Chaos.ChaosWeaponBlessing"
-  process.argv[2]
+  start
 );
+
+const outputPath = path.resolve(__dirname, `../parsedData/${output}`);
+writeFileSync(outputPath, JSON.stringify(parsedObject, null, 2));

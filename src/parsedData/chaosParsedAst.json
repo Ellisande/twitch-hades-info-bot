@@ -1,0 +1,17 @@
+{
+  "ChaosSpecialBlessing": {
+    "InheritFrom": {},
+    "Icon": "Boon_Chaos_02",
+    "CustomName": "ChaosSpecialBlessing_Complete",
+    "AddOutgoingDamageModifiers": {
+      "ValidWeaponMultiplier": {
+        "BaseMin": 1.3,
+        "BaseMax": 1.6
+      },
+      "ReportValues": {
+        "ReportedMultiplier": "ValidWeaponMultiplier"
+      }
+    },
+    "ExtractValues": {}
+  }
+}
