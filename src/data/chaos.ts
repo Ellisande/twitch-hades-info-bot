@@ -184,7 +184,7 @@ export const curses: ChaosCurse[] = [
     },
   },
   {
-    // ChaosMagickFocusCurse
+    // ChaosManaFocusCurse
     name: "Fixated",
     info: (_, duration) =>
       `For the next ${duration} Encounters, whenever you use [magick] prime it.`,
@@ -381,7 +381,7 @@ export const blessings: ChaosBlessing[] = [
     },
   },
   {
-    // ChaosMagickBlessing
+    // ChaosManaBlessing
     name: "Mind",
     info: (value) => `Afterward, you get +${value} max [magick].`,
     matcher: /mind/i,
@@ -392,7 +392,7 @@ export const blessings: ChaosBlessing[] = [
     },
   },
   {
-    // ChaosMagickCostBlessing
+    // ChaosManaCostBlessing
     name: "Talent",
     info: (value) => `Afterward, you use ${value} less [magick].`,
     matcher: /talent/i,
@@ -403,7 +403,7 @@ export const blessings: ChaosBlessing[] = [
     },
   },
   {
-    // ChaosMagickOverTimeBlessing
+    // ChaosManaOverTimeBlessing
     name: "Will",
     info: (value) => `Afterward, restore ${value} magick every 1 second.`,
     matcher: /will/i,
