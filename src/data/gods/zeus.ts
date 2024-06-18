@@ -95,7 +95,7 @@ const dash: Boon = {
   type: DASH,
   element: AIR,
   info: (value) =>
-    `Your Sprint causes nearby foes to be struck by lightning bolts for ${value} damage, which use 3 [mana] each`,
+    `Your Sprint causes nearby foes to be struck by lightning bolts for ${value} damage, which use 3 [magick] each`,
   values: {
     [COMMON]: { 1: 20 },
     [RARE]: { 1: 25 },
@@ -109,7 +109,7 @@ const gain: Boon = {
   type: GAIN,
   element: AIR,
   info: (value) =>
-    `Gradually restore [mana] by ${value}/sec, but your total amount is reduced by 70%`,
+    `Gradually restore [magick] by ${value}/sec, but your total amount is reduced by 70%`,
   values: {
     [COMMON]: { 1: 4 },
     [RARE]: { 1: 6 },
@@ -163,7 +163,7 @@ export const staticShock: Boon = {
   type: OTHER,
   element: AIR,
   info: (value) =>
-    `After you enter a Location, [prime] 50 [mana] to make your strikes emit chain-lightning that deals ${value} damage`,
+    `After you enter a Location, [prime] 50 [magick] to make your strikes emit chain-lightning that deals ${value} damage`,
   values: {
     [COMMON]: { 1: 10 },
     [RARE]: { 1: 15 },
@@ -176,7 +176,7 @@ const spiritSurge: Boon = {
   type: OTHER,
   element: AIR,
   info: (value) =>
-    `While you have no more than 10 [mana], all foes are occasionally struck by lightning for ${value} damage`,
+    `While you have no more than 10 [magick], all foes are occasionally struck by lightning for ${value} damage`,
   values: {
     [COMMON]: { 1: 60 },
     [EPIC]: { 1: "90" },
@@ -278,7 +278,7 @@ const gloriousDisaster: Boon = {
   type: OTHER,
   element: COSMIC,
   info: (value) =>
-    `You can Channel +30 [mana] into your [omega] Cast to repeatedly strike foes for ${value} bolt damage every 0.13 seconds`,
+    `You can Channel +30 [magick] into your [omega] Cast to repeatedly strike foes for ${value} bolt damage every 0.13 seconds`,
   values: {
     [LEGENDARY]: { 1: 50 },
   },

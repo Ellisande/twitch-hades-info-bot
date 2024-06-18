@@ -6,7 +6,7 @@ const formatter = hammerFormatter(weaponNameString);
 const possessedArray = {
   name: "Possessed Array",
   description:
-    "Your Skulls fire your [omega] Attack for 0 [mana] whenever retrieved, but take longer to drop",
+    "Your Skulls fire your [omega] Attack for 0 [magick] whenever retrieved, but take longer to drop",
   exclusives: [],
 };
 

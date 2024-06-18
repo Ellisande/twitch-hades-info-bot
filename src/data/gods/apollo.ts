@@ -91,7 +91,7 @@ const gain: Boon = {
   type: GAIN,
   element: AIR,
   info: (value) =>
-    `While standing in your Casts, gradually restore ${value} mana per second`,
+    `While standing in your Casts, gradually restore ${value} magick per second`,
   values: {
     [COMMON]: { 1: 12 },
     [RARE]: { 1: 18, 2: 24 },
@@ -217,7 +217,7 @@ const exceptionalTalent: Boon = {
   type: OTHER,
   element: AIR,
   info: (value) =>
-    `Your [omega] Attack and [omega] Special fire 2 times, but use +${value} [mana]`,
+    `Your [omega] Attack and [omega] Special fire 2 times, but use +${value} [magick]`,
   values: {
     [LEGENDARY]: { 1: 20 },
   },
@@ -233,7 +233,7 @@ const gloriousDisaster: Boon = {
   type: OTHER,
   element: COSMIC,
   info: (value) =>
-    `You can Channel +30 [mana] into your [omega] Cast to repeatedly strike foes for ${value} bolt damage every 0.13 seconds`,
+    `You can Channel +30 [magick] into your [omega] Cast to repeatedly strike foes for ${value} bolt damage every 0.13 seconds`,
   values: {
     [LEGENDARY]: { 1: 50 },
   },
@@ -244,7 +244,7 @@ const torrentialDownpour: Boon = {
   name: "Torrential Downpour",
   type: OTHER,
   info: (value) =>
-    `Each time you use your [omega] Cast in an Encounter, it gets ${value} stronger but also uses +5 [mana]`,
+    `Each time you use your [omega] Cast in an Encounter, it gets ${value} stronger but also uses +5 [magick]`,
   values: {
     [DUO]: { 1: "20%" },
   },

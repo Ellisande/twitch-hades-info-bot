@@ -81,7 +81,7 @@ const wittyRetort: Boon = {
   type: OTHER,
   element: EARTH,
   info: (value) =>
-    `Your Hex requires using less ${value} [mana] before it is ready`,
+    `Your Hex requires using less ${value} [magick] before it is ready`,
   values: {
     [RARE]: { 1: "-20%" },
   },
@@ -114,7 +114,7 @@ const savedBreath: Boon = {
   name: "Saved Breath",
   type: OTHER,
   element: EARTH,
-  info: (value) => `Your [omega] Cast uses ${value} less [mana]`,
+  info: (value) => `Your [omega] Cast uses ${value} less [magick]`,
   values: {
     [COMMON]: { 1: "-50%" },
     [RARE]: { 1: "-60%" },

@@ -83,7 +83,7 @@ export const hearthGain: Boon = {
   type: OTHER,
   element: FIRE,
   info: (value) =>
-    `Rapidly restore ${value} [mana] every second, but you have -20% less max health`,
+    `Rapidly restore ${value} [magick] every second, but you have -20% less max health`,
   values: {
     [COMMON]: {
       1: 7,
@@ -99,7 +99,7 @@ export const controlledBurn: Boon = {
   type: OTHER,
   element: FIRE,
   info: (value) =>
-    `Your [omega] Special also launches a fiery projectile that deals ${value} damage, but also uses +10 [mana]`,
+    `Your [omega] Special also launches a fiery projectile that deals ${value} damage, but also uses +10 [magick]`,
   values: {
     [COMMON]: { 1: 80 },
   },

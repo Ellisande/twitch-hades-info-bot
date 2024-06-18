@@ -13,7 +13,7 @@ const spiralKnives = {
 const explosiveAmbush = {
   name: "Explosive Ambush",
   description:
-    "Your [omega] Attack hits a wide area and deals +400% damage, but uses +20 [mana]",
+    "Your [omega] Attack hits a wide area and deals +400% damage, but uses +20 [magick]",
   exclusives: [],
 };
 
@@ -41,7 +41,7 @@ const marauderSlice = {
 const boundlessFlurry = {
   name: "Boundless Flurry",
   description:
-    "Your [omega] Special uses -66% [mana] and you Channel it much faster",
+    "Your [omega] Special uses -66% [magick] and you Channel it much faster",
   exclusives: [],
 };
 

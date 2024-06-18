@@ -17,7 +17,7 @@ const empoweringGuard = {
 const gigaCleaver = {
   name: "Giga Cleaver",
   description:
-    "You can Channel +15 [mana] into your [omega] Special to fire 2 times ahead of you",
+    "You can Channel +15 [magick] into your [omega] Special to fire 2 times ahead of you",
   exclusives: [],
 };
 
